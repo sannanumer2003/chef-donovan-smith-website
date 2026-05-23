@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header (full width) -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2-col grid: photo left, cards right -->
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+
+      <!-- Left: sticky portrait (hidden on mobile) -->
+      <div class="hidden lg:block">
+        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
+          <img src="images/chef_portrait.png" alt="Chef Donovan" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.background='rgb(0,46,40)'">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.92) 0%,transparent 100%);z-index:1"></div>
+          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
+            <h1 class="uppercase select-none" style="font-family:var(--font-forum);font-size:clamp(48px,7vw,96px);line-height:.92;letter-spacing:.01em;color:rgb(239,231,210)">CHEF<br>DONOVAN</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: content cards -->
+      <div class="flex flex-col" style="gap:16px">
+
+      <!-- Card 1: Tagline -->
+      <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text)">Redefining Private<br>Luxury Dining.</h2>
+        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.8;color:var(--text-muted);max-width:520px;margin-top:20px">
+          For more than 11 years, Chef Donovan Smith and his team have been crafting bespoke culinary experiences designed to inspire connection, celebrate life&rsquo;s finest moments, and create lasting memories across The Bahamas and beyond.
+        </p>
+      </div>
+
+      <!-- Card 2: Story -->
+      <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:24px">Who We Are</span>
+        <div class="flex flex-col" style="gap:20px">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">From intimate beachfront dinners and private villa experiences to large-scale luxury events, we have proudly delivered premium dining services throughout the entire Bahamas — working with high-net-worth clientele, luxury properties, private yachts, and exclusive gatherings.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Our reputation has expanded internationally, with culinary experiences curated in Vancouver, British Columbia, Toronto, and across the Americas. Wherever the table is set, the standard remains the same.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Led by Chef Donovan, our team is comprised of some of the finest culinary professionals in the industry &mdash; chefs who bring world-class skill, innovation, and hospitality to every table. We believe dining is more than food; it is an experience that should engage the senses, tell a story, and leave a lasting impression.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Every menu is thoughtfully customised, every detail carefully executed, and every guest treated to the highest level of service and sophistication. At the heart of our brand is one mission: creating extraordinary dining experiences that inspire, connect, and elevate every occasion.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Photo gallery -->
+      <div class="fade-up" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:3fr 2fr">
+          <!-- Left: tall portrait -->
+          <div class="grain relative overflow-hidden" style="height:440px">
+            <img src="images/donovan-photo-1.jpg" alt="Chef Donovan Smith" class="absolute inset-0 w-full h-full object-cover" style="object-position:center top" data-lightbox="images/donovan-photo-1.jpg">
+          </div>
+          <!-- Right: stacked second photo + label block -->
+          <div style="display:flex;flex-direction:column;border-left:1px solid var(--border)">
+            <div class="grain relative overflow-hidden" style="flex:1;min-height:0;border-bottom:1px solid var(--border)">
+              <img src="images/donovan-photo-2.jpg" alt="Chef Donovan Smith" class="absolute inset-0 w-full h-full object-cover" data-lightbox="images/donovan-photo-2.jpg">
+            </div>
+            <div style="padding:28px 24px;background:var(--bg-primary);display:flex;flex-direction:column;justify-content:flex-end;min-height:130px">
+              <span style="font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:rgba(239,231,210,.4);margin-bottom:10px;display:block">The Chef</span>
+              <p style="font-family:var(--font-forum);font-size:clamp(18px,2.2vw,24px);line-height:1.1;letter-spacing:.03em;color:rgb(239,231,210);text-transform:uppercase">Chef<br>Donovan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: As Seen In / News feature -->
+      <div class="fade-up" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
+        <div style="padding:24px 28px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div>
+            <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);margin-bottom:12px">As Seen In</span>
+            <p style="font-family:var(--font-forum);font-size:clamp(16px,2vw,22px);line-height:1.25;letter-spacing:.01em;color:var(--text);max-width:340px">Viral Bahamian Chef Hosts First of Many Pop-ups</p>
+          </div>
+          <a href="https://ournews.bs/viral-bahamian-chef-hosts-first-of-many-pop-ups/" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;display:inline-flex;align-items:center;gap:5px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;margin-top:4px;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">Our News
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div style="background:rgb(0,15,12)">
+          <video controls preload="none" poster="images/viral-news.png" class="w-full" style="display:block;width:100%;max-height:340px;object-fit:cover">
+            <source src="videos/chef-news-feature.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Card 5: Mission -->
+      <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:var(--bg-primary);border-radius:16px">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.4);margin-bottom:20px">Our Mission</span>
+        <p style="font-family:var(--font-forum);font-size:clamp(20px,2.4vw,28px);line-height:1.45;letter-spacing:.01em;color:rgb(239,231,210)">Creating extraordinary dining experiences that inspire, connect, and elevate every occasion.</p>
+      </div>
+
+      <!-- Card 5: CTA -->
+      <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:rgba(0,46,40,.05);border:1px solid var(--border);border-radius:16px;text-align:center">
+        <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Ready to Experience It?</h3>
+        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:400px;margin:16px auto 32px">Every experience begins with a conversation. Tell Chef Donovan your vision and his team will craft something extraordinary around you.</p>
+        <a href="reservation.html" class="btn btn-primary">Plan Your Experience</a>
+      </div>
+
+      </div><!-- /right col -->
+    </div><!-- /grid -->
+
+    <!-- Footer (full width) -->
+    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+      <div class="flex flex-col gap-1">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      </div>
+      <nav class="flex items-center gap-4 flex-wrap">
+        <a href="index.html"       class="footer-link">Home</a>
+        <a href="about.html"       class="footer-link">About</a>
+        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="reviews.html"     class="footer-link">Reviews</a>
+      </nav>
+      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    </footer>
+
+  </div><!-- /flex-col -->
+</div><!-- /page wrapper -->
+<div id="lightbox" class="lightbox-overlay">
+  <button class="lightbox-close" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+  </button>
+  <img class="lb-img" src="" alt="Chef Donovan Smith">
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

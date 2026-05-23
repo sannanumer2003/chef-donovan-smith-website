@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Villa Gathering — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="fade-up grain relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:580px">
+      <img src="images/villa-gathering.jpg" alt="Private Villa Gathering" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,20,16,.97) 0%,transparent 100%);z-index:1"></div>
+      <!-- Back link -->
+      <a href="portfolio.html" class="hero-back-link" style="position:absolute;top:clamp(24px,3vw,40px);left:clamp(24px,3vw,40px);z-index:3">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+        Portfolio
+      </a>
+      <div class="absolute bottom-0 left-0" style="padding:clamp(32px,5vw,56px);z-index:2;width:100%">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:rgba(239,231,210,.72);margin-bottom:20px">Corporate Retreat · Paradise Island</span>
+        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,6vw,88px);line-height:.93;letter-spacing:.01em;color:rgb(239,231,210);margin-bottom:32px">Private Villa<br>Gathering</h1>
+        <!-- Meta pills -->
+        <div class="flex flex-wrap gap-3">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(239,231,210,.7);background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.15);border-radius:99px;padding:6px 14px">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Paradise Island
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(239,231,210,.7);background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.15);border-radius:99px;padding:6px 14px">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            30 Guests
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(239,231,210,.7);background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.15);border-radius:99px;padding:6px 14px">Corporate Retreat</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(239,231,210,.7);background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.15);border-radius:99px;padding:6px 14px">Modern Caribbean Menu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story + Details -->
+    <div class="fade-up grid grid-cols-1 lg:grid-cols-3" style="gap:16px;align-items:start">
+
+      <!-- Story -->
+      <div class="lg:col-span-2 p-8 sm:p-12" style="border:1px solid var(--border);border-radius:16px">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted);margin-bottom:28px">About This Experience</span>
+        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(26px,3vw,40px);line-height:1.05;letter-spacing:.02em;color:var(--text);margin-bottom:32px">Thirty People,<br>One Unforgettable Evening</h2>
+        <div style="display:flex;flex-direction:column;gap:20px;font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.75;color:var(--text-muted)">
+          <p>A luxury villa retreat on Paradise Island was the setting for this corporate dinner, commissioned by a financial services firm who wanted something genuinely different for their senior leadership team. Rather than a restaurant or event space, they chose a private villa — and they chose Chef Donovan to make it extraordinary.</p>
+          <p>The evening was structured as a long, communal meal across two connected outdoor terraces, with the Atlantic stretching out beyond the garden. Chef Donovan designed a menu that moved through the flavours of the Caribbean with intention — refreshing cold courses to open, rich braised dishes at the centre, and a closing dessert built around fresh tropical fruit and dark chocolate that felt both indulgent and light.</p>
+          <p>The meal became the conversation. Thirty people who arrived as colleagues left as something closer to friends. The client described it simply: the best corporate dinner they had ever hosted.</p>
+        </div>
+      </div>
+
+      <!-- Details card -->
+      <div class="flex flex-col" style="gap:16px">
+        <div class="p-8" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted);margin-bottom:24px">Event Details</span>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Occasion</span>
+              <span style="font-family:var(--font-satoshi);font-size:14px;color:var(--text)">Corporate Retreat</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Location</span>
+              <span style="font-family:var(--font-satoshi);font-size:14px;color:var(--text)">Paradise Island</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Guests</span>
+              <span style="font-family:var(--font-satoshi);font-size:14px;color:var(--text)">30</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)">
+              <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Menu</span>
+              <span style="font-family:var(--font-satoshi);font-size:14px;color:var(--text)">Modern Caribbean</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0">
+              <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted)">Scale</span>
+              <span style="font-family:var(--font-satoshi);font-size:14px;color:var(--text)">Private Event</span>
+            </div>
+          </div>
+          <a href="reservation.html" class="btn btn-primary" style="width:100%;margin-top:28px;justify-content:center">Plan Your Experience</a>
+        </div>
+        <div class="p-6" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+          <p style="font-family:var(--font-satoshi);font-size:13px;font-weight:400;line-height:1.6;color:rgba(239,231,210,.7);margin-bottom:16px">Corporate, private, or intimate — every scale, handled perfectly.</p>
+          <a href="reservation.html" class="btn btn-dark" style="font-size:11px;padding:12px 22px">Send an Inquiry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="fade-up" style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:0 4px">
+        <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted)">Gallery</span>
+      </div>
+      <!-- Photo grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style="gap:12px">
+        <div class="grain relative overflow-hidden" style="height:300px;border-radius:12px;border:1px solid rgba(239,231,210,.08);background:#0d0d0d"></div>
+        <div class="grain relative overflow-hidden" style="height:300px;border-radius:12px;border:1px solid rgba(239,231,210,.08);background:#0d0d0d"></div>
+        <div class="grain relative overflow-hidden" style="height:300px;border-radius:12px;border:1px solid rgba(239,231,210,.08);background:#0d0d0d"></div>
+      </div>
+      <!-- Video placeholder -->
+      <div class="grain relative overflow-hidden" style="height:420px;border-radius:12px;border:1px solid rgba(239,231,210,.08);background:#0d0d0d">
+        <div class="absolute inset-0 flex flex-col items-center justify-center" style="z-index:2">
+          <div style="width:72px;height:72px;border-radius:50%;background:rgba(239,231,210,.12);border:1.5px solid rgba(239,231,210,.3);display:flex;align-items:center;justify-content:center;margin-bottom:20px;cursor:pointer;transition:background .2s ease" onmouseover="this.style.background='rgba(239,231,210,.2)'" onmouseout="this.style.background='rgba(239,231,210,.12)'">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(239,231,210,.85)" style="margin-left:3px"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <span style="font-family:var(--font-forum);font-size:22px;text-transform:uppercase;letter-spacing:.06em;color:rgb(239,231,210);margin-bottom:8px">Event Highlight Film</span>
+          <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,231,210,.45)">Private Villa Gathering · Paradise Island 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="fade-up p-10 sm:p-16 lg:p-20" style="border:1px solid var(--border);border-radius:16px;text-align:center">
+      <div aria-hidden style="font-family:var(--font-forum);font-size:72px;line-height:.8;color:rgba(0,46,40,.08);margin-bottom:8px">&ldquo;</div>
+      <blockquote style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,30px);line-height:1.5;letter-spacing:.01em;color:var(--text);max-width:700px;margin:0 auto 36px">We hosted our corporate retreat dinner through Chef Donovan. 40 guests, flawless execution. The team is still talking about it months later.</blockquote>
+      <div style="width:40px;height:1px;background:var(--border);margin:0 auto 24px"></div>
+      <p style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--text)">R. Clarke</p>
+      <p style="font-family:var(--font-satoshi);font-size:13px;color:var(--text-muted);margin-top:6px">Paradise Island, Bahamas</p>
+    </div>
+
+    <!-- More from Portfolio -->
+    <div style="padding:0 4px">
+      <span style="font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--text-muted)">More from Portfolio</span>
+    </div>
+    <div class="stagger grid grid-cols-1 sm:grid-cols-2" style="gap:16px">
+      <a href="portfolio-sunset-cliffside.html" class="fade-up portfolio-card grain block relative overflow-hidden" style="height:360px;border-radius:16px;border:1px solid var(--border);text-decoration:none">
+        <img src="images/dinner-table.jpg" alt="Sunset Cliffside Dinner" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.9) 0%,transparent 100%)"></div>
+        <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:8px">Nassau · 12 Guests</p>
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:26px;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Sunset Cliffside Dinner</h3>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+      <a href="portfolio-grand-caribbean.html" class="fade-up portfolio-card grain block relative overflow-hidden" style="height:360px;border-radius:16px;border:1px solid var(--border);text-decoration:none">
+        <img src="images/grand-event.jpg" alt="Grand Caribbean Event" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.9) 0%,transparent 100%)"></div>
+        <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:8px">Nassau · 50+ Guests</p>
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:26px;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Grand Caribbean Event</h3>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Create Your<br>Own Moment</h2>
+      <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:500px;margin:20px auto 40px">Tell Chef Donovan about your occasion. He will shape an experience entirely around you.</p>
+      <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+      <div class="flex flex-col gap-1">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      </div>
+      <nav class="flex items-center gap-4 flex-wrap">
+        <a href="index.html"       class="footer-link">Home</a>
+        <a href="about.html"       class="footer-link">About</a>
+        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="reviews.html"     class="footer-link">Reviews</a>
+      </nav>
+      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    </footer>
+
+  </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

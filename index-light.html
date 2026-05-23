@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Donovan Smith — Private Chef, Bahamas &amp; Caribbean</title>
+  <meta name="description" content="Exclusive private chef experiences curated by Donovan Smith. Intimate dinners, yacht service, villa residencies, and bespoke events across the Bahamas and Caribbean.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind = { config: { theme: { extend: {
+      fontFamily: { forum: ['Forum','serif'], satoshi: ['Satoshi','sans-serif'] },
+      borderRadius: { card: '16px', page: '48px' }
+    }}}}
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ── Light theme: swap the two core colors ── -->
+  <style>
+    :root {
+      --bg:         rgb(239, 231, 210);   /* was green  → now cream  */
+      --bg-primary: rgb(0,  46,  40);     /* was cream  → now green  */
+      --text:       rgb(0,  46,  40);     /* was cream  → now green  */
+      --text-muted: rgba(0, 46,  40, 0.6);
+      --text-inv:   rgb(239, 231, 210);   /* was green  → now cream  */
+      --border:     rgba(0,  46,  40, 0.18);
+    }
+    html, body { background-color: rgb(239, 231, 210); }
+    ::-webkit-scrollbar-track { background: rgb(239, 231, 210); }
+
+    /* btn-outline adapts automatically via --text / --border;
+       force cream when sitting on top of the dark hero video */
+    .hero-btn-outline {
+      color: rgb(239, 231, 210) !important;
+      border-color: rgba(239, 231, 210, 0.4) !important;
+    }
+    /* nav-link in CSS is hardcoded cream (good for video), keep it */
+  </style>
+</head>
+<body>
+
+<!-- Mobile menu — panel bg is now cream via --bg; text via --text = dark green -->
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div class="flex justify-end mb-16">
+    <!-- Close X: override to dark green so it's visible on cream panel -->
+    <button id="close-menu-btn" aria-label="Close menu" style="color:rgba(0,46,40,0.5);background:none;border:none;cursor:pointer">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col gap-6">
+    <a href="menu.html"      class="mobile-nav-link block uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,10vw,64px);line-height:1;color:var(--text);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.6" onmouseout="this.style.opacity=1">Menu</a>
+    <a href="about.html"     class="mobile-nav-link block uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,10vw,64px);line-height:1;color:var(--text);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.6" onmouseout="this.style.opacity=1">About</a>
+    <a href="portfolio.html" class="mobile-nav-link block uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,10vw,64px);line-height:1;color:var(--text);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.6" onmouseout="this.style.opacity=1">Portfolio</a>
+    <a href="reviews.html"   class="mobile-nav-link block uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,10vw,64px);line-height:1;color:var(--text);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.6" onmouseout="this.style.opacity=1">Reviews</a>
+  </nav>
+  <div class="mt-auto pt-12">
+    <!-- btn-outline on cream panel: --text = dark green → readable ✓ -->
+    <a href="reservation.html" class="mobile-nav-link btn btn-outline" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<!-- Page wrapper — cream background via --bg -->
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+
+  <!-- ── HERO ── -->
+  <div class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]" style="grid-template-columns:1fr minmax(360px,0.3fr)">
+
+    <!-- Left: hero video panel (visually dark — keep all overlaid text cream) -->
+    <div class="grain relative overflow-hidden h-[80vh] lg:h-full" style="border-radius:16px;border:1px solid var(--border)">
+      <!-- dark fallback in case video is loading / unavailable -->
+      <div class="absolute inset-0" style="background:rgb(0,46,40)"></div>
+      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
+        <source src="videos/hero.mp4" type="video/mp4">
+      </video>
+      <!-- bottom gradient fades to cream (page bg) -->
+      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:42%;z-index:1;background:linear-gradient(to top,rgb(239,231,210) 0%,rgba(239,231,210,.6) 28%,transparent 100%)"></div>
+
+      <!-- Header overlay (sits on dark video → all text forced cream) -->
+      <div class="absolute top-4 left-4" style="z-index:20">
+        <header class="flex items-center gap-6 sm:gap-8 px-4 sm:px-5 py-4">
+          <!-- force cream: on dark video, --text is now green (unreadable) -->
+          <a href="index-light.html" style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:rgb(239,231,210);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
+          <!-- .nav-link is hardcoded cream in style.css — stays cream ✓ -->
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="menu.html"      class="nav-link">Menu</a>
+            <a href="about.html"     class="nav-link">About</a>
+            <a href="portfolio.html" class="nav-link">Portfolio</a>
+            <a href="reviews.html"   class="nav-link">Reviews</a>
+          </nav>
+          <!-- hero-btn-outline class forces cream on dark video -->
+          <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline" style="flex-shrink:0">Plan Your Experience</a>
+          <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+          </button>
+        </header>
+      </div>
+
+      <!-- Hero title (on dark video → cream) -->
+      <div class="absolute bottom-0 left-0 px-10 pb-10" style="z-index:10">
+        <h1 class="uppercase select-none" style="font-family:var(--font-forum);color:rgb(239,231,210);font-size:clamp(68px,7.5vw,112px);letter-spacing:.01em;line-height:1">
+          <span class="hero-line" style="margin-bottom:8px">DONOVAN</span>
+          <span class="hero-line" style="font-size:.85em">SMITH</span>
+        </h1>
+      </div>
+
+      <!-- Social corner — bg is now cream via --bg; text must be dark green -->
+      <div class="social-corner" style="opacity:0;animation:heroFadeUp .6s ease 1.2s forwards">
+        <div class="flex flex-col gap-3 px-6 py-5">
+          <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5" style="color:rgba(0,46,40,.55);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgb(0,46,40)'" onmouseout="this.style.color='rgba(0,46,40,.55)'">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            <span class="meta-label">@chef.donsmith</span>
+          </a>
+          <a href="https://linkedin.com/in/donovansmith242" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5" style="color:rgba(0,46,40,.55);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgb(0,46,40)'" onmouseout="this.style.color='rgba(0,46,40,.55)'">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span class="meta-label">Donovan Smith</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: nav cards (each has its own dark photo → keep card labels cream) -->
+    <div class="flex flex-row overflow-x-auto lg:overflow-visible lg:flex-col gap-4 lg:h-full pb-2 lg:pb-0">
+      <div class="nav-card-anim flex-shrink-0 w-[280px] h-[180px] lg:flex-1 lg:w-auto lg:h-auto lg:min-h-0">
+        <a href="menu.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
+          <div class="nav-card-inner">
+            <img src="images/dinner-table.jpg" alt="" class="w-full h-full object-cover">
+            <div class="grain absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
+              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">The Menu</span>
+            </div>
+          </div>
+          <div class="arrow-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(239,231,210)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+      <div class="nav-card-anim flex-shrink-0 w-[280px] h-[180px] lg:flex-1 lg:w-auto lg:h-auto lg:min-h-0">
+        <a href="reservation.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
+          <div class="nav-card-inner">
+            <img src="images/villa-gathering.jpg" alt="" class="w-full h-full object-cover">
+            <div class="grain absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
+              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Plan Your Experience</span>
+            </div>
+          </div>
+          <div class="arrow-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(239,231,210)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+      <div class="nav-card-anim flex-shrink-0 w-[280px] h-[180px] lg:flex-1 lg:w-auto lg:h-auto lg:min-h-0">
+        <a href="about.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
+          <div class="nav-card-inner">
+            <img src="images/private-dining-bg.jpg" alt="" class="w-full h-full object-cover">
+            <div class="grain absolute inset-0"></div>
+            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
+              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Our Story</span>
+            </div>
+          </div>
+          <div class="arrow-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(239,231,210)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div><!-- /hero -->
+
+  <!-- ── INTRO SECTION — cream bg, dark green text via --text / --text-muted ── -->
+  <section class="flex flex-col lg:flex-row mt-4">
+    <div class="grain relative shrink-0 w-full lg:w-1/2 overflow-hidden" style="min-height:240px;height:60vw;max-height:600px">
+      <img src="images/chef_portrait.png" alt="Chef Donovan" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.background='rgb(0,46,40)'">
+    </div>
+    <div class="stagger flex flex-col justify-center w-full lg:w-1/2 px-6 py-10 sm:px-10 lg:px-20 lg:py-20">
+      <span class="fade-up meta-label" style="color:var(--text-muted);margin-bottom:20px;display:block">Meet the Chef</span>
+      <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);margin-bottom:28px">Donovan Smith</h2>
+      <div class="fade-up" style="width:80px;height:1px;background:var(--border);margin-bottom:28px"></div>
+      <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:300;font-size:18px;line-height:1.8;color:var(--text-muted);max-width:440px;margin-bottom:36px">
+        Ten years in the world&rsquo;s most celebrated kitchens. A Bahamian at heart. Now bringing that experience to your table, wherever in the Caribbean you call home.
+      </p>
+      <div class="fade-up"><a href="about.html" class="text-link">His Story &rarr;</a></div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCES — cream bg; dividers must be dark to be visible ── -->
+  <section class="px-5 py-12 sm:px-8 lg:px-20 lg:py-20">
+    <div class="stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      <div class="fade-up flex flex-col">
+        <div style="height:1px;background:rgba(0,46,40,.18);margin-bottom:28px"></div>
+        <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:var(--text);margin-bottom:14px">Intimate Dining</h3>
+        <span class="meta-label" style="color:var(--text-muted);margin-bottom:20px">For two to ten guests</span>
+        <p style="font-family:var(--font-satoshi);font-weight:300;font-size:16px;line-height:1.6;color:var(--text-muted)">A private dining experience crafted entirely around you — at your villa, yacht, or chosen location.</p>
+      </div>
+      <div class="fade-up flex flex-col">
+        <div style="height:1px;background:rgba(0,46,40,.18);margin-bottom:28px"></div>
+        <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:var(--text);margin-bottom:14px">Private Gathering</h3>
+        <span class="meta-label" style="color:var(--text-muted);margin-bottom:20px">For ten to thirty guests</span>
+        <p style="font-family:var(--font-satoshi);font-weight:300;font-size:16px;line-height:1.6;color:var(--text-muted)">Elevated group dining for celebrations, family occasions and intimate events that deserve the extraordinary.</p>
+      </div>
+      <div class="fade-up flex flex-col">
+        <div style="height:1px;background:rgba(0,46,40,.18);margin-bottom:28px"></div>
+        <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:var(--text);margin-bottom:14px">Grand Event</h3>
+        <span class="meta-label" style="color:var(--text-muted);margin-bottom:20px">For thirty to fifty or more</span>
+        <p style="font-family:var(--font-satoshi);font-weight:300;font-size:16px;line-height:1.6;color:var(--text-muted)">Full-scale private event catering for those who expect nothing less than world-class.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PORTFOLIO TEASER — image cards keep their own dark overlays ── -->
+  <section class="px-5 pb-12 sm:px-8 sm:pb-16 lg:px-20 lg:pb-20">
+    <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
+      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Past Experiences</h2>
+      <a href="portfolio.html" class="text-link" style="white-space:nowrap;margin-left:16px">View All &rarr;</a>
+    </div>
+    <div class="flex flex-col lg:grid gap-4" style="grid-template-columns:3fr 2fr">
+      <div class="fade-up">
+        <a href="portfolio.html" class="portfolio-card grain block relative overflow-hidden h-[280px] sm:h-[400px] lg:h-[560px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
+          <img src="images/dinner-table.jpg" alt="Sunset Cliffside Dinner" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:55%;background:linear-gradient(to top,rgba(0,30,26,.9) 0%,transparent 100%);z-index:2"></div>
+          <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
+            <p class="uppercase" style="font-family:var(--font-forum);font-size:24px;line-height:1.2;letter-spacing:.02em;color:rgb(239,231,210)">Sunset Cliffside Dinner</p>
+            <p class="meta-label" style="color:rgba(239,231,210,.65);margin-top:6px">Nassau, Bahamas</p>
+          </div>
+        </a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="fade-up">
+          <a href="portfolio.html" class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
+            <img src="images/villa-gathering.jpg" alt="Private Villa Gathering" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:55%;background:linear-gradient(to top,rgba(0,30,26,.9) 0%,transparent 100%);z-index:2"></div>
+            <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
+              <p class="uppercase" style="font-family:var(--font-forum);font-size:24px;line-height:1.2;letter-spacing:.02em;color:rgb(239,231,210)">Private Villa Gathering</p>
+              <p class="meta-label" style="color:rgba(239,231,210,.65);margin-top:6px">Paradise Island</p>
+            </div>
+          </a>
+        </div>
+        <div class="fade-up">
+          <a href="portfolio.html" class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
+            <img src="images/anniversary-dinner.jpg" alt="Intimate Anniversary" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:55%;background:linear-gradient(to top,rgba(0,30,26,.9) 0%,transparent 100%);z-index:2"></div>
+            <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
+              <p class="uppercase" style="font-family:var(--font-forum);font-size:24px;line-height:1.2;letter-spacing:.02em;color:rgb(239,231,210)">Intimate Anniversary</p>
+              <p class="meta-label" style="color:rgba(239,231,210,.65);margin-top:6px">Exuma</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REVIEW — cream bg; quote mark and text go dark ── -->
+  <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
+    <div class="stagger flex flex-col items-center text-center" style="max-width:800px;margin:0 auto">
+      <div class="fade-up select-none" aria-hidden="true" style="font-family:var(--font-forum);font-size:120px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:52px">&ldquo;</div>
+      <blockquote class="fade-up">
+        <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text);display:inline-block;transform:skewX(3deg)">
+          Chef Don didn&rsquo;t just cook dinner. He made our anniversary something we will never stop talking about.
+        </p>
+      </blockquote>
+      <p class="fade-up meta-label" style="color:var(--text-muted);margin-top:40px">— J. &amp; M. Harrison &middot; Nassau, Bahamas &middot; 2024</p>
+    </div>
+  </section>
+
+  <!-- ── CTA — now dark green bg via --bg-primary; all text flipped to cream ── -->
+  <section class="mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20" style="background:var(--bg-primary);border-radius:16px">
+    <div class="stagger flex flex-col items-center text-center">
+      <!-- --text-inv is now cream ✓ -->
+      <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv);margin-bottom:24px">Your Table Awaits.</h2>
+      <!-- divider must be cream on dark green bg -->
+      <div class="fade-up" style="width:60px;height:1px;background:rgba(239,231,210,.2);margin-bottom:24px"></div>
+      <!-- body text must be cream -->
+      <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:300;font-size:18px;color:rgba(239,231,210,.65);margin-bottom:48px">Every experience begins with a conversation.</p>
+      <div class="fade-up flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+        <!-- btn-dark: bg = --text-inv (cream), color = --text (green) → cream pill, dark green text ✓ -->
+        <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+        <!-- secondary link: must be cream on dark green bg -->
+        <a href="about.html" class="text-link" style="color:rgba(239,231,210,.55)">Meet Chef Donovan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER — cream bg, dark green text via --text-muted ── -->
+  <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+    <div class="flex flex-col gap-1">
+      <span style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--text)">Chef Donovan Smith</span>
+      <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+    </div>
+    <nav class="flex items-center gap-4 flex-wrap">
+      <a href="index-light.html" class="meta-label" style="color:var(--text-muted);text-decoration:none">Home</a>
+      <a href="about.html"       class="meta-label" style="color:var(--text-muted);text-decoration:none">About</a>
+      <a href="menu.html"        class="meta-label" style="color:var(--text-muted);text-decoration:none">Menu</a>
+      <a href="portfolio.html"   class="meta-label" style="color:var(--text-muted);text-decoration:none">Portfolio</a>
+      <a href="reviews.html"     class="meta-label" style="color:var(--text-muted);text-decoration:none">Reviews</a>
+    </nav>
+    <p class="meta-label" style="color:var(--text-muted)">&copy; 2025 chefdonsmith.com</p>
+  </footer>
+
+</div><!-- /page wrapper -->
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page header card (with background image) -->
+    <div class="fade-up relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:480px">
+      <img src="images/reviews.jpg" alt="Reviews" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:1"></div>
+      <div class="absolute bottom-0 left-0" style="padding:clamp(32px,5vw,56px);z-index:2">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.65);margin-bottom:24px">Client Love</span>
+        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(48px,6vw,96px);line-height:.95;letter-spacing:.01em;color:rgb(239,231,210);margin-bottom:20px">What Guests<br>Are Saying</h1>
+        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:560px">Every experience Chef Donovan creates leaves a lasting impression. Here is what guests have shared about their time with him.</p>
+      </div>
+    </div>
+
+    <!-- Reviews grid -->
+    <div class="stagger grid grid-cols-1 md:grid-cols-3" style="gap:16px">
+
+      <!-- Review 1 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">Chef Donovan transformed our anniversary into something we will never stop talking about. Every detail was perfect — the food, the setting, the service.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">M. &amp; J. HARRISON</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">Nassau, Bahamas</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">We flew in from New York and this private dinner was the highlight of our entire trip. Donovan&rsquo;s Caribbean fusion is unlike anything we have experienced.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">THE WILLIAMS FAMILY</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">New York, USA</p>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">We hosted our corporate retreat dinner through Chef Donovan. 40 guests, flawless execution. The team is still talking about it months later.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">R. CLARKE</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">Paradise Island, Bahamas</p>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">Booked Chef Donovan for my birthday dinner for two in Exuma. He created a completely custom menu around my preferences. I have never felt so taken care of.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">S. FONTAINE</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">Exuma, Bahamas</p>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">The food was extraordinary but it was the personal attention that made the difference. Donovan genuinely cares about creating something meaningful for you.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">T. &amp; A. MORRISON</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">Toronto, Canada</p>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="fade-up flex flex-col justify-between p-6 sm:p-8 lg:p-10" style="background:rgba(0,46,40,.06);border:1px solid var(--border);border-radius:16px;min-height:220px">
+        <div>
+          <div aria-hidden class="select-none pointer-events-none" style="font-family:var(--font-forum);font-size:64px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:16px">&ldquo;</div>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.7;color:var(--text)">We have experienced fine dining all over the world. Chef Donovan&rsquo;s private dinner in Nassau was in a completely different league. Absolutely world class.</p>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border)">
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text)">D. &amp; L. PEMBERTON</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:var(--text-muted);margin-top:4px">London, UK</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA section -->
+    <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Your Experience<br>Awaits</h2>
+      <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:460px;margin:20px auto 40px">Join the guests who have experienced something truly extraordinary. Your table is waiting.</p>
+      <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+      <div class="flex flex-col gap-1">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      </div>
+      <nav class="flex items-center gap-4 flex-wrap">
+        <a href="index.html"       class="footer-link">Home</a>
+        <a href="about.html"       class="footer-link">About</a>
+        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="reviews.html"     class="footer-link">Reviews</a>
+      </nav>
+      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    </footer>
+
+  </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

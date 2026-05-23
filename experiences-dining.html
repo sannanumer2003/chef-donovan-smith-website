@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Dining Experiences — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2-col layout -->
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+
+      <!-- Left sticky image -->
+      <div class="hidden lg:block">
+        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
+          <img src="images/luxury-private-dining-2.jpg" alt="Private Dining" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,30,26,.95) 0%,transparent 100%);z-index:1"></div>
+          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
+            <a href="experiences.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.85);text-decoration:none;margin-bottom:24px;transition:color .2s" onmouseover="this.style.color='rgb(239,231,210)'" onmouseout="this.style.color='rgba(239,231,210,.85)'">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+              All Experiences
+            </a>
+            <h2 class="uppercase select-none" style="font-family:var(--font-forum);font-size:clamp(40px,4.5vw,72px);line-height:.92;letter-spacing:.01em;color:rgb(239,231,210)">PRIVATE<br>DINING</h2>
+            <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;color:rgba(239,231,210,.55);margin-top:20px;line-height:1.6">7 Signature Menus &middot; Family Style</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right accordion -->
+      <div class="flex flex-col" style="gap:16px">
+
+        <!-- Mobile page header -->
+        <div class="lg:hidden fade-up relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:280px">
+          <img src="images/luxury-private-dining-2.jpg" alt="" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,30,26,.95) 0%,transparent 100%);z-index:1"></div>
+          <div class="absolute bottom-0 left-0" style="padding:32px;z-index:2">
+            <a href="experiences.html" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.55);text-decoration:none;margin-bottom:16px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>All Experiences</a>
+            <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,8vw,56px);line-height:.95;color:rgb(239,231,210)">Private Dining</h1>
+            <p style="font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.55);margin-top:10px">7 Menus &middot; Family Style</p>
+          </div>
+        </div>
+
+        <!-- Accordion card -->
+        <div class="fade-up p-6 sm:p-10" style="border:1px solid var(--border);border-radius:16px">
+          <div style="margin-bottom:40px">
+            <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:16px">Luxury Private Dining Experiences</span>
+            <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.7;color:var(--text-muted)">All menus are crafted as shared family-style experiences — designed for gathering, conversation, and connection around the table.</p>
+          </div>
+
+          <!-- ── Menu 1: Latin American BBQ ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">01</span>
+              <span class="exp-accordion-title">Latin American BBQ</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Empanadas de Pabellón</p><p class="exp-menu-item-desc">Shredded beef, black beans, sweet plantain, white cheese</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Patacones with Aji Amarillo</p><p class="exp-menu-item-desc">Twice-fried green plantain, tangy pepper sauce</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Ceviche de Corvina</p><p class="exp-menu-item-desc">Sea bass, lime, red onion, cilantro, aji limo</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Whole-Roasted Suckling Pig</p><p class="exp-menu-item-desc">Slow-cooked over wood fire, chimichurri, citrus mojo</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Slow-Smoked Short Rib</p><p class="exp-menu-item-desc">12-hour smoke, Argentine chimichurri, pickled vegetables</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Grilled Whole Red Snapper</p><p class="exp-menu-item-desc">Achiote marinade, banana leaf, tropical salsa criolla</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Arroz con Coco</p><p class="exp-menu-item-desc">Toasted coconut rice, caramelized plantain</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Roasted Corn & Peppers</p><p class="exp-menu-item-desc">Charred sweet corn, aji dulce, queso fresco</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Yuca al Mojo</p><p class="exp-menu-item-desc">Boiled cassava, garlic-citrus mojo, crispy pork crackling</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Tres Leches Cake</p><p class="exp-menu-item-desc">Sponge soaked in three milks, chantilly, fresh berries</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Churros con Dulce de Leche</p><p class="exp-menu-item-desc">Cinnamon-dusted, warm caramel dipping sauce</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 2: Modern Asian ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">02</span>
+              <span class="exp-accordion-title">Modern Asian</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Tuna Tataki</p><p class="exp-menu-item-desc">Seared yellowfin, ponzu, microgreens, sesame-truffle oil</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Lobster & Pork Gyoza</p><p class="exp-menu-item-desc">Pan-fried dumplings, ginger-yuzu dipping sauce</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Edamame Chawanmushi</p><p class="exp-menu-item-desc">Savory egg custard, dashi, truffle oil</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Miso-Glazed Black Cod</p><p class="exp-menu-item-desc">Sake-miso marinade, pickled cucumber, crispy shallots</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Wagyu Beef Short Rib</p><p class="exp-menu-item-desc">72-hour braise, Korean gochujang glaze, daikon</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Whole Steamed Grouper</p><p class="exp-menu-item-desc">Ginger-scallion oil, soy glaze, crispy garlic</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Truffle Fried Rice</p><p class="exp-menu-item-desc">Jasmine rice, black truffle, soft egg, scallion</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Wok-Charred Pak Choi</p><p class="exp-menu-item-desc">Garlic, oyster sauce, chilli oil</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Pickled Daikon & Cucumber</p><p class="exp-menu-item-desc">House-made seasonal kimchi</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Matcha Panna Cotta</p><p class="exp-menu-item-desc">Ceremonial grade matcha, yuzu gel, sesame brittle</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Mango Sticky Rice</p><p class="exp-menu-item-desc">Coconut-poached sticky rice, fresh Alphonso mango</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 3: Modern French ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">03</span>
+              <span class="exp-accordion-title">Modern French</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Soupe à l'Oignon Gratinée</p><p class="exp-menu-item-desc">Caramelized onion, Gruyère crust, cognac</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Escargot Bourguignon</p><p class="exp-menu-item-desc">Burgundy-style, garlic-herb butter, toasted baguette</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Foie Gras Torchon</p><p class="exp-menu-item-desc">Port wine reduction, brioche, fig compote</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Rack of Lamb Persillé</p><p class="exp-menu-item-desc">Herb crust, jus d'agneau, flageolet beans</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Sole Meunière</p><p class="exp-menu-item-desc">Brown butter, lemon, capers, fresh parsley</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Boeuf Bourguignon</p><p class="exp-menu-item-desc">8-hour braise, lardons, pearl onions, chanterelle</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Gratin Dauphinois</p><p class="exp-menu-item-desc">Thinly sliced potato, cream, Gruyère, nutmeg</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Ratatouille Confit</p><p class="exp-menu-item-desc">Slow-baked Provençal vegetables, herbes de Provence</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Pommes Purée</p><p class="exp-menu-item-desc">Robuchon-style, cream and butter, fine herbs</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Crème Brûlée</p><p class="exp-menu-item-desc">Madagascar vanilla, caramelized sugar crust, fresh berries</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Chocolate Fondant</p><p class="exp-menu-item-desc">Valrhona 70%, vanilla ice cream, gold leaf</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 4: Modern Italian ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">04</span>
+              <span class="exp-accordion-title">Modern Italian</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Burrata con Pomodori</p><p class="exp-menu-item-desc">Burrata, heirloom tomatoes, basil oil, aged balsamic</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Carpaccio di Manzo</p><p class="exp-menu-item-desc">Wagyu tenderloin, Parmigiano, truffle, rocket, capers</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Arancini al Nero di Seppia</p><p class="exp-menu-item-desc">Squid ink risotto balls, saffron aioli</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Osso Buco alla Milanese</p><p class="exp-menu-item-desc">Braised veal shank, gremolata, saffron risotto</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Branzino al Forno</p><p class="exp-menu-item-desc">Whole sea bass, cherry tomatoes, capers, white wine</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Linguine alle Vongole</p><p class="exp-menu-item-desc">Littleneck clams, white wine, garlic, chilli, parsley</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Risotto al Tartufo</p><p class="exp-menu-item-desc">Carnaroli rice, black truffle, Parmigiano, butter</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Focaccia di Recco</p><p class="exp-menu-item-desc">Thin Ligurian focaccia, stracchino cheese, sea salt</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Seasonal Contorni</p><p class="exp-menu-item-desc">Roasted seasonal vegetables, aged balsamic</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Tiramisù</p><p class="exp-menu-item-desc">House-made savoiardi, espresso, Mascarpone, dark chocolate</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Panna Cotta al Limone</p><p class="exp-menu-item-desc">Amalfi lemon, berry coulis, candied citrus</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 5: Modern Caribbean ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">05</span>
+              <span class="exp-accordion-title">Modern Caribbean</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Conch Fritters</p><p class="exp-menu-item-desc">Island-spiced, lime aioli, pickled mango</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Jerk Chicken Satay</p><p class="exp-menu-item-desc">Scotch bonnet marinade, mango chutney dipping sauce</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Ackee & Saltfish Bites</p><p class="exp-menu-item-desc">Classic Jamaican filling, crispy wonton cups</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Whole Jerk Red Snapper</p><p class="exp-menu-item-desc">Slow-charred, festival dumplings, Scotch bonnet salsa</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Oxtail Stew</p><p class="exp-menu-item-desc">8-hour braise, butter beans, Scotch bonnet, thyme, callaloo</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Braised Short Ribs</p><p class="exp-menu-item-desc">Caribbean spice rub, coconut-rum glaze, pineapple chutney</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Rice & Peas</p><p class="exp-menu-item-desc">Coconut milk, kidney beans, thyme, scallion</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Sweet Fried Plantains</p><p class="exp-menu-item-desc">Caramelized ripe plantain, cinnamon</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Festival Dumplings</p><p class="exp-menu-item-desc">Lightly sweet fried dumplings</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Rum Cake</p><p class="exp-menu-item-desc">Dark rum-soaked sponge, caramel glaze, toasted coconut</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Coconut Tart</p><p class="exp-menu-item-desc">Short pastry, coconut custard, mango sorbet</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 6: Modern Middle Eastern ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">06</span>
+              <span class="exp-accordion-title">Modern Middle Eastern</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Hummus Trio</p><p class="exp-menu-item-desc">Classic, beet-sumac, roasted garlic; fresh pita, za'atar oil</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Fattoush Salad</p><p class="exp-menu-item-desc">Heirloom tomato, cucumber, radish, sumac dressing, crispy pita</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Kibbeh Nayeh</p><p class="exp-menu-item-desc">Raw lamb, bulgur, pine nuts, fresh herbs, pomegranate</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Whole Slow-Roasted Lamb</p><p class="exp-menu-item-desc">6-hour shoulder, ras el hanout, preserved lemon, harissa</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Chicken Shawarma</p><p class="exp-menu-item-desc">Spit-roasted, garlic toum, pickled turnip, flatbread</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Grilled Whole Sea Bass</p><p class="exp-menu-item-desc">Chermoula, charred flatbread, zhug</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Saffron & Barberry Rice</p><p class="exp-menu-item-desc">Persian-style, caramelized onion, crispy tadiq</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Tabbouleh</p><p class="exp-menu-item-desc">Flat-leaf parsley, fine bulgur, lemon, heirloom tomato</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Moutabal</p><p class="exp-menu-item-desc">Fire-roasted eggplant, tahini, pomegranate seeds</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Baklava Assortment</p><p class="exp-menu-item-desc">Pistachio, walnut, cashew; orange blossom honey</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Kunafa</p><p class="exp-menu-item-desc">Shredded kataifi pastry, warm cheese filling, rose-scented syrup</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Menu 7: Mediterranean ── -->
+          <div class="exp-accordion-item">
+            <button class="exp-accordion-header">
+              <span class="exp-accordion-num">07</span>
+              <span class="exp-accordion-title">Mediterranean</span>
+              <span class="exp-accordion-tag">Family Style</span>
+              <span class="exp-accordion-chevron">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </span>
+            </button>
+            <div class="exp-accordion-body">
+              <div class="exp-accordion-body-inner">
+                <div>
+                  <p class="exp-menu-section-title">Starters</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Mezze Board</p><p class="exp-menu-item-desc">Tzatziki, taramasalata, htipiti, warm pita, crudités</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Grilled Halloumi</p><p class="exp-menu-item-desc">Wild thyme honey, pomegranate, watermelon</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Spanakopita</p><p class="exp-menu-item-desc">Flaky filo, spinach-feta, lemon-herb oil</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Mains</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Slow-Roasted Leg of Lamb</p><p class="exp-menu-item-desc">Garlic-anchovy larding, white wine, rosemary</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Grilled Whole Sea Bream</p><p class="exp-menu-item-desc">Lemon-herb oil, charred spring onion, salsa verde</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Moussaka</p><p class="exp-menu-item-desc">Slow-cooked lamb ragù, silky béchamel, crispy top</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Sides</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Greek Village Salad</p><p class="exp-menu-item-desc">Sun-ripened tomatoes, cucumber, Kalamata olives, barrel feta</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Lemon-Oregano Potatoes</p><p class="exp-menu-item-desc">Slow-roasted, olive oil, herbs</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Warm Pita & Flatbread</p><p class="exp-menu-item-desc">House-made, extra virgin olive oil</p></div>
+                </div>
+                <div>
+                  <p class="exp-menu-section-title">Dessert</p>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Baklava</p><p class="exp-menu-item-desc">Pistachio, honey, orange blossom water</p></div>
+                  <div class="exp-menu-item"><p class="exp-menu-item-name">Loukoumades</p><p class="exp-menu-item-desc">Warm honey donuts, cinnamon, crushed walnuts, ice cream</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /accordion card -->
+
+        <!-- CTA -->
+        <div class="fade-up p-6 sm:p-10" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+          <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3.5vw,40px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Book This Experience</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:rgba(239,231,210,.65);max-width:400px;margin:16px auto 32px">Tell Chef Donovan your preferred menu and he will create something extraordinary around it.</p>
+          <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+        </div>
+
+      </div><!-- /right col -->
+    </div><!-- /grid -->
+
+    <!-- Footer -->
+    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+      <div class="flex flex-col gap-1">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      </div>
+      <nav class="flex items-center gap-4 flex-wrap">
+        <a href="index.html"       class="footer-link">Home</a>
+        <a href="about.html"       class="footer-link">About</a>
+        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="reviews.html"     class="footer-link">Reviews</a>
+      </nav>
+      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    </footer>
+
+  </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

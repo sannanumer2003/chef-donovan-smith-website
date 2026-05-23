@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header (full width) -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2-col grid: photo left, menu right -->
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+
+      <!-- Left: sticky food image (hidden on mobile) -->
+      <div class="hidden lg:block">
+        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
+          <img src="images/our-menu-hero.jpg" alt="Menu" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.92) 0%,transparent 100%);z-index:1"></div>
+          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
+            <h1 class="uppercase select-none" style="font-family:var(--font-forum);font-size:clamp(48px,7vw,96px);line-height:.92;letter-spacing:.01em;color:rgb(239,231,210)">THE<br>MENU</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: menu card -->
+      <div class="flex flex-col gap-4">
+
+      <!-- Menu card -->
+      <div style="border:1px solid var(--border);border-radius:16px;margin-bottom:16px">
+
+        <!-- Sticky tab bar -->
+        <div class="sticky px-5 py-4 sm:px-8 lg:px-20 z-10" style="top:0;background:var(--bg);border-bottom:1px solid var(--border);border-radius:16px 16px 0 0">
+          <div class="flex gap-2">
+            <button class="tab-btn active" data-section="starters">Starters</button>
+            <button class="tab-btn" data-section="mains">Mains</button>
+            <button class="tab-btn" data-section="desserts">Desserts</button>
+          </div>
+        </div>
+
+        <!-- Menu content -->
+        <div class="px-5 pb-12 sm:px-8 sm:pb-16 lg:px-20 lg:pb-20">
+
+          <!-- Starters -->
+          <section id="starters" class="menu-section">
+            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Starters</h2>
+            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Conch Fritters</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Bahamian-style conch fritters seasoned with scotch bonnet, bell pepper and fresh herbs, served with a zesty citrus aioli.</p>
+            </div>
+            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Oxtail Egg Rolls</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Slow-braised Caribbean oxtail wrapped in a crispy shell with caramelised onion and thyme, served with a tamarind dipping sauce.</p>
+            </div>
+            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Crab &amp; Plantain Bites</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Sweet plantain cups filled with fresh blue crab, mango salsa and a touch of habanero — a signature Chef Donovan creation.</p>
+            </div>
+            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Lobster Bisque</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Bahamian spiny lobster bisque, slow-cooked with coconut cream, saffron and a hint of dark rum. Rich, velvety, unforgettable.</p>
+            </div>
+          </section>
+
+          <!-- Mains -->
+          <section id="mains" class="menu-section">
+            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Mains</h2>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Plantain Crust Jerk Chicken</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A Chef Donovan signature — free-range chicken marinated in authentic jerk spices, encrusted in sweet plantain and finished on the grill.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Grilled Bahamian Lobster</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Whole spiny lobster, split and grilled over charcoal, basted with garlic butter, scotch bonnet and fresh thyme. Simply extraordinary.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Caribbean Snapper</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Whole red snapper steamed in banana leaf with coconut milk, ginger, scotch bonnet and island spices. Served with festival and rice peas.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Braised Short Rib</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">48-hour braised prime short rib with a dark rum and guava glaze, served over truffle breadfruit mash with crispy shallots.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Coconut Curry Shrimp</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Tiger prawns in a slow-cooked coconut and scotch bonnet curry with turmeric rice, toasted coconut and fresh mango chutney.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Bespoke Chef&rsquo;s Selection</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A fully custom course crafted around your preferences, dietary needs and the finest ingredients available that day. Available on all menus.</p>
+            </div>
+          </section>
+
+          <!-- Desserts -->
+          <section id="desserts" class="menu-section">
+            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Desserts</h2>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Rum Cake &amp; Coconut Ice Cream</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A warm Bahamian rum cake soaked in dark rum syrup, served alongside house-churned toasted coconut ice cream and caramelised pineapple.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Mango Panna Cotta</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Silky coconut panna cotta layered with a fresh mango and passion fruit coulis, topped with crispy tapioca pearls and edible flowers.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Chocolate &amp; Chilli Fondant</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Dark Trinidadian chocolate fondant with a molten centre of scotch bonnet ganache, served with vanilla bean cream and gold leaf.</p>
+            </div>
+            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
+              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Seasonal Sorbet Selection</h4>
+              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Three hand-crafted sorbets made from the finest seasonal island fruits — soursop, guava and tamarind. Light, refreshing and pure.</p>
+            </div>
+          </section>
+
+          <!-- Bottom CTA -->
+          <div class="p-6 sm:p-8 lg:p-12 text-center" style="margin-top:64px;border-radius:12px;background:rgba(0,46,40,.05);border:1px solid var(--border)">
+            <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:.02em;color:var(--text);margin-bottom:16px">Every Menu Is Bespoke</h3>
+            <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:440px;margin:0 auto 32px">No prices. No fixed packages. Chef Donovan crafts each experience around you — your preferences, your occasion, your table.</p>
+            <a href="reservation.html" class="btn btn-primary">Begin Your Inquiry</a>
+          </div>
+
+        </div><!-- /menu content -->
+      </div><!-- /menu card -->
+      </div><!-- /right col -->
+    </div><!-- /grid -->
+
+    <!-- Footer (full width) -->
+    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+      <div class="flex flex-col gap-1">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      </div>
+      <nav class="flex items-center gap-4 flex-wrap">
+        <a href="index.html"       class="footer-link">Home</a>
+        <a href="about.html"       class="footer-link">About</a>
+        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="reviews.html"     class="footer-link">Reviews</a>
+      </nav>
+      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    </footer>
+
+  </div><!-- /flex-col -->
+</div><!-- /page wrapper -->
+<script src="js/main.js"></script>
+</body>
+</html>
