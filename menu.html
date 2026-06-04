@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu — Chef Donovan Smith</title>
+  <title>Curated Menus — Chef Donovan Smith</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
   <div class="flex flex-col" style="gap:16px">
 
-    <!-- Header (full width) -->
+    <!-- Header -->
     <header class="flex items-center justify-between px-6 sm:px-10 py-6">
       <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
       <nav class="hidden md:flex items-center gap-8">
@@ -55,122 +55,108 @@
       </div>
     </header>
 
-    <!-- 2-col grid: photo left, menu right -->
-    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+    <!-- Hero card -->
+    <div class="fade-up relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:500px">
+      <img src="images/experiences-photo.jpg" alt="Curated Menus" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:70%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:1"></div>
+      <div class="absolute bottom-0 left-0" style="padding:clamp(32px,5vw,56px);z-index:2">
+        <span style="display:block;font-family:var(--font-satoshi);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.85);margin-bottom:24px">Menus</span>
+        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(48px,6vw,96px);line-height:.95;letter-spacing:.01em;color:rgb(239,231,210);margin-bottom:20px">Curated<br>Menus</h1>
+        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:520px">A selection of pre-curated menus crafted around distinct culinary traditions — each one designed to be experienced around your table.</p>
+      </div>
+    </div>
 
-      <!-- Left: sticky food image (hidden on mobile) -->
-      <div class="hidden lg:block self-stretch">
-        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
-          <img src="images/our-menu-hero.jpg" alt="Menu" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.92) 0%,transparent 100%);z-index:1"></div>
-          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
-            <h1 class="uppercase select-none" style="font-family:var(--font-forum);font-size:clamp(48px,7vw,96px);line-height:.92;letter-spacing:.01em;color:rgb(239,231,210)">THE<br>MENU</h1>
+    <!-- 3 category cards -->
+    <div class="stagger grid grid-cols-1 lg:grid-cols-3" style="gap:16px">
+
+      <!-- Dining -->
+      <a href="experiences-dining.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
+        <img src="images/luxury-private-dining-2.jpg" alt="Luxury Private Dining" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
+        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
+        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">7 Signature Menus</p>
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Private<br>Dining</h3>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+      <!-- Breakfast -->
+      <a href="experiences-breakfast.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
+        <img src="images/luxury-private-breakfast.jpg" alt="Luxury Private Breakfast" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
+        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
+        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">5 Morning Menus</p>
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Private<br>Breakfast</h3>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+      <!-- Lunch -->
+      <a href="experiences-lunch.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
+        <img src="images/luxury-private-lunch.jpg" alt="Luxury Private Lunch" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
+        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
+        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">5 Afternoon Menus</p>
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Private<br>Lunch</h3>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- How To Choose -->
+    <div class="fade-up px-6 py-12 sm:px-10 sm:py-16 lg:px-20 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:48px;align-items:center">
+        <div>
+          <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:24px">How To Choose</span>
+          <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,3.5vw,48px);line-height:1.05;letter-spacing:.02em;color:var(--text)">Every Detail,<br>Entirely Yours</h2>
+        </div>
+        <div class="stagger flex flex-col" style="gap:24px">
+          <div class="fade-up flex gap-5 items-start">
+            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">01</span>
+            <div>
+              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">Browse by Experience</p>
+              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">Browse Private Dining, Breakfast, or Lunch. Open each menu to see the full curated spread.</p>
+            </div>
+          </div>
+          <div class="fade-up flex gap-5 items-start">
+            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">02</span>
+            <div>
+              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">Send Your Inquiry</p>
+              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">Share your vision, date, guest count, and location. Chef Donovan's team responds within 24 hours.</p>
+            </div>
+          </div>
+          <div class="fade-up flex gap-5 items-start">
+            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">03</span>
+            <div>
+              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">A Table Made For You</p>
+              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">At your villa, yacht, or chosen venue across the Bahamas and Caribbean — no detail overlooked.</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Right: menu card -->
-      <div class="flex flex-col gap-4">
+    <!-- CTA -->
+    <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Ready to Begin?</h2>
+      <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:460px;margin:20px auto 40px">Tell Chef Donovan about your vision. Every experience starts with a single conversation.</p>
+      <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+    </div>
 
-      <!-- Menu card -->
-      <div style="border:1px solid var(--border);border-radius:16px;margin-bottom:16px">
-
-        <!-- Sticky tab bar -->
-        <div class="sticky px-5 py-4 sm:px-8 lg:px-20 z-10" style="top:0;background:var(--bg);border-bottom:1px solid var(--border);border-radius:16px 16px 0 0">
-          <div class="flex gap-2">
-            <button class="tab-btn active" data-section="starters">Starters</button>
-            <button class="tab-btn" data-section="mains">Mains</button>
-            <button class="tab-btn" data-section="desserts">Desserts</button>
-          </div>
-        </div>
-
-        <!-- Menu content -->
-        <div class="px-5 pb-12 sm:px-8 sm:pb-16 lg:px-20 lg:pb-20">
-
-          <!-- Starters -->
-          <section id="starters" class="menu-section">
-            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Starters</h2>
-            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Conch Fritters</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Bahamian-style conch fritters seasoned with scotch bonnet, bell pepper and fresh herbs, served with a zesty citrus aioli.</p>
-            </div>
-            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Oxtail Egg Rolls</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Slow-braised Caribbean oxtail wrapped in a crispy shell with caramelised onion and thyme, served with a tamarind dipping sauce.</p>
-            </div>
-            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Crab &amp; Plantain Bites</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Sweet plantain cups filled with fresh blue crab, mango salsa and a touch of habanero — a signature Chef Donovan creation.</p>
-            </div>
-            <div class="menu-item fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Lobster Bisque</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Bahamian spiny lobster bisque, slow-cooked with coconut cream, saffron and a hint of dark rum. Rich, velvety, unforgettable.</p>
-            </div>
-          </section>
-
-          <!-- Mains -->
-          <section id="mains" class="menu-section">
-            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Mains</h2>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Plantain Crust Jerk Chicken</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A Chef Donovan signature — free-range chicken marinated in authentic jerk spices, encrusted in sweet plantain and finished on the grill.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Grilled Bahamian Lobster</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Whole spiny lobster, split and grilled over charcoal, basted with garlic butter, scotch bonnet and fresh thyme. Simply extraordinary.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Caribbean Snapper</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Whole red snapper steamed in banana leaf with coconut milk, ginger, scotch bonnet and island spices. Served with festival and rice peas.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Braised Short Rib</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">48-hour braised prime short rib with a dark rum and guava glaze, served over truffle breadfruit mash with crispy shallots.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Coconut Curry Shrimp</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Tiger prawns in a slow-cooked coconut and scotch bonnet curry with turmeric rice, toasted coconut and fresh mango chutney.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Bespoke Chef&rsquo;s Selection</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A fully custom course crafted around your preferences, dietary needs and the finest ingredients available that day. Available on all menus.</p>
-            </div>
-          </section>
-
-          <!-- Desserts -->
-          <section id="desserts" class="menu-section">
-            <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,4vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);padding-top:64px;padding-bottom:48px">Desserts</h2>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Rum Cake &amp; Coconut Ice Cream</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">A warm Bahamian rum cake soaked in dark rum syrup, served alongside house-churned toasted coconut ice cream and caramelised pineapple.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Mango Panna Cotta</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Silky coconut panna cotta layered with a fresh mango and passion fruit coulis, topped with crispy tapioca pearls and edible flowers.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="border-bottom:1px solid var(--border);padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Chocolate &amp; Chilli Fondant</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Dark Trinidadian chocolate fondant with a molten centre of scotch bonnet ganache, served with vanilla bean cream and gold leaf.</p>
-            </div>
-            <div class="fade-up flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-10" style="padding:24px 0">
-              <h4 class="uppercase shrink-0" style="font-family:var(--font-forum);font-size:clamp(18px,2vw,24px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Seasonal Sorbet Selection</h4>
-              <p class="sm:text-right" style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:420px">Three hand-crafted sorbets made from the finest seasonal island fruits — soursop, guava and tamarind. Light, refreshing and pure.</p>
-            </div>
-          </section>
-
-          <!-- Bottom CTA -->
-          <div class="p-6 sm:p-8 lg:p-12 text-center" style="margin-top:64px;border-radius:12px;background:rgba(0,46,40,.05);border:1px solid var(--border)">
-            <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:.02em;color:var(--text);margin-bottom:16px">Every Menu Is Bespoke</h3>
-            <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:440px;margin:0 auto 32px">No prices. No fixed packages. Chef Donovan crafts each experience around you — your preferences, your occasion, your table.</p>
-            <a href="reservation.html" class="btn btn-primary">Begin Your Inquiry</a>
-          </div>
-
-        </div><!-- /menu content -->
-      </div><!-- /menu card -->
-      </div><!-- /right col -->
-    </div><!-- /grid -->
-
-    <!-- Footer (full width) -->
+    <!-- Footer -->
     <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
       <div class="flex flex-col gap-1">
         <span class="footer-brand">Chef Donovan Smith</span>
@@ -187,8 +173,8 @@
       <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
     </footer>
 
-  </div><!-- /flex-col -->
-</div><!-- /page wrapper -->
+  </div>
+</div>
 <script src="js/main.js"></script>
 </body>
 </html>
