@@ -9,181 +9,891 @@
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --bg:    rgb(0,46,40);
+      --text:  rgb(239,231,210);
+      --muted: rgba(239,231,210,0.5);
+      --dim:   rgba(239,231,210,0.25);
+      --border:rgba(239,231,210,0.16);
+      --ease:  cubic-bezier(0.22,1,0.36,1);
+      --ff:    'Forum', serif;
+      --fs:    'Satoshi', sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;overflow:hidden;
+      background:var(--bg);color:var(--text);
+      font-family:var(--fs);-webkit-font-smoothing:antialiased;
+      color-scheme:dark;
+    }
+
+    /* ── Preloader ── */
+    #preloader{
+      position:fixed;inset:0;z-index:2000;
+      background:var(--bg);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+      transition:opacity .8s ease;
+    }
+    #preloader.gone{opacity:0;pointer-events:none}
+    .pl-logo{
+      font-family:var(--ff);font-size:clamp(22px,3.5vw,38px);
+      text-transform:uppercase;letter-spacing:.22em;color:var(--text);
+      opacity:0;animation:pf .7s var(--ease) .3s forwards;
+    }
+    .pl-track{
+      width:120px;height:1px;background:rgba(239,231,210,.1);overflow:hidden;
+      opacity:0;animation:pf .4s ease .8s forwards;
+    }
+    .pl-fill{height:100%;background:var(--text);width:0;animation:pl 1.7s cubic-bezier(.4,0,.15,1) 1s forwards;}
+    @keyframes pf{to{opacity:1}}
+    @keyframes pl{to{width:100%}}
+
+    /* ── Progress bar — floating, thick, hidden on intro/done ── */
+    #prog{
+      position:fixed;top:6px;left:16px;right:16px;
+      height:5px;background:rgba(239,231,210,.12);
+      border-radius:99px;z-index:600;
+      opacity:0;transition:opacity .4s ease,transform .35s var(--ease);
+    }
+    #prog.show{opacity:1}
+    #prog.scrolled-up{transform:translateY(-20px);opacity:0!important}
+    #pfill{height:100%;background:var(--text);width:0;border-radius:99px;transition:width .65s var(--ease)}
+
+    /* ── Top bar ── */
+    #topbar{
+      position:fixed;top:0;left:0;right:0;z-index:500;
+      padding:24px 44px;
+      display:flex;align-items:center;justify-content:space-between;
+      pointer-events:none;
+      transition:transform .35s var(--ease);
+    }
+    #topbar>*{pointer-events:all}
+    #topbar.scrolled-up{transform:translateY(-100%)}
+    .t-logo{
+      font-family:var(--ff);font-size:17px;text-transform:uppercase;
+      letter-spacing:.14em;color:var(--text);text-decoration:none;
+      opacity:.9;transition:opacity .2s;
+    }
+    .t-logo:hover{opacity:1}
+    #t-cnt{
+      font-family:var(--fs);font-size:10px;font-weight:500;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+      opacity:0;transition:opacity .3s;
+    }
+    #t-cnt.on{opacity:1}
+
+    /* ── Desktop nav arrows — horizontal, cream bg, dark icons ── */
+    #nav{
+      position:fixed;bottom:36px;right:44px;z-index:500;
+      display:flex;flex-direction:row;
+      border:1px solid rgba(239,231,210,.25);border-radius:10px;
+      overflow:hidden;opacity:0;transition:opacity .3s var(--ease);
+      background:var(--text);
+    }
+    #nav.on{opacity:1}
+    .nbtn{
+      width:46px;height:42px;
+      background:transparent;border:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--bg);transition:background .15s;
+    }
+    .nbtn:first-child{border-right:1px solid rgba(0,46,40,.15)}
+    .nbtn:hover{background:rgba(0,46,40,.08)}
+    .nbtn:active{background:rgba(0,46,40,.15)}
+    .nbtn:disabled{opacity:.25;cursor:default;pointer-events:none}
+    .nbtn svg{width:16px;height:16px;flex-shrink:0}
+    @media(max-width:768px){#nav{display:none}}
+
+    /* ── Slides ── */
+    #stage{position:fixed;inset:0}
+    .slide{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;align-items:center;
+      padding:90px 44px 80px;
+      opacity:0;pointer-events:none;
+      transform:translateY(52px);
+      transition:opacity .5s var(--ease),transform .5s var(--ease);
+      overflow-y:auto;
+    }
+    .slide.active{opacity:1;pointer-events:all;transform:translateY(0)}
+    .slide.out-up{opacity:0;pointer-events:none;transform:translateY(-52px)}
+    .slide.out-dn{opacity:0;pointer-events:none;transform:translateY(52px)}
+    .inner{width:100%;max-width:560px;margin:auto}
+
+    @media(max-width:768px){
+      .slide{padding:90px 24px 96px;}
+      #s-review{padding-bottom:148px}
+    }
+
+    /* ── Eyebrow ── */
+    .ey{
+      display:block;font-family:var(--fs);font-size:10px;font-weight:500;
+      text-transform:uppercase;letter-spacing:.22em;
+      color:rgba(239,231,210,.35);margin-bottom:22px;
+    }
+
+    /* ── Intro / thank you heading ── */
+    .big-h{
+      font-family:var(--ff);
+      font-size:clamp(36px,5.5vw,58px);
+      line-height:1.08;letter-spacing:.01em;
+      color:var(--text);margin-bottom:18px;
+    }
+    .big-p{
+      font-size:15px;font-weight:400;line-height:1.82;
+      color:var(--muted);max-width:420px;margin-bottom:44px;
+    }
+
+    /* ── Question ── */
+    .q-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:32px}
+    .q-num{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:22px;height:22px;flex-shrink:0;
+      background:var(--text);color:var(--bg);
+      font-family:var(--fs);font-size:10px;font-weight:500;
+      border-radius:4px;margin-top:4px;
+    }
+    .q-h{
+      font-family:var(--ff);
+      font-size:clamp(22px,3.2vw,34px);
+      line-height:1.15;letter-spacing:.01em;color:var(--text);
+    }
+
+    /* ── Text input ── */
+    .f-wrap{position:relative;margin-bottom:4px}
+    .f-in{
+      display:block;width:100%;background:transparent;
+      border:none;border-bottom:1px solid rgba(239,231,210,.18);
+      padding:8px 0 16px;
+      font-family:var(--fs);font-size:20px;font-weight:400;color:var(--text);
+      outline:none;transition:border-color .3s;
+    }
+    .f-in::placeholder{color:rgba(239,231,210,.22)}
+    .f-line{
+      position:absolute;bottom:0;left:0;
+      height:1.5px;width:0;background:var(--text);
+      transition:width .4s var(--ease);pointer-events:none;
+    }
+    .f-in:focus~.f-line,.f-ta:focus~.f-line{width:100%}
+    .f-ta{
+      display:block;width:100%;background:transparent;
+      border:none;border-bottom:1px solid rgba(239,231,210,.18);
+      padding:8px 0 16px;
+      font-family:var(--fs);font-size:18px;font-weight:400;color:var(--text);
+      outline:none;resize:none;overflow:hidden;min-height:52px;line-height:1.7;
+      transition:border-color .3s;
+    }
+    .f-ta::placeholder{color:rgba(239,231,210,.22)}
+    .f-err{font-size:12px;color:rgba(255,160,130,.75);margin-top:10px;min-height:14px}
+
+    /* ── Custom date picker ── */
+    .date-trigger{
+      cursor:pointer;display:flex;align-items:center;
+      padding:8px 0 16px;width:100%;
+      font-family:var(--fs);font-size:20px;font-weight:400;color:var(--text);
+      background:transparent;border:none;border-bottom:1px solid rgba(239,231,210,.18);
+      outline:none;user-select:none;
+    }
+    .date-trigger .ph{color:rgba(239,231,210,.22)}
+    .date-trigger:focus~.f-line,.date-trigger.open~.f-line{width:100%}
+    .cal-panel{
+      position:absolute;top:calc(100% + 12px);left:0;right:0;z-index:200;
+      background:rgb(0,46,40);
+      border:1px solid rgba(239,231,210,.14);border-radius:12px;
+      padding:18px;
+      opacity:0;transform:translateY(-6px);pointer-events:none;
+      transition:opacity .25s var(--ease),transform .25s var(--ease);
+    }
+    .cal-panel.open{opacity:1;transform:translateY(0);pointer-events:all}
+    .cal-head{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .cal-title{
+      font-family:var(--ff);font-size:15px;letter-spacing:.06em;color:var(--text);
+    }
+    .cal-nav{
+      width:30px;height:30px;background:transparent;
+      border:1px solid rgba(239,231,210,.14);border-radius:6px;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--text);cursor:pointer;
+      transition:border-color .2s,background .2s;
+    }
+    .cal-nav:hover{border-color:rgba(239,231,210,.38);background:rgba(239,231,210,.05)}
+    .cal-dow{
+      display:grid;grid-template-columns:repeat(7,1fr);
+      border-bottom:1px solid rgba(239,231,210,.07);
+      padding-bottom:10px;margin-bottom:8px;
+    }
+    .cal-dow span{
+      font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+      color:rgba(239,231,210,.28);text-align:center;padding:4px 0;
+    }
+    .cal-grid{
+      display:grid;grid-template-columns:repeat(7,1fr);gap:2px;
+    }
+    .cal-day{
+      aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+      font-family:var(--fs);font-size:13px;color:var(--text);
+      border-radius:6px;cursor:pointer;border:1px solid transparent;
+      transition:background .15s,border-color .15s,color .15s;
+    }
+    .cal-day:hover{background:rgba(239,231,210,.07);border-color:rgba(239,231,210,.12)}
+    .cal-day.selected{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .cal-day.is-today{border-color:rgba(239,231,210,.22)}
+    .cal-day.past{opacity:.2;cursor:default;pointer-events:none}
+    .cal-day.empty{cursor:default;pointer-events:none}
+    @media(max-width:768px){
+      .cal-panel{
+        position:fixed;
+        top:auto;bottom:108px;
+        left:16px;right:16px;
+        max-height:calc(100svh - 200px);
+        overflow-y:auto;
+        padding:16px;
+        z-index:600;
+      }
+      .cal-day{font-size:13px}
+    }
+
+    /* ── Inline OK button (desktop only) ── */
+    .ok{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 28px;
+      background:var(--text);color:var(--bg);
+      border:none;border-radius:8px;
+      font-family:var(--fs);font-size:13px;font-weight:700;
+      letter-spacing:.02em;
+      cursor:pointer;margin-top:36px;
+      transition:opacity .15s,transform .15s;
+    }
+    .ok:hover{opacity:.86;transform:translateY(-1px)}
+    .ok:active{transform:scale(.98)}
+    .ok:disabled{opacity:.35;cursor:not-allowed;transform:none}
+    @media(max-width:768px){.ok{display:none!important}#desktop-takes{display:none!important}}
+
+    /* ── Option cards ── */
+    .opts{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+    .opt{
+      display:flex;align-items:center;gap:14px;width:100%;
+      padding:12px 16px;
+      background:transparent;
+      border:1px solid rgba(239,231,210,.14);border-radius:8px;
+      cursor:pointer;text-align:left;color:var(--text);
+      transition:border-color .2s,background .2s;
+    }
+    .opt:hover{border-color:rgba(239,231,210,.38);background:rgba(239,231,210,.04)}
+    .opt.chosen{border-color:rgba(239,231,210,.6);background:rgba(239,231,210,.07)}
+    .opt-key{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:22px;height:22px;flex-shrink:0;
+      border:1px solid rgba(239,231,210,.22);border-radius:4px;
+      font-family:var(--fs);font-size:10px;font-weight:500;
+      color:rgba(239,231,210,.45);
+      transition:background .2s,border-color .2s,color .2s;
+    }
+    .opt.chosen .opt-key{background:var(--text);border-color:var(--text);color:var(--bg)}
+    .opt-txt{font-family:var(--fs);font-size:15px;font-weight:400;color:var(--text);flex:1}
+    .opt-chk{color:var(--text);opacity:0;flex-shrink:0;transition:opacity .2s}
+    .opt.chosen .opt-chk{opacity:1}
+    .opt.br{flex-direction:column;align-items:flex-start;padding:15px 16px 13px;gap:0}
+    .opt.br .opt-head{display:flex;align-items:center;gap:14px;width:100%;margin-bottom:6px}
+    .opt.br .opt-sub{font-size:12px;color:var(--muted);line-height:1.5;padding-left:36px}
+
+    /* ── Review ── */
+    .rev-card{
+      border:1px solid rgba(239,231,210,.14);border-radius:14px;
+      overflow:hidden;margin-bottom:32px;
+    }
+    .rev-sec{padding:12px 18px 6px;border-bottom:1px solid rgba(239,231,210,.08)}
+    .rev-sec:last-child{border-bottom:none;padding-bottom:12px}
+    .rev-lbl{
+      display:block;font-family:var(--fs);font-size:9px;font-weight:500;
+      text-transform:uppercase;letter-spacing:.22em;
+      color:rgba(239,231,210,.35);margin-bottom:8px;
+    }
+    .rev-row{
+      display:flex;justify-content:space-between;align-items:baseline;
+      gap:16px;padding:6px 0;border-top:1px solid rgba(239,231,210,.06);
+    }
+    .rev-row:first-of-type{border-top:none}
+    .rev-k{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:rgba(239,231,210,.38);flex-shrink:0}
+    .rev-v{font-size:14px;font-weight:400;color:var(--text);text-align:right;line-height:1.4;word-break:break-word;max-width:280px}
+    .sub-note{font-size:13px;color:rgba(239,231,210,.58);margin-top:14px;line-height:1.7}
+
+    /* ── Social links (thank you) ── */
+    .socials{display:flex;align-items:center;gap:10px;margin-bottom:44px}
+    .soc-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:9px;
+      color:#fff;text-decoration:none;border:none;
+      transition:opacity .2s,transform .15s;
+    }
+    .soc-btn:hover{opacity:.85;transform:translateY(-1px)}
+    .soc-btn svg{width:17px;height:17px}
+
+    .home-lnk{
+      display:inline-flex;align-items:center;gap:8px;
+      font-family:var(--fs);font-size:10px;font-weight:500;
+      letter-spacing:.16em;text-transform:uppercase;
+      color:var(--dim);text-decoration:none;transition:color .2s;
+    }
+    .home-lnk:hover{color:var(--text)}
+
+    /* ── Mobile footer nav ── */
+    #m-footer{
+      display:none;
+      position:fixed;bottom:0;left:0;right:0;z-index:500;
+      padding:12px 16px 24px;
+      background:var(--bg);
+      box-shadow:0 -32px 24px 8px var(--bg);
+      flex-direction:column;gap:10px;
+    }
+    @media(max-width:768px){#m-footer{display:flex}}
+    #m-takes{
+      display:none;align-items:center;justify-content:center;gap:6px;
+      font-family:var(--fs);font-size:13px;font-weight:400;color:var(--muted);
+      width:100%;text-align:center;
+    }
+    #m-takes.show{display:flex}
+    #m-btn-row{display:flex;gap:10px;width:100%}
+    #m-back{
+      width:52px;height:52px;flex-shrink:0;
+      background:var(--text);
+      border:none;border-radius:10px;
+      color:var(--bg);cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      transition:opacity .15s;
+    }
+    #m-back:hover{opacity:.85}
+    #m-back.hide{display:none}
+    #m-ok{
+      flex:1;height:52px;
+      background:var(--text);color:var(--bg);
+      border:none;border-radius:10px;
+      font-family:var(--fs);font-size:15px;font-weight:500;
+      letter-spacing:.04em;cursor:pointer;
+      transition:opacity .15s;
+    }
+    #m-ok:hover{opacity:.88}
+    #m-ok:disabled{opacity:.4;cursor:not-allowed}
+  </style>
 </head>
 <body>
 
-<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
-<div id="mobile-panel" class="mobile-menu-panel">
-  <div style="position:absolute;top:32px;right:32px">
-    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
-    </button>
+<!-- Preloader -->
+<div id="preloader">
+  <span class="pl-logo">Chef Don Smith</span>
+  <div class="pl-track"><div class="pl-fill"></div></div>
+</div>
+
+<!-- Progress -->
+<div id="prog"><div id="pfill"></div></div>
+
+<!-- Top bar -->
+<div id="topbar">
+  <a href="index.html" class="t-logo">Chef Don Smith</a>
+  <span id="t-cnt"></span>
+</div>
+
+<!-- Desktop nav arrows (horizontal) -->
+<div id="nav">
+  <button class="nbtn" id="nav-up">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+  <button class="nbtn" id="nav-dn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+</div>
+
+<!-- Stage -->
+<div id="stage">
+
+  <!-- Intro -->
+  <div class="slide active" id="s-intro">
+    <div class="inner" style="text-align:center">
+      <span class="ey" style="display:block;text-align:center">Chef Donovan Smith</span>
+      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Plan Your Private Experience</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Every extraordinary table begins with a conversation. Share your vision in 2 minutes and Chef Donovan's team will craft something remarkable — entirely around you.</p>
+      <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Begin</button>
+      <p id="desktop-takes" style="margin-top:16px;font-family:var(--fs);font-size:13px;font-weight:400;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Takes 2 minutes
+      </p>
+    </div>
   </div>
-  <nav class="flex flex-col items-center gap-8">
-    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
-    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
-    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
-    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
-    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
-  </nav>
-  <div style="position:absolute;bottom:32px;left:32px;right:32px">
-    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+
+  <!-- Q1 -->
+  <div class="slide" id="s-1">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">1</span><h2 class="q-h">What is your full name?</h2></div>
+      <div class="f-wrap">
+        <input type="text" class="f-in" id="i-name" placeholder="Type your answer here…" autocomplete="name">
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-name"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="slide" id="s-2">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">2</span><h2 class="q-h">What is your email address?</h2></div>
+      <div class="f-wrap">
+        <input type="email" class="f-in" id="i-email" placeholder="name@example.com" autocomplete="email">
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-email"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="slide" id="s-3">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">Your phone number?</h2></div>
+      <div class="f-wrap">
+        <input type="tel" class="f-in" id="i-phone" placeholder="+1 (242) 000 0000" autocomplete="tel">
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-phone"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- Q4 Guests -->
+  <div class="slide" id="s-4">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">How many guests are you expecting?</h2></div>
+      <div class="opts" id="opts-guests">
+        <button class="opt" data-v="2–5 guests"><span class="opt-key">A</span><span class="opt-txt">2 – 5 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="6–10 guests"><span class="opt-key">B</span><span class="opt-txt">6 – 10 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="11–30 guests"><span class="opt-key">C</span><span class="opt-txt">11 – 30 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="31–50 guests"><span class="opt-key">D</span><span class="opt-txt">31 – 50 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="50+ guests"><span class="opt-key">E</span><span class="opt-txt">50 and above</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+      </div>
+      <p class="f-err" id="e-guests"></p>
+    </div>
+  </div>
+
+  <!-- Q5 Branch -->
+  <div class="slide" id="s-5">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">5</span><h2 class="q-h">Do you have a specific experience in mind?</h2></div>
+      <div class="opts" id="opts-branch">
+        <button class="opt br" data-branch="yes">
+          <div class="opt-head"><span class="opt-key">A</span><span class="opt-txt" style="font-weight:500">Yes, I do</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="opt-sub">I know which experience I'd like to book</p>
+        </button>
+        <button class="opt br" data-branch="no">
+          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">I have a vision</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="opt-sub">I'd like to describe my ideal experience</p>
+        </button>
+      </div>
+      <p class="f-err" id="e-branch" style="margin-top:10px"></p>
+    </div>
+  </div>
+
+  <!-- Q6a -->
+  <div class="slide" id="s-6a">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Which experience interests you?</h2></div>
+      <div class="opts" id="opts-exp">
+        <button class="opt" data-v="Private Dining"><span class="opt-key">A</span><span class="opt-txt">Private Dining</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Private Breakfast"><span class="opt-key">B</span><span class="opt-txt">Private Breakfast</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Private Lunch"><span class="opt-key">C</span><span class="opt-txt">Private Lunch</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Yacht Experience"><span class="opt-key">D</span><span class="opt-txt">Yacht Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Villa Residency"><span class="opt-key">E</span><span class="opt-txt">Villa Residency</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Corporate / Large Event"><span class="opt-key">F</span><span class="opt-txt">Corporate / Large Event</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+      </div>
+      <p class="f-err" id="e-exp"></p>
+    </div>
+  </div>
+
+  <!-- Q6b -->
+  <div class="slide" id="s-6b">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Describe your ideal experience</h2></div>
+      <div class="f-wrap">
+        <textarea class="f-ta" id="i-vision" placeholder="Setting, cuisine, mood, special details…" rows="3"></textarea>
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-vision"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- Q7 Date -->
+  <div class="slide" id="s-7">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">What is your preferred date?</h2></div>
+      <div class="f-wrap" id="date-wrap" style="position:relative">
+        <div class="date-trigger" id="date-trigger" tabindex="0" role="button" aria-haspopup="true">
+          <span id="date-label" class="ph">Select a date…</span>
+        </div>
+        <div class="f-line"></div>
+        <input type="hidden" id="i-date">
+        <div class="cal-panel" id="cal-panel">
+          <div class="cal-head">
+            <button class="cal-nav" id="cal-prev" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="cal-title" id="cal-title"></span>
+            <button class="cal-nav" id="cal-next" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="cal-dow">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+      </div>
+      <p class="f-err" id="e-date"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- Q8 Location -->
+  <div class="slide" id="s-8">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">8</span><h2 class="q-h">Which island or location?</h2></div>
+      <div class="f-wrap">
+        <input type="text" class="f-in" id="i-loc" placeholder="e.g. Nassau, Exuma, Paradise Island">
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-loc"></p>
+      <button class="ok" data-next>Review Inquiry</button>
+    </div>
+  </div>
+
+  <!-- Review -->
+  <div class="slide" id="s-review" style="padding-top:70px">
+    <div class="inner" style="max-width:540px">
+      <span class="ey">Almost there</span>
+      <h2 class="big-h" style="font-size:clamp(24px,3.5vw,36px);margin-bottom:20px">Ready to send?</h2>
+      <div class="rev-card" id="rev-card"></div>
+      <button class="ok" id="submit-btn">Send Inquiry</button>
+      <p class="sub-note">No commitment required. Chef Donovan's team will reach out within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- Done -->
+  <div class="slide" id="s-done">
+    <div class="inner" style="text-align:center">
+      <span class="ey" style="display:block;text-align:center">Inquiry received</span>
+      <h1 class="big-h" style="font-size:clamp(28px,4.5vw,48px);line-height:1.2">Thank you for reaching out. We'll be in touch soon.</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Chef Donovan's team will reach out within 24 hours to begin crafting your experience.</p>
+      <div class="socials" style="justify-content:center">
+        <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="soc-btn" title="Instagram" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#fff" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="soc-btn" title="Facebook" style="background:#1877F2">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://x.com" target="_blank" rel="noopener" class="soc-btn" title="X" style="background:#000">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <a href="index.html" class="ok" style="text-decoration:none;margin-left:auto;margin-right:auto">Return to site</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Mobile footer nav -->
+<div id="m-footer">
+  <p id="m-takes">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Takes 2 minutes
+  </p>
+  <div id="m-btn-row">
+    <button id="m-back" class="hide">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button id="m-ok">Begin</button>
   </div>
 </div>
 
-<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
-  <div class="flex flex-col" style="gap:16px">
+<script>
+(function(){
+'use strict';
 
-    <!-- Header (full width) -->
-    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
-      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="menu.html"        class="nav-link">Menu</a>
-        <a href="about.html"       class="nav-link">About</a>
-        <a href="experiences.html" class="nav-link">Experiences</a>
-        <a href="portfolio.html"   class="nav-link">Portfolio</a>
-        <a href="reviews.html"     class="nav-link">Reviews</a>
-      </nav>
-      <div class="flex items-center gap-4">
-        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
-        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
-        </button>
-      </div>
-    </header>
+const ST={cur:'intro',branch:null,data:{}};
+const AUTO=['4','5','6a'];
 
-    <!-- 2-col grid: photo left, form right -->
-    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+function seq(){return['intro','1','2','3','4','5',ST.branch==='yes'?'6a':'6b','7','8','review','done'];}
 
-      <!-- Left: sticky image (hidden on mobile) -->
-      <div class="hidden lg:block self-stretch">
-        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
-          <img src="images/plan-your-experience.jpg" alt="Plan Your Experience" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,30,26,.92) 0%,transparent 100%);z-index:1"></div>
-          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
-            <h1 class="uppercase select-none" style="font-family:var(--font-forum);font-size:clamp(40px,5vw,96px);line-height:.92;letter-spacing:.01em;color:rgb(239,231,210)">PLAN YOUR<br>EXPERIENCE</h1>
-          </div>
-        </div>
-      </div>
+/* ── Navigate ── */
+function goNext(){
+  if(!validate())return;
+  saveData();
+  const s=seq(),i=s.indexOf(ST.cur);
+  if(i<0||i>=s.length-1)return;
+  const to=s[i+1];
+  if(to==='review')buildReview();
+  go(ST.cur,to,'fwd');
+}
+function goBack(){
+  const s=seq(),i=s.indexOf(ST.cur);
+  if(i<=0)return;
+  go(ST.cur,s[i-1],'bck');
+}
+function go(from,to,dir){
+  const fe=G('s-'+from),te=G('s-'+to);
+  // Restore topbar/prog when entering a new slide
+  G('topbar').classList.remove('scrolled-up');
+  G('prog').classList.remove('scrolled-up');
+  fe.classList.remove('active');
+  fe.classList.add(dir==='fwd'?'out-up':'out-dn');
+  te.style.cssText='transition:none;transform:translateY('+(dir==='fwd'?'52px':'-52px')+');opacity:0';
+  te.classList.remove('out-up','out-dn');
+  te.classList.add('active');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{te.style.cssText='';}));
+  setTimeout(()=>{fe.classList.remove('out-up','out-dn');fe.style.cssText='';},560);
+  ST.cur=to;clearErrs();chrome();updateMobileNav();
+  setTimeout(()=>{const inp=te.querySelector('.f-in:not([type=date]),.f-ta');if(inp)inp.focus();},300);
+}
 
-      <!-- Right: form -->
-      <div class="flex flex-col" style="gap:16px">
+/* ── Validate ── */
+function validate(){
+  clearErrs();const c=ST.cur;
+  if(c==='1'){if(!v('i-name')){e('e-name','Please enter your full name.');return false;}}
+  if(c==='2'){const em=v('i-email');if(!em){e('e-email','Please enter your email.');return false;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){e('e-email','Please enter a valid email.');return false;}}
+  if(c==='3'){if(!v('i-phone')){e('e-phone','Please enter your phone number.');return false;}}
+  if(c==='4'){if(!ST.data.guests){e('e-guests','Please select a guest count.');return false;}}
+  if(c==='5'){if(!ST.branch){e('e-branch','Please select an option.');return false;}}
+  if(c==='6a'){if(!ST.data.experience){e('e-exp','Please select an experience.');return false;}}
+  if(c==='6b'){if(!v('i-vision')){e('e-vision','Please describe your experience.');return false;}}
+  if(c==='7'){const dv=v('i-date'),today=new Date().toISOString().split('T')[0];if(!dv){e('e-date','Please select a preferred date.');return false;}if(dv<today){e('e-date','Please select a future date.');return false;}}
+  if(c==='8'){if(!v('i-loc')){e('e-loc','Please enter your island or location.');return false;}}
+  return true;
+}
+function v(id){const el=G(id);return el?el.value.trim():'';}
+function e(id,m){const el=G(id);if(el)el.textContent=m;}
+function clearErrs(){document.querySelectorAll('.f-err').forEach(x=>x.textContent='');}
 
-      <!-- Form card -->
-      <div class="p-6 sm:p-10 lg:p-20" style="border:1px solid var(--border);border-radius:16px">
-        <div style="max-width:660px;margin:0 auto">
+/* ── Save ── */
+function saveData(){
+  const c=ST.cur;
+  if(c==='1')ST.data.fullName=v('i-name');
+  if(c==='2')ST.data.email=v('i-email');
+  if(c==='3')ST.data.phone=v('i-phone');
+  if(c==='6b')ST.data.vision=v('i-vision');
+  if(c==='7')ST.data.date=v('i-date');
+  if(c==='8')ST.data.location=v('i-loc');
+}
 
-          <!-- Form header -->
-          <div style="margin-bottom:48px">
-            <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:24px">Private Dining Inquiry</span>
-            <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1;letter-spacing:.01em;color:var(--text);margin-bottom:16px">Inquiry</h1>
-            <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:500px">Tell us about your vision. Every detail — location, occasion, number of guests — helps Chef Donovan craft an experience entirely around you.</p>
-          </div>
+/* ── Option cards ── */
+function bindOpts(cid,cb){
+  G(cid).querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      G(cid).querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+      o.classList.add('chosen');cb(o);setTimeout(goNext,280);
+    });
+  });
+}
+bindOpts('opts-guests',o=>{ST.data.guests=o.dataset.v;});
+bindOpts('opts-exp',o=>{ST.data.experience=o.dataset.v;});
+G('opts-branch').querySelectorAll('.opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    const ch=o.dataset.branch;
+    if(ch==='yes')delete ST.data.vision;else delete ST.data.experience;
+    ST.branch=ch;
+    G('opts-branch').querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+    o.classList.add('chosen');setTimeout(goNext,280);
+  });
+});
 
-          <!-- Form -->
-          <form id="inquiry-form" novalidate>
-            <div class="flex flex-col" style="gap:32px">
+/* ── Review ── */
+function buildReview(){
+  saveData();const d=ST.data;
+  const fmt=d.date?new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'—';
+  const rows=arr=>arr.map(([k,val])=>`<div class="rev-row"><span class="rev-k">${k}</span><span class="rev-v">${val||'—'}</span></div>`).join('');
+  G('rev-card').innerHTML=
+    `<div class="rev-sec"><span class="rev-lbl">Contact</span>${rows([['Name',d.fullName],['Email',d.email],['Phone',d.phone]])}</div>`+
+    `<div class="rev-sec"><span class="rev-lbl">Experience</span>${rows([['Guests',d.guests],d.experience?['Experience',d.experience]:['Vision',d.vision],['Date',fmt],['Location',d.location]])}</div>`;
+}
 
-              <!-- Row 1: Name + Email -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Full Name</label>
-                  <input type="text" name="fullName" placeholder="Your full name" class="form-input">
-                  <p class="form-error" data-error="fullName"></p>
-                </div>
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Email Address</label>
-                  <input type="email" name="email" placeholder="your@email.com" class="form-input">
-                  <p class="form-error" data-error="email"></p>
-                </div>
-              </div>
+/* ── Submit ── */
+async function doSubmit(){
+  const btn=G('submit-btn'),mOk=G('m-ok');
+  btn.disabled=true;btn.textContent='Sending…';
+  mOk.disabled=true;mOk.textContent='Sending…';
+  try{await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ST.data)});}catch(_){}
+  go('review','done','fwd');
+}
+G('submit-btn').addEventListener('click',doSubmit);
 
-              <!-- Row 2: Phone + Guests -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Phone Number</label>
-                  <input type="tel" name="phone" placeholder="+1 (242) 000 0000" class="form-input">
-                  <p class="form-error" data-error="phone"></p>
-                </div>
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Number of Guests</label>
-                  <div class="relative flex items-center">
-                    <select name="guests" class="form-input" style="appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:24px">
-                      <option value="" disabled selected>Select guests</option>
-                      <option value="2–5 guests (Intimate Dinner)">2–5 guests (Intimate Dinner)</option>
-                      <option value="6–10 guests (Small Gathering)">6–10 guests (Small Gathering)</option>
-                      <option value="11–20 guests (Private Event)">11–20 guests (Private Event)</option>
-                      <option value="21–30 guests (Mid-size Event)">21–30 guests (Mid-size Event)</option>
-                      <option value="31–50 guests (Large Event)">31–50 guests (Large Event)</option>
-                      <option value="50+ guests (Grand Event)">50+ guests (Grand Event)</option>
-                    </select>
-                    <span style="position:absolute;right:0;bottom:14px;pointer-events:none;color:var(--text-muted)">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                  </div>
-                  <p class="form-error" data-error="guests"></p>
-                </div>
-              </div>
+/* ── Chrome ── */
+function chrome(){
+  const c=ST.cur;
+  const qMap={'1':1,'2':2,'3':3,'4':4,'5':5,'6a':6,'6b':6,'7':7,'8':8};
+  const qn=qMap[c]||0,tot=8;
+  const ctr=G('t-cnt');
+  if(c==='intro'||c==='done'||c==='review'){ctr.textContent='';ctr.classList.remove('on');}
+  else{ctr.textContent=qn+' / '+tot;ctr.classList.add('on');}
+  const pf=G('pfill'),pg=G('prog');
+  const isEdge=(c==='intro'||c==='done');
+  pg.classList.toggle('show',!isEdge);
+  if(c==='intro')pf.style.width='0%';
+  else if(c==='review'||c==='done')pf.style.width='100%';
+  else pf.style.width=((qn-1)/tot*100)+'%';
+  const showNav=c!=='intro'&&c!=='done';
+  G('nav').classList.toggle('on',showNav);
+  G('nav-up').disabled=(c==='1');
+}
 
-              <!-- Row 3: Date + Location -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Preferred Date</label>
-                  <input type="date" name="date" class="form-input">
-                  <p class="form-error" data-error="date"></p>
-                </div>
-                <div class="flex flex-col">
-                  <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Island / Location</label>
-                  <input type="text" name="location" placeholder="e.g. Nassau, Exuma, Paradise Island" class="form-input">
-                  <p class="form-error" data-error="location"></p>
-                </div>
-              </div>
+/* ── Mobile nav ── */
+function updateMobileNav(){
+  const c=ST.cur;
+  const back=G('m-back'),ok=G('m-ok');
+  back.classList.toggle('hide', c==='intro'||c==='1'||c==='done');
+  if(c==='intro')ok.textContent='Begin';
+  else if(c==='done')ok.textContent='Return to site';
+  else if(c==='review')ok.textContent='Send Inquiry';
+  else ok.textContent='OK';
+  ok.disabled=false;
+  // Show "Takes 2 minutes" only on intro
+  G('m-takes').classList.toggle('show', c==='intro');
+}
 
-              <!-- Vision textarea -->
-              <div class="flex flex-col">
-                <label style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:8px;display:block">Tell Us Your Vision</label>
-                <textarea name="vision" rows="4" placeholder="Share any details about your occasion, preferences, dietary requirements, or special requests..." class="form-input" style="resize:none"></textarea>
-              </div>
+/* ── Events ── */
+G('begin-btn').addEventListener('click',()=>go('intro','1','fwd'));
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',goNext));
+G('nav-up').addEventListener('click',goBack);
+G('nav-dn').addEventListener('click',()=>{if(ST.cur==='review')doSubmit();else goNext();});
+G('m-back').addEventListener('click',goBack);
+G('m-ok').addEventListener('click',()=>{
+  const c=ST.cur;
+  if(c==='intro'){go('intro','1','fwd');return;}
+  if(c==='done'){window.location.href='index.html';return;}
+  if(c==='review'){doSubmit();return;}
+  goNext();
+});
 
-              <!-- Submit -->
-              <div style="margin-top:8px">
-                <button type="submit" class="btn-full btn-submit">Send Inquiry</button>
-                <p style="font-family:var(--font-satoshi);font-weight:400;font-size:12px;color:var(--text-muted);text-align:center;margin-top:24px;line-height:1.6">
-                  No commitment. No pricing discussed online.<br>
-                  Chef Donovan&rsquo;s team will reach out within 24 hours to discuss your experience.
-                </p>
-              </div>
+/* ── Keyboard ── */
+document.addEventListener('keydown',ev=>{
+  if(ev.key!=='Enter')return;
+  const c=ST.cur;
+  if(c==='intro'){go('intro','1','fwd');return;}
+  if(c==='done'||c==='review'||AUTO.includes(c))return;
+  if(c==='6b'&&document.activeElement?.tagName==='TEXTAREA')return;
+  ev.preventDefault();goNext();
+});
 
-            </div>
-          </form>
-        </div>
-      </div>
+/* ── Textarea grow + follow caret ── */
+document.querySelectorAll('.f-ta').forEach(ta=>{
+  ta.addEventListener('input',function(){
+    const slide=this.closest('.slide');
+    const prevScroll=slide?slide.scrollTop:0;
+    this.style.height='auto';
+    this.style.height=this.scrollHeight+'px';
+    if(!slide)return;
+    requestAnimationFrame(()=>{
+      // Restore scroll first (layout recalc can reset it to 0)
+      slide.scrollTop=prevScroll;
+      // Then advance scroll to keep textarea bottom in view
+      const taRect=this.getBoundingClientRect();
+      const slideRect=slide.getBoundingClientRect();
+      const gap=taRect.bottom+40-slideRect.bottom;
+      if(gap>0)slide.scrollTop+=gap;
+    });
+  });
+});
 
-      </div><!-- /right col -->
-    </div><!-- /grid -->
+/* ── Scroll-to-hide topbar & prog ── */
+document.querySelectorAll('.slide').forEach(slide=>{
+  slide.addEventListener('scroll',()=>{
+    const gone=slide.scrollTop>8;
+    G('topbar').classList.toggle('scrolled-up',gone);
+    G('prog').classList.toggle('scrolled-up',gone);
+  },{passive:true});
+});
 
-    <!-- Footer (full width) -->
-    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
-      <div class="flex flex-col gap-1">
-        <span class="footer-brand">Chef Donovan Smith</span>
-        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
-      </div>
-      <nav class="flex items-center gap-4 flex-wrap">
-        <a href="index.html"       class="footer-link">Home</a>
-        <a href="about.html"       class="footer-link">About</a>
-        <a href="menu.html"        class="footer-link">Menu</a>
-        <a href="experiences.html" class="footer-link">Experiences</a>
-        <a href="portfolio.html"   class="footer-link">Portfolio</a>
-        <a href="reviews.html"     class="footer-link">Reviews</a>
-      </nav>
-      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
-    </footer>
+/* ── Custom date picker ── */
+(function(){
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const today=new Date();today.setHours(0,0,0,0);
+  let cur=new Date(today);
+  let picked=null;
 
-  </div><!-- /flex-col -->
-</div><!-- /page wrapper -->
-<script src="js/main.js"></script>
+  const panel=G('cal-panel'),trigger=G('date-trigger'),label=G('date-label');
+  const grid=G('cal-grid'),title=G('cal-title');
+
+  function render(){
+    title.textContent=MONTHS[cur.getMonth()]+' '+cur.getFullYear();
+    grid.innerHTML='';
+    const first=new Date(cur.getFullYear(),cur.getMonth(),1).getDay();
+    const total=new Date(cur.getFullYear(),cur.getMonth()+1,0).getDate();
+    for(let i=0;i<first;i++){const d=document.createElement('div');d.className='cal-day empty';grid.appendChild(d);}
+    for(let d=1;d<=total;d++){
+      const cell=document.createElement('div');
+      cell.className='cal-day';cell.textContent=d;
+      const cellDate=new Date(cur.getFullYear(),cur.getMonth(),d);
+      if(cellDate<today)cell.classList.add('past');
+      if(cellDate.getTime()===today.getTime())cell.classList.add('is-today');
+      if(picked&&cellDate.toDateString()===picked.toDateString())cell.classList.add('selected');
+      if(cellDate>=today)cell.addEventListener('click',()=>pick(cellDate));
+      grid.appendChild(cell);
+    }
+  }
+
+  function pick(date){
+    picked=date;
+    const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');
+    G('i-date').value=y+'-'+m+'-'+d;
+    label.textContent=date.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    label.classList.remove('ph');
+    close();
+  }
+
+  let preCalScroll=0;
+  function open(){
+    preCalScroll=G('s-7').scrollTop;
+    panel.classList.add('open');trigger.classList.add('open');render();
+    // Desktop only: nudge content up so calendar doesn't feel glued to the bottom
+    if(window.innerWidth>768){
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        const slide=G('s-7');
+        const panelH=panel.offsetHeight;
+        const wrapBottom=G('date-wrap').getBoundingClientRect().bottom;
+        const slideBottom=slide.getBoundingClientRect().bottom-80;
+        const overflow=wrapBottom+12+panelH-slideBottom;
+        if(overflow>0){
+          slide.scrollTo({top:preCalScroll+Math.min(overflow,100),behavior:'smooth'});
+        }
+      }));
+    }
+  }
+  function close(){
+    panel.classList.remove('open');trigger.classList.remove('open');
+    if(window.innerWidth>768){
+      G('s-7').scrollTo({top:preCalScroll,behavior:'smooth'});
+    }
+  }
+
+  trigger.addEventListener('click',()=>panel.classList.contains('open')?close():open());
+  trigger.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();open();}});
+
+  G('cal-prev').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()-1);render();});
+  G('cal-next').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()+1);render();});
+
+  document.addEventListener('click',ev=>{if(!G('date-wrap').contains(ev.target))close();});
+})();
+
+/* ── Preloader ── */
+setTimeout(()=>{
+  const pre=G('preloader');
+  pre.classList.add('gone');
+  setTimeout(()=>pre.style.display='none',820);
+},2800);
+
+function G(id){return document.getElementById(id);}
+chrome();updateMobileNav();
+})();
+</script>
 </body>
 </html>
