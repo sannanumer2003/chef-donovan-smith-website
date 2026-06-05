@@ -24,6 +24,154 @@
     .hero-nav .nav-link:hover { color: rgb(239,231,210); }
     .hero-nav .nav-link::after { background: rgb(239,231,210); }
     .hero-btn-outline { color: rgb(239,231,210) !important; border-color: rgba(239,231,210,0.4) !important; }
+
+    /* ── Private Services ── */
+    .svc-card > img {
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;
+      transition:transform .75s cubic-bezier(.22,1,.36,1);
+    }
+    .svc-card:hover > img { transform:scale(1.05); }
+    .svc-explore {
+      display:inline-flex;align-items:center;gap:6px;
+      margin-top:20px;padding:11px 24px;
+      background:rgb(239,231,210);color:rgb(0,46,40);
+      border:none;border-radius:100px;
+      font-family:'Satoshi',sans-serif;font-size:11px;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+      transition:opacity .2s,transform .15s;
+    }
+    .svc-explore:hover { opacity:.88;transform:translateY(-1px); }
+    /* Services modal */
+    .svc-modal {
+      position:fixed;inset:0;z-index:3000;
+      background:rgba(0,8,6,.75);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      display:flex;align-items:center;justify-content:center;
+      padding:16px;
+      opacity:0;pointer-events:none;
+      transition:opacity .3s ease;
+    }
+    .svc-modal.open { opacity:1;pointer-events:all; }
+    .svc-modal-box {
+      width:100%;max-width:580px;max-height:92vh;
+      background:rgb(0,46,40);
+      border:1px solid rgba(239,231,210,.1);
+      border-radius:20px;overflow:hidden;
+      display:flex;flex-direction:column;
+      transform:scale(.96) translateY(16px);
+      transition:transform .4s cubic-bezier(.22,1,.36,1);
+    }
+    .svc-modal.open .svc-modal-box { transform:scale(1) translateY(0); }
+    .svc-modal-photo { position:relative;height:200px;overflow:hidden;flex-shrink:0; }
+    .svc-modal-photo img { width:100%;height:100%;object-fit:cover;display:block; }
+    .svc-modal-photo-grad { position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,46,40,0) 0%,rgba(0,30,24,.65) 100%); }
+    .svc-modal-close {
+      position:absolute;top:14px;right:14px;
+      width:32px;height:32px;border-radius:50%;
+      background:rgba(0,46,40,.6);border:1px solid rgba(239,231,210,.18);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(239,231,210,.8);cursor:pointer;
+      backdrop-filter:blur(4px);
+      transition:background .2s;
+    }
+    .svc-modal-close:hover { background:rgba(0,46,40,.85); }
+    .svc-modal-body { padding:36px 36px 40px;overflow-y:auto; }
+    .svc-modal-body::-webkit-scrollbar { width:3px; }
+    .svc-modal-body::-webkit-scrollbar-thumb { background:rgba(239,231,210,.15);border-radius:2px; }
+    .svc-modal-hl {
+      display:flex;flex-direction:column;gap:0;margin-bottom:36px;
+    }
+    .svc-modal-hl li {
+      display:flex;align-items:center;gap:12px;
+      padding:11px 0;border-bottom:1px solid rgba(239,231,210,.07);
+      font-family:'Satoshi',sans-serif;font-size:14px;color:rgba(239,231,210,.75);
+    }
+    .svc-modal-hl li::before {
+      content:'';width:4px;height:4px;border-radius:50%;
+      background:rgba(239,231,210,.4);flex-shrink:0;
+    }
+    .svc-modal-cta {
+      display:block;width:100%;padding:15px;
+      background:rgb(239,231,210);color:rgb(0,46,40);
+      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;
+      text-decoration:none;text-align:center;border-radius:10px;
+      transition:opacity .2s,transform .15s;
+    }
+    .svc-modal-cta:hover { opacity:.88;transform:translateY(-1px); }
+    @media(max-width:767px){
+      .svc-grid { grid-template-columns:1fr !important; }
+      .svc-card { aspect-ratio:16/9 !important; max-height:260px !important; }
+      .svc-modal-body { padding:24px 24px 32px; }
+    }
+
+    /* ── Reel feed ── */
+    @keyframes reelScroll {
+      from { transform:translateX(0); }
+      to   { transform:translateX(-50%); }
+    }
+    .reel-track {
+      display:flex; gap:10px; width:max-content;
+      animation:reelScroll 80s linear infinite;
+    }
+    .reel-track:hover { animation-play-state:paused; }
+    .reel-card {
+      width:210px; height:375px; border-radius:14px;
+      overflow:hidden; position:relative; flex-shrink:0; cursor:pointer;
+    }
+    .reel-card img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition:transform .55s ease;
+    }
+    .reel-card:hover img { transform:scale(1.05); }
+    .reel-play {
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:42px;height:42px;border-radius:50%;
+      background:rgba(255,255,255,.18);
+      border:1.5px solid rgba(255,255,255,.4);
+      display:flex;align-items:center;justify-content:center;
+      backdrop-filter:blur(4px);
+      transition:background .2s, transform .2s;
+    }
+    .reel-card:hover .reel-play {
+      background:rgba(255,255,255,.28);
+      transform:translate(-50%,-50%) scale(1.08);
+    }
+    .reel-mask {
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 3%,black 97%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 3%,black 97%,transparent 100%);
+    }
+    /* ── 4-col private services cards ── */
+    @keyframes psvcIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    .psvc-card {
+      position:relative;overflow:hidden;border-radius:14px;
+      height:460px;cursor:pointer;
+      animation:psvcIn .75s cubic-bezier(.22,1,.36,1) both;
+    }
+    .psvc-card .pimg { position:absolute;inset:0;transition:transform .7s cubic-bezier(.22,1,.36,1); }
+    .psvc-card .pimg img { width:100%;height:100%;object-fit:cover; }
+    .psvc-card:hover .pimg { transform:scale(1.05); }
+    .psvc-card .pov { position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.95) 0%,rgba(0,46,40,.3) 55%,transparent 100%);transition:opacity .3s; }
+    .psvc-card:hover .pov { opacity:.88; }
+    .psvc-card .pc { position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:4; }
+    .psvc-card .pgrain { position:absolute;inset:0;background-image:var(--noise);background-repeat:repeat;background-size:256px 256px;opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:3; }
+    .psvc-num { display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.35);margin-bottom:10px; }
+    .psvc-name { font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210); }
+    .psvc-tag { font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.58);max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease; }
+    .psvc-card:hover .psvc-tag { max-height:50px;opacity:1;margin-top:8px; }
+    .psvc-btn { display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:9px 20px;background:rgba(239,231,210,.1);border:1px solid rgba(239,231,210,.22);border-radius:100px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgb(239,231,210);cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,background .2s; }
+    .psvc-card:hover .psvc-btn { opacity:1;transform:translateY(0); }
+    .psvc-btn:hover { background:rgba(239,231,210,.2); }
+    @media(max-width:640px){ .psvc-card { height:300px; } }
+    @media(max-width:768px){
+      .psvc-tag { max-height:50px;opacity:.6;margin-top:7px; }
+      .psvc-btn { opacity:1;transform:translateY(0); }
+    }
+    @media(max-width:640px){
+      .reel-card { width:160px; height:285px; }
+    }
   </style>
 </head>
 <body>
@@ -174,45 +322,27 @@
     </div>
   </section>
 
-  <!-- ── PRIVATE SERVICES ── -->
-  <section class="mt-12 sm:mt-16 lg:mt-20">
-    <div class="grain" style="background:var(--bg-primary);border-radius:16px;overflow:hidden">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between" style="padding:clamp(40px,5vw,64px) clamp(28px,4vw,52px) 0;gap:20px;margin-bottom:44px">
-        <div>
-          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2.5px;color:rgba(239,231,210,.4);margin-bottom:18px">Private Services</span>
-          <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Crafted For Every Scale</h2>
-        </div>
-        <a href="reservation.html" class="fade-up btn btn-dark" style="flex-shrink:0;align-self:flex-end">Plan Your Experience</a>
+  <!-- Services Modal -->
+  <div id="svc-modal" class="svc-modal" aria-hidden="true">
+    <div class="svc-modal-box">
+      <div class="svc-modal-photo">
+        <img id="svc-modal-img" src="" alt="">
+        <div class="svc-modal-photo-grad"></div>
+        <button id="svc-modal-close" class="svc-modal-close" aria-label="Close">
+          <svg width="13" height="13" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+        </button>
       </div>
-      <div class="stagger grid grid-cols-1 sm:grid-cols-3" style="border-top:1px solid rgba(239,231,210,.1)">
-
-        <div class="fade-up relative overflow-hidden border-b sm:border-b-0 sm:border-r" style="border-color:rgba(239,231,210,.1);padding:clamp(32px,4vw,52px) clamp(24px,3vw,40px)">
-          <span aria-hidden="true" style="font-family:var(--font-forum);font-size:clamp(88px,12vw,128px);line-height:1;color:rgba(239,231,210,.04);position:absolute;top:8px;right:16px;pointer-events:none;user-select:none;letter-spacing:-.02em">I</span>
-          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.38);margin-bottom:20px">2 — 10 Guests</span>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.2vw,30px);line-height:1.05;letter-spacing:.03em;color:rgb(239,231,210);margin-bottom:16px">Intimate Dining</h3>
-          <div style="width:32px;height:1px;background:rgba(239,231,210,.2);margin-bottom:20px"></div>
-          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:15px;line-height:1.75;color:rgba(239,231,210,.5)">A private dining experience crafted entirely around you — at your villa, yacht, or chosen location across the Caribbean.</p>
-        </div>
-
-        <div class="fade-up relative overflow-hidden border-b sm:border-b-0 sm:border-r" style="border-color:rgba(239,231,210,.1);padding:clamp(32px,4vw,52px) clamp(24px,3vw,40px)">
-          <span aria-hidden="true" style="font-family:var(--font-forum);font-size:clamp(88px,12vw,128px);line-height:1;color:rgba(239,231,210,.04);position:absolute;top:8px;right:16px;pointer-events:none;user-select:none;letter-spacing:-.02em">II</span>
-          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.38);margin-bottom:20px">10 — 30 Guests</span>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.2vw,30px);line-height:1.05;letter-spacing:.03em;color:rgb(239,231,210);margin-bottom:16px">Private Gathering</h3>
-          <div style="width:32px;height:1px;background:rgba(239,231,210,.2);margin-bottom:20px"></div>
-          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:15px;line-height:1.75;color:rgba(239,231,210,.5)">Elevated group dining for celebrations, family occasions and intimate events that deserve something truly extraordinary.</p>
-        </div>
-
-        <div class="fade-up relative overflow-hidden" style="padding:clamp(32px,4vw,52px) clamp(24px,3vw,40px)">
-          <span aria-hidden="true" style="font-family:var(--font-forum);font-size:clamp(88px,12vw,128px);line-height:1;color:rgba(239,231,210,.04);position:absolute;top:8px;right:16px;pointer-events:none;user-select:none;letter-spacing:-.02em">III</span>
-          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.38);margin-bottom:20px">30 — 50+ Guests</span>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.2vw,30px);line-height:1.05;letter-spacing:.03em;color:rgb(239,231,210);margin-bottom:16px">Grand Event</h3>
-          <div style="width:32px;height:1px;background:rgba(239,231,210,.2);margin-bottom:20px"></div>
-          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:15px;line-height:1.75;color:rgba(239,231,210,.5)">Full-scale private event catering — flawless logistics, exceptional cuisine — for those who expect nothing less than world-class.</p>
-        </div>
-
+      <div class="svc-modal-body">
+        <span id="svc-modal-eyebrow" style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:14px"></span>
+        <h2 id="svc-modal-name" style="font-family:var(--font-forum);font-size:clamp(26px,3.5vw,36px);line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210);margin-bottom:20px"></h2>
+        <div style="height:1px;background:rgba(239,231,210,.1);margin-bottom:20px"></div>
+        <p id="svc-modal-desc" style="font-family:var(--font-satoshi);font-size:15px;line-height:1.78;color:rgba(239,231,210,.6);margin-bottom:28px"></p>
+        <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:14px">What's included</span>
+        <ul class="svc-modal-hl" id="svc-modal-hl"></ul>
+        <a href="reservation.html" class="svc-modal-cta">Book This Experience &rarr;</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ── CURATED EXPERIENCES ── -->
   <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
@@ -271,6 +401,111 @@
     </div>
   </section>
 
+  <!-- ── PRIVATE SERVICES GRID ── -->
+  <section class="px-5 pb-4 sm:px-8 lg:px-20">
+    <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
+      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Private Services</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px">
+
+      <div class="psvc-card fade-up" data-svc="0" style="animation-delay:.05s">
+        <div class="pimg"><img src="images/dinner-table.jpg" alt="Intimate Dining" loading="lazy"></div>
+        <div class="pgrain"></div>
+        <div class="pov"></div>
+        <div class="pc">
+          <span class="psvc-num">2 — 10 Guests</span>
+          <h3 class="psvc-name">Intimate Dining</h3>
+          <p class="psvc-tag">Your villa. Your table. Entirely yours.</p>
+          <button class="psvc-btn" data-svc="0">Explore
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="psvc-card fade-up" data-svc="1" style="animation-delay:.13s">
+        <div class="pimg"><img src="images/villa-gathering.jpg" alt="Private Gathering" loading="lazy"></div>
+        <div class="pgrain"></div>
+        <div class="pov"></div>
+        <div class="pc">
+          <span class="psvc-num">10 — 30 Guests</span>
+          <h3 class="psvc-name">Private Gathering</h3>
+          <p class="psvc-tag">Celebrations and milestone occasions.</p>
+          <button class="psvc-btn" data-svc="1">Explore
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="psvc-card fade-up" data-svc="2" style="animation-delay:.21s">
+        <div class="pimg"><img src="images/anniversary-dinner.jpg" alt="Private Event" loading="lazy"></div>
+        <div class="pgrain"></div>
+        <div class="pov"></div>
+        <div class="pc">
+          <span class="psvc-num">30 — 50 Guests</span>
+          <h3 class="psvc-name">Private Event</h3>
+          <p class="psvc-tag">Elevated event dining, flawlessly executed.</p>
+          <button class="psvc-btn" data-svc="2">Explore
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="psvc-card fade-up" data-svc="3" style="animation-delay:.29s">
+        <div class="pimg"><img src="images/grand-event.jpg" alt="Grand Celebration" loading="lazy"></div>
+        <div class="pgrain"></div>
+        <div class="pov"></div>
+        <div class="pc">
+          <span class="psvc-num">50+ Guests</span>
+          <h3 class="psvc-name">Grand Celebration</h3>
+          <p class="psvc-tag">World-class execution at any scale.</p>
+          <button class="psvc-btn" data-svc="3">Explore
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    const SVCS=[
+      {img:'images/dinner-table.jpg',guests:'2 — 10 Guests',name:'Intimate Dining',desc:'The most personal experience we offer. Chef Donovan and his team arrive at your villa, yacht, or chosen location and craft a complete dining experience built entirely around you — from the first amuse-bouche to the final dessert.',hl:['Fully customised menu around your preferences','Served at your villa, yacht or private venue','Chef and dedicated team on-site','Dietary and allergy accommodations','Full setup, service and breakdown included']},
+      {img:'images/villa-gathering.jpg',guests:'10 — 30 Guests',name:'Private Gathering',desc:'For those moments that deserve a truly exceptional table. Private gatherings with Chef Donovan bring restaurant-quality precision and warmth to family celebrations, milestone occasions, and intimate corporate events across the Caribbean.',hl:['Curated group menu — family-style or plated','Celebrations, milestones and corporate dinners','Full staffing and event logistics','Bar and cocktail service available','Customised to your theme and vision']},
+      {img:'images/anniversary-dinner.jpg',guests:'30 — 50 Guests',name:'Private Event',desc:'Elevated event dining with the full weight of Chef Donovan\'s team behind it. Impeccable service, seasonal menus, and seamless logistics — for the occasions that deserve nothing less.',hl:['Plated or stations service format','Themed menu and décor coordination','Dedicated event staffing','Premium bar and beverage curation','Full event logistics management']},
+      {img:'images/grand-event.jpg',guests:'50+ Guests',name:'Grand Celebration',desc:'Full-scale private event catering for those who demand world-class execution. Chef Donovan\'s team manages every aspect — from logistics and setup to live cooking stations and premium service — at any scale.',hl:['Scalable to 200+ guests','Multiple live cuisine stations','Complete event catering management','Premium bar and beverage service','Full staffing, setup and breakdown']}
+    ];
+    const modal=document.getElementById('svc-modal');
+    const mImg=document.getElementById('svc-modal-img');
+    const mEye=document.getElementById('svc-modal-eyebrow');
+    const mName=document.getElementById('svc-modal-name');
+    const mDesc=document.getElementById('svc-modal-desc');
+    const mHl=document.getElementById('svc-modal-hl');
+    function openSvc(i){
+      const s=SVCS[i];
+      mImg.src=s.img;mImg.alt=s.name;
+      mEye.textContent=s.guests;mName.textContent=s.name;
+      mDesc.textContent=s.desc;
+      mHl.innerHTML=s.hl.map(h=>'<li>'+h+'</li>').join('');
+      modal.classList.add('open');modal.removeAttribute('aria-hidden');
+      document.body.style.overflow='hidden';
+    }
+    function closeSvc(){
+      modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }
+    document.querySelectorAll('.psvc-btn').forEach(btn=>{
+      btn.addEventListener('click',e=>{e.stopPropagation();openSvc(+btn.dataset.svc);});
+    });
+    document.querySelectorAll('.psvc-card').forEach(card=>{
+      card.addEventListener('click',()=>openSvc(+card.dataset.svc));
+    });
+    document.getElementById('svc-modal-close').addEventListener('click',closeSvc);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeSvc();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeSvc();});
+  })();
+  </script>
+
   <!-- ── REVIEW CAROUSEL ── -->
   <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
     <div id="testimonial-carousel" style="max-width:800px;margin:0 auto;text-align:center">
@@ -316,6 +551,56 @@
       </div>
     </div>
   </section>
+
+  <!-- ── REEL FEED ── -->
+  <section class="fade-up mt-4 py-14 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
+    <!-- Header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 clamp(24px,4vw,52px);margin-bottom:clamp(28px,4vw,44px)">
+      <div>
+        <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:14px">Behind the Table</span>
+        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3.5vw,42px);line-height:1.05;letter-spacing:.02em;color:var(--text)">From the Feed</h2>
+      </div>
+      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-satoshi);font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color .2s;white-space:nowrap" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        @kitchenking101
+      </a>
+    </div>
+    <!-- Scrolling strip -->
+    <div class="reel-mask" style="overflow:hidden;padding:4px 0">
+      <div class="reel-track" id="reel-track"></div>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    const reels = [
+      { img:'images/dinner-table.jpg',          caption:'An intimate table set for two' },
+      { img:'images/villa-gathering.jpg',        caption:'Villa gathering, golden hour' },
+      { img:'images/anniversary-dinner.jpg',     caption:'Anniversary dinner, Nassau' },
+      { img:'images/grand-event.jpg',            caption:'Grand event — 80 guests' },
+      { img:'images/luxury-private-dining-2.jpg',caption:'Private dining in the tropics' },
+      { img:'images/luxury-private-breakfast.jpg',caption:'Morning table, Exuma' },
+      { img:'images/luxury-private-lunch.jpg',   caption:'Afternoon lunch on the deck' },
+      { img:'images/main-hero-image-2.jpg',      caption:'Where every evening begins' },
+      { img:'images/plan-your-experience.jpg',   caption:'Your experience, crafted' },
+      { img:'images/portfolio-photo.jpg',        caption:'The craft behind every course' },
+    ];
+    const track = document.getElementById('reel-track');
+    const all = [...reels, ...reels]; // duplicate for seamless loop
+    all.forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'reel-card';
+      card.innerHTML =
+        '<img src="' + r.img + '" alt="' + r.caption + '" loading="lazy">' +
+        '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,12,10,.88) 0%,transparent 55%);z-index:1"></div>' +
+        '<div class="reel-play" style="z-index:2">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>' +
+        '</div>' +
+        '<p style="position:absolute;bottom:18px;left:18px;right:18px;font-family:var(--font-satoshi);font-size:12px;font-weight:400;line-height:1.5;color:rgba(239,231,210,.85);z-index:2">' + r.caption + '</p>';
+      track.appendChild(card);
+    });
+  })();
+  </script>
 
   <!-- ── FOOTER ── -->
   <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">

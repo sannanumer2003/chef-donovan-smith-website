@@ -106,6 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isOpen) {
           item.classList.add('open');
           body.style.maxHeight = body.scrollHeight + 'px';
+          setTimeout(() => {
+            const top = header.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          }, 60);
         }
       });
     });

@@ -12,6 +12,242 @@
   <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Experience cards ── */
+    @keyframes expCardIn {
+      from { opacity:0; transform:translateY(32px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .exp-card {
+      position:relative; overflow:hidden; border-radius:14px;
+      cursor:pointer; height:500px;
+      animation: expCardIn 0.75s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @media(max-width:640px){ .exp-card{ height:320px; } }
+
+    .exp-card-img-wrap {
+      position:absolute; inset:0;
+      transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .exp-card-img-wrap img {
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .exp-card:hover .exp-card-img-wrap { transform:scale(1.05); }
+
+    .exp-card-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,20,16,.95) 0%,rgba(0,46,40,.35) 55%,rgba(0,0,0,.06) 100%);
+      transition:opacity .3s;
+    }
+    .exp-card:hover .exp-card-overlay { opacity:.88; }
+
+    /* grain on each card */
+    .exp-card::after {
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat:repeat; background-size:256px 256px;
+      opacity:.04; mix-blend-mode:overlay; pointer-events:none; z-index:3;
+    }
+
+    .exp-card-content {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:28px; z-index:4;
+    }
+    .exp-card-num {
+      display:block;
+      font-family:'Satoshi',sans-serif; font-size:10px; font-weight:500;
+      letter-spacing:.2em; text-transform:uppercase;
+      color:rgba(239,231,210,.35); margin-bottom:10px;
+    }
+    .exp-card-name {
+      font-family:'Forum',serif;
+      font-size:clamp(18px,1.6vw,24px);
+      line-height:1.1; letter-spacing:.01em; text-transform:uppercase;
+      color:rgb(239,231,210); margin-bottom:0;
+    }
+    .exp-card-tagline {
+      font-family:'Satoshi',sans-serif; font-size:13px; font-weight:400;
+      color:rgba(239,231,210,.58); line-height:1.5;
+      margin-top:0; max-height:0; overflow:hidden; opacity:0;
+      transition:max-height .35s ease, opacity .3s ease, margin-top .3s ease;
+    }
+    .exp-card:hover .exp-card-tagline {
+      max-height:50px; opacity:1; margin-top:8px;
+    }
+    .exp-card-btn {
+      display:inline-flex; align-items:center; gap:6px;
+      margin-top:16px; padding:9px 20px;
+      background:rgba(239,231,210,.1);
+      border:1px solid rgba(239,231,210,.22); border-radius:100px;
+      font-family:'Satoshi',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:.12em; text-transform:uppercase;
+      color:rgb(239,231,210); cursor:pointer;
+      opacity:0; transform:translateY(8px);
+      transition:opacity .3s ease, transform .3s ease, background .2s;
+    }
+    .exp-card:hover .exp-card-btn { opacity:1; transform:translateY(0); }
+    .exp-card-btn:hover { background:rgba(239,231,210,.2); }
+    @media(max-width:768px){
+      .exp-card-tagline{ max-height:50px; opacity:.6; margin-top:7px; }
+      .exp-card-btn{ opacity:1; transform:translateY(0); margin-top:14px; }
+    }
+
+    /* ── Modal ── */
+    .exp-modal {
+      position:fixed; inset:0; z-index:2000;
+      background:rgba(0,8,6,.78);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      padding:16px;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .exp-modal.open { opacity:1; pointer-events:all; }
+
+    .exp-modal-box {
+      width:100%; max-width:920px; max-height:90vh;
+      background:rgb(0,46,40);
+      border:1px solid rgba(239,231,210,.1);
+      border-radius:20px; overflow:hidden;
+      display:flex; position:relative;
+      transform:scale(.96) translateY(14px);
+      transition:transform .4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .exp-modal.open .exp-modal-box { transform:scale(1) translateY(0); }
+
+    /* grain on modal */
+    .exp-modal-box::after {
+      content:''; position:absolute; inset:0; pointer-events:none; z-index:10;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat:repeat; background-size:256px 256px;
+      opacity:.04; mix-blend-mode:overlay;
+    }
+
+    .exp-modal-photo {
+      width:40%; flex-shrink:0; position:relative; overflow:hidden;
+    }
+    .exp-modal-photo img {
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .exp-modal-photo-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,30,20,.85) 0%,transparent 60%);
+    }
+    .exp-modal-photo-num {
+      position:absolute; bottom:24px; left:28px;
+      font-family:'Forum',serif; font-size:56px; line-height:1;
+      color:rgba(239,231,210,.18); pointer-events:none; user-select:none;
+    }
+
+    .exp-modal-body {
+      flex:1; overflow-y:auto; padding:48px 40px 48px;
+      border-left:1px solid rgba(239,231,210,.07);
+      display:flex; flex-direction:column;
+    }
+    /* custom scrollbar in modal */
+    .exp-modal-body::-webkit-scrollbar { width:3px; }
+    .exp-modal-body::-webkit-scrollbar-track { background:transparent; }
+    .exp-modal-body::-webkit-scrollbar-thumb { background:rgba(239,231,210,.15); border-radius:2px; }
+
+    .exp-modal-close {
+      position:absolute; top:18px; right:18px; z-index:20;
+      width:34px; height:34px;
+      background:rgba(239,231,210,.08);
+      border:1px solid rgba(239,231,210,.14); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(239,231,210,.7); cursor:pointer;
+      transition:background .2s, color .2s;
+    }
+    .exp-modal-close:hover { background:rgba(239,231,210,.16); color:rgb(239,231,210); }
+
+    .exp-modal-eyebrow {
+      display:block;
+      font-family:'Satoshi',sans-serif; font-size:10px; font-weight:500;
+      text-transform:uppercase; letter-spacing:.2em;
+      color:rgba(239,231,210,.38); margin-bottom:16px;
+    }
+    .exp-modal-title {
+      font-family:'Forum',serif;
+      font-size:clamp(26px,3.2vw,38px);
+      line-height:1.05; letter-spacing:.01em; text-transform:uppercase;
+      color:rgb(239,231,210); margin-bottom:24px;
+    }
+    .exp-modal-rule {
+      height:1px; background:rgba(239,231,210,.1); margin-bottom:24px;
+    }
+    .exp-modal-desc {
+      font-family:'Satoshi',sans-serif; font-size:15px; font-weight:400;
+      line-height:1.78; color:rgba(239,231,210,.62); margin-bottom:32px;
+      flex-shrink:0;
+    }
+    .exp-modal-features-lbl {
+      display:block;
+      font-family:'Satoshi',sans-serif; font-size:10px; font-weight:500;
+      text-transform:uppercase; letter-spacing:.2em;
+      color:rgba(239,231,210,.38); margin-bottom:14px;
+    }
+    .exp-modal-features {
+      list-style:none; margin-bottom:40px;
+    }
+    .exp-modal-features li {
+      display:flex; align-items:center; gap:14px;
+      padding:12px 0;
+      border-bottom:1px solid rgba(239,231,210,.07);
+      font-family:'Satoshi',sans-serif; font-size:14px; font-weight:400;
+      color:rgba(239,231,210,.78);
+    }
+    .exp-modal-features li::before {
+      content:''; width:4px; height:4px; border-radius:50%;
+      background:rgba(239,231,210,.4); flex-shrink:0;
+    }
+    .exp-modal-cta {
+      display:block; margin-top:auto;
+      padding:15px 28px;
+      background:rgb(239,231,210); color:rgb(0,46,40);
+      font-family:'Satoshi',sans-serif; font-size:12px; font-weight:700;
+      letter-spacing:.1em; text-transform:uppercase;
+      text-decoration:none; text-align:center; border-radius:10px;
+      transition:opacity .2s, transform .15s;
+      flex-shrink:0;
+    }
+    .exp-modal-cta:hover { opacity:.88; transform:translateY(-1px); }
+
+    @media(max-width:768px){
+      .exp-modal-box { flex-direction:column; max-height:92vh; border-radius:16px; }
+      .exp-modal-photo { width:100%; height:220px; flex-shrink:0; }
+      .exp-modal-body { padding:28px 24px 32px; }
+      .exp-modal-cta { margin-top:32px; }
+    }
+
+    /* ── Hero typography ── */
+    .exp-hero-eyebrow {
+      display:block;
+      font-family:'Satoshi',sans-serif; font-size:11px; font-weight:500;
+      text-transform:uppercase; letter-spacing:.22em;
+      color:var(--text-muted); margin-bottom:24px;
+    }
+    .exp-hero-h1 {
+      font-family:'Forum',serif;
+      font-size:clamp(40px,5.5vw,72px);
+      line-height:.96; letter-spacing:.01em; text-transform:uppercase;
+      color:var(--text); margin-bottom:20px;
+    }
+    .exp-hero-sub {
+      font-family:'Satoshi',sans-serif; font-size:16px; font-weight:400;
+      line-height:1.7; color:var(--text-muted); max-width:480px;
+    }
+
+    /* ── Section rule ── */
+    .exp-rule {
+      display:flex; align-items:center; gap:20px;
+    }
+    .exp-rule-label {
+      font-family:'Satoshi',sans-serif; font-size:10px; font-weight:500;
+      text-transform:uppercase; letter-spacing:.18em;
+      color:var(--text-muted); white-space:nowrap;
+    }
+    .exp-rule-line { flex:1; height:1px; background:var(--border); }
+  </style>
 </head>
 <body>
 
@@ -55,99 +291,24 @@
       </div>
     </header>
 
-    <!-- Hero card -->
-    <div class="fade-up relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:500px">
-      <img src="images/experiences-photo.jpg" alt="Curated Experiences" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:70%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:1"></div>
-      <div class="absolute bottom-0 left-0" style="padding:clamp(32px,5vw,56px);z-index:2">
-        <span style="display:block;font-family:var(--font-satoshi);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.85);margin-bottom:24px">Experiences</span>
-        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(48px,6vw,96px);line-height:.95;letter-spacing:.01em;color:rgb(239,231,210);margin-bottom:20px">Curated<br>Experiences</h1>
-        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:520px">Every occasion deserves its own chapter. Choose the experience that speaks to your moment — each one crafted entirely around you.</p>
+    <!-- Hero -->
+    <div class="fade-up px-6 sm:px-10 py-12 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+      <span class="exp-hero-eyebrow">Chef Donovan Smith</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:end">
+        <h1 class="exp-hero-h1">Private Chef<br>Experiences</h1>
+        <p class="exp-hero-sub">Eight bespoke culinary experiences — from open-fire feasts to intimate chef's table tastings. Every gathering crafted entirely around you, at your villa, yacht, or chosen venue.</p>
       </div>
     </div>
 
-    <!-- 3 category cards -->
-    <div class="stagger grid grid-cols-1 lg:grid-cols-3" style="gap:16px">
-
-      <!-- Dining -->
-      <a href="experiences-dining.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
-        <img src="images/luxury-private-dining-2.jpg" alt="Luxury Private Dining" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">7 Signature Menus</p>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private<br>Dining</h3>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-
-      <!-- Breakfast -->
-      <a href="experiences-breakfast.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
-        <img src="images/luxury-private-breakfast.jpg" alt="Luxury Private Breakfast" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">5 Morning Menus</p>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private<br>Breakfast</h3>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-
-      <!-- Lunch -->
-      <a href="experiences-lunch.html" class="fade-up portfolio-card grain relative overflow-hidden" style="height:480px;border-radius:16px;border:1px solid var(--border);text-decoration:none;display:block">
-        <img src="images/luxury-private-lunch.jpg" alt="Luxury Private Lunch" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-        <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-        <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(239,231,210,.65);margin-bottom:10px">5 Afternoon Menus</p>
-          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private<br>Lunch</h3>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-
+    <!-- Grid label -->
+    <div class="exp-rule px-1">
+      <span class="exp-rule-label">08 Bespoke Experiences</span>
+      <div class="exp-rule-line"></div>
+      <span class="exp-rule-label">Bahamas &amp; Caribbean</span>
     </div>
 
-    <!-- Detail text -->
-    <div class="fade-up px-6 py-12 sm:px-10 sm:py-16 lg:px-20 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
-      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:48px;align-items:center">
-        <div>
-          <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:24px">How It Works</span>
-          <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,3.5vw,48px);line-height:1.05;letter-spacing:.02em;color:var(--text)">Every Detail,<br>Entirely Yours</h2>
-        </div>
-        <div class="stagger flex flex-col" style="gap:24px">
-          <div class="fade-up flex gap-5 items-start">
-            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">01</span>
-            <div>
-              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">Choose Your Experience</p>
-              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">Select from Dining, Breakfast, or Lunch — then explore each curated menu in full detail.</p>
-            </div>
-          </div>
-          <div class="fade-up flex gap-5 items-start">
-            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">02</span>
-            <div>
-              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">Send Your Inquiry</p>
-              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">Share your vision, date, guest count, and location. Chef Donovan's team responds within 24 hours.</p>
-            </div>
-          </div>
-          <div class="fade-up flex gap-5 items-start">
-            <span style="font-family:var(--font-forum);font-size:32px;line-height:1;color:rgba(0,46,40,.15);flex-shrink:0">03</span>
-            <div>
-              <p style="font-family:var(--font-satoshi);font-weight:500;font-size:15px;color:var(--text);margin-bottom:6px">We Come to You</p>
-              <p style="font-family:var(--font-satoshi);font-weight:400;font-size:14px;line-height:1.6;color:var(--text-muted)">At your villa, yacht, or chosen venue across the Bahamas and Caribbean — no detail overlooked.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Experience grid -->
+    <div id="exp-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px"></div>
 
     <!-- CTA -->
     <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
@@ -175,6 +336,155 @@
 
   </div>
 </div>
+
+<!-- Experience Modal -->
+<div id="exp-modal" class="exp-modal" aria-hidden="true" role="dialog">
+  <div class="exp-modal-box">
+
+    <button class="exp-modal-close" id="exp-modal-close" aria-label="Close experience">
+      <svg width="14" height="14" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+
+    <div class="exp-modal-photo">
+      <img id="exp-modal-img" src="" alt="">
+      <div class="exp-modal-photo-overlay"></div>
+      <span class="exp-modal-photo-num" id="exp-modal-num"></span>
+    </div>
+
+    <div class="exp-modal-body">
+      <span class="exp-modal-eyebrow">Private Chef Experience</span>
+      <h2 class="exp-modal-title" id="exp-modal-title"></h2>
+      <div class="exp-modal-rule"></div>
+      <p class="exp-modal-desc" id="exp-modal-desc"></p>
+      <span class="exp-modal-features-lbl">What's included</span>
+      <ul class="exp-modal-features" id="exp-modal-features"></ul>
+      <a href="reservation.html" class="exp-modal-cta">Plan This Experience &rarr;</a>
+    </div>
+
+  </div>
+</div>
+
 <script src="js/main.js"></script>
+<script>
+(function(){
+  const EXPS = [
+    {
+      num:'01', name:'Fire &amp; Feast Experience',
+      tagline:'Live fire. Smoke. Embers.',
+      desc:'An open-fire dining experience where every course is cooked over flame, smoke, and embers. Perfect for beachfront villas, garden dinners, and luxury outdoor events.',
+      features:['Live fire cooking','Wood-smoked meats &amp; seafood','Rustic luxury presentation','Interactive chef storytelling'],
+      img:'images/Fire &amp; Feast Experience.jpg'
+    },
+    {
+      num:'02', name:'Caribbean Omakase',
+      tagline:'8–12 courses. Chef\'s choice. Island soul.',
+      desc:'A multi-course tasting journey inspired by Caribbean flavors, served chef\'s-choice style with elegant presentation and seasonal island ingredients.',
+      features:['8–12 curated bites and courses','Chef-guided experience','Seasonal island ingredients','Luxury plated dining'],
+      img:'images/Caribbean Omakase.jpg'
+    },
+    {
+      num:'03', name:'Italian Villa Night',
+      tagline:'Amalfi Coast meets Tuscan countryside.',
+      desc:'A warm and elevated Italian-inspired dining experience inspired by the Amalfi Coast and Tuscan countryside.',
+      features:['Handmade pasta','Tableside finishing','Wine pairing add-on','Family-style or plated service'],
+      img:'images/Italian Villa Night.jpg'
+    },
+    {
+      num:'04', name:'Mexican Smoke &amp; Agave',
+      tagline:'Bold flavors. Smoke. Tequila pairings.',
+      desc:'A bold and vibrant culinary experience featuring refined Mexican flavors, smoke, spice, and tequila pairings.',
+      features:['Live taco &amp; ceviche stations','Charcoal grilled dishes','Agave cocktail pairings','Late-night street food bites'],
+      img:'images/Mexican Smoke &amp; Agave.jpg'
+    },
+    {
+      num:'05', name:'Chef\'s Table Tasting Menu',
+      tagline:'Fine dining. Your villa. Your table.',
+      desc:'A luxury fine-dining experience with a curated multi-course tasting menu served restaurant-style in your villa or private residence.',
+      features:['5–7 course tasting menu','Premium wine pairings','Personalized menu design','Interactive plating moments'],
+      img:'images/Chef’s Table Tasting Menu.jpg'
+    },
+    {
+      num:'06', name:'Cook With the Chef',
+      tagline:'Hands-on. Intimate. Unforgettable.',
+      desc:'A hands-on culinary experience where guests cook alongside the chef and enjoy the meal together.',
+      features:['Interactive cooking session','Cocktail pairing available','Recipe cards included','Perfect for groups and couples'],
+      img:'images/Cook With the Chef.jpg'
+    },
+    {
+      num:'07', name:'Seafood &amp; Sunset Experience',
+      tagline:'Fresh catch. Poolside. Champagne.',
+      desc:'A coastal-inspired dinner featuring fresh seafood, tropical flavors, and sunset service.',
+      features:['Fresh local catch','Beachfront or poolside setup','Raw bar add-ons','Champagne &amp; oyster upgrade'],
+      img:'images/Seafood and sunset.jpg'
+    },
+    {
+      num:'08', name:'Rum &amp; Spice Experience',
+      tagline:'Aged rum. Island spice. Flame-kissed.',
+      desc:'An immersive Caribbean dining experience celebrating aged rum, bold island spices, and flame-kissed cuisine.',
+      features:['Curated rum pairings','Caribbean-inspired tasting menu','Live cocktail crafting','Optional cigar pairing add-on'],
+      img:'images/rum and spice experience.jpg'
+    }
+  ];
+
+  // Build grid
+  const grid = document.getElementById('exp-grid');
+  EXPS.forEach((exp, i) => {
+    const card = document.createElement('div');
+    card.className = 'exp-card';
+    card.style.animationDelay = (0.05 + (i % 4) * 0.08) + 's';
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-label','View ' + exp.name.replace(/&amp;/g,'&'));
+    card.innerHTML =
+      '<div class="exp-card-img-wrap"><img src="' + exp.img + '" alt="' + exp.name + '" loading="lazy"></div>' +
+      '<div class="exp-card-overlay"></div>' +
+      '<div class="exp-card-content">' +
+        '<span class="exp-card-num">' + exp.num + '</span>' +
+        '<h3 class="exp-card-name">' + exp.name + '</h3>' +
+        '<p class="exp-card-tagline">' + exp.tagline + '</p>' +
+        '<button class="exp-card-btn" tabindex="-1">Explore' +
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
+        '</button>' +
+      '</div>';
+    card.addEventListener('click', () => openModal(i));
+    card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(i); }});
+    grid.appendChild(card);
+  });
+
+  // Modal refs
+  const modal    = document.getElementById('exp-modal');
+  const mImg     = document.getElementById('exp-modal-img');
+  const mNum     = document.getElementById('exp-modal-num');
+  const mTitle   = document.getElementById('exp-modal-title');
+  const mDesc    = document.getElementById('exp-modal-desc');
+  const mFeats   = document.getElementById('exp-modal-features');
+
+  // Decode HTML entities for use in JS contexts (src attributes, alt text)
+  function dec(s) { const t=document.createElement('textarea'); t.innerHTML=s; return t.value; }
+
+  function openModal(i) {
+    const exp = EXPS[i];
+    mImg.src   = dec(exp.img);
+    mImg.alt   = dec(exp.name);
+    mNum.textContent   = exp.num;
+    mTitle.innerHTML   = exp.name;
+    mDesc.textContent  = exp.desc;
+    mFeats.innerHTML   = exp.features.map(f => '<li>' + f + '</li>').join('');
+    modal.classList.add('open');
+    modal.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('exp-modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+})();
+</script>
 </body>
 </html>
