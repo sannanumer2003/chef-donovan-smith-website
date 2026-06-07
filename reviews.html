@@ -12,6 +12,49 @@
   <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* â”€â”€ Video Testimonials Strip â”€â”€ */
+    .vtl-wrap{overflow-x:scroll;scrollbar-width:none;cursor:grab;user-select:none;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%)}
+    .vtl-wrap::-webkit-scrollbar{display:none}
+    .vtl-wrap.grabbing{cursor:grabbing}
+    .vtl-strip{display:flex;gap:14px;width:max-content;padding:4px 0}
+    .vtl-card{position:relative;width:220px;height:392px;border-radius:16px;overflow:hidden;flex-shrink:0;cursor:pointer}
+    .vtl-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+    .vtl-card:hover .vtl-img{transform:scale(1.05)}
+    .vtl-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,8,6,.96) 0%,rgba(0,8,6,.28) 52%,transparent 100%)}
+    .vtl-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:rgba(239,231,210,.12);border:1.5px solid rgba(239,231,210,.35);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+    .vtl-card:hover .vtl-play{background:rgba(239,231,210,.26);transform:translate(-50%,-50%) scale(1.09)}
+    .vtl-body{position:absolute;bottom:0;left:0;right:0;padding:18px 18px 22px}
+    .vtl-stars{display:flex;gap:2px;margin-bottom:8px}
+    .vtl-star{color:rgb(245,190,75);font-size:12px}
+    .vtl-quote{font-family:var(--font-satoshi);font-size:12.5px;font-weight:400;color:rgba(239,231,210,.82);line-height:1.55;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .vtl-name{font-family:var(--font-satoshi);font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(239,231,210,.44)}
+    /* â”€â”€ Video Player Overlay â”€â”€ */
+    .vpov{position:fixed;inset:0;z-index:9900;background:rgba(0,0,0,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 20px 20px;gap:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .vpov.open{opacity:1;pointer-events:all}
+    .vpov-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.14);color:rgba(239,231,210,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0}
+    .vpov-close:hover{background:rgba(239,231,210,.16)}
+    .vpov-inner{position:relative;height:min(460px,calc(100dvh - 280px));aspect-ratio:9/16;border-radius:18px;overflow:hidden;flex-shrink:0}
+    .vpov-thumb{width:100%;height:100%;object-fit:cover;display:block}
+    .vpov-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.12) 55%,transparent 100%)}
+    .vpov-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(239,231,210,.13);border:2px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .15s;padding:0}
+    .vpov-center:hover{background:rgba(239,231,210,.26);transform:translate(-50%,-50%) scale(1.06)}
+    .vpov-controls{position:absolute;bottom:0;left:0;right:0;padding:0 16px 18px}
+    .vpov-prog-track{width:100%;height:3px;background:rgba(239,231,210,.18);border-radius:99px;cursor:pointer;overflow:hidden;margin-bottom:10px}
+    .vpov-prog-fill{height:100%;background:rgba(239,231,210,.85);border-radius:99px;width:0%}
+    .vpov-meta{display:flex;align-items:center;justify-content:space-between}
+    .vpov-time{font-size:10.5px;color:rgba(239,231,210,.45);font-family:var(--font-satoshi);letter-spacing:.04em}
+    .vpov-icons{display:flex;gap:14px;align-items:center}
+    .vpov-icons svg{width:15px;height:15px;fill:none;stroke:rgba(239,231,210,.45);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:stroke .2s}
+    .vpov-icons svg:hover{stroke:rgba(239,231,210,.88)}
+    .vpov-info{text-align:center;max-width:280px;flex-shrink:0}
+    .vpov-info-stars{display:flex;gap:2px;justify-content:center;margin-bottom:7px}
+    .vpov-info-star{color:rgb(245,190,75);font-size:13px}
+    .vpov-info-quote{font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.65);line-height:1.6;margin-bottom:8px}
+    .vpov-info-name{font-family:var(--font-satoshi);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.35)}
+  </style>
 </head>
 <body>
 
@@ -26,7 +69,7 @@
     <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
     <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
     <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
-    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Portfolio</a>
+    <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Gallery</a>
     <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
@@ -45,7 +88,7 @@
         <a href="menu.html"        class="nav-link">Menu</a>
         <a href="about.html"       class="nav-link">About</a>
         <a href="experiences.html" class="nav-link">Experiences</a>
-        <a href="portfolio.html"   class="nav-link">Portfolio</a>
+        <a href="gallery.html"   class="nav-link">Gallery</a>
         <a href="reviews.html"     class="nav-link">Reviews</a>
       </nav>
       <div class="flex items-center gap-4">
@@ -56,15 +99,19 @@
       </div>
     </header>
 
-    <!-- Page header card (with background image) -->
-    <div class="fade-up relative overflow-hidden" style="border:1px solid var(--border);border-radius:16px;min-height:480px">
-      <img src="images/reviews.jpg" alt="Reviews" class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:1"></div>
-      <div class="absolute bottom-0 left-0" style="padding:clamp(32px,5vw,56px);z-index:2">
-        <span style="display:block;font-family:var(--font-satoshi);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:rgba(239,231,210,.85);margin-bottom:24px">Reviews</span>
-        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(48px,6vw,96px);line-height:.95;letter-spacing:.01em;color:rgb(239,231,210);margin-bottom:20px">What Guests<br>Are Saying</h1>
-        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:560px">Every experience Chef Donovan creates leaves a lasting impression. Here is what guests have shared about their time with him.</p>
+    <!-- Page header card -->
+    <div class="fade-up px-6 sm:px-10 py-12 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+      <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);margin-bottom:24px">Chef Donovan Smith</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:end">
+        <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,5.5vw,72px);line-height:.96;letter-spacing:.01em;color:var(--text)">What Guests<br>Are Saying</h1>
+        <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.7;color:var(--text-muted);max-width:480px">Every experience Chef Donovan creates leaves a lasting impression. Here is what guests have shared about their time with him.</p>
       </div>
+    </div>
+
+    <!-- Guest Reviews separator -->
+    <div class="fade-up" style="display:flex;align-items:center;gap:20px">
+      <span style="font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);white-space:nowrap">Guest Reviews</span>
+      <div style="flex:1;height:1px;background:var(--border)"></div>
     </div>
 
     <!-- Reviews grid -->
@@ -144,6 +191,17 @@
 
     </div>
 
+    <!-- Video Reviews -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="fade-up" style="display:flex;align-items:center;gap:20px">
+        <span style="font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);white-space:nowrap">Video Reviews</span>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+      </div>
+      <div class="vtl-wrap" id="vtl-wrap">
+        <div class="vtl-strip" id="vtl-strip"></div>
+      </div>
+    </div>
+
     <!-- CTA section -->
     <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Your Experience<br>Awaits</h2>
@@ -162,14 +220,179 @@
         <a href="about.html"       class="footer-link">About</a>
         <a href="menu.html"        class="footer-link">Menu</a>
         <a href="experiences.html" class="footer-link">Experiences</a>
-        <a href="portfolio.html"   class="footer-link">Portfolio</a>
+        <a href="gallery.html"   class="footer-link">Gallery</a>
         <a href="reviews.html"     class="footer-link">Reviews</a>
       </nav>
-      <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+      <p class="footer-link" style="opacity:.6">&copy; 2026 chefdonsmith.com</p>
     </footer>
 
   </div>
 </div>
+<!-- Video Player Overlay -->
+<div class="vpov" id="vpov">
+  <button class="vpov-close" id="vpov-close" type="button" aria-label="Close video">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="vpov-inner">
+    <img class="vpov-thumb" id="vpov-thumb" src="" alt="Video testimonial" draggable="false">
+    <div class="vpov-shade"></div>
+    <button class="vpov-center" id="vpov-play-btn" type="button" aria-label="Play video">
+      <svg id="vpov-icon-play" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="24" height="24" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg id="vpov-icon-pause" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="22" height="22" style="display:none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+    </button>
+    <div class="vpov-controls">
+      <div class="vpov-prog-track" id="vpov-prog-track">
+        <div class="vpov-prog-fill" id="vpov-prog-fill"></div>
+      </div>
+      <div class="vpov-meta">
+        <span class="vpov-time" id="vpov-time">0:00 / 2:47</span>
+        <div class="vpov-icons">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vpov-info">
+    <div class="vpov-info-stars">
+      <span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span>
+    </div>
+    <p class="vpov-info-quote" id="vpov-info-quote"></p>
+    <p class="vpov-info-name" id="vpov-info-name"></p>
+  </div>
+</div>
+
 <script src="js/main.js"></script>
+<script>
+(function(){
+  var VT=[
+    {img:'images/anniversary-dinner.jpg',name:'M. & J. Harrison',loc:'Nassau, Bahamas',quote:'Chef Donovan transformed our anniversary into something we will never stop talking about.'},
+    {img:'images/luxury-private-dining-2.jpg',name:'The Williams Family',loc:'New York, USA',quote:"Private dinner was the highlight of our entire trip. His Caribbean fusion is unlike anything we've experienced."},
+    {img:'images/grand-event.jpg',name:'R. Clarke',loc:'Paradise Island, Bahamas',quote:'40 guests, flawless execution. The team is still talking about it months later.'},
+    {img:'images/dinner-table.jpg',name:'S. Fontaine',loc:'Exuma, Bahamas',quote:'He created a completely custom menu around my preferences. I have never felt so taken care of.'},
+    {img:'images/villa-gathering.jpg',name:'T. & A. Morrison',loc:'Toronto, Canada',quote:'Donovan genuinely cares about creating something meaningful for you. Extraordinary on every level.'},
+    {img:'images/luxury-private-dining-experiences.jpg',name:'D. & L. Pemberton',loc:'London, UK',quote:"We've experienced fine dining all over the world. Chef Donovan's private dinner was in a completely different league."},
+    {img:'images/luxury-private-breakfast.jpg',name:'A. & R. Thompson',loc:'Miami, USA',quote:'The morning table he set for us was beyond anything I imagined. We booked again before we left.'},
+    {img:'images/luxury-private-lunch.jpg',name:'The Calloway Family',loc:'Chicago, USA',quote:'Exceptional afternoon dining. Every dish told a story and every bite was worth savoring.'},
+  ];
+
+  var strip=document.getElementById('vtl-strip');
+  var wrap=document.getElementById('vtl-wrap');
+  var overlay=document.getElementById('vpov');
+
+  /* Build cards — duplicate for seamless infinite loop */
+  VT.concat(VT).forEach(function(t){
+    var card=document.createElement('div');
+    card.className='vtl-card';
+    card.innerHTML=
+      '<img class="vtl-img" src="'+t.img+'" alt="'+t.name+'" loading="lazy" draggable="false">'+
+      '<div class="vtl-ov"></div>'+
+      '<div class="vtl-play">'+
+        '<svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="15" height="15"><polygon points="5,3 19,12 5,21"/></svg>'+
+      '</div>'+
+      '<div class="vtl-body">'+
+        '<div class="vtl-stars"><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span></div>'+
+        '<p class="vtl-quote">'+t.quote+'</p>'+
+        '<p class="vtl-name">'+t.name+' — '+t.loc+'</p>'+
+      '</div>';
+    card.addEventListener('click',function(){ openVP(t); });
+    strip.appendChild(card);
+  });
+
+  /* Auto-scroll with rAF */
+  var isDragging=false, pausedUntil=0;
+  function tick(){
+    if(!isDragging && Date.now()>pausedUntil){
+      wrap.scrollLeft+=0.7;
+      if(wrap.scrollLeft>=strip.scrollWidth/2) wrap.scrollLeft=0;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* Mouse drag */
+  var startX=0, scrollStart=0;
+  wrap.addEventListener('mousedown',function(e){
+    isDragging=true; startX=e.clientX; scrollStart=wrap.scrollLeft;
+    wrap.classList.add('grabbing'); e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!isDragging) return;
+    wrap.scrollLeft=scrollStart-(e.clientX-startX);
+  });
+  window.addEventListener('mouseup',function(){
+    if(!isDragging) return;
+    isDragging=false; pausedUntil=Date.now()+3000;
+    wrap.classList.remove('grabbing');
+  });
+
+  /* Touch drag */
+  var touchX=0, touchScroll=0;
+  wrap.addEventListener('touchstart',function(e){ touchX=e.touches[0].clientX; touchScroll=wrap.scrollLeft; isDragging=true; },{passive:true});
+  wrap.addEventListener('touchmove',function(e){
+    if(!isDragging) return;
+    wrap.scrollLeft=touchScroll-(e.touches[0].clientX-touchX);
+  },{passive:true});
+  wrap.addEventListener('touchend',function(){ isDragging=false; pausedUntil=Date.now()+3000; },{passive:true});
+
+  /* Video player overlay */
+  var isPlaying=false, progPct=0, progInt=null;
+
+  function openVP(t){
+    document.getElementById('vpov-thumb').src=t.img;
+    document.getElementById('vpov-info-quote').textContent=t.quote;
+    document.getElementById('vpov-info-name').textContent=t.name+' — '+t.loc;
+    resetPlayer();
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeVP(){
+    overlay.classList.remove('open');
+    document.body.style.overflow='';
+    resetPlayer();
+  }
+  function resetPlayer(){
+    isPlaying=false; progPct=0; clearInterval(progInt); progInt=null;
+    document.getElementById('vpov-prog-fill').style.width='0%';
+    document.getElementById('vpov-time').textContent='0:00 / 2:47';
+    document.getElementById('vpov-icon-play').style.display='';
+    document.getElementById('vpov-icon-pause').style.display='none';
+  }
+  function updateTime(p){
+    var e=Math.round(p/100*167);
+    document.getElementById('vpov-time').textContent=Math.floor(e/60)+':'+(e%60<10?'0':'')+e%60+' / 2:47';
+  }
+
+  document.getElementById('vpov-close').addEventListener('click',closeVP);
+  overlay.addEventListener('click',function(e){ if(e.target===overlay) closeVP(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeVP(); });
+
+  document.getElementById('vpov-play-btn').addEventListener('click',function(){
+    isPlaying=!isPlaying;
+    document.getElementById('vpov-icon-play').style.display=isPlaying?'none':'';
+    document.getElementById('vpov-icon-pause').style.display=isPlaying?'':'none';
+    if(isPlaying){
+      progInt=setInterval(function(){
+        progPct+=100/1670;
+        if(progPct>=100){ progPct=100; clearInterval(progInt); isPlaying=false;
+          document.getElementById('vpov-icon-play').style.display='';
+          document.getElementById('vpov-icon-pause').style.display='none'; }
+        document.getElementById('vpov-prog-fill').style.width=progPct+'%';
+        updateTime(progPct);
+      },100);
+    } else {
+      clearInterval(progInt); progInt=null;
+    }
+  });
+
+  document.getElementById('vpov-prog-track').addEventListener('click',function(e){
+    var rect=e.currentTarget.getBoundingClientRect();
+    progPct=Math.max(0,Math.min(100,(e.clientX-rect.left)/rect.width*100));
+    document.getElementById('vpov-prog-fill').style.width=progPct+'%';
+    updateTime(progPct);
+  });
+
+})();
+</script>
 </body>
 </html>

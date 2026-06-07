@@ -25,7 +25,7 @@
     .hero-nav .nav-link::after { background: rgb(239,231,210); }
     .hero-btn-outline { color: rgb(239,231,210) !important; border-color: rgba(239,231,210,0.4) !important; }
 
-    /* ── Private Services ── */
+    /* â”€â”€ Private Services â”€â”€ */
     .svc-card > img {
       position:absolute;inset:0;width:100%;height:100%;
       object-fit:cover;
@@ -106,7 +106,7 @@
       .svc-modal-body { padding:24px 24px 32px; }
     }
 
-    /* ── Reel feed ── */
+    /* â”€â”€ Reel feed â”€â”€ */
     @keyframes reelScroll {
       from { transform:translateX(0); }
       to   { transform:translateX(-50%); }
@@ -140,10 +140,10 @@
       transform:translate(-50%,-50%) scale(1.08);
     }
     .reel-mask {
-      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 3%,black 97%,transparent 100%);
-      mask-image:linear-gradient(to right,transparent 0%,black 3%,black 97%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
+      mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
     }
-    /* ── 4-col private services cards ── */
+    /* â”€â”€ 4-col private services cards â”€â”€ */
     @keyframes psvcIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
     .psvc-card {
       position:relative;overflow:hidden;border-radius:14px;
@@ -157,16 +157,16 @@
     .psvc-card:hover .pov { opacity:.88; }
     .psvc-card .pc { position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:4; }
     .psvc-card .pgrain { position:absolute;inset:0;background-image:var(--noise);background-repeat:repeat;background-size:256px 256px;opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:3; }
-    .psvc-num { display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.35);margin-bottom:10px; }
+    .psvc-num { display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.8);margin-bottom:10px; }
     .psvc-name { font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210); }
-    .psvc-tag { font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.58);max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease; }
+    .psvc-tag { font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.88);max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease; }
     .psvc-card:hover .psvc-tag { max-height:50px;opacity:1;margin-top:8px; }
     .psvc-btn { display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:9px 20px;background:rgba(239,231,210,.1);border:1px solid rgba(239,231,210,.22);border-radius:100px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgb(239,231,210);cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,background .2s; }
     .psvc-card:hover .psvc-btn { opacity:1;transform:translateY(0); }
     .psvc-btn:hover { background:rgba(239,231,210,.2); }
     @media(max-width:640px){ .psvc-card { height:300px; } }
     @media(max-width:768px){
-      .psvc-tag { max-height:50px;opacity:.6;margin-top:7px; }
+      .psvc-tag { max-height:50px;opacity:.88;margin-top:7px; }
       .psvc-btn { opacity:1;transform:translateY(0); }
     }
     @media(max-width:640px){
@@ -187,7 +187,7 @@
     <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Menu</a>
     <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">About</a>
     <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Experiences</a>
-    <a href="portfolio.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Portfolio</a>
+    <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Gallery</a>
     <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Reviews</a>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
@@ -197,7 +197,7 @@
 
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
 
-  <!-- ── HERO ── -->
+  <!-- â”€â”€ HERO â”€â”€ -->
   <div class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]" style="grid-template-columns:1fr minmax(360px,0.3fr)">
 
     <!-- Left: hero video panel (dark; all overlaid text pinned to cream) -->
@@ -216,7 +216,7 @@
             <a href="menu.html"        class="nav-link">Menu</a>
             <a href="about.html"       class="nav-link">About</a>
             <a href="experiences.html" class="nav-link">Experiences</a>
-            <a href="portfolio.html"   class="nav-link">Portfolio</a>
+            <a href="gallery.html"   class="nav-link">Gallery</a>
             <a href="reviews.html"     class="nav-link">Reviews</a>
           </nav>
           <div class="flex items-center gap-4" style="flex-shrink:0">
@@ -306,22 +306,6 @@
     </div>
   </div>
 
-  <!-- ── INTRO ── -->
-  <section class="flex flex-col lg:flex-row mt-4" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
-    <div class="grain relative shrink-0 w-full lg:w-1/2 overflow-hidden rounded-tl-2xl rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl" style="min-height:240px;height:60vw;max-height:600px">
-      <img src="images/chef_portrait.png" alt="Chef Donovan" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.background='rgb(0,46,40)'">
-    </div>
-    <div class="stagger flex flex-col justify-center w-full lg:w-1/2 px-6 py-10 sm:px-10 lg:px-20 lg:py-20">
-      <span class="fade-up meta-label" style="color:var(--text-muted);margin-bottom:20px;display:block">Meet the Chef</span>
-      <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text);margin-bottom:28px">Donovan Smith</h2>
-      <div class="fade-up" style="width:80px;height:1px;background:var(--border);margin-bottom:28px"></div>
-      <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.8;color:var(--text-muted);max-width:440px;margin-bottom:36px">
-        More than 11 years redefining private luxury dining across The Bahamas and beyond &mdash; from intimate beachfront dinners and private villas to grand events across the Americas. One team. One standard.
-      </p>
-      <div class="fade-up"><a href="about.html" class="btn btn-primary">His Story</a></div>
-    </div>
-  </section>
-
   <!-- Services Modal -->
   <div id="svc-modal" class="svc-modal" aria-hidden="true">
     <div class="svc-modal-box">
@@ -344,7 +328,7 @@
     </div>
   </div>
 
-  <!-- ── CURATED EXPERIENCES ── -->
+  <!-- â”€â”€ CURATED EXPERIENCES â”€â”€ -->
   <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
     <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Curated Experiences</h2>
@@ -401,7 +385,7 @@
     </div>
   </section>
 
-  <!-- ── PRIVATE SERVICES GRID ── -->
+  <!-- â”€â”€ PRIVATE SERVICES GRID â”€â”€ -->
   <section class="px-5 pb-4 sm:px-8 lg:px-20">
     <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Private Services</h2>
@@ -506,7 +490,7 @@
   })();
   </script>
 
-  <!-- ── REVIEW CAROUSEL ── -->
+  <!-- â”€â”€ REVIEW CAROUSEL â”€â”€ -->
   <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
     <div id="testimonial-carousel" style="max-width:800px;margin:0 auto;text-align:center">
       <div class="select-none" aria-hidden="true" style="font-family:var(--font-forum);font-size:120px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:52px">&ldquo;</div>
@@ -540,7 +524,7 @@
     </div>
   </section>
 
-  <!-- ── CTA (dark green section) ── -->
+  <!-- â”€â”€ CTA (dark green section) â”€â”€ -->
   <section class="mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20" style="background:var(--bg-primary);border-radius:16px">
     <div class="stagger flex flex-col items-center text-center">
       <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv);margin-bottom:24px">Your Table Awaits.</h2>
@@ -552,7 +536,7 @@
     </div>
   </section>
 
-  <!-- ── REEL FEED ── -->
+  <!-- â”€â”€ REEL FEED â”€â”€ -->
   <section class="fade-up mt-4 py-14 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
     <!-- Header -->
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 clamp(24px,4vw,52px);margin-bottom:clamp(28px,4vw,44px)">
@@ -602,7 +586,7 @@
   })();
   </script>
 
-  <!-- ── FOOTER ── -->
+  <!-- â”€â”€ FOOTER â”€â”€ -->
   <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
     <div class="flex flex-col gap-1">
       <span class="footer-brand">Chef Donovan Smith</span>
@@ -613,10 +597,10 @@
       <a href="about.html"       class="footer-link">About</a>
       <a href="menu.html"        class="footer-link">Menu</a>
       <a href="experiences.html" class="footer-link">Experiences</a>
-      <a href="portfolio.html"   class="footer-link">Portfolio</a>
+      <a href="gallery.html"   class="footer-link">Gallery</a>
       <a href="reviews.html"     class="footer-link">Reviews</a>
     </nav>
-    <p class="footer-link" style="opacity:.6">&copy; 2025 chefdonsmith.com</p>
+    <p class="footer-link" style="opacity:.6">&copy; 2026 chefdonsmith.com</p>
   </footer>
 
 </div>

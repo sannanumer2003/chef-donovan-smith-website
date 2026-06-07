@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Chef Donovan Smith</title>
+  <meta name="description" content="A curated gallery of Chef Donovan Smith's private dining experiences, events, and culinary moments across The Bahamas and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* â”€â”€ Filter Pills â”€â”€ */
+    .gal-pill {
+      display:inline-flex;align-items:center;
+      padding:9px 22px;
+      font-family:var(--font-satoshi);font-size:11px;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;
+      border-radius:100px;cursor:pointer;
+      border:1px solid var(--border);
+      background:transparent;color:var(--text);
+      transition:background .22s,color .22s,border-color .22s,transform .15s;
+    }
+    .gal-pill.active,.gal-pill:hover {
+      background:var(--bg-primary);color:var(--text-inv);border-color:var(--bg-primary);
+    }
+    .gal-pill:hover { transform:translateY(-1px); }
+    .gal-pill.active { transform:none; }
+
+    /* â”€â”€ Card â”€â”€ */
+    .gal-card {
+      position:relative;overflow:hidden;border-radius:14px;
+      cursor:pointer;aspect-ratio:3/4;
+    }
+    .gal-card-img {
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;display:block;
+      transition:transform .75s cubic-bezier(.22,1,.36,1);
+    }
+    .gal-card:hover .gal-card-img { transform:scale(1.06); }
+    .gal-card-grain {
+      position:absolute;inset:0;
+      background-image:var(--noise);background-repeat:repeat;background-size:256px 256px;
+      opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:2;
+    }
+    .gal-card-ov {
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,10,8,.97) 0%,rgba(0,20,16,.48) 52%,transparent 100%);
+      transition:opacity .3s;
+    }
+    .gal-card:hover .gal-card-ov { opacity:.85; }
+    .gal-card-num {
+      position:absolute;top:18px;left:20px;z-index:4;
+      font-family:var(--font-satoshi);font-size:10px;font-weight:700;
+      letter-spacing:.28em;text-transform:uppercase;color:rgba(239,231,210,.75);
+    }
+    .gal-card-badge {
+      position:absolute;top:16px;right:16px;z-index:4;
+      display:flex;align-items:center;gap:5px;
+      font-family:var(--font-satoshi);font-size:10px;font-weight:500;
+      letter-spacing:.08em;text-transform:uppercase;color:rgba(239,231,210,.7);
+      background:rgba(0,0,0,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      padding:5px 11px;border-radius:100px;
+      border:1px solid rgba(239,231,210,.12);
+    }
+    .gal-card-badge svg { flex-shrink:0; }
+    .gal-card-body {
+      position:absolute;bottom:0;left:0;right:0;
+      padding:26px;z-index:5;
+    }
+    .gal-card-cat {
+      display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;
+      letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.48);
+      margin-bottom:8px;
+    }
+    .gal-card-title {
+      font-family:var(--font-forum);font-size:clamp(18px,1.6vw,24px);
+      line-height:1.1;letter-spacing:.01em;text-transform:uppercase;
+      color:rgb(239,231,210);
+      transition:transform .35s cubic-bezier(.22,1,.36,1);
+    }
+    .gal-card:hover .gal-card-title { transform:translateY(-4px); }
+    .gal-card-tagline {
+      font-family:var(--font-satoshi);font-size:13px;font-weight:400;
+      color:rgba(239,231,210,.85);line-height:1.55;
+      max-height:0;overflow:hidden;opacity:0;
+      transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease;
+    }
+    .gal-card:hover .gal-card-tagline { max-height:70px;opacity:1;margin-top:8px; }
+    .gal-card-btn {
+      display:inline-flex;align-items:center;gap:6px;
+      margin-top:16px;padding:9px 20px;
+      background:rgba(239,231,210,.1);border:1px solid rgba(239,231,210,.22);
+      border-radius:100px;font-family:var(--font-satoshi);font-size:11px;
+      font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+      color:rgb(239,231,210);cursor:pointer;
+      opacity:0;transform:translateY(8px);
+      transition:opacity .3s ease,transform .3s ease,background .2s;
+    }
+    .gal-card:hover .gal-card-btn { opacity:1;transform:translateY(0); }
+    .gal-card-btn:hover { background:rgba(239,231,210,.2); }
+
+    /* Mobile: always show tagline + btn */
+    @media(max-width:768px){
+      .gal-card-tagline { max-height:70px;opacity:.85;margin-top:7px; }
+      .gal-card-btn { opacity:1;transform:translateY(0); }
+    }
+
+    /* â”€â”€ Grid responsive â”€â”€ */
+    #gal-grid { display:grid;gap:14px;grid-template-columns:repeat(3,1fr); }
+    @media(max-width:1023px){ #gal-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:640px)  { #gal-grid { grid-template-columns:1fr; gap:12px; } }
+
+    /* â”€â”€ Lightbox â”€â”€ */
+    .gal-lb {
+      position:fixed;inset:0;z-index:9000;
+      background:rgba(0,0,0,.97);
+      opacity:0;pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .gal-lb.open { opacity:1;pointer-events:all; }
+
+    /* header bar */
+    .gal-lb-header {
+      position:absolute;top:0;left:0;right:0;z-index:12;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:20px 24px;
+      background:linear-gradient(to bottom,rgba(0,0,0,.72) 0%,transparent 100%);
+    }
+    .gal-lb-meta { display:flex;align-items:center;gap:14px; }
+    .gal-lb-title {
+      font-family:var(--font-forum);font-size:17px;letter-spacing:.05em;
+      text-transform:uppercase;color:rgba(239,231,210,.9);
+    }
+    .gal-lb-counter {
+      font-family:var(--font-satoshi);font-size:11px;font-weight:500;
+      letter-spacing:.15em;color:rgba(239,231,210,.42);
+    }
+    .gal-lb-close {
+      width:40px;height:40px;border-radius:50%;flex-shrink:0;
+      background:rgba(239,231,210,.07);border:1px solid rgba(239,231,210,.14);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(239,231,210,.75);cursor:pointer;
+      transition:background .2s,color .2s;
+    }
+    .gal-lb-close:hover { background:rgba(239,231,210,.15);color:rgb(239,231,210); }
+
+    /* viewport + track */
+    .gal-lb-viewport {
+      position:absolute;inset:0;overflow:hidden;
+    }
+    .gal-lb-track {
+      display:flex;height:100%;
+      transition:transform .55s cubic-bezier(.22,1,.36,1);
+      will-change:transform;
+    }
+    .gal-lb-slide {
+      flex-shrink:0;width:100%;height:100%;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:80px 110px 56px;
+      gap:20px;
+      box-sizing:border-box;
+    }
+    .gal-lb-slide img {
+      max-width:100%;max-height:78%;
+      object-fit:contain;border-radius:10px;
+      user-select:none;-webkit-user-drag:none;pointer-events:none;
+      box-shadow:0 32px 80px rgba(0,0,0,.65);
+      flex-shrink:1;
+    }
+    .gal-lb-caption {
+      font-family:var(--font-satoshi);font-size:15px;font-weight:400;
+      color:rgba(239,231,210,.78);line-height:1.55;
+      text-align:center;max-width:540px;flex-shrink:0;
+    }
+
+    /* arrows */
+    .gal-lb-arrow {
+      position:absolute;top:50%;transform:translateY(-50%);z-index:12;
+      width:50px;height:50px;border-radius:50%;
+      background:rgba(239,231,210,.07);border:1px solid rgba(239,231,210,.13);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(239,231,210,.8);cursor:pointer;
+      transition:background .2s,transform .2s;
+    }
+    .gal-lb-arrow:hover { background:rgba(239,231,210,.15); }
+    .gal-lb-arrow.lb-prev { left:20px; }
+    .gal-lb-arrow.lb-next { right:20px; }
+    .gal-lb-arrow.lb-prev:hover { transform:translateY(-50%) translateX(-2px); }
+    .gal-lb-arrow.lb-next:hover { transform:translateY(-50%) translateX(2px); }
+
+    /* mobile lightbox */
+    @media(max-width:767px){
+      .gal-lb-slide { padding:68px 20px 44px; gap:14px; }
+      .gal-lb-slide img { max-height:72%; }
+      .gal-lb-caption { font-size:13px; max-width:100%; }
+      .gal-lb-arrow { display:none; }
+      .gal-lb-title { font-size:15px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- â”€â”€ Mobile menu â”€â”€ -->
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" aria-label="Close menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Experiences</a>
+    <a href="gallery.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Gallery</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Reviews</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+
+  <!-- â”€â”€ Header â”€â”€ -->
+  <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+    <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="menu.html"        class="nav-link">Menu</a>
+      <a href="about.html"       class="nav-link">About</a>
+      <a href="experiences.html" class="nav-link">Experiences</a>
+      <a href="gallery.html"     class="nav-link active">Gallery</a>
+      <a href="reviews.html"     class="nav-link">Reviews</a>
+    </nav>
+    <div class="flex items-center gap-4" style="flex-shrink:0">
+      <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+      <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- â”€â”€ Hero Banner â”€â”€ -->
+  <div class="fade-up px-6 sm:px-10 py-12 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+    <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);margin-bottom:24px">Chef Donovan Smith</span>
+    <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:end">
+      <h1 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,5.5vw,72px);line-height:.96;letter-spacing:.01em;color:var(--text)">Visual<br>Gallery</h1>
+      <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.7;color:var(--text-muted);max-width:480px">Nine collections. Hundreds of evenings. Each photograph a window into what private dining can become.</p>
+    </div>
+  </div>
+
+  <!-- â”€â”€ Gallery Section â”€â”€ -->
+  <section class="px-5 pt-14 pb-16 sm:px-8 lg:px-20 lg:pt-18 lg:pb-24">
+
+    <!-- Filter pills -->
+    <div class="fade-up" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:44px;justify-content:center">
+      <button class="gal-pill active" data-filter="All">All</button>
+      <button class="gal-pill" data-filter="Dining">Dining</button>
+      <button class="gal-pill" data-filter="Events">Events</button>
+      <button class="gal-pill" data-filter="Breakfast">Breakfast</button>
+      <button class="gal-pill" data-filter="Experiences">Experiences</button>
+      <button class="gal-pill" data-filter="Behind the Table">Behind the Table</button>
+    </div>
+
+    <!-- Grid -->
+    <div id="gal-grid"></div>
+
+  </section>
+
+  <!-- â”€â”€ Footer â”€â”€ -->
+  <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
+    <div class="flex flex-col gap-1">
+      <span class="footer-brand">Chef Donovan Smith</span>
+      <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+    </div>
+    <nav class="flex items-center gap-4 flex-wrap">
+      <a href="index.html"       class="footer-link">Home</a>
+      <a href="about.html"       class="footer-link">About</a>
+      <a href="menu.html"        class="footer-link">Menu</a>
+      <a href="experiences.html" class="footer-link">Experiences</a>
+      <a href="gallery.html"     class="footer-link">Gallery</a>
+      <a href="reviews.html"     class="footer-link">Reviews</a>
+    </nav>
+    <p class="footer-link" style="opacity:.6">&copy; 2026 chefdonsmith.com</p>
+  </footer>
+
+</div>
+
+<!-- â”€â”€ Lightbox â”€â”€ -->
+<div id="gal-lb" class="gal-lb" role="dialog" aria-modal="true" aria-label="Photo gallery">
+
+  <!-- Header -->
+  <div class="gal-lb-header">
+    <div class="gal-lb-meta">
+      <span class="gal-lb-title" id="gal-lb-title"></span>
+      <span class="gal-lb-counter" id="gal-lb-counter"></span>
+    </div>
+    <button class="gal-lb-close" id="gal-lb-close" aria-label="Close gallery">
+      <svg width="14" height="14" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Viewport + track -->
+  <div class="gal-lb-viewport">
+    <div class="gal-lb-track" id="gal-lb-track"></div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="gal-lb-arrow lb-prev" id="gal-lb-prev" aria-label="Previous photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="gal-lb-arrow lb-next" id="gal-lb-next" aria-label="Next photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+
+</div>
+
+<script>
+(function(){
+
+  const GALLERY = [
+    {
+      num: '01',
+      category: 'Dining',
+      cover: 'images/luxury-private-dining-2.jpg',
+      title: 'Private Dining',
+      tagline: 'Intimate tables crafted entirely around you.',
+      photos: [
+        { src:'images/luxury-private-dining-2.jpg',       caption:'A table set for the finest evening' },
+        { src:'images/luxury-private-dining-experiences.jpg', caption:'The experience, from every angle' },
+        { src:'images/dinner-table.jpg',                  caption:'Details that make the moment' },
+        { src:'images/private-dining-bg.jpg',             caption:'Ambiance, perfected' },
+      ]
+    },
+    {
+      num: '02',
+      category: 'Dining',
+      cover: 'images/Chef’s Table Tasting Menu.jpg',
+      title: "Chef's Table",
+      tagline: 'Seven courses. One unforgettable evening.',
+      photos: [
+        { src:'images/Chef’s Table Tasting Menu.jpg', caption:"Chef's Table — a tasting journey" },
+        { src:'images/luxury-private-dining-2.jpg',        caption:'Precision on the plate' },
+        { src:'images/dinner-table.jpg',                   caption:'Every detail considered' },
+      ]
+    },
+    {
+      num: '03',
+      category: 'Events',
+      cover: 'images/grand-event.jpg',
+      title: 'Grand Events',
+      tagline: 'World-class execution at any scale.',
+      photos: [
+        { src:'images/grand-event.jpg',       caption:'Grand-scale dining, flawlessly delivered' },
+        { src:'images/villa-gathering.jpg',   caption:'The gathering, golden hour' },
+        { src:'images/anniversary-dinner.jpg',caption:'Celebrations elevated' },
+      ]
+    },
+    {
+      num: '04',
+      category: 'Events',
+      cover: 'images/villa-gathering.jpg',
+      title: 'Villa Gatherings',
+      tagline: 'Milestone occasions, beautifully hosted.',
+      photos: [
+        { src:'images/villa-gathering.jpg',    caption:'The villa table, set for the occasion' },
+        { src:'images/anniversary-dinner.jpg', caption:'Intimate celebrations at scale' },
+        { src:'images/grand-event.jpg',        caption:'When the evening calls for more' },
+      ]
+    },
+    {
+      num: '05',
+      category: 'Events',
+      cover: 'images/anniversary-dinner.jpg',
+      title: 'Anniversary Evenings',
+      tagline: 'Moments crafted for two.',
+      photos: [
+        { src:'images/anniversary-dinner.jpg',    caption:'Two seats. One perfect evening.' },
+        { src:'images/dinner-table.jpg',          caption:'The table, dressed for romance' },
+        { src:'images/luxury-private-dining-2.jpg',caption:'Private dining at its most intimate' },
+      ]
+    },
+    {
+      num: '06',
+      category: 'Breakfast',
+      cover: 'images/luxury-private-breakfast.jpg',
+      title: 'Morning Table',
+      tagline: 'Sunrise beginnings, crafted with care.',
+      photos: [
+        { src:'images/luxury-private-breakfast.jpg', caption:'Morning, made memorable' },
+        { src:'images/luxury-private-lunch.jpg',     caption:'From morning into afternoon' },
+        { src:'images/plan-your-experience.jpg',     caption:'Your table, your hour' },
+      ]
+    },
+    {
+      num: '07',
+      category: 'Experiences',
+      cover: 'images/Caribbean Omakase.jpg',
+      title: 'Caribbean Omakase',
+      tagline: 'A journey through Caribbean flavour.',
+      photos: [
+        { src:'images/Caribbean Omakase.jpg',          caption:'Caribbean Omakase — course by course' },
+        { src:'images/Seafood and sunset.jpg',          caption:'Seafood, caught and served at dusk' },
+        { src:'images/luxury-private-dining-experiences.jpg', caption:'The table prepared for the occasion' },
+      ]
+    },
+    {
+      num: '08',
+      category: 'Experiences',
+      cover: 'images/Fire & Feast Experience.jpg',
+      title: 'Fire & Feast',
+      tagline: 'Open-flame cooking. Primal and refined.',
+      photos: [
+        { src:'images/Fire & Feast Experience.jpg', caption:'Fire — the oldest ingredient' },
+        { src:'images/Cook With the Chef.jpg',       caption:'Cook alongside the chef' },
+        { src:'images/grand-event.jpg',              caption:'The feast, served' },
+      ]
+    },
+    {
+      num: '09',
+      category: 'Behind the Table',
+      cover: 'images/portfolio-photo.jpg',
+      title: 'Behind the Table',
+      tagline: 'The craft that lives behind every plate.',
+      photos: [
+        { src:'images/portfolio-photo.jpg',  caption:'The work behind the experience' },
+        { src:'images/donovan-photo-1.jpg',  caption:'Chef Donovan in his element' },
+        { src:'images/donovan-photo-2.jpg',  caption:'Precision and passion' },
+        { src:'images/chef_portrait.png',    caption:'The man behind the table' },
+      ]
+    },
+  ];
+
+  /* â”€â”€ Build grid â”€â”€ */
+  const grid = document.getElementById('gal-grid');
+
+  function buildCards(filter) {
+    grid.innerHTML = '';
+    GALLERY.forEach((item, idx) => {
+      if (filter !== 'All' && item.category !== filter) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'gal-card';
+      wrap.setAttribute('role','button');
+      wrap.setAttribute('tabindex','0');
+      wrap.setAttribute('aria-label','Open ' + item.title + ' gallery');
+      wrap.dataset.idx = idx;
+      wrap.innerHTML =
+        '<img class="gal-card-img" src="' + item.cover + '" alt="' + item.title + '" loading="lazy">' +
+        '<div class="gal-card-grain"></div>' +
+        '<div class="gal-card-ov"></div>' +
+        '<span class="gal-card-num">' + item.num + '</span>' +
+        '<div class="gal-card-badge">' +
+          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>' +
+          item.photos.length + ' photos' +
+        '</div>' +
+        '<div class="gal-card-body">' +
+          '<span class="gal-card-cat">' + item.category + '</span>' +
+          '<h3 class="gal-card-title">' + item.title + '</h3>' +
+          '<p class="gal-card-tagline">' + item.tagline + '</p>' +
+          '<button class="gal-card-btn">View Album' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
+          '</button>' +
+        '</div>';
+      wrap.addEventListener('click', () => openLb(idx));
+      wrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(idx); } });
+      grid.appendChild(wrap);
+    });
+  }
+
+  buildCards('All');
+
+  /* â”€â”€ Filter pills â”€â”€ */
+  document.querySelectorAll('.gal-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.gal-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      buildCards(pill.dataset.filter);
+    });
+  });
+
+  /* â”€â”€ Lightbox state â”€â”€ */
+  const lb        = document.getElementById('gal-lb');
+  const track     = document.getElementById('gal-lb-track');
+  const lbTitle   = document.getElementById('gal-lb-title');
+  const lbCounter = document.getElementById('gal-lb-counter');
+  // caption is now embedded per-slide
+  const lbClose   = document.getElementById('gal-lb-close');
+  const lbPrev    = document.getElementById('gal-lb-prev');
+  const lbNext    = document.getElementById('gal-lb-next');
+
+  let currentPhotos = [];
+  let currentIdx    = 0;
+
+  function openLb(galleryIdx) {
+    const item = GALLERY[galleryIdx];
+    currentPhotos = item.photos;
+    currentIdx = 0;
+
+    // build slides
+    track.innerHTML = '';
+    currentPhotos.forEach(p => {
+      const slide = document.createElement('div');
+      slide.className = 'gal-lb-slide';
+      const img = document.createElement('img');
+      img.src = p.src;
+      img.alt = p.caption;
+      const cap = document.createElement('p');
+      cap.className = 'gal-lb-caption';
+      cap.textContent = p.caption;
+      slide.appendChild(img);
+      slide.appendChild(cap);
+      track.appendChild(slide);
+    });
+
+    // Reset position with no animation so the previous gallery's offset doesn't bleed in
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(0)';
+
+    lbTitle.textContent = item.title;
+    updateLbUI();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+
+    // Re-enable transition after the browser commits the reset position
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      track.style.transition = '';
+    }));
+  }
+
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function moveTo(idx) {
+    currentIdx = Math.max(0, Math.min(idx, currentPhotos.length - 1));
+    track.style.transform = 'translateX(' + (-currentIdx * 100) + '%)';
+    updateLbUI();
+  }
+
+  function updateLbUI() {
+    lbCounter.textContent = (currentIdx + 1) + ' / ' + currentPhotos.length;
+    lbPrev.style.opacity = currentIdx === 0 ? '0.3' : '1';
+    lbNext.style.opacity = currentIdx === currentPhotos.length - 1 ? '0.3' : '1';
+  }
+
+  function nextPhoto() { if (currentIdx < currentPhotos.length - 1) moveTo(currentIdx + 1); }
+  function prevPhoto() { if (currentIdx > 0) moveTo(currentIdx - 1); }
+
+  lbClose.addEventListener('click', closeLb);
+  lbNext.addEventListener('click', nextPhoto);
+  lbPrev.addEventListener('click', prevPhoto);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+
+  /* â”€â”€ Keyboard navigation â”€â”€ */
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLb();
+    if (e.key === 'ArrowRight')  nextPhoto();
+    if (e.key === 'ArrowLeft')   prevPhoto();
+  });
+
+  /* â”€â”€ Touch swipe â”€â”€ */
+  let swipeX = 0;
+  let swipeY = 0;
+
+  lb.addEventListener('touchstart', e => {
+    swipeX = e.touches[0].clientX;
+    swipeY = e.touches[0].clientY;
+  }, { passive: true });
+
+  lb.addEventListener('touchend', e => {
+    const dx = swipeX - e.changedTouches[0].clientX;
+    const dy = swipeY - e.changedTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx > 0) nextPhoto();
+      else prevPhoto();
+    }
+  }, { passive: true });
+
+})();
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

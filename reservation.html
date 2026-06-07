@@ -28,7 +28,7 @@
       color-scheme:dark;
     }
 
-    /* ── Preloader ── */
+    /* â”€â”€ Preloader â”€â”€ */
     #preloader{
       position:fixed;inset:0;z-index:2000;
       background:var(--bg);
@@ -49,7 +49,7 @@
     @keyframes pf{to{opacity:1}}
     @keyframes pl{to{width:100%}}
 
-    /* ── Progress bar — floating, thick, hidden on intro/done ── */
+    /* â”€â”€ Progress bar — floating, thick, hidden on intro/done â”€â”€ */
     #prog{
       position:fixed;top:6px;left:16px;right:16px;
       height:5px;background:rgba(239,231,210,.12);
@@ -60,7 +60,7 @@
     #prog.scrolled-up{transform:translateY(-20px);opacity:0!important}
     #pfill{height:100%;background:var(--text);width:0;border-radius:99px;transition:width .65s var(--ease)}
 
-    /* ── Top bar ── */
+    /* â”€â”€ Top bar â”€â”€ */
     #topbar{
       position:fixed;top:0;left:0;right:0;z-index:500;
       padding:24px 44px;
@@ -83,7 +83,7 @@
     }
     #t-cnt.on{opacity:1}
 
-    /* ── Desktop nav arrows — horizontal, cream bg, dark icons ── */
+    /* â”€â”€ Desktop nav arrows — horizontal, cream bg, dark icons â”€â”€ */
     #nav{
       position:fixed;bottom:36px;right:44px;z-index:500;
       display:flex;flex-direction:row;
@@ -105,7 +105,7 @@
     .nbtn svg{width:16px;height:16px;flex-shrink:0}
     @media(max-width:768px){#nav{display:none}}
 
-    /* ── Slides ── */
+    /* â”€â”€ Slides â”€â”€ */
     #stage{position:fixed;inset:0}
     .slide{
       position:absolute;inset:0;
@@ -126,14 +126,14 @@
       #s-review{padding-bottom:148px}
     }
 
-    /* ── Eyebrow ── */
+    /* â”€â”€ Eyebrow â”€â”€ */
     .ey{
       display:block;font-family:var(--fs);font-size:10px;font-weight:500;
       text-transform:uppercase;letter-spacing:.22em;
       color:rgba(239,231,210,.35);margin-bottom:22px;
     }
 
-    /* ── Intro / thank you heading ── */
+    /* â”€â”€ Intro / thank you heading â”€â”€ */
     .big-h{
       font-family:var(--ff);
       font-size:clamp(36px,5.5vw,58px);
@@ -145,7 +145,7 @@
       color:var(--muted);max-width:420px;margin-bottom:44px;
     }
 
-    /* ── Question ── */
+    /* â”€â”€ Question â”€â”€ */
     .q-row{display:flex;align-items:flex-start;gap:13px;margin-bottom:32px}
     .q-num{
       display:inline-flex;align-items:center;justify-content:center;
@@ -160,7 +160,7 @@
       line-height:1.15;letter-spacing:.01em;color:var(--text);
     }
 
-    /* ── Text input ── */
+    /* â”€â”€ Text input â”€â”€ */
     .f-wrap{position:relative;margin-bottom:4px}
     .f-in{
       display:block;width:100%;background:transparent;
@@ -187,7 +187,7 @@
     .f-ta::placeholder{color:rgba(239,231,210,.22)}
     .f-err{font-size:12px;color:rgba(255,160,130,.75);margin-top:10px;min-height:14px}
 
-    /* ── Custom date picker ── */
+    /* â”€â”€ Custom date picker â”€â”€ */
     .date-trigger{
       cursor:pointer;display:flex;align-items:center;
       padding:8px 0 16px;width:100%;
@@ -257,7 +257,7 @@
       .cal-day{font-size:13px}
     }
 
-    /* ── Inline OK button (desktop only) ── */
+    /* â”€â”€ Inline OK button (desktop only) â”€â”€ */
     .ok{
       display:inline-flex;align-items:center;justify-content:center;
       padding:13px 28px;
@@ -273,7 +273,7 @@
     .ok:disabled{opacity:.35;cursor:not-allowed;transform:none}
     @media(max-width:768px){.ok{display:none!important}#desktop-takes{display:none!important}}
 
-    /* ── Option cards ── */
+    /* â”€â”€ Option cards â”€â”€ */
     .opts{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
     .opt{
       display:flex;align-items:center;gap:14px;width:100%;
@@ -301,7 +301,7 @@
     .opt.br .opt-head{display:flex;align-items:center;gap:14px;width:100%;margin-bottom:6px}
     .opt.br .opt-sub{font-size:12px;color:var(--muted);line-height:1.5;padding-left:36px}
 
-    /* ── Review ── */
+    /* â”€â”€ Review â”€â”€ */
     .rev-card{
       border:1px solid rgba(239,231,210,.14);border-radius:14px;
       overflow:hidden;margin-bottom:32px;
@@ -322,7 +322,7 @@
     .rev-v{font-size:14px;font-weight:400;color:var(--text);text-align:right;line-height:1.4;word-break:break-word;max-width:280px}
     .sub-note{font-size:13px;color:rgba(239,231,210,.58);margin-top:14px;line-height:1.7}
 
-    /* ── Social links (thank you) ── */
+    /* â”€â”€ Social links (thank you) â”€â”€ */
     .socials{display:flex;align-items:center;gap:10px;margin-bottom:44px}
     .soc-btn{
       display:inline-flex;align-items:center;justify-content:center;
@@ -341,7 +341,7 @@
     }
     .home-lnk:hover{color:var(--text)}
 
-    /* ── Mobile footer nav ── */
+    /* â”€â”€ Mobile footer nav â”€â”€ */
     #m-footer{
       display:none;
       position:fixed;bottom:0;left:0;right:0;z-index:500;
@@ -378,6 +378,34 @@
     }
     #m-ok:hover{opacity:.88}
     #m-ok:disabled{opacity:.4;cursor:not-allowed}
+
+    /* â”€â”€ Menu slide â”€â”€ */
+    .mnl-list{display:flex;flex-direction:column;gap:6px}
+    .mnl-row{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(239,231,210,.12);border-radius:8px;transition:border-color .2s,background .2s;-webkit-tap-highlight-color:transparent;user-select:none}
+    .mnl-row:hover{border-color:rgba(239,231,210,.28);background:rgba(239,231,210,.04)}
+    .mnl-row.chosen{border-color:rgba(239,231,210,.55);background:rgba(239,231,210,.07)}
+    .mnl-chk{width:16px;height:16px;flex-shrink:0;border:1.5px solid rgba(239,231,210,.22);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+    .mnl-row.chosen .mnl-chk{background:var(--text);border-color:var(--text)}
+    .mnl-btn{flex:1;background:none;border:none;cursor:pointer;font-family:var(--fs);font-size:14px;font-weight:400;color:var(--text);text-align:left;padding:0;-webkit-tap-highlight-color:transparent}
+    .mnl-info{width:28px;height:28px;flex-shrink:0;background:rgba(239,231,210,.06);border:1px solid rgba(239,231,210,.12);border-radius:6px;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+    .mnl-info:hover{background:rgba(239,231,210,.15);color:var(--text)}
+
+    /* â”€â”€ Menu detail popup â”€â”€ */
+    .mnpop{position:fixed;inset:0;z-index:3000;background:var(--bg);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .28s ease}
+    .mnpop.open{opacity:1;pointer-events:all}
+    .mnpop-head{display:flex;align-items:center;justify-content:space-between;padding:28px 28px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
+    .mnpop-title{font-family:var(--ff);font-size:clamp(18px,3vw,26px);text-transform:uppercase;letter-spacing:.04em;color:var(--text)}
+    .mnpop-close{width:36px;height:36px;border-radius:8px;background:rgba(239,231,210,.08);border:1px solid var(--border);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0}
+    .mnpop-close:hover{background:rgba(239,231,210,.16)}
+    .mnpop-body{flex:1;overflow-y:auto;padding:24px 28px;display:flex;flex-direction:column;gap:24px}
+    .mnpop-sec-head{font-family:var(--fs);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .mnpop-item{padding:8px 0;border-bottom:1px solid rgba(239,231,210,.06)}
+    .mnpop-item:last-child{border-bottom:none}
+    .mnpop-item-name{font-family:var(--fs);font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+    .mnpop-item-desc{font-family:var(--fs);font-size:12px;color:var(--muted);line-height:1.55}
+    .mnpop-flat-item{padding:8px 0;border-bottom:1px solid rgba(239,231,210,.06);font-family:var(--fs);font-size:13px;color:var(--text)}
+    .mnpop-flat-item span{font-size:12px;color:var(--muted);margin-left:8px}
+    .mnpop-flat-item:last-child{border-bottom:none}
   </style>
 </head>
 <body>
@@ -501,12 +529,14 @@
     <div class="inner">
       <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Which experience interests you?</h2></div>
       <div class="opts" id="opts-exp">
-        <button class="opt" data-v="Private Dining"><span class="opt-key">A</span><span class="opt-txt">Private Dining</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
-        <button class="opt" data-v="Private Breakfast"><span class="opt-key">B</span><span class="opt-txt">Private Breakfast</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
-        <button class="opt" data-v="Private Lunch"><span class="opt-key">C</span><span class="opt-txt">Private Lunch</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
-        <button class="opt" data-v="Yacht Experience"><span class="opt-key">D</span><span class="opt-txt">Yacht Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
-        <button class="opt" data-v="Villa Residency"><span class="opt-key">E</span><span class="opt-txt">Villa Residency</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
-        <button class="opt" data-v="Corporate / Large Event"><span class="opt-key">F</span><span class="opt-txt">Corporate / Large Event</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Fire &amp; Feast Experience"><span class="opt-key">A</span><span class="opt-txt">Fire &amp; Feast Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Caribbean Omakase"><span class="opt-key">B</span><span class="opt-txt">Caribbean Omakase</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Italian Villa Night"><span class="opt-key">C</span><span class="opt-txt">Italian Villa Night</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Mexican Smoke &amp; Agave"><span class="opt-key">D</span><span class="opt-txt">Mexican Smoke &amp; Agave</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Chef's Table Tasting Menu"><span class="opt-key">E</span><span class="opt-txt">Chef's Table Tasting Menu</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Cook With the Chef"><span class="opt-key">F</span><span class="opt-txt">Cook With the Chef</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Seafood &amp; Sunset Experience"><span class="opt-key">G</span><span class="opt-txt">Seafood &amp; Sunset Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Rum &amp; Spice Experience"><span class="opt-key">H</span><span class="opt-txt">Rum &amp; Spice Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
       </div>
       <p class="f-err" id="e-exp"></p>
     </div>
@@ -525,10 +555,65 @@
     </div>
   </div>
 
-  <!-- Q7 Date -->
+  <!-- Q-menu: Pre-curated Menu -->
+  <div class="slide" id="s-menu">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Do you have a pre-curated menu in mind?</h2></div>
+
+      <!-- Yes / No -->
+      <div class="opts" id="opts-menu-yn">
+        <button class="opt" data-v="yes" type="button">
+          <span class="opt-key">A</span><span class="opt-txt">Yes, I'd like to browse the menus</span>
+          <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </button>
+        <button class="opt" data-v="no" type="button">
+          <span class="opt-key">B</span><span class="opt-txt">No, let's discuss it on the call</span>
+          <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </button>
+      </div>
+
+      <!-- Category selection (revealed when Yes chosen) -->
+      <div id="menu-cats" style="display:none;margin-top:20px">
+        <p style="font-family:var(--fs);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:10px">Select a category</p>
+        <div class="opts" id="opts-menu-cat">
+          <button class="opt" data-cat="dining" type="button">
+            <span class="opt-key">A</span><span class="opt-txt">Private Dining</span>
+            <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </button>
+          <button class="opt" data-cat="breakfast" type="button">
+            <span class="opt-key">B</span><span class="opt-txt">Breakfast</span>
+            <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </button>
+          <button class="opt" data-cat="lunch" type="button">
+            <span class="opt-key">C</span><span class="opt-txt">Lunch</span>
+            <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu list (revealed when category chosen) -->
+      <div id="menu-list-wrap" style="display:none;margin-top:16px">
+        <p style="font-family:var(--fs);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:10px">Select a menu</p>
+        <div class="mnl-list" id="menu-list"></div>
+      </div>
+
+      <!-- Optional text (revealed when No chosen) -->
+      <div id="menu-describe" style="display:none;margin-top:20px">
+        <div class="f-wrap">
+          <textarea class="f-ta" id="i-menu-desc" placeholder="Optional — briefly describe your culinary preferences" rows="2"></textarea>
+          <div class="f-line"></div>
+        </div>
+      </div>
+
+      <p class="f-err" id="e-menu" style="margin-top:10px"></p>
+      <button class="ok" data-next type="button">OK</button>
+    </div>
+  </div>
+
+  <!-- Q8 Date -->
   <div class="slide" id="s-7">
     <div class="inner">
-      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">What is your preferred date?</h2></div>
+      <div class="q-row"><span class="q-num">8</span><h2 class="q-h">What is your preferred date?</h2></div>
       <div class="f-wrap" id="date-wrap" style="position:relative">
         <div class="date-trigger" id="date-trigger" tabindex="0" role="button" aria-haspopup="true">
           <span id="date-label" class="ph">Select a date…</span>
@@ -556,10 +641,10 @@
     </div>
   </div>
 
-  <!-- Q8 Location -->
+  <!-- Q9 Location -->
   <div class="slide" id="s-8">
     <div class="inner">
-      <div class="q-row"><span class="q-num">8</span><h2 class="q-h">Which island or location?</h2></div>
+      <div class="q-row"><span class="q-num">9</span><h2 class="q-h">Which island or location?</h2></div>
       <div class="f-wrap">
         <input type="text" class="f-in" id="i-loc" placeholder="e.g. Nassau, Exuma, Paradise Island">
         <div class="f-line"></div>
@@ -603,6 +688,17 @@
 
 </div>
 
+<!-- Menu Detail Popup -->
+<div class="mnpop" id="mnpop">
+  <div class="mnpop-head">
+    <span class="mnpop-title" id="mnpop-title">Menu</span>
+    <button class="mnpop-close" id="mnpop-close" type="button" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mnpop-body" id="mnpop-body"></div>
+</div>
+
 <!-- Mobile footer nav -->
 <div id="m-footer">
   <p id="m-takes">
@@ -624,9 +720,9 @@
 const ST={cur:'intro',branch:null,data:{}};
 const AUTO=['4','5','6a'];
 
-function seq(){return['intro','1','2','3','4','5',ST.branch==='yes'?'6a':'6b','7','8','review','done'];}
+function seq(){return['intro','1','2','3','4','5',ST.branch==='yes'?'6a':'6b','menu','7','8','review','done'];}
 
-/* ── Navigate ── */
+/* â”€â”€ Navigate â”€â”€ */
 function goNext(){
   if(!validate())return;
   saveData();
@@ -657,7 +753,7 @@ function go(from,to,dir){
   setTimeout(()=>{const inp=te.querySelector('.f-in:not([type=date]),.f-ta');if(inp)inp.focus();},300);
 }
 
-/* ── Validate ── */
+/* â”€â”€ Validate â”€â”€ */
 function validate(){
   clearErrs();const c=ST.cur;
   if(c==='1'){if(!v('i-name')){e('e-name','Please enter your full name.');return false;}}
@@ -667,6 +763,10 @@ function validate(){
   if(c==='5'){if(!ST.branch){e('e-branch','Please select an option.');return false;}}
   if(c==='6a'){if(!ST.data.experience){e('e-exp','Please select an experience.');return false;}}
   if(c==='6b'){if(!v('i-vision')){e('e-vision','Please describe your experience.');return false;}}
+  if(c==='menu'){
+    if(!ST.data.menuChoice){e('e-menu','Please select an option.');return false;}
+    if(ST.data.menuChoice==='yes'&&!ST.data.selectedMenu){e('e-menu','Please select a menu or choose "No" to continue.');return false;}
+  }
   if(c==='7'){const dv=v('i-date'),today=new Date().toISOString().split('T')[0];if(!dv){e('e-date','Please select a preferred date.');return false;}if(dv<today){e('e-date','Please select a future date.');return false;}}
   if(c==='8'){if(!v('i-loc')){e('e-loc','Please enter your island or location.');return false;}}
   return true;
@@ -675,18 +775,19 @@ function v(id){const el=G(id);return el?el.value.trim():'';}
 function e(id,m){const el=G(id);if(el)el.textContent=m;}
 function clearErrs(){document.querySelectorAll('.f-err').forEach(x=>x.textContent='');}
 
-/* ── Save ── */
+/* â”€â”€ Save â”€â”€ */
 function saveData(){
   const c=ST.cur;
   if(c==='1')ST.data.fullName=v('i-name');
   if(c==='2')ST.data.email=v('i-email');
   if(c==='3')ST.data.phone=v('i-phone');
   if(c==='6b')ST.data.vision=v('i-vision');
+  if(c==='menu')ST.data.menuNote=v('i-menu-desc');
   if(c==='7')ST.data.date=v('i-date');
   if(c==='8')ST.data.location=v('i-loc');
 }
 
-/* ── Option cards ── */
+/* â”€â”€ Option cards â”€â”€ */
 function bindOpts(cid,cb){
   G(cid).querySelectorAll('.opt').forEach(o=>{
     o.addEventListener('click',()=>{
@@ -707,17 +808,171 @@ G('opts-branch').querySelectorAll('.opt').forEach(o=>{
   });
 });
 
-/* ── Review ── */
+/* â”€â”€ Menu slide â”€â”€ */
+const MENUS={
+  dining:[
+    {title:'Latin American BBQ',sections:[
+      {name:'Starters',items:[{n:'Cornbread & Pandebono',d:'Warm baked breads served with whipped butter and pickled onions'},{n:'Baby Greens Salad',d:'Crisp greens, plantain croutons, cotija cheese, avocado dressing'},{n:'Ceviche Duo',d:'Citrus-marinated seafood with chili, herbs, and fresh lime'},{n:'Charred Octopus',d:'Flame-kissed, served with pistachio and shallot vinaigrette'}]},
+      {name:'Main – Wood Fire Grill',items:[{n:'Argentinian Asado',d:'Fire-grilled steak, chorizo, and short rib with deep smoky flavor'},{n:'Brazilian Picanha & Lamb Chops',d:'Simply seasoned, grilled over open flame'}]},
+      {name:'Taco Station',items:[{n:'Al Pastor Pork & Grilled Chicken',d:'Carved and served with warm tortillas, salsa, and garnishes'}]},
+      {name:'Sides',items:[{n:'Grilled Vegetables',d:'Seasonal produce finished over flame'},{n:'Sweet Plantains',d:'Caramelized and lightly crisp'},{n:'Chimichurri',d:'Fresh herb sauce with garlic and olive oil'}]},
+      {name:'Dessert',items:[{n:'Dulce de Leche Cheesecake',d:'Rich and creamy with caramel notes'},{n:'Brigadeiros',d:'Soft chocolate truffles rolled in cocoa'}]},
+    ]},
+    {title:'Modern Asian',sections:[
+      {name:'Starters',items:[{n:'Bao Buns',d:'Soft steamed buns filled with savory braised meats and pickles'},{n:'Spring Rolls',d:'Crisp fried rolls with sweet chili glaze'},{n:'Tuna Tataki',d:'Lightly seared tuna with sesame and ponzu'}]},
+      {name:'Main',items:[{n:'Miso Black Cod',d:'Tender fish glazed in sweet miso'},{n:'Wok Seared Ribeye',d:'High-heat seared beef with garlic and soy'},{n:'Kung Pao Chicken',d:'Bold, spicy stir-fry with peanuts and chili'}]},
+      {name:'Rice & Noodles',items:[{n:'Truffle Fried Rice',d:'Fragrant rice with egg and truffle essence'},{n:'Garlic Chili Noodles',d:'Wok-tossed noodles with heat and aroma'}]},
+      {name:'Sides',items:[{n:'Bok Choy',d:'Sautéed greens with sesame oil'},{n:'Asian Slaw',d:'Crisp vegetables with tangy dressing'}]},
+      {name:'Dessert',items:[{n:'Matcha Cheesecake',d:'Creamy green tea dessert'},{n:'Mango Sticky Rice',d:'Coconut rice with ripe mango'}]},
+    ]},
+    {title:'Modern French',sections:[
+      {name:'Starters',items:[{n:'Burrata',d:'Creamy cheese with tomatoes and olive oil'},{n:'Beef Tartare',d:'Finely chopped beef with capers and Dijon'},{n:'French Onion Soup',d:'Slow caramelized onions with melted cheese'}]},
+      {name:'Main',items:[{n:'Herb Roasted Chicken',d:'Classic preparation with jus'},{n:'Beef Tenderloin',d:'Seared and finished with red wine sauce'},{n:'Seared Salmon',d:'Crisp skin with beurre blanc'}]},
+      {name:'Sides',items:[{n:'Pommes Purée',d:'Smooth mashed potatoes enriched with butter'},{n:'Haricots Verts',d:'Green beans sautéed with shallots'},{n:'Roasted Root Vegetables',d:'Seasonal vegetables with herbs'}]},
+      {name:'Dessert',items:[{n:'CrÃ¨me BrÃ»lée',d:'Custard with caramelized sugar top'},{n:'Chocolate Mousse',d:'Light, airy chocolate dessert'}]},
+    ]},
+    {title:'Modern Italian',sections:[
+      {name:'Starters',items:[{n:'Burrata',d:'Fresh cheese with tomatoes and basil'},{n:'Prosciutto & Melon',d:'Sweet and savory pairing'},{n:'Arancini',d:'Crispy risotto balls with molten center'}]},
+      {name:'Main',items:[{n:'Truffle Pasta',d:'Rich cream sauce with aromatic truffle'},{n:'Osso Buco',d:'Slow-braised veal with gremolata'},{n:'Grilled Branzino',d:'Whole fish with lemon and herbs'}]},
+      {name:'Sides',items:[{n:'Roasted Vegetables',d:'Olive oil and herbs'},{n:'Focaccia',d:'Warm, airy bread with olive oil'}]},
+      {name:'Dessert',items:[{n:'Tiramisu',d:'Layered espresso and mascarpone dessert'},{n:'Panna Cotta',d:'Silky cream set with vanilla'}]},
+    ]},
+    {title:'Modern Caribbean',sections:[
+      {name:'Starters',items:[{n:'Conch Salad',d:'Fresh conch with citrus and peppers'},{n:'Jerk Chicken Skewers',d:'Spiced and grilled with glaze'},{n:'Saltfish Accra',d:'Crispy fritters with spice'}]},
+      {name:'Main',items:[{n:'Grilled Lobster',d:'Butter and lime finished'},{n:'Jerk Pork',d:'Slow roasted with bold seasoning'},{n:'Brown Stew Snapper',d:'Rich island-style braise'}]},
+      {name:'Sides',items:[{n:'Peas & Rice',d:'Coconut infused rice and beans'},{n:'Fried Plantains',d:'Sweet and caramelized'},{n:'Roasted Vegetables',d:'Island spice blend'}]},
+      {name:'Dessert',items:[{n:'Rum Cake',d:'Moist cake with rum glaze'},{n:'Coconut Tart',d:'Rich coconut filling in pastry'}]},
+    ]},
+    {title:'Modern Middle Eastern',sections:[
+      {name:'Starters',items:[{n:'Mezze',d:'Assortment of dips and spreads with bread'},{n:'Falafel',d:'Crisp chickpea fritters with herbs'},{n:'Grilled Halloumi',d:'Salty cheese with honey and citrus'}]},
+      {name:'Main',items:[{n:'Lamb Kofta',d:'Spiced ground lamb skewers'},{n:'Chicken Shawarma',d:'Marinated and roasted slices'},{n:'Grilled Sea Bass',d:'Light and herb-forward'}]},
+      {name:'Rice & Sides',items:[{n:'Saffron Rice',d:'Aromatic rice with nuts'},{n:"Za'atar Vegetables",d:'Roasted with spice blend'},{n:'Fattoush',d:'Fresh salad with crisp bread'}]},
+      {name:'Dessert',items:[{n:'Baklava',d:'Layered pastry with nuts and honey'},{n:'Pistachio Rose Cake',d:'Floral and nutty cake'}]},
+    ]},
+    {title:'Mediterranean',sections:[
+      {name:'To Start',items:[{n:'Mezze Selection',d:'Dips, olives, and warm flatbread'},{n:'Heirloom Tomato & Feta Salad',d:'Bright and herbaceous'}]},
+      {name:'From the Sea',items:[{n:'Sea Bass',d:'Light, citrus-forward preparation'},{n:'Garlic Herb Shrimp',d:'Sautéed with wine and herbs'}]},
+      {name:'From the Grill',items:[{n:'Lamb Chops',d:'Marinated and flame grilled'},{n:'Chicken Souvlaki',d:'Skewered and herb seasoned'},{n:'Vegetable Skewers',d:'Charred seasonal vegetables'}]},
+      {name:'Sides',items:[{n:'Orzo',d:'Lemon and herbs'},{n:'Garlic Potatoes',d:'Roasted and crisp'},{n:'Asparagus',d:'Grilled with olive oil'},{n:'Pita & Sauces',d:'Warm bread with dips'}]},
+      {name:'Dessert',items:[{n:'Baklava',d:'Honeyed pastry'},{n:'Panna Cotta',d:'Light cream dessert'}]},
+    ]},
+  ],
+  breakfast:[
+    {title:'Coastal Mediterranean Breakfast',flat:[{n:'Fresh Baked Pastries & Flatbreads',d:'Olive oil cake, za\'atar flatbread, seasonal preserves'},{n:'Greek Yogurt Bowl',d:'Honey, pistachio, berries, citrus'},{n:'Eggs Shakshouka',d:'Spiced tomato, peppers, feta'},{n:'Grilled Halloumi & Tomatoes',d:'Lemon, oregano'},{n:'Seasonal Sides',d:'Fresh fruit platter, warm sourdough'}]},
+    {title:'Modern American Luxury Breakfast',flat:[{n:'Artisan Pastries',d:'Croissants, brioche, jam, butter'},{n:'Truffle Scrambled Eggs',d:'Soft eggs, chives, aged cheese'},{n:'Smoked Bacon & Chicken Apple Sausage'},{n:'Buttermilk Pancakes',d:'Maple, cream, berries'},{n:'Avocado Toast',d:'Heirloom tomatoes, citrus'}]},
+    {title:'Caribbean Sunrise Experience',flat:[{n:'Tropical Fruit Display',d:'Mango, papaya, pineapple'},{n:'Saltfish & Soft Scramble Eggs',d:'Peppers, onions'},{n:'Johnny Cakes & Fried Plantains'},{n:'Coconut Porridge',d:'Warm spices'},{n:'Grilled Sausages'}]},
+    {title:'Asian-Inspired Breakfast',flat:[{n:'Steamed Bao & Dumplings',d:'Chicken, vegetable'},{n:'Congee',d:'Soft egg, scallions, chili oil'},{n:'Tamago',d:'Japanese omelette'},{n:'Fresh Fruit & Citrus'},{n:'Green Tea & Ginger Honey Drinks'}]},
+    {title:'French-Italian Morning Table',flat:[{n:'Viennoiserie',d:'Croissants, pain au chocolat'},{n:'Soft Scrambled Eggs',d:'Butter, herbs'},{n:'Prosciutto, Burrata & Tomatoes'},{n:'Breakfast Potatoes',d:'Garlic, rosemary'},{n:'Seasonal Fruit & Honey Yogurt'}]},
+  ],
+  lunch:[
+    {title:'Mediterranean Coastal Lunch',flat:[{n:'Grilled Sea Bass',d:'Lemon, olive oil, herbs'},{n:'Chicken Souvlaki',d:'Garlic, oregano'},{n:'Heirloom Tomato Salad',d:'Feta, olives'},{n:'Lemon Orzo',d:'Fresh herbs'},{n:'Warm Pita & Dips'}]},
+    {title:'Modern American Lunch',flat:[{n:'Grilled Chicken Breast',d:'Herb butter'},{n:'Steak Sandwich',d:'Caramelized onions, aioli'},{n:'Caesar Salad',d:'Parmesan, croutons'},{n:'Truffle Fries'},{n:'Seasonal Fruit'}]},
+    {title:'Caribbean Light Lunch',flat:[{n:'Grilled Snapper',d:'Citrus glaze'},{n:'Jerk Chicken',d:'Island spices'},{n:'Rice & Peas'},{n:'Plantains'},{n:'Tropical Salad'}]},
+    {title:'Asian Fusion Lunch',flat:[{n:'Teriyaki Salmon',d:'Sesame glaze'},{n:'Chicken Stir Fry',d:'Vegetables, soy'},{n:'Fried Rice',d:'Egg, scallions'},{n:'Asian Slaw'},{n:'Fresh Fruit'}]},
+    {title:'Italian Garden Lunch',flat:[{n:'Grilled Branzino',d:'Lemon, herbs'},{n:'Chicken Milanese',d:'Arugula, parmesan'},{n:'Caprese Salad',d:'Basil, mozzarella'},{n:'Roasted Potatoes'},{n:'Focaccia Bread'}]},
+  ],
+};
+
+function buildMenuList(cat){
+  const list=G('menu-list');
+  list.innerHTML='';
+  MENUS[cat].forEach((m,idx)=>{
+    const row=document.createElement('div');
+    row.className='mnl-row';
+    row.innerHTML=
+      '<button class="mnl-btn" type="button">'+m.title+'</button>'+
+      '<button class="mnl-info" type="button" title="View menu details">'+
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="8"/><line x1="12" y1="12" x2="12" y2="16"/></svg>'+
+      '</button>';
+    row.querySelector('.mnl-btn').addEventListener('click',()=>{
+      list.querySelectorAll('.mnl-row').forEach(r=>r.classList.remove('chosen'));
+      row.classList.add('chosen');
+      ST.data.selectedMenu=m.title;
+      clearErrs();
+    });
+    row.querySelector('.mnl-info').addEventListener('click',e=>{
+      e.stopPropagation();openMenuPopup(cat,idx);
+    });
+    list.appendChild(row);
+  });
+  G('menu-list-wrap').style.display='';
+}
+
+function openMenuPopup(cat,idx){
+  const m=MENUS[cat][idx];
+  G('mnpop-title').textContent=m.title;
+  const body=G('mnpop-body');
+  body.innerHTML='';
+  if(m.sections){
+    m.sections.forEach(sec=>{
+      const sDiv=document.createElement('div');
+      sDiv.innerHTML='<p class="mnpop-sec-head">'+sec.name+'</p>'+
+        sec.items.map(it=>'<div class="mnpop-item"><p class="mnpop-item-name">'+it.n+'</p>'+(it.d?'<p class="mnpop-item-desc">'+it.d+'</p>':'')+'</div>').join('');
+      body.appendChild(sDiv);
+    });
+  } else if(m.flat){
+    const sDiv=document.createElement('div');
+    sDiv.innerHTML=m.flat.map(it=>'<div class="mnpop-flat-item">'+it.n+(it.d?'<span>'+it.d+'</span>':'')+'</div>').join('');
+    body.appendChild(sDiv);
+  }
+  G('mnpop').classList.add('open');
+}
+G('mnpop-close').addEventListener('click',()=>G('mnpop').classList.remove('open'));
+G('mnpop').addEventListener('click',e=>{if(e.target===G('mnpop'))G('mnpop').classList.remove('open');});
+
+function scrollReveal(el){
+  const slide=el.closest('.slide');
+  if(!slide)return;
+  requestAnimationFrame(()=>{
+    const gap=el.getBoundingClientRect().bottom+32-slide.getBoundingClientRect().bottom;
+    if(gap>0)slide.scrollTo({top:slide.scrollTop+gap,behavior:'smooth'});
+  });
+}
+
+G('opts-menu-yn').querySelectorAll('.opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    G('opts-menu-yn').querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+    o.classList.add('chosen');
+    ST.data.menuChoice=o.dataset.v;
+    if(o.dataset.v==='yes'){
+      G('menu-cats').style.display='';G('menu-describe').style.display='none';
+      scrollReveal(G('menu-cats'));
+    } else {
+      G('menu-cats').style.display='none';G('menu-list-wrap').style.display='none';
+      G('menu-describe').style.display='';
+      delete ST.data.selectedMenu;delete ST.data.menuCat;
+      G('opts-menu-cat').querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+      scrollReveal(G('menu-describe'));
+    }
+    clearErrs();
+  });
+});
+
+G('opts-menu-cat').querySelectorAll('.opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    G('opts-menu-cat').querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+    o.classList.add('chosen');
+    ST.data.menuCat=o.dataset.cat;
+    delete ST.data.selectedMenu;
+    buildMenuList(o.dataset.cat);
+    scrollReveal(G('menu-list-wrap'));
+  });
+});
+
+/* â”€â”€ Review â”€â”€ */
 function buildReview(){
   saveData();const d=ST.data;
   const fmt=d.date?new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'—';
   const rows=arr=>arr.map(([k,val])=>`<div class="rev-row"><span class="rev-k">${k}</span><span class="rev-v">${val||'—'}</span></div>`).join('');
+  const menuVal=d.menuChoice==='yes'?(d.selectedMenu||'—'):(d.menuNote||'To discuss on call');
   G('rev-card').innerHTML=
     `<div class="rev-sec"><span class="rev-lbl">Contact</span>${rows([['Name',d.fullName],['Email',d.email],['Phone',d.phone]])}</div>`+
-    `<div class="rev-sec"><span class="rev-lbl">Experience</span>${rows([['Guests',d.guests],d.experience?['Experience',d.experience]:['Vision',d.vision],['Date',fmt],['Location',d.location]])}</div>`;
+    `<div class="rev-sec"><span class="rev-lbl">Experience</span>${rows([['Guests',d.guests],d.experience?['Experience',d.experience]:['Vision',d.vision]])}</div>`+
+    `<div class="rev-sec"><span class="rev-lbl">Menu</span>${rows([['Menu',menuVal]])}</div>`+
+    `<div class="rev-sec"><span class="rev-lbl">Details</span>${rows([['Date',fmt],['Location',d.location]])}</div>`;
 }
 
-/* ── Submit ── */
+/* â”€â”€ Submit â”€â”€ */
 async function doSubmit(){
   const btn=G('submit-btn'),mOk=G('m-ok');
   btn.disabled=true;btn.textContent='Sending…';
@@ -727,11 +982,11 @@ async function doSubmit(){
 }
 G('submit-btn').addEventListener('click',doSubmit);
 
-/* ── Chrome ── */
+/* â”€â”€ Chrome â”€â”€ */
 function chrome(){
   const c=ST.cur;
-  const qMap={'1':1,'2':2,'3':3,'4':4,'5':5,'6a':6,'6b':6,'7':7,'8':8};
-  const qn=qMap[c]||0,tot=8;
+  const qMap={'1':1,'2':2,'3':3,'4':4,'5':5,'6a':6,'6b':6,'menu':7,'7':8,'8':9};
+  const qn=qMap[c]||0,tot=9;
   const ctr=G('t-cnt');
   if(c==='intro'||c==='done'||c==='review'){ctr.textContent='';ctr.classList.remove('on');}
   else{ctr.textContent=qn+' / '+tot;ctr.classList.add('on');}
@@ -746,7 +1001,7 @@ function chrome(){
   G('nav-up').disabled=(c==='1');
 }
 
-/* ── Mobile nav ── */
+/* â”€â”€ Mobile nav â”€â”€ */
 function updateMobileNav(){
   const c=ST.cur;
   const back=G('m-back'),ok=G('m-ok');
@@ -760,7 +1015,7 @@ function updateMobileNav(){
   G('m-takes').classList.toggle('show', c==='intro');
 }
 
-/* ── Events ── */
+/* â”€â”€ Events â”€â”€ */
 G('begin-btn').addEventListener('click',()=>go('intro','1','fwd'));
 document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',goNext));
 G('nav-up').addEventListener('click',goBack);
@@ -774,17 +1029,17 @@ G('m-ok').addEventListener('click',()=>{
   goNext();
 });
 
-/* ── Keyboard ── */
+/* â”€â”€ Keyboard â”€â”€ */
 document.addEventListener('keydown',ev=>{
   if(ev.key!=='Enter')return;
   const c=ST.cur;
   if(c==='intro'){go('intro','1','fwd');return;}
-  if(c==='done'||c==='review'||AUTO.includes(c))return;
-  if(c==='6b'&&document.activeElement?.tagName==='TEXTAREA')return;
+  if(c==='done'||c==='review'||AUTO.includes(c)||c==='menu')return;
+  if((c==='6b'||c==='menu')&&document.activeElement?.tagName==='TEXTAREA')return;
   ev.preventDefault();goNext();
 });
 
-/* ── Textarea grow + follow caret ── */
+/* â”€â”€ Textarea grow + follow caret â”€â”€ */
 document.querySelectorAll('.f-ta').forEach(ta=>{
   ta.addEventListener('input',function(){
     const slide=this.closest('.slide');
@@ -804,7 +1059,7 @@ document.querySelectorAll('.f-ta').forEach(ta=>{
   });
 });
 
-/* ── Scroll-to-hide topbar & prog ── */
+/* â”€â”€ Scroll-to-hide topbar & prog â”€â”€ */
 document.querySelectorAll('.slide').forEach(slide=>{
   slide.addEventListener('scroll',()=>{
     const gone=slide.scrollTop>8;
@@ -813,7 +1068,7 @@ document.querySelectorAll('.slide').forEach(slide=>{
   },{passive:true});
 });
 
-/* ── Custom date picker ── */
+/* â”€â”€ Custom date picker â”€â”€ */
 (function(){
   const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   const today=new Date();today.setHours(0,0,0,0);
@@ -884,7 +1139,7 @@ document.querySelectorAll('.slide').forEach(slide=>{
   document.addEventListener('click',ev=>{if(!G('date-wrap').contains(ev.target))close();});
 })();
 
-/* ── Preloader ── */
+/* â”€â”€ Preloader â”€â”€ */
 setTimeout(()=>{
   const pre=G('preloader');
   pre.classList.add('gone');

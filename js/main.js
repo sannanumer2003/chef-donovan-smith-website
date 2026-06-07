@@ -106,10 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isOpen) {
           item.classList.add('open');
           body.style.maxHeight = body.scrollHeight + 'px';
-          setTimeout(() => {
-            const top = header.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-          }, 60);
+          // Use offsetTop (absolute page coords) so the calculation is stable
+          // regardless of viewport scroll state or first-render timing
+          let absTop = 0;
+          let el = header;
+          while (el) { absTop += el.offsetTop; el = el.offsetParent; }
+          window.scrollTo({ top: Math.max(0, absTop - 88), behavior: 'smooth' });
         }
       });
     });

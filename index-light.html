@@ -19,14 +19,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- ── Light theme: swap the two core colors ── -->
+  <!-- â”€â”€ Light theme: swap the two core colors â”€â”€ -->
   <style>
     :root {
-      --bg:         rgb(239, 231, 210);   /* was green  → now cream  */
-      --bg-primary: rgb(0,  46,  40);     /* was cream  → now green  */
-      --text:       rgb(0,  46,  40);     /* was cream  → now green  */
+      --bg:         rgb(239, 231, 210);   /* was green  â†’ now cream  */
+      --bg-primary: rgb(0,  46,  40);     /* was cream  â†’ now green  */
+      --text:       rgb(0,  46,  40);     /* was cream  â†’ now green  */
       --text-muted: rgba(0, 46,  40, 0.6);
-      --text-inv:   rgb(239, 231, 210);   /* was green  → now cream  */
+      --text-inv:   rgb(239, 231, 210);   /* was green  â†’ now cream  */
       --border:     rgba(0,  46,  40, 0.18);
     }
     html, body { background-color: rgb(239, 231, 210); }
@@ -59,7 +59,7 @@
     <a href="reviews.html"   class="mobile-nav-link block uppercase" style="font-family:var(--font-forum);font-size:clamp(40px,10vw,64px);line-height:1;color:var(--text);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.6" onmouseout="this.style.opacity=1">Reviews</a>
   </nav>
   <div class="mt-auto pt-12">
-    <!-- btn-outline on cream panel: --text = dark green → readable ✓ -->
+    <!-- btn-outline on cream panel: --text = dark green â†’ readable âœ“ -->
     <a href="reservation.html" class="mobile-nav-link btn btn-outline" style="display:flex;justify-content:center">Plan Your Experience</a>
   </div>
 </div>
@@ -67,7 +67,7 @@
 <!-- Page wrapper — cream background via --bg -->
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
 
-  <!-- ── HERO ── -->
+  <!-- â”€â”€ HERO â”€â”€ -->
   <div class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]" style="grid-template-columns:1fr minmax(360px,0.3fr)">
 
     <!-- Left: hero video panel (visually dark — keep all overlaid text cream) -->
@@ -80,12 +80,12 @@
       <!-- bottom gradient fades to cream (page bg) -->
       <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:42%;z-index:1;background:linear-gradient(to top,rgb(239,231,210) 0%,rgba(239,231,210,.6) 28%,transparent 100%)"></div>
 
-      <!-- Header overlay (sits on dark video → all text forced cream) -->
+      <!-- Header overlay (sits on dark video â†’ all text forced cream) -->
       <div class="absolute top-4 left-4" style="z-index:20">
         <header class="flex items-center gap-6 sm:gap-8 px-4 sm:px-5 py-4">
           <!-- force cream: on dark video, --text is now green (unreadable) -->
           <a href="index-light.html" style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:rgb(239,231,210);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
-          <!-- .nav-link is hardcoded cream in style.css — stays cream ✓ -->
+          <!-- .nav-link is hardcoded cream in style.css — stays cream âœ“ -->
           <nav class="hidden md:flex items-center gap-6">
             <a href="menu.html"      class="nav-link">Menu</a>
             <a href="about.html"     class="nav-link">About</a>
@@ -100,7 +100,7 @@
         </header>
       </div>
 
-      <!-- Hero title (on dark video → cream) -->
+      <!-- Hero title (on dark video â†’ cream) -->
       <div class="absolute bottom-0 left-0 px-10 pb-10" style="z-index:10">
         <h1 class="uppercase select-none" style="font-family:var(--font-forum);color:rgb(239,231,210);font-size:clamp(68px,7.5vw,112px);letter-spacing:.01em;line-height:1">
           <span class="hero-line" style="margin-bottom:8px">DONOVAN</span>
@@ -123,7 +123,7 @@
       </div>
     </div>
 
-    <!-- Right: nav cards (each has its own dark photo → keep card labels cream) -->
+    <!-- Right: nav cards (each has its own dark photo â†’ keep card labels cream) -->
     <div class="flex flex-row overflow-x-auto lg:overflow-visible lg:flex-col gap-4 lg:h-full pb-2 lg:pb-0">
       <div class="nav-card-anim flex-shrink-0 w-[280px] h-[180px] lg:flex-1 lg:w-auto lg:h-auto lg:min-h-0">
         <a href="menu.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
@@ -170,7 +170,7 @@
     </div>
   </div><!-- /hero -->
 
-  <!-- ── INTRO SECTION — cream bg, dark green text via --text / --text-muted ── -->
+  <!-- â”€â”€ INTRO SECTION — cream bg, dark green text via --text / --text-muted â”€â”€ -->
   <section class="flex flex-col lg:flex-row mt-4">
     <div class="grain relative shrink-0 w-full lg:w-1/2 overflow-hidden" style="min-height:240px;height:60vw;max-height:600px">
       <img src="images/chef_portrait.png" alt="Chef Donovan" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.background='rgb(0,46,40)'">
@@ -186,7 +186,7 @@
     </div>
   </section>
 
-  <!-- ── EXPERIENCES — cream bg; dividers must be dark to be visible ── -->
+  <!-- â”€â”€ EXPERIENCES — cream bg; dividers must be dark to be visible â”€â”€ -->
   <section class="px-5 py-12 sm:px-8 lg:px-20 lg:py-20">
     <div class="stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
       <div class="fade-up flex flex-col">
@@ -210,7 +210,7 @@
     </div>
   </section>
 
-  <!-- ── PORTFOLIO TEASER — image cards keep their own dark overlays ── -->
+  <!-- â”€â”€ PORTFOLIO TEASER — image cards keep their own dark overlays â”€â”€ -->
   <section class="px-5 pb-12 sm:px-8 sm:pb-16 lg:px-20 lg:pb-20">
     <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Past Experiences</h2>
@@ -252,7 +252,7 @@
     </div>
   </section>
 
-  <!-- ── REVIEW — cream bg; quote mark and text go dark ── -->
+  <!-- â”€â”€ REVIEW — cream bg; quote mark and text go dark â”€â”€ -->
   <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
     <div class="stagger flex flex-col items-center text-center" style="max-width:800px;margin:0 auto">
       <div class="fade-up select-none" aria-hidden="true" style="font-family:var(--font-forum);font-size:120px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:52px">&ldquo;</div>
@@ -265,17 +265,17 @@
     </div>
   </section>
 
-  <!-- ── CTA — now dark green bg via --bg-primary; all text flipped to cream ── -->
+  <!-- â”€â”€ CTA — now dark green bg via --bg-primary; all text flipped to cream â”€â”€ -->
   <section class="mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20" style="background:var(--bg-primary);border-radius:16px">
     <div class="stagger flex flex-col items-center text-center">
-      <!-- --text-inv is now cream ✓ -->
+      <!-- --text-inv is now cream âœ“ -->
       <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv);margin-bottom:24px">Your Table Awaits.</h2>
       <!-- divider must be cream on dark green bg -->
       <div class="fade-up" style="width:60px;height:1px;background:rgba(239,231,210,.2);margin-bottom:24px"></div>
       <!-- body text must be cream -->
       <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:300;font-size:18px;color:rgba(239,231,210,.65);margin-bottom:48px">Every experience begins with a conversation.</p>
       <div class="fade-up flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-        <!-- btn-dark: bg = --text-inv (cream), color = --text (green) → cream pill, dark green text ✓ -->
+        <!-- btn-dark: bg = --text-inv (cream), color = --text (green) â†’ cream pill, dark green text âœ“ -->
         <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
         <!-- secondary link: must be cream on dark green bg -->
         <a href="about.html" class="text-link" style="color:rgba(239,231,210,.55)">Meet Chef Donovan</a>
@@ -283,7 +283,7 @@
     </div>
   </section>
 
-  <!-- ── FOOTER — cream bg, dark green text via --text-muted ── -->
+  <!-- â”€â”€ FOOTER — cream bg, dark green text via --text-muted â”€â”€ -->
   <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
     <div class="flex flex-col gap-1">
       <span style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--text)">Chef Donovan Smith</span>
@@ -296,7 +296,7 @@
       <a href="portfolio.html"   class="meta-label" style="color:var(--text-muted);text-decoration:none">Portfolio</a>
       <a href="reviews.html"     class="meta-label" style="color:var(--text-muted);text-decoration:none">Reviews</a>
     </nav>
-    <p class="meta-label" style="color:var(--text-muted)">&copy; 2025 chefdonsmith.com</p>
+    <p class="meta-label" style="color:var(--text-muted)">&copy; 2026 chefdonsmith.com</p>
   </footer>
 
 </div><!-- /page wrapper -->
