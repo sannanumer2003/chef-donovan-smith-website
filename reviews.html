@@ -27,8 +27,6 @@
     .vtl-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:rgba(239,231,210,.12);border:1.5px solid rgba(239,231,210,.35);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
     .vtl-card:hover .vtl-play{background:rgba(239,231,210,.26);transform:translate(-50%,-50%) scale(1.09)}
     .vtl-body{position:absolute;bottom:0;left:0;right:0;padding:18px 18px 22px}
-    .vtl-stars{display:flex;gap:2px;margin-bottom:8px}
-    .vtl-star{color:rgb(245,190,75);font-size:12px}
     .vtl-quote{font-family:var(--font-satoshi);font-size:12.5px;font-weight:400;color:rgba(239,231,210,.82);line-height:1.55;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .vtl-name{font-family:var(--font-satoshi);font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(239,231,210,.44)}
     /* â”€â”€ Video Player Overlay â”€â”€ */
@@ -50,8 +48,6 @@
     .vpov-icons svg{width:15px;height:15px;fill:none;stroke:rgba(239,231,210,.45);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:stroke .2s}
     .vpov-icons svg:hover{stroke:rgba(239,231,210,.88)}
     .vpov-info{text-align:center;max-width:280px;flex-shrink:0}
-    .vpov-info-stars{display:flex;gap:2px;justify-content:center;margin-bottom:7px}
-    .vpov-info-star{color:rgb(245,190,75);font-size:13px}
     .vpov-info-quote{font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.65);line-height:1.6;margin-bottom:8px}
     .vpov-info-name{font-family:var(--font-satoshi);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.35)}
   </style>
@@ -254,9 +250,6 @@
     </div>
   </div>
   <div class="vpov-info">
-    <div class="vpov-info-stars">
-      <span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span><span class="vpov-info-star">â˜…</span>
-    </div>
     <p class="vpov-info-quote" id="vpov-info-quote"></p>
     <p class="vpov-info-name" id="vpov-info-name"></p>
   </div>
@@ -291,7 +284,6 @@
         '<svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="15" height="15"><polygon points="5,3 19,12 5,21"/></svg>'+
       '</div>'+
       '<div class="vtl-body">'+
-        '<div class="vtl-stars"><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span><span class="vtl-star">â˜…</span></div>'+
         '<p class="vtl-quote">'+t.quote+'</p>'+
         '<p class="vtl-name">'+t.name+' — '+t.loc+'</p>'+
       '</div>';
