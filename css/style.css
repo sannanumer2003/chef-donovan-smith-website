@@ -297,7 +297,7 @@ a { color: inherit; }
 /* ── Footer ────────────────────────────────────────────────────── */
 .footer-brand {
   font-family: var(--font-forum), serif;
-  font-size: 18px;
+  font-size: 24px;
   text-transform: uppercase;
   letter-spacing: .12em;
   color: var(--text);
