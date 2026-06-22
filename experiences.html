@@ -76,7 +76,7 @@
     }
     .exp-card-btn {
       display:inline-flex; align-items:center; gap:6px;
-      margin-top:16px; padding:9px 20px;
+      padding:9px 20px;
       background:rgba(239,231,210,.1);
       border:1px solid rgba(239,231,210,.22); border-radius:100px;
       font-family:'Satoshi',sans-serif; font-size:11px; font-weight:500;
@@ -458,9 +458,14 @@
         '<span class="exp-card-num">' + exp.num + '</span>' +
         '<h3 class="exp-card-name">' + exp.name + '</h3>' +
         '<p class="exp-card-tagline">' + exp.tagline + '</p>' +
-        '<button class="exp-card-btn" tabindex="-1">Explore' +
-          '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
-        '</button>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">' +
+          '<button class="exp-card-btn" tabindex="-1">Explore' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
+          '</button>' +
+          '<button class="exp-card-btn" tabindex="-1">View Album' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
+          '</button>' +
+        '</div>' +
       '</div>';
     card.addEventListener('click', () => openModal(i));
     card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(i); }});
