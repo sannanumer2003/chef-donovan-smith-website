@@ -91,11 +91,12 @@
             <a href="about.html"     class="nav-link">About</a>
             <a href="portfolio.html" class="nav-link">Portfolio</a>
             <a href="reviews.html"   class="nav-link">Reviews</a>
+        <a href="blog.html"       class="nav-link">Blog</a>
           </nav>
           <!-- hero-btn-outline class forces cream on dark video -->
           <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline" style="flex-shrink:0">Plan Your Experience</a>
           <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
           </button>
         </header>
       </div>
@@ -284,19 +285,34 @@
   </section>
 
   <!-- â”€â”€ FOOTER — cream bg, dark green text via --text-muted â”€â”€ -->
-  <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
-    <div class="flex flex-col gap-1">
-      <span style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--text)">Chef Donovan Smith</span>
-      <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+  <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
+
+    <div style="margin-bottom:32px">
+      <span class="footer-brand">Chef Donovan Smith</span>
+      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
     </div>
-    <nav class="flex items-center gap-4 flex-wrap">
-      <a href="index-light.html" class="meta-label" style="color:var(--text-muted);text-decoration:none">Home</a>
-      <a href="about.html"       class="meta-label" style="color:var(--text-muted);text-decoration:none">About</a>
-      <a href="menu.html"        class="meta-label" style="color:var(--text-muted);text-decoration:none">Menu</a>
-      <a href="portfolio.html"   class="meta-label" style="color:var(--text-muted);text-decoration:none">Portfolio</a>
-      <a href="reviews.html"     class="meta-label" style="color:var(--text-muted);text-decoration:none">Reviews</a>
+
+    <nav class="footer-nav">
+      <a href="index.html"       class="footer-link">Home</a>
+      <a href="about.html"       class="footer-link">About</a>
+      <a href="menu.html"        class="footer-link">Menu</a>
+      <a href="experiences.html" class="footer-link">Experiences</a>
+      <a href="gallery.html"     class="footer-link">Gallery</a>
+      <a href="reviews.html"     class="footer-link">Reviews</a>
+      <a href="blog.html"        class="footer-link">Blog</a>
     </nav>
-    <p class="meta-label" style="color:var(--text-muted)">&copy; 2026 chefdonsmith.com</p>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
+        <span class="footer-sep">|</span>
+        <a href="terms-and-conditions.html"          class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="refunds-and-cancellation.html"        class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+      </div>
+      <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
+    </div>
+
   </footer>
 
 </div><!-- /page wrapper -->

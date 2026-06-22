@@ -172,6 +172,29 @@
     @media(max-width:640px){
       .reel-card { width:160px; height:285px; }
     }
+    .hvt-vcard:hover img { transform:scale(1.05); }
+    @media(max-width:640px){ .hvt-vcard { height:300px!important; } }
+    /* video overlay */
+    .vpov{position:fixed;inset:0;z-index:9900;background:rgba(0,0,0,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 20px 20px;gap:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .vpov.open{opacity:1;pointer-events:all}
+    .vpov-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.14);color:rgba(239,231,210,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0}
+    .vpov-close:hover{background:rgba(239,231,210,.16)}
+    .vpov-inner{position:relative;height:min(460px,calc(100dvh - 280px));aspect-ratio:9/16;border-radius:18px;overflow:hidden;flex-shrink:0}
+    .vpov-thumb{width:100%;height:100%;object-fit:cover;display:block}
+    .vpov-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.12) 55%,transparent 100%)}
+    .vpov-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(239,231,210,.13);border:2px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .15s;padding:0}
+    .vpov-center:hover{background:rgba(239,231,210,.26);transform:translate(-50%,-50%) scale(1.06)}
+    .vpov-controls{position:absolute;bottom:0;left:0;right:0;padding:0 16px 18px}
+    .vpov-prog-track{width:100%;height:3px;background:rgba(239,231,210,.18);border-radius:99px;cursor:pointer;overflow:hidden;margin-bottom:10px}
+    .vpov-prog-fill{height:100%;background:rgba(239,231,210,.85);border-radius:99px;width:0%}
+    .vpov-meta{display:flex;align-items:center;justify-content:space-between}
+    .vpov-time{font-size:10.5px;color:rgba(239,231,210,.45);font-family:var(--font-satoshi);letter-spacing:.04em}
+    .vpov-icons{display:flex;gap:14px;align-items:center}
+    .vpov-icons svg{width:15px;height:15px;fill:none;stroke:rgba(239,231,210,.45);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:stroke .2s}
+    .vpov-icons svg:hover{stroke:rgba(239,231,210,.88)}
+    .vpov-info{text-align:center;max-width:280px;flex-shrink:0}
+    .vpov-info-quote{font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.65);line-height:1.6;margin-bottom:8px}
+    .vpov-info-name{font-family:var(--font-satoshi);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.35)}
   </style>
 </head>
 <body>
@@ -189,6 +212,7 @@
     <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Experiences</a>
     <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Gallery</a>
     <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Reviews</a>
+    <a href="blog.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Blog</a>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
     <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
@@ -218,11 +242,12 @@
             <a href="experiences.html" class="nav-link">Experiences</a>
             <a href="gallery.html"   class="nav-link">Gallery</a>
             <a href="reviews.html"     class="nav-link">Reviews</a>
+        <a href="blog.html"       class="nav-link">Blog</a>
           </nav>
           <div class="flex items-center gap-4" style="flex-shrink:0">
             <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline">Plan Your Experience</a>
             <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+              <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
             </button>
           </div>
         </header>
@@ -481,7 +506,7 @@
     document.querySelectorAll('.psvc-btn').forEach(btn=>{
       btn.addEventListener('click',e=>{e.stopPropagation();openSvc(+btn.dataset.svc);});
     });
-    document.querySelectorAll('.psvc-card').forEach(card=>{
+    document.querySelectorAll('.psvc-card[data-svc]').forEach(card=>{
       card.addEventListener('click',()=>openSvc(+card.dataset.svc));
     });
     document.getElementById('svc-modal-close').addEventListener('click',closeSvc);
@@ -524,15 +549,67 @@
     </div>
   </section>
 
+  <!-- ── VIDEO TESTIMONIALS ── -->
+  <section class="px-5 sm:px-8 lg:px-20 pb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px">
+
+      <div class="hvt-vcard" data-vt="0" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
+        <img src="images/anniversary-dinner.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
+          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Nassau, Bahamas</span>
+          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">M. &amp; J. Harrison</p>
+        </div>
+      </div>
+
+      <div class="hvt-vcard" data-vt="1" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
+        <img src="images/luxury-private-dining-2.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
+          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">New York, USA</span>
+          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">The Williams Family</p>
+        </div>
+      </div>
+
+      <div class="hvt-vcard" data-vt="2" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
+        <img src="images/grand-event.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
+          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Paradise Island, Bahamas</span>
+          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">R. Clarke</p>
+        </div>
+      </div>
+
+      <div class="hvt-vcard" data-vt="3" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
+        <img src="images/dinner-table.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
+          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Exuma, Bahamas</span>
+          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">S. Fontaine</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- â”€â”€ CTA (dark green section) â”€â”€ -->
-  <section class="mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20" style="background:var(--bg-primary);border-radius:16px">
+  <section class=”mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20” style=”background:var(--bg-primary);border-radius:16px”>
     <div class="stagger flex flex-col items-center text-center">
       <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv);margin-bottom:24px">Your Table Awaits.</h2>
       <div class="fade-up" style="width:60px;height:1px;background:rgba(239,231,210,.2);margin-bottom:24px"></div>
       <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;color:rgba(239,231,210,.65);margin-bottom:48px">Every experience begins with a conversation.</p>
-      <div class="fade-up">
-        <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
-      </div>
     </div>
   </section>
 
@@ -587,23 +664,136 @@
   </script>
 
   <!-- â”€â”€ FOOTER â”€â”€ -->
-  <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
-    <div class="flex flex-col gap-1">
+  <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
+
+    <div style="margin-bottom:32px">
       <span class="footer-brand">Chef Donovan Smith</span>
-      <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
     </div>
-    <nav class="flex items-center gap-4 flex-wrap">
+
+    <nav class="footer-nav">
       <a href="index.html"       class="footer-link">Home</a>
       <a href="about.html"       class="footer-link">About</a>
       <a href="menu.html"        class="footer-link">Menu</a>
       <a href="experiences.html" class="footer-link">Experiences</a>
-      <a href="gallery.html"   class="footer-link">Gallery</a>
+      <a href="gallery.html"     class="footer-link">Gallery</a>
       <a href="reviews.html"     class="footer-link">Reviews</a>
+      <a href="blog.html"        class="footer-link">Blog</a>
     </nav>
-    <p class="footer-link" style="opacity:.6">&copy; 2026 chefdonsmith.com</p>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
+        <span class="footer-sep">|</span>
+        <a href="terms-and-conditions.html"          class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="refunds-and-cancellation.html"        class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+      </div>
+      <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
+    </div>
+
   </footer>
 
 </div>
+
+<!-- Video Player Overlay -->
+<div class="vpov" id="idx-vpov">
+  <button class="vpov-close" id="idx-vpov-close" type="button" aria-label="Close video">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="vpov-inner">
+    <img class="vpov-thumb" id="idx-vpov-thumb" src="" alt="Video testimonial" draggable="false">
+    <div class="vpov-shade"></div>
+    <button class="vpov-center" id="idx-vpov-play-btn" type="button" aria-label="Play video">
+      <svg id="idx-vpov-icon-play" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="24" height="24" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg id="idx-vpov-icon-pause" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="22" height="22" style="display:none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+    </button>
+    <div class="vpov-controls">
+      <div class="vpov-prog-track" id="idx-vpov-prog-track">
+        <div class="vpov-prog-fill" id="idx-vpov-prog-fill"></div>
+      </div>
+      <div class="vpov-meta">
+        <span class="vpov-time" id="idx-vpov-time">0:00 / 2:47</span>
+        <div class="vpov-icons">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vpov-info">
+    <p class="vpov-info-quote" id="idx-vpov-info-quote"></p>
+    <p class="vpov-info-name" id="idx-vpov-info-name"></p>
+  </div>
+</div>
+
 <script src="js/main.js"></script>
+<script>
+(function(){
+  var VT=[
+    {img:'images/anniversary-dinner.jpg',name:'M. & J. Harrison',loc:'Nassau, Bahamas',quote:'Chef Donovan transformed our anniversary into something we will never stop talking about.'},
+    {img:'images/luxury-private-dining-2.jpg',name:'The Williams Family',loc:'New York, USA',quote:"Private dinner was the highlight of our entire trip. His Caribbean fusion is unlike anything we've experienced."},
+    {img:'images/grand-event.jpg',name:'R. Clarke',loc:'Paradise Island, Bahamas',quote:'40 guests, flawless execution. The team is still talking about it months later.'},
+    {img:'images/dinner-table.jpg',name:'S. Fontaine',loc:'Exuma, Bahamas',quote:'He created a completely custom menu around my preferences. I have never felt so taken care of.'},
+  ];
+  var overlay=document.getElementById('idx-vpov');
+  var isPlaying=false,progPct=0,progInt=null;
+
+  function openVP(t){
+    document.getElementById('idx-vpov-thumb').src=t.img;
+    document.getElementById('idx-vpov-info-quote').textContent=t.quote;
+    document.getElementById('idx-vpov-info-name').textContent=t.name+' — '+t.loc;
+    resetPlayer();
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeVP(){
+    overlay.classList.remove('open');
+    document.body.style.overflow='';
+    resetPlayer();
+  }
+  function resetPlayer(){
+    isPlaying=false;progPct=0;clearInterval(progInt);progInt=null;
+    document.getElementById('idx-vpov-prog-fill').style.width='0%';
+    document.getElementById('idx-vpov-time').textContent='0:00 / 2:47';
+    document.getElementById('idx-vpov-icon-play').style.display='';
+    document.getElementById('idx-vpov-icon-pause').style.display='none';
+  }
+  function updateTime(p){
+    var e=Math.round(p/100*167);
+    document.getElementById('idx-vpov-time').textContent=Math.floor(e/60)+':'+(e%60<10?'0':'')+e%60+' / 2:47';
+  }
+
+  document.querySelectorAll('.hvt-vcard').forEach(function(card){
+    card.addEventListener('click',function(){ openVP(VT[+card.dataset.vt]); });
+  });
+  document.getElementById('idx-vpov-close').addEventListener('click',closeVP);
+  overlay.addEventListener('click',function(e){ if(e.target===overlay) closeVP(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&overlay.classList.contains('open')) closeVP(); });
+
+  document.getElementById('idx-vpov-play-btn').addEventListener('click',function(){
+    isPlaying=!isPlaying;
+    document.getElementById('idx-vpov-icon-play').style.display=isPlaying?'none':'';
+    document.getElementById('idx-vpov-icon-pause').style.display=isPlaying?'':'none';
+    if(isPlaying){
+      progInt=setInterval(function(){
+        progPct+=100/1670;
+        if(progPct>=100){progPct=100;clearInterval(progInt);isPlaying=false;
+          document.getElementById('idx-vpov-icon-play').style.display='';
+          document.getElementById('idx-vpov-icon-pause').style.display='none';}
+        document.getElementById('idx-vpov-prog-fill').style.width=progPct+'%';
+        updateTime(progPct);
+      },100);
+    } else { clearInterval(progInt);progInt=null; }
+  });
+
+  document.getElementById('idx-vpov-prog-track').addEventListener('click',function(e){
+    var rect=e.currentTarget.getBoundingClientRect();
+    progPct=Math.max(0,Math.min(100,(e.clientX-rect.left)/rect.width*100));
+    document.getElementById('idx-vpov-prog-fill').style.width=progPct+'%';
+    updateTime(progPct);
+  });
+})();
+</script>
 </body>
 </html>

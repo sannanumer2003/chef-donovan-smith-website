@@ -12,6 +12,60 @@
   <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Gallery album card (Donovan Smith) ── */
+    .gal-card{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;height:300px;}
+    .gal-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s cubic-bezier(.22,1,.36,1);}
+    .gal-card:hover .gal-card-img{transform:scale(1.06);}
+    .gal-card-grain{position:absolute;inset:0;background-image:var(--noise);background-repeat:repeat;background-size:256px 256px;opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:2;}
+    .gal-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,10,8,.97) 0%,rgba(0,20,16,.48) 52%,transparent 100%);transition:opacity .3s;}
+    .gal-card:hover .gal-card-ov{opacity:.85;}
+    .gal-card-badge{position:absolute;top:16px;right:16px;z-index:4;display:flex;align-items:center;gap:5px;font-family:var(--font-satoshi);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(239,231,210,.7);background:rgba(0,0,0,.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:5px 11px;border-radius:100px;border:1px solid rgba(239,231,210,.12);}
+    .gal-card-body{position:absolute;bottom:0;left:0;right:0;padding:26px;z-index:5;}
+    .gal-card-cat{display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.48);margin-bottom:8px;}
+    .gal-card-title{font-family:var(--font-forum);font-size:clamp(20px,2vw,28px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210);transition:transform .35s cubic-bezier(.22,1,.36,1);}
+    .gal-card:hover .gal-card-title{transform:translateY(-4px);}
+    .gal-card-tagline{font-family:var(--font-satoshi);font-size:13px;font-weight:400;color:rgba(239,231,210,.85);line-height:1.55;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease;}
+    .gal-card:hover .gal-card-tagline{max-height:70px;opacity:1;margin-top:8px;}
+    .gal-card-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:9px 20px;background:rgba(239,231,210,.1);border:1px solid rgba(239,231,210,.22);border-radius:100px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgb(239,231,210);cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,background .2s;}
+    .gal-card:hover .gal-card-btn{opacity:1;transform:translateY(0);}
+    .gal-card-btn:hover{background:rgba(239,231,210,.2);}
+    @media(max-width:768px){
+      .gal-card-tagline{max-height:70px;opacity:.85;margin-top:7px;}
+      .gal-card-btn{opacity:1;transform:translateY(0);}
+    }
+    /* ── Album lightbox ── */
+    .abt-lb{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.97);opacity:0;pointer-events:none;transition:opacity .35s ease;}
+    .abt-lb.open{opacity:1;pointer-events:all;}
+    .abt-lb-header{position:absolute;top:0;left:0;right:0;z-index:12;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:linear-gradient(to bottom,rgba(0,0,0,.72) 0%,transparent 100%);}
+    .abt-lb-meta{display:flex;align-items:center;gap:14px;}
+    .abt-lb-title{font-family:var(--font-forum);font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:rgba(239,231,210,.9);}
+    .abt-lb-counter{font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.15em;color:rgba(239,231,210,.42);}
+    .abt-lb-close{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:rgba(239,231,210,.07);border:1px solid rgba(239,231,210,.14);display:flex;align-items:center;justify-content:center;color:rgba(239,231,210,.75);cursor:pointer;transition:background .2s,color .2s;}
+    .abt-lb-close:hover{background:rgba(239,231,210,.15);color:rgb(239,231,210);}
+    .abt-lb-viewport{position:absolute;inset:0;overflow:hidden;}
+    .abt-lb-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform;}
+    .abt-lb-slide{flex-shrink:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 110px 56px;gap:20px;box-sizing:border-box;}
+    .abt-lb-slide img{max-width:100%;max-height:78%;object-fit:contain;border-radius:10px;user-select:none;-webkit-user-drag:none;pointer-events:none;box-shadow:0 32px 80px rgba(0,0,0,.65);flex-shrink:1;}
+    .abt-lb-caption{font-family:var(--font-satoshi);font-size:15px;font-weight:400;color:rgba(239,231,210,.78);line-height:1.55;text-align:center;max-width:540px;flex-shrink:0;}
+    .abt-lb-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:12;width:50px;height:50px;border-radius:50%;background:rgba(239,231,210,.07);border:1px solid rgba(239,231,210,.13);display:flex;align-items:center;justify-content:center;color:rgba(239,231,210,.8);cursor:pointer;transition:background .2s,transform .2s;}
+    .abt-lb-arrow:hover{background:rgba(239,231,210,.15);}
+    .abt-lb-arrow.abt-prev{left:20px;}
+    .abt-lb-arrow.abt-next{right:20px;}
+    .abt-lb-arrow.abt-prev:hover{transform:translateY(-50%) translateX(-2px);}
+    .abt-lb-arrow.abt-next:hover{transform:translateY(-50%) translateX(2px);}
+    /* swipe hint */
+    .abt-swipe-hint{display:none;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);opacity:0;transition:opacity .6s ease;pointer-events:none;z-index:14;}
+    .abt-swipe-hint.show{opacity:1;}
+    @media(max-width:767px){
+      .abt-lb-slide{padding:68px 20px 44px;gap:14px;}
+      .abt-lb-slide img{max-height:72%;}
+      .abt-lb-caption{font-size:13px;max-width:100%;}
+      .abt-lb-arrow{display:none;}
+      .abt-lb-title{font-size:15px;}
+      .abt-swipe-hint{display:flex;}
+    }
+  </style>
 </head>
 <body>
 
@@ -28,6 +82,7 @@
     <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
     <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Gallery</a>
     <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+    <a href="blog.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Blog</a>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
     <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
@@ -46,11 +101,12 @@
         <a href="experiences.html" class="nav-link">Experiences</a>
         <a href="gallery.html"   class="nav-link">Gallery</a>
         <a href="reviews.html"     class="nav-link">Reviews</a>
+        <a href="blog.html"       class="nav-link">Blog</a>
       </nav>
       <div class="flex items-center gap-4">
         <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
         <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="15" x2="19" y2="15"/></svg>
+          <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
         </button>
       </div>
     </header>
@@ -91,23 +147,22 @@
         </div>
       </div>
 
-      <!-- Card 3: Photo gallery -->
-      <div class="fade-up" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
-        <div style="display:grid;grid-template-columns:3fr 2fr">
-          <!-- Left: tall portrait -->
-          <div class="grain relative overflow-hidden" style="height:440px">
-            <img src="images/donovan-photo-1.jpg" alt="Chef Donovan Smith" class="absolute inset-0 w-full h-full object-cover" style="object-position:center top" data-lightbox="images/donovan-photo-1.jpg">
-          </div>
-          <!-- Right: stacked second photo + label block -->
-          <div style="display:flex;flex-direction:column;border-left:1px solid var(--border)">
-            <div class="grain relative overflow-hidden" style="flex:1;min-height:0;border-bottom:1px solid var(--border)">
-              <img src="images/donovan-photo-2.jpg" alt="Chef Donovan Smith" class="absolute inset-0 w-full h-full object-cover" data-lightbox="images/donovan-photo-2.jpg">
-            </div>
-            <div style="padding:28px 24px;background:var(--bg-primary);display:flex;flex-direction:column;justify-content:flex-end;min-height:130px">
-              <span style="font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:rgba(239,231,210,.4);margin-bottom:10px;display:block">The Chef</span>
-              <p style="font-family:var(--font-forum);font-size:clamp(18px,2.2vw,24px);line-height:1.1;letter-spacing:.03em;color:rgb(239,231,210);text-transform:uppercase">Chef<br>Donovan</p>
-            </div>
-          </div>
+      <!-- Card 3: Donovan Smith album -->
+      <div class="fade-up gal-card" id="abt-album-card" role="button" tabindex="0" aria-label="Open Donovan Smith photo album">
+        <img class="gal-card-img" src="images/portfolio-photo.jpg" alt="Donovan Smith">
+        <div class="gal-card-grain"></div>
+        <div class="gal-card-ov"></div>
+        <div class="gal-card-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          4 photos
+        </div>
+        <div class="gal-card-body">
+          <span class="gal-card-cat">The Chef</span>
+          <p class="gal-card-title">Donovan Smith</p>
+          <p class="gal-card-tagline">The man behind every extraordinary table.</p>
+          <button class="gal-card-btn">View Album
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </button>
         </div>
       </div>
 
@@ -146,30 +201,163 @@
     </div><!-- /grid -->
 
     <!-- Footer (full width) -->
-    <footer class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between px-6 sm:px-10 py-8 mt-4" style="border-top:1px solid var(--border)">
-      <div class="flex flex-col gap-1">
-        <span class="footer-brand">Chef Donovan Smith</span>
-        <span class="meta-label" style="color:var(--text-muted)">@kitchenking101 &mdash; Bahamas &amp; Caribbean</span>
+    <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
+
+    <div style="margin-bottom:32px">
+      <span class="footer-brand">Chef Donovan Smith</span>
+      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
+    </div>
+
+    <nav class="footer-nav">
+      <a href="index.html"       class="footer-link">Home</a>
+      <a href="about.html"       class="footer-link">About</a>
+      <a href="menu.html"        class="footer-link">Menu</a>
+      <a href="experiences.html" class="footer-link">Experiences</a>
+      <a href="gallery.html"     class="footer-link">Gallery</a>
+      <a href="reviews.html"     class="footer-link">Reviews</a>
+      <a href="blog.html"        class="footer-link">Blog</a>
+    </nav>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
+        <span class="footer-sep">|</span>
+        <a href="terms-and-conditions.html"          class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="refunds-and-cancellation.html"        class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
       </div>
-      <nav class="flex items-center gap-4 flex-wrap">
-        <a href="index.html"       class="footer-link">Home</a>
-        <a href="about.html"       class="footer-link">About</a>
-        <a href="menu.html"        class="footer-link">Menu</a>
-        <a href="experiences.html" class="footer-link">Experiences</a>
-        <a href="gallery.html"   class="footer-link">Gallery</a>
-        <a href="reviews.html"     class="footer-link">Reviews</a>
-      </nav>
-      <p class="footer-link" style="opacity:.6">&copy; 2026 chefdonsmith.com</p>
-    </footer>
+      <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
+    </div>
+
+  </footer>
 
   </div><!-- /flex-col -->
 </div><!-- /page wrapper -->
-<div id="lightbox" class="lightbox-overlay">
-  <button class="lightbox-close" aria-label="Close">
-    <svg width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+<!-- Album lightbox -->
+<div id="abt-lb" class="abt-lb" role="dialog" aria-modal="true" aria-label="Donovan Smith photo album">
+  <div class="abt-lb-header">
+    <div class="abt-lb-meta">
+      <span class="abt-lb-title" id="abt-lb-title">Donovan Smith</span>
+      <span class="abt-lb-counter" id="abt-lb-counter"></span>
+    </div>
+    <button class="abt-lb-close" id="abt-lb-close" aria-label="Close album">
+      <svg width="14" height="14" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="abt-lb-viewport">
+    <div class="abt-lb-track" id="abt-lb-track"></div>
+  </div>
+  <button class="abt-lb-arrow abt-prev" id="abt-lb-prev" aria-label="Previous photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
-  <img class="lb-img" src="" alt="Chef Donovan Smith">
+  <button class="abt-lb-arrow abt-next" id="abt-lb-next" aria-label="Next photo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="abt-swipe-hint" id="abt-swipe-hint" aria-hidden="true">
+    <span id="abt-swipe-icon" style="display:flex;align-items:center">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </span>
+  </div>
 </div>
+
 <script src="js/main.js"></script>
+<script>
+(function(){
+  var PHOTOS=[
+    {src:'images/chef_portrait.png',   caption:'Chef Donovan Smith'},
+    {src:'images/donovan-photo-1.jpg', caption:'In his element'},
+    {src:'images/donovan-photo-2.jpg', caption:'Precision and passion'},
+    {src:'images/portfolio-photo.jpg', caption:'Behind the table'},
+  ];
+  var lb=document.getElementById('abt-lb');
+  var track=document.getElementById('abt-lb-track');
+  var counter=document.getElementById('abt-lb-counter');
+  var lbClose=document.getElementById('abt-lb-close');
+  var lbPrev=document.getElementById('abt-lb-prev');
+  var lbNext=document.getElementById('abt-lb-next');
+  var hint=document.getElementById('abt-swipe-hint');
+  var hintIcon=document.getElementById('abt-swipe-icon');
+  var currentIdx=0;
+
+  function openLb(){
+    track.innerHTML='';
+    PHOTOS.forEach(function(p){
+      var slide=document.createElement('div');
+      slide.className='abt-lb-slide';
+      var img=document.createElement('img');
+      img.src=p.src;img.alt=p.caption;
+      var cap=document.createElement('p');
+      cap.className='abt-lb-caption';cap.textContent=p.caption;
+      slide.appendChild(img);slide.appendChild(cap);
+      track.appendChild(slide);
+    });
+    currentIdx=0;
+    track.style.transition='none';
+    track.style.transform='translateX(0)';
+    updateUI();
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ track.style.transition=''; }); });
+    // swipe hint
+    if(hint){
+      clearTimeout(hint._t);
+      hint.classList.remove('show');
+      hintIcon.style.animation='none';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        hintIcon.style.animation='lbSwipeAnim 1.1s ease-in-out 0.4s 3 forwards';
+        hint.classList.add('show');
+        hint._t=setTimeout(function(){ hint.classList.remove('show'); },3200);
+      });});
+    }
+  }
+  function closeLb(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function moveTo(idx){
+    currentIdx=Math.max(0,Math.min(idx,PHOTOS.length-1));
+    track.style.transform='translateX('+(-currentIdx*100)+'%)';
+    updateUI();
+  }
+  function updateUI(){
+    counter.textContent=(currentIdx+1)+' / '+PHOTOS.length;
+    lbPrev.style.opacity=currentIdx===0?'0.3':'1';
+    lbNext.style.opacity=currentIdx===PHOTOS.length-1?'0.3':'1';
+  }
+
+  var card=document.getElementById('abt-album-card');
+  card.addEventListener('click',openLb);
+  card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' ') openLb(); });
+  lbClose.addEventListener('click',closeLb);
+  lbPrev.addEventListener('click',function(){ if(currentIdx>0) moveTo(currentIdx-1); });
+  lbNext.addEventListener('click',function(){ if(currentIdx<PHOTOS.length-1) moveTo(currentIdx+1); });
+  lb.addEventListener('click',function(e){ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') closeLb();
+    if(e.key==='ArrowRight'&&currentIdx<PHOTOS.length-1) moveTo(currentIdx+1);
+    if(e.key==='ArrowLeft'&&currentIdx>0) moveTo(currentIdx-1);
+  });
+
+  var swX=0,swY=0;
+  lb.addEventListener('touchstart',function(e){ swX=e.touches[0].clientX;swY=e.touches[0].clientY; },{passive:true});
+  lb.addEventListener('touchend',function(e){
+    var dx=swX-e.changedTouches[0].clientX,dy=swY-e.changedTouches[0].clientY;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+      if(hint){ clearTimeout(hint._t);hint.classList.remove('show'); }
+      if(dx>0&&currentIdx<PHOTOS.length-1) moveTo(currentIdx+1);
+      else if(dx<0&&currentIdx>0) moveTo(currentIdx-1);
+    }
+  },{passive:true});
+
+  // reuse gallery swipe animation keyframe
+  if(!document.getElementById('abt-swipe-style')){
+    var s=document.createElement('style');
+    s.id='abt-swipe-style';
+    s.textContent='@keyframes lbSwipeAnim{0%,100%{transform:translateX(0);opacity:.35}50%{transform:translateX(8px);opacity:1}}';
+    document.head.appendChild(s);
+  }
+})();
+</script>
 </body>
 </html>

@@ -660,6 +660,16 @@
       <span class="ey">Almost there</span>
       <h2 class="big-h" style="font-size:clamp(24px,3.5vw,36px);margin-bottom:20px">Ready to send?</h2>
       <div class="rev-card" id="rev-card"></div>
+      <div style="display:flex;align-items:flex-start;gap:12px;margin:24px 0 8px;padding:16px 18px;border:1px solid rgba(239,231,210,.12);border-radius:12px">
+        <input type="checkbox" id="consent-cb" style="width:17px;height:17px;accent-color:rgb(239,231,210);flex-shrink:0;margin-top:3px;cursor:pointer">
+        <label for="consent-cb" style="font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.55);line-height:1.65;cursor:pointer">
+          I confirm that I have read and agree to the
+          <a href="terms-and-conditions.html" target="_blank" rel="noopener" style="color:rgba(239,231,210,.85);text-decoration:underline;text-underline-offset:3px">Terms &amp; Conditions</a>,
+          <a href="privacy-policy.html" target="_blank" rel="noopener" style="color:rgba(239,231,210,.85);text-decoration:underline;text-underline-offset:3px">Privacy Policy</a>, and
+          <a href="refunds-and-cancellation.html" target="_blank" rel="noopener" style="color:rgba(239,231,210,.85);text-decoration:underline;text-underline-offset:3px">Refunds &amp; Cancellation Policy</a>.
+        </label>
+      </div>
+      <p class="f-err" id="e-consent" style="display:none;margin-bottom:12px">Please accept the policies before submitting.</p>
       <button class="ok" id="submit-btn">Send Inquiry</button>
       <p class="sub-note">No commitment required. Chef Donovan's team will reach out within 24 hours.</p>
     </div>
@@ -974,6 +984,9 @@ function buildReview(){
 
 /* â”€â”€ Submit â”€â”€ */
 async function doSubmit(){
+  const cb=G('consent-cb'),err=G('e-consent');
+  if(!cb.checked){err.style.display='block';cb.closest('div').style.borderColor='rgba(220,80,80,.5)';return;}
+  err.style.display='none';
   const btn=G('submit-btn'),mOk=G('m-ok');
   btn.disabled=true;btn.textContent='Sending…';
   mOk.disabled=true;mOk.textContent='Sending…';
@@ -981,6 +994,9 @@ async function doSubmit(){
   go('review','done','fwd');
 }
 G('submit-btn').addEventListener('click',doSubmit);
+G('consent-cb').addEventListener('change',function(){
+  if(this.checked){G('e-consent').style.display='none';this.closest('div').style.borderColor='';}
+});
 
 /* â”€â”€ Chrome â”€â”€ */
 function chrome(){

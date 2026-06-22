@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Art of the Intimate Dinner — Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-layout {
+      display: grid;
+      grid-template-columns: 44% 56%;
+      gap: 16px;
+      align-items: start;
+    }
+    .post-cover-col {
+      position: sticky;
+      top: 16px;
+    }
+    .post-cover {
+      position: relative;
+      height: calc(100vh - 32px);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(0,46,40,.045);
+    }
+    .post-cover-back {
+      position: absolute;
+      top: clamp(24px,3vw,36px);
+      left: clamp(24px,3vw,36px);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-satoshi); font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 99px;
+      padding: 8px 16px;
+      background: rgba(0,46,40,.04);
+      transition: background .2s, color .2s;
+    }
+    .post-cover-back:hover { background: rgba(0,46,40,.09); color: var(--text); }
+    .post-cover-foot {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: clamp(28px,3vw,48px);
+    }
+    /* body col */
+    .post-body { padding: 8px 44px 80px 28px; }
+    /* meta card */
+    .post-meta-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 36px 36px;
+      margin-bottom: 44px;
+    }
+    .post-cat {
+      font-family: var(--font-satoshi);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--text-muted);
+      display: block; margin-bottom: 14px;
+    }
+    .post-title {
+      font-family: var(--font-forum);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.08; letter-spacing: .01em;
+      color: var(--text); margin-bottom: 18px;
+    }
+    .post-byline {
+      display: flex; align-items: center; gap: 14px;
+      flex-wrap: wrap;
+    }
+    .post-author {
+      font-family: var(--font-satoshi);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .post-date {
+      font-family: var(--font-satoshi);
+      font-size: 11px; letter-spacing: .08em;
+      color: var(--text-muted); opacity: .5;
+    }
+    /* body text */
+    .post-content p {
+      font-family: var(--font-satoshi);
+      font-size: 15.5px; font-weight: 400;
+      color: var(--text); line-height: 1.9;
+      margin-bottom: 22px;
+    }
+    .post-content h2 {
+      font-family: var(--font-forum);
+      font-size: clamp(20px, 1.8vw, 26px);
+      letter-spacing: .01em; color: var(--text);
+      margin: 40px 0 14px;
+    }
+    .post-content img {
+      width: 100%; border-radius: 12px;
+      display: block; margin: 32px 0;
+      object-fit: cover;
+    }
+    .post-content blockquote {
+      border-left: 2px solid var(--text);
+      margin: 36px 0; padding: 4px 0 4px 24px;
+    }
+    .post-content blockquote p {
+      font-family: var(--font-forum);
+      font-size: clamp(18px, 1.7vw, 22px);
+      color: var(--text); opacity: .72;
+      line-height: 1.5; margin: 0;
+    }
+    /* related cards */
+    .rel-card { border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block; }
+    .rel-card img { width:100%;aspect-ratio:3/2;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1); }
+    .rel-card:hover img { transform:scale(1.04); }
+    .rel-card-img-wrap { overflow:hidden; }
+    .rel-card-body { padding:16px 18px 20px; }
+    .rel-card-cat { font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px; }
+    .rel-card-title { font-family:var(--font-forum);font-size:clamp(16px,1.3vw,19px);line-height:1.25;color:var(--text); }
+    /* mobile */
+    @media (max-width: 900px) {
+      .post-layout { grid-template-columns: 1fr; }
+      .post-cover-col { display: none; }
+      .post-body { padding: 0 0 60px; }
+      .post-meta-card { padding: 24px 22px 28px; }
+      .post-mobile-back { display: inline-flex !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
+    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
+    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
+    <a href="gallery.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Gallery</a>
+    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+    <a href="blog.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Blog</a>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:20px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="menu.html"        class="nav-link">Menu</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="gallery.html"     class="nav-link">Gallery</a>
+        <a href="reviews.html"     class="nav-link">Reviews</a>
+        <a href="blog.html"        class="nav-link">Blog</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Post layout -->
+    <div class="post-layout">
+
+      <!-- Left: hollow sticky card -->
+      <div class="post-cover-col">
+        <div class="post-cover grain">
+          <a href="blog.html" class="post-cover-back">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            All Posts
+          </a>
+          <div class="post-cover-foot">
+            <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">Fine Dining</span>
+            <p style="font-family:var(--font-forum);font-size:clamp(22px,2.4vw,36px);line-height:1.1;letter-spacing:.01em;color:var(--text);margin:0">The Art of the Intimate Dinner</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: content -->
+      <div class="post-body">
+
+        <!-- Mobile-only back link -->
+        <a href="blog.html" class="post-mobile-back" style="display:none;align-items:center;gap:8px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;margin-bottom:20px;border:1px solid var(--border);border-radius:99px;padding:8px 16px;width:fit-content">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+          All Posts
+        </a>
+
+        <!-- Meta card -->
+        <div class="post-meta-card">
+          <span class="post-cat">Fine Dining</span>
+          <h1 class="post-title">The Art of the Intimate Dinner</h1>
+          <div class="post-byline">
+            <span class="post-author">By Chef Donovan Smith</span>
+            <span class="post-date">June 2026</span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="post-content">
+
+          <p>What separates a good dinner from one your guests talk about for years? It starts long before the first course arrives. It starts with intention — the kind that moves through every decision made in the kitchen, at the market, and at the table itself.</p>
+
+          <p>For over eleven years, Chef Donovan Smith has hosted hundreds of private dinners across The Bahamas and beyond. And the throughline in every memorable evening is the same: the space created for the guest to simply be present.</p>
+
+          <h2>The Silence Before the First Course</h2>
+
+          <p>There is a moment — just before the first plate is set down — where the room holds its breath. The candles are lit. The table is dressed. The guests are seated. That moment is not accidental. It is the product of hours of quiet, deliberate preparation.</p>
+
+          <p>At a private dinner for six in Nassau last spring, Chef Donovan and his team spent two hours arranging the outdoor terrace overlooking the water. Not because six people required two hours of setup — but because the goal was not a table. The goal was a feeling.</p>
+
+          <blockquote>
+            <p>&ldquo;When someone sits down at my table, I want them to forget, just for a few hours, everything outside of it.&rdquo;</p>
+          </blockquote>
+
+          <p>That feeling — of ease, of arrival, of being genuinely cared for — is what distinguishes a private dining experience from simply eating well.</p>
+
+          <img src="images/dinner-table.jpg" alt="An intimate table setting" style="aspect-ratio:16/9">
+
+          <h2>Food as Conversation</h2>
+
+          <p>The menu for an intimate dinner is never arbitrary. Each course is chosen not just for flavour, but for the conversation it invites. A light citrus crudo slows the pace down. A rich braised short rib deepens the mood. The sequence matters as much as the ingredients.</p>
+
+          <p>Chef Donovan approaches every private menu as a narrative — with a beginning that opens, a middle that builds, and a close that lingers. The final bite should feel like the last line of a sentence worth reading twice.</p>
+
+          <img src="images/luxury-private-dining-2.jpg" alt="Chef preparing a course" style="aspect-ratio:16/9">
+
+          <h2>The People at the Table</h2>
+
+          <p>Ultimately, the table is secondary to the people around it. The finest ingredients and the most considered mise en place mean nothing if the guests do not feel at home. That is why Chef Donovan and his team approach every event with the same hospitality that defines the best hotels in the world — attentive without being intrusive, present without being visible.</p>
+
+          <p>An intimate dinner is a gift. Whether for two on an anniversary, or twelve at a milestone celebration, the best ones leave guests feeling not just fed, but remembered.</p>
+
+        </div>
+
+        <!-- End CTA -->
+        <div style="margin-top:52px;padding-top:36px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+          <p style="font-family:var(--font-satoshi);font-size:15.5px;color:var(--text-muted)">Ready to experience it yourself?</p>
+          <a href="reservation.html" class="btn btn-primary">Plan Your Experience</a>
+        </div>
+
+        <!-- Related posts -->
+        <div style="margin-top:64px">
+          <h2 style="font-family:var(--font-forum);font-size:clamp(20px,1.8vw,26px);letter-spacing:.01em;color:var(--text);margin:0 0 20px">More in Fine Dining</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3" style="gap:16px">
+
+            <a href="blog-post.html" class="rel-card">
+              <div class="rel-card-img-wrap">
+                <img src="images/dinner-table.jpg" alt="Setting a Table That Tells a Story">
+              </div>
+              <div class="rel-card-body">
+                <span class="rel-card-cat">Fine Dining</span>
+                <p class="rel-card-title">Setting a Table That Tells a Story</p>
+              </div>
+            </a>
+
+            <a href="blog-post.html" class="rel-card">
+              <div class="rel-card-img-wrap">
+                <img src="images/grand-event.jpg" alt="What Clients Actually Remember">
+              </div>
+              <div class="rel-card-body">
+                <span class="rel-card-cat">Experiences</span>
+                <p class="rel-card-title">What Clients Actually Remember</p>
+              </div>
+            </a>
+
+            <a href="blog-post.html" class="rel-card">
+              <div class="rel-card-img-wrap">
+                <img src="images/villa-gathering.jpg" alt="From Private Yachts to Beachfront Villas">
+              </div>
+              <div class="rel-card-body">
+                <span class="rel-card-cat">Events</span>
+                <p class="rel-card-title">From Private Yachts to Beachfront Villas</p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
+    <div style="margin-bottom:32px">
+      <span class="footer-brand">Chef Donovan Smith</span>
+      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html"       class="footer-link">Home</a>
+      <a href="about.html"       class="footer-link">About</a>
+      <a href="menu.html"        class="footer-link">Menu</a>
+      <a href="experiences.html" class="footer-link">Experiences</a>
+      <a href="gallery.html"     class="footer-link">Gallery</a>
+      <a href="reviews.html"     class="footer-link">Reviews</a>
+      <a href="blog.html"        class="footer-link">Blog</a>
+    </nav>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
+        <span class="footer-sep">|</span>
+        <a href="terms-and-conditions.html"          class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="refunds-and-cancellation.html"        class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+      </div>
+      <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
+    </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
