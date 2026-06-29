@@ -54,6 +54,17 @@
     .abt-lb-arrow.abt-next{right:20px;}
     .abt-lb-arrow.abt-prev:hover{transform:translateY(-50%) translateX(-2px);}
     .abt-lb-arrow.abt-next:hover{transform:translateY(-50%) translateX(2px);}
+    /* ── News video modal ── */
+    .nvid-trigger{position:relative;cursor:pointer;overflow:hidden;background:rgb(0,15,12);}
+    .nvid-trigger img{display:block;width:100%;max-height:340px;object-fit:cover;transition:transform .5s ease;}
+    .nvid-trigger:hover img{transform:scale(1.03);}
+    .nvid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(239,231,210,.15);border:2px solid rgba(239,231,210,.45);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
+    .nvid-trigger:hover .nvid-play{background:rgba(239,231,210,.28);transform:translate(-50%,-50%) scale(1.07);}
+    .nvid-modal{position:fixed;inset:0;z-index:9900;background:rgba(0,0,0,.97);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    .nvid-modal.open{opacity:1;pointer-events:all;}
+    .nvid-modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.14);color:rgba(239,231,210,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0;}
+    .nvid-modal-close:hover{background:rgba(239,231,210,.18);}
+    .nvid-modal video{width:100%;max-width:860px;max-height:calc(100dvh - 80px);border-radius:14px;display:block;outline:none;}
     /* swipe hint */
     .abt-swipe-hint{display:none;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);opacity:0;transition:opacity .6s ease;pointer-events:none;z-index:14;}
     .abt-swipe-hint.show{opacity:1;}
@@ -177,10 +188,11 @@
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
-        <div style="background:rgb(0,15,12)">
-          <video controls preload="none" poster="images/viral-news.png" class="w-full" style="display:block;width:100%;max-height:340px;object-fit:cover">
-            <source src="videos/chef-news-feature.mp4" type="video/mp4">
-          </video>
+        <div class="nvid-trigger" id="nvid-trigger" role="button" tabindex="0" aria-label="Play news video">
+          <img src="images/viral-news.png" alt="Chef Donovan Smith — OurNews Feature" style="max-height:340px">
+          <div class="nvid-play">
+            <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="22" height="22" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
         </div>
       </div>
 
@@ -258,6 +270,14 @@
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
     </span>
   </div>
+</div>
+
+<!-- News video modal -->
+<div class="nvid-modal" id="nvid-modal" role="dialog" aria-modal="true" aria-label="News video">
+  <button class="nvid-modal-close" id="nvid-modal-close" aria-label="Close video">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <video id="nvid-video" src="videos/chef-news-feature.mp4" controls preload="none" playsinline poster="images/viral-news.png"></video>
 </div>
 
 <script src="js/main.js"></script>
@@ -359,40 +379,30 @@
   }
 })();
 
-// Fix: iOS Safari viewport zoom + scroll position after video fullscreen exit
+// News video modal
 (function () {
-  var vid = document.querySelector('video');
-  if (!vid) return;
-  var savedScroll = 0;
+  var trigger = document.getElementById('nvid-trigger');
+  var modal   = document.getElementById('nvid-modal');
+  var vid     = document.getElementById('nvid-video');
+  var closeBtn= document.getElementById('nvid-modal-close');
 
-  function onEnterFullscreen() {
-    savedScroll = window.scrollY || window.pageYOffset;
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    vid.play();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    vid.pause();
+    vid.currentTime = 0;
   }
 
-  function onExitFullscreen() {
-    // Reset viewport scale
-    var m = document.querySelector('meta[name="viewport"]');
-    if (m) {
-      m.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
-      setTimeout(function () { m.content = 'width=device-width, initial-scale=1.0'; }, 300);
-    }
-    // Restore scroll position so user lands back at the video
-    setTimeout(function () { window.scrollTo(0, savedScroll); }, 50);
-  }
-
-  // iOS Safari: fires on the video element
-  vid.addEventListener('webkitbeginfullscreen', onEnterFullscreen);
-  vid.addEventListener('webkitendfullscreen', onExitFullscreen);
-
-  // Standard + Android
-  vid.addEventListener('fullscreenchange', function () {
-    if (document.fullscreenElement) onEnterFullscreen();
-    else onExitFullscreen();
-  });
-  document.addEventListener('webkitfullscreenchange', function () {
-    if (document.webkitFullscreenElement) onEnterFullscreen();
-    else onExitFullscreen();
-  });
+  trigger.addEventListener('click', openModal);
+  trigger.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); } });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 })();
 </script>
 </body>
