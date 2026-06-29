@@ -359,25 +359,39 @@
   }
 })();
 
-// Fix: iOS Safari doesn't restore viewport after exiting video fullscreen
+// Fix: iOS Safari viewport zoom + scroll position after video fullscreen exit
 (function () {
   var vid = document.querySelector('video');
   if (!vid) return;
-  function resetViewport() {
-    var m = document.querySelector('meta[name="viewport"]');
-    if (!m) return;
-    // Toggle content to force browser to re-evaluate viewport
-    m.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
-    setTimeout(function () { m.content = 'width=device-width, initial-scale=1.0'; }, 300);
+  var savedScroll = 0;
+
+  function onEnterFullscreen() {
+    savedScroll = window.scrollY || window.pageYOffset;
   }
-  // iOS Safari fires this on the video element itself
-  vid.addEventListener('webkitendfullscreen', resetViewport);
+
+  function onExitFullscreen() {
+    // Reset viewport scale
+    var m = document.querySelector('meta[name="viewport"]');
+    if (m) {
+      m.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0';
+      setTimeout(function () { m.content = 'width=device-width, initial-scale=1.0'; }, 300);
+    }
+    // Restore scroll position so user lands back at the video
+    setTimeout(function () { window.scrollTo(0, savedScroll); }, 50);
+  }
+
+  // iOS Safari: fires on the video element
+  vid.addEventListener('webkitbeginfullscreen', onEnterFullscreen);
+  vid.addEventListener('webkitendfullscreen', onExitFullscreen);
+
   // Standard + Android
   vid.addEventListener('fullscreenchange', function () {
-    if (!document.fullscreenElement) resetViewport();
+    if (document.fullscreenElement) onEnterFullscreen();
+    else onExitFullscreen();
   });
   document.addEventListener('webkitfullscreenchange', function () {
-    if (!document.webkitFullscreenElement) resetViewport();
+    if (document.webkitFullscreenElement) onEnterFullscreen();
+    else onExitFullscreen();
   });
 })();
 </script>
