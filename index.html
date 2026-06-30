@@ -230,7 +230,7 @@
       <!-- top scrim: darkens nav area -->
       <div class="absolute inset-x-0 top-0 pointer-events-none" style="height:40%;z-index:1;background:linear-gradient(to bottom,rgba(0,20,18,.72) 0%,transparent 100%)"></div>
       <!-- bottom scrim: darkens title area -->
-      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:55%;z-index:1;background:linear-gradient(to top,rgba(0,20,18,.92) 0%,rgba(0,20,18,.55) 40%,transparent 100%)"></div>
+      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:92%;z-index:1;background:linear-gradient(to top,rgba(0,10,8,.88) 0%,rgba(0,10,8,.65) 38%,rgba(0,10,8,.38) 60%,rgba(0,10,8,.15) 80%,transparent 100%)"></div>
 
       <!-- Header (on dark video — full-width, logo/links/button spread) -->
       <div class="absolute top-0 left-0 right-0" style="z-index:20">
@@ -254,11 +254,9 @@
       </div>
 
       <!-- Hero title (cream, on dark video) -->
-      <div class="absolute bottom-0 left-0 px-10 pb-10" style="z-index:10">
-        <h1 class="uppercase select-none" style="font-family:var(--font-forum);color:rgb(239,231,210);font-size:clamp(68px,7.5vw,112px);letter-spacing:.01em;line-height:1">
-          <span class="hero-line" style="margin-bottom:8px">DONOVAN</span>
-          <span class="hero-line" style="font-size:.85em">SMITH</span>
-        </h1>
+      <div class="absolute bottom-0 left-0 px-10 pb-10" style="z-index:10;max-width:680px">
+        <h1 class="hero-line uppercase select-none" style="font-family:var(--font-forum);color:rgb(239,231,210);font-size:clamp(36px,4.2vw,66px);letter-spacing:.01em;line-height:1.05;margin-bottom:16px">Skip The Restaurant.<br>Keep The View.</h1>
+        <p class="hero-line" style="font-family:'Satoshi',sans-serif;color:rgba(239,231,210,.72);font-size:clamp(13px,1.1vw,16px);line-height:1.65;max-width:460px">Chef Donovan cooks live, right where you're staying. The Bahamas, the Caribbean, or wherever you fly him to. Villa terrace, yacht deck, or the beach in front of your room.</p>
       </div>
 
       <!-- Social icons (cream, on dark hero — icon only) -->
@@ -355,9 +353,13 @@
 
   <!-- â”€â”€ CURATED EXPERIENCES â”€â”€ -->
   <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
-    <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
-      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Curated Experiences</h2>
-      <a href="experiences.html" class="text-link" style="white-space:nowrap;margin-left:16px">Explore All &rarr;</a>
+    <div class="fade-up" style="margin-bottom:28px">
+      <div class="flex items-end justify-between" style="margin-bottom:12px">
+        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">The Menus</h2>
+        <a href="menu.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">Explore All</a>
+      </div>
+      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">Pick the meal. He brings everything else.</p>
+      <a href="menu.html" class="btn btn-primary md:hidden" style="margin-top:16px">Explore All</a>
     </div>
     <div class="flex flex-col lg:grid gap-4" style="grid-template-columns:3fr 2fr">
       <div class="fade-up">
@@ -412,8 +414,13 @@
 
   <!-- â”€â”€ PRIVATE SERVICES GRID â”€â”€ -->
   <section class="px-5 pb-4 sm:px-8 lg:px-20">
-    <div class="fade-up flex items-end justify-between" style="margin-bottom:28px">
-      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Private Services</h2>
+    <div class="fade-up" style="margin-bottom:28px">
+      <div class="flex items-end justify-between" style="margin-bottom:12px">
+        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">The Experiences</h2>
+        <a href="experiences.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">Explore All</a>
+      </div>
+      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">A quiet dinner on a villa terrace or a celebration nobody leaves early. There's a format for the night you're planning.</p>
+      <a href="experiences.html" class="btn btn-primary md:hidden" style="margin-top:16px">Explore All</a>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px">
 
@@ -422,7 +429,7 @@
         <div class="pgrain"></div>
         <div class="pov"></div>
         <div class="pc">
-          <span class="psvc-num">2 — 10 Guests</span>
+          <span class="psvc-num">2-10 Guests</span>
           <h3 class="psvc-name">Intimate Dining</h3>
           <p class="psvc-tag">Your villa. Your table. Entirely yours.</p>
           <button class="psvc-btn" data-svc="0">Explore
@@ -436,7 +443,7 @@
         <div class="pgrain"></div>
         <div class="pov"></div>
         <div class="pc">
-          <span class="psvc-num">10 — 30 Guests</span>
+          <span class="psvc-num">10-30 Guests</span>
           <h3 class="psvc-name">Private Gathering</h3>
           <p class="psvc-tag">Celebrations and milestone occasions.</p>
           <button class="psvc-btn" data-svc="1">Explore
@@ -450,7 +457,7 @@
         <div class="pgrain"></div>
         <div class="pov"></div>
         <div class="pc">
-          <span class="psvc-num">30 — 50 Guests</span>
+          <span class="psvc-num">30-50 Guests</span>
           <h3 class="psvc-name">Private Event</h3>
           <p class="psvc-tag">Elevated event dining, flawlessly executed.</p>
           <button class="psvc-btn" data-svc="2">Explore
@@ -479,10 +486,10 @@
   <script>
   (function(){
     const SVCS=[
-      {img:'images/dinner-table.jpg',guests:'2 — 10 Guests',name:'Intimate Dining',desc:'The most personal experience we offer. Chef Donovan and his team arrive at your villa, yacht, or chosen location and craft a complete dining experience built entirely around you — from the first amuse-bouche to the final dessert.',hl:['Fully customised menu around your preferences','Served at your villa, yacht or private venue','Chef and dedicated team on-site','Dietary and allergy accommodations','Full setup, service and breakdown included']},
-      {img:'images/villa-gathering.jpg',guests:'10 — 30 Guests',name:'Private Gathering',desc:'For those moments that deserve a truly exceptional table. Private gatherings with Chef Donovan bring restaurant-quality precision and warmth to family celebrations, milestone occasions, and intimate corporate events across the Caribbean.',hl:['Curated group menu — family-style or plated','Celebrations, milestones and corporate dinners','Full staffing and event logistics','Bar and cocktail service available','Customised to your theme and vision']},
-      {img:'images/anniversary-dinner.jpg',guests:'30 — 50 Guests',name:'Private Event',desc:'Elevated event dining with the full weight of Chef Donovan\'s team behind it. Impeccable service, seasonal menus, and seamless logistics — for the occasions that deserve nothing less.',hl:['Plated or stations service format','Themed menu and décor coordination','Dedicated event staffing','Premium bar and beverage curation','Full event logistics management']},
-      {img:'images/grand-event.jpg',guests:'50+ Guests',name:'Grand Celebration',desc:'Full-scale private event catering for those who demand world-class execution. Chef Donovan\'s team manages every aspect — from logistics and setup to live cooking stations and premium service — at any scale.',hl:['Scalable to 200+ guests','Multiple live cuisine stations','Complete event catering management','Premium bar and beverage service','Full staffing, setup and breakdown']}
+      {img:'images/dinner-table.jpg',guests:'2-10 Guests',name:'Intimate Dining',desc:'The most personal experience we offer. Chef Donovan and his team arrive at your villa, yacht, or chosen location and craft a complete dining experience built entirely around you, from the first amuse-bouche to the final dessert.',hl:['Fully customised menu around your preferences','Served at your villa, yacht or private venue','Chef and dedicated team on-site','Dietary and allergy accommodations','Full setup, service and breakdown included']},
+      {img:'images/villa-gathering.jpg',guests:'10-30 Guests',name:'Private Gathering',desc:'For those moments that deserve a truly exceptional table. Private gatherings with Chef Donovan bring restaurant-quality precision and warmth to family celebrations, milestone occasions, and intimate corporate events across the Caribbean.',hl:['Curated group menu, family-style or plated','Celebrations, milestones and corporate dinners','Full staffing and event logistics','Bar and cocktail service available','Customised to your theme and vision']},
+      {img:'images/anniversary-dinner.jpg',guests:'30-50 Guests',name:'Private Event',desc:'Elevated event dining with the full weight of Chef Donovan\'s team behind it. Impeccable service, seasonal menus, and seamless logistics for the occasions that deserve nothing less.',hl:['Plated or stations service format','Themed menu and décor coordination','Dedicated event staffing','Premium bar and beverage curation','Full event logistics management']},
+      {img:'images/grand-event.jpg',guests:'50+ Guests',name:'Grand Celebration',desc:'Full-scale private event catering for those who demand world-class execution. Chef Donovan\'s team manages every aspect, from logistics and setup to live cooking stations and premium service, at any scale.',hl:['Scalable to 200+ guests','Multiple live cuisine stations','Complete event catering management','Premium bar and beverage service','Full staffing, setup and breakdown']}
     ];
     const modal=document.getElementById('svc-modal');
     const mImg=document.getElementById('svc-modal-img');
@@ -525,19 +532,19 @@
           <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
             Chef Don didn&rsquo;t just cook dinner. He made our anniversary something we will never stop talking about.
           </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">— J. &amp; M. Harrison &middot; Nassau, Bahamas &middot; 2024</p>
+          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">J. &amp; M. Harrison &middot; Nassau, Bahamas &middot; 2024</p>
         </div>
         <div class="testimonial-slide">
           <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
             We flew in from New York and this private dinner was the highlight of our entire trip. Donovan&rsquo;s Caribbean fusion is unlike anything we have experienced.
           </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">— The Williams Family &middot; New York, USA &middot; 2024</p>
+          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">The Williams Family &middot; New York, USA &middot; 2024</p>
         </div>
         <div class="testimonial-slide">
           <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
             The food was extraordinary but it was the personal attention that made the difference. Donovan genuinely cares about creating something meaningful for you.
           </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">— T. &amp; A. Morrison &middot; Toronto, Canada &middot; 2024</p>
+          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">T. &amp; A. Morrison &middot; Toronto, Canada &middot; 2024</p>
         </div>
       </div>
       <!-- Dots -->
@@ -604,14 +611,6 @@
     </div>
   </section>
 
-  <!-- â”€â”€ CTA (dark green section) â”€â”€ -->
-  <section class=”mt-4 py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20” style=”background:var(--bg-primary);border-radius:16px”>
-    <div class="stagger flex flex-col items-center text-center">
-      <h2 class="fade-up uppercase" style="font-family:var(--font-forum);font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv);margin-bottom:24px">Your Table Awaits.</h2>
-      <div class="fade-up" style="width:60px;height:1px;background:rgba(239,231,210,.2);margin-bottom:24px"></div>
-      <p class="fade-up" style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;color:rgba(239,231,210,.65);margin-bottom:48px">Every experience begins with a conversation.</p>
-    </div>
-  </section>
 
   <!-- â”€â”€ REEL FEED â”€â”€ -->
   <section class="fade-up mt-4 py-14 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
@@ -639,7 +638,7 @@
       { img:'images/dinner-table.jpg',          caption:'An intimate table set for two' },
       { img:'images/villa-gathering.jpg',        caption:'Villa gathering, golden hour' },
       { img:'images/anniversary-dinner.jpg',     caption:'Anniversary dinner, Nassau' },
-      { img:'images/grand-event.jpg',            caption:'Grand event — 80 guests' },
+      { img:'images/grand-event.jpg',            caption:'Grand event, 80 guests' },
       { img:'images/luxury-private-dining-2.jpg',caption:'Private dining in the tropics' },
       { img:'images/luxury-private-breakfast.jpg',caption:'Morning table, Exuma' },
       { img:'images/luxury-private-lunch.jpg',   caption:'Afternoon lunch on the deck' },
@@ -743,7 +742,7 @@
   function openVP(t){
     document.getElementById('idx-vpov-thumb').src=t.img;
     document.getElementById('idx-vpov-info-quote').textContent=t.quote;
-    document.getElementById('idx-vpov-info-name').textContent=t.name+' — '+t.loc;
+    document.getElementById('idx-vpov-info-name').textContent=t.name+', '+t.loc;
     resetPlayer();
     overlay.classList.add('open');
     document.body.style.overflow='hidden';

@@ -442,9 +442,9 @@
   <div class="slide active" id="s-intro">
     <div class="inner" style="text-align:center">
       <span class="ey" style="display:block;text-align:center">Chef Donovan Smith</span>
-      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Plan Your Private Experience</h1>
-      <p class="big-p" style="margin-left:auto;margin-right:auto">Every extraordinary table begins with a conversation. Share your vision in 2 minutes and Chef Donovan's team will craft something remarkable — entirely around you.</p>
-      <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Begin</button>
+      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Tell Him About The Night You're Planning.</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Nine quick questions, about two minutes. He follows up directly, with a real plan based on what you tell him, not a generic email.</p>
+      <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Plan My Night</button>
       <p id="desktop-takes" style="margin-top:16px;font-family:var(--fs);font-size:13px;font-weight:400;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         Takes 2 minutes
@@ -513,11 +513,11 @@
       <div class="opts" id="opts-branch">
         <button class="opt br" data-branch="yes">
           <div class="opt-head"><span class="opt-key">A</span><span class="opt-txt" style="font-weight:500">Yes, I do</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <p class="opt-sub">I know which experience I'd like to book</p>
+          <p class="opt-sub">I'd like to pick from the experiences listed on the site</p>
         </button>
         <button class="opt br" data-branch="no">
-          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">I have a vision</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <p class="opt-sub">I'd like to describe my ideal experience</p>
+          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">Not yet</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="opt-sub">I'd like to describe what I'm picturing</p>
         </button>
       </div>
       <p class="f-err" id="e-branch" style="margin-top:10px"></p>
@@ -545,7 +545,7 @@
   <!-- Q6b -->
   <div class="slide" id="s-6b">
     <div class="inner">
-      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Describe your ideal experience</h2></div>
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">What are you picturing?</h2></div>
       <div class="f-wrap">
         <textarea class="f-ta" id="i-vision" placeholder="Setting, cuisine, mood, special details…" rows="3"></textarea>
         <div class="f-line"></div>
@@ -558,16 +558,16 @@
   <!-- Q-menu: Pre-curated Menu -->
   <div class="slide" id="s-menu">
     <div class="inner">
-      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Do you have a pre-curated menu in mind?</h2></div>
+      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Do you have a menu in mind?</h2></div>
 
       <!-- Yes / No -->
       <div class="opts" id="opts-menu-yn">
         <button class="opt" data-v="yes" type="button">
-          <span class="opt-key">A</span><span class="opt-txt">Yes, I'd like to browse the menus</span>
+          <span class="opt-key">A</span><span class="opt-txt">Yes, I'd like to browse the available menus and pick one</span>
           <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </button>
         <button class="opt" data-v="no" type="button">
-          <span class="opt-key">B</span><span class="opt-txt">No, let's discuss it on the call</span>
+          <span class="opt-key">B</span><span class="opt-txt">Let's work it out on the call</span>
           <svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </button>
       </div>
@@ -719,7 +719,7 @@
     <button id="m-back" class="hide">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <button id="m-ok">Begin</button>
+    <button id="m-ok">Plan My Night</button>
   </div>
 </div>
 
@@ -1022,7 +1022,7 @@ function updateMobileNav(){
   const c=ST.cur;
   const back=G('m-back'),ok=G('m-ok');
   back.classList.toggle('hide', c==='intro'||c==='1'||c==='done');
-  if(c==='intro')ok.textContent='Begin';
+  if(c==='intro')ok.textContent='Plan My Night';
   else if(c==='done')ok.textContent='Return to site';
   else if(c==='review')ok.textContent='Send Inquiry';
   else ok.textContent='OK';
