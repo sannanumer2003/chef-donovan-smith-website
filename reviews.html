@@ -62,12 +62,44 @@
     </button>
   </div>
   <nav class="flex flex-col items-center gap-8">
-    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Menu</a>
-    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">About</a>
-    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Experiences</a>
-    <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Gallery</a>
-    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
-    <a href="blog.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Blog</a>
+    <a href="index.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Home</a>
+    <!-- 1. Experiences accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Experiences<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:16px;margin-top:18px">
+        <!-- Specialist Chef Services nested accordion -->
+        <div class="mobile-accordion" style="text-align:center">
+          <button class="mobile-accordion-trigger" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.82);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Specialist Chef Services<svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.4)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+          <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:12px">
+            <a href="villa-residencies.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Villa Residencies</a>
+            <a href="yacht-islands.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Yacht &amp; Islands</a>
+            <a href="private-jet-travel.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Private Jet &amp; Travel</a>
+            <a href="events-celebrations.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Events &amp; Celebrations</a>
+          </div>
+        </div>
+        <a href="experiences.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Single Bespoke Experiences</a>
+      </div>
+    </div>
+    <!-- 2. Menus accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Menus<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="experiences-breakfast.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Breakfast</a>
+        <a href="experiences-lunch.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Lunch</a>
+        <a href="experiences-dining.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Dining</a>
+      </div>
+    </div>
+    <!-- 3. Reviews -->
+    <a href="reviews.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+    <!-- 4. More accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">More<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="about.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">About</a>
+        <a href="gallery.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Gallery</a>
+        <a href="blog.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Blog</a>
+      </div>
+    </div>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
     <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
@@ -82,12 +114,43 @@
     <header class="flex items-center justify-between px-6 sm:px-10 py-6">
       <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
       <nav class="hidden md:flex items-center gap-8">
-        <a href="menu.html"        class="nav-link">Menu</a>
-        <a href="about.html"       class="nav-link">About</a>
-        <a href="experiences.html" class="nav-link">Experiences</a>
-        <a href="gallery.html"   class="nav-link">Gallery</a>
-        <a href="reviews.html"     class="nav-link">Reviews</a>
-        <a href="blog.html"       class="nav-link">Blog</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <!-- 1. Experiences -->
+        <div class="nav-dropdown-wrap">
+          <a href="experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown" style="min-width:230px">
+            <div class="nav-dropdown-nested-wrap">
+              <a href="specialist-chef-services.html" class="nav-dropdown-item nav-dropdown-nested-trigger">Specialist Chef Services <svg width="6" height="10" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"><polyline points="1 1 5 5 1 9"/></svg></a>
+              <div class="nav-dropdown-nested">
+                <a href="villa-residencies.html" class="nav-dropdown-item">Villa Residencies</a>
+                <a href="yacht-islands.html" class="nav-dropdown-item">Yacht &amp; Islands</a>
+                <a href="private-jet-travel.html" class="nav-dropdown-item">Private Jet &amp; Travel</a>
+                <a href="events-celebrations.html" class="nav-dropdown-item">Events &amp; Celebrations</a>
+              </div>
+            </div>
+            <a href="experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
+          </div>
+        </div>
+        <!-- 2. Menus -->
+        <div class="nav-dropdown-wrap">
+          <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="experiences-breakfast.html" class="nav-dropdown-item">Breakfast</a>
+            <a href="experiences-lunch.html" class="nav-dropdown-item">Lunch</a>
+            <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
+          </div>
+        </div>
+        <!-- 3. Reviews -->
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <!-- 4. More -->
+        <div class="nav-dropdown-wrap">
+          <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-dropdown-item">About</a>
+            <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
+            <a href="blog.html" class="nav-dropdown-item">Blog</a>
+          </div>
+        </div>
       </nav>
       <div class="flex items-center gap-4">
         <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>

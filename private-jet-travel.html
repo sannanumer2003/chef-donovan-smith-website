@@ -3,33 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refunds &amp; Cancellation Policy — Chef Donovan Smith</title>
+  <title>Private Jet &amp; Travel &mdash; Specialist Chef Services &mdash; Chef Donovan Smith</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']}}}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    .pol-layout { display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start; }
-    .pol-cover-col { position:sticky;top:16px; }
-    .pol-cover { height:calc(100vh - 32px);border-radius:16px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,3vw,48px); }
-    .pol-cover-foot { }
-    .pol-cover-eye { display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:24px; }
-    .pol-cover-title { font-family:var(--font-forum);font-size:clamp(40px,5.5vw,72px);line-height:.96;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin:0 0 20px; }
-    .pol-right { padding:8px 44px 80px 28px; }
-    .pol-section { padding:36px 0;border-top:1px solid var(--border); }
-    .pol-sh { font-family:var(--font-forum);font-size:clamp(20px,1.8vw,26px);letter-spacing:.01em;color:var(--text);margin:0 0 14px; }
-    .pol-p  { font-family:var(--font-satoshi);font-size:15.5px;font-weight:400;color:var(--text-muted);line-height:1.9;margin:0; }
-    .pol-p + .pol-p { margin-top:14px; }
-    @media(max-width:900px){
-      .pol-layout { grid-template-columns:1fr; }
-      .pol-cover-col { display:none; }
-      .pol-right { padding:0 0 60px; }
-    }
-  </style>
 </head>
 <body>
 
@@ -88,7 +70,6 @@
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
   <div class="flex flex-col" style="gap:16px">
 
-    <!-- Header -->
     <header class="flex items-center justify-between px-6 sm:px-10 py-6">
       <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
       <nav class="hidden md:flex items-center gap-8">
@@ -138,79 +119,120 @@
       </div>
     </header>
 
-    <!-- Layout -->
-    <div class="pol-layout">
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
 
-      <!-- Left: hollow sticky card -->
-      <div class="pol-cover-col">
-        <div class="pol-cover">
-          <div class="pol-cover-foot">
-            <span class="pol-cover-eye">Chef Donovan Smith</span>
-            <p class="pol-cover-title">Refunds &amp;<br>Cancellation</p>
-            <p style="font-family:var(--font-satoshi);font-size:16px;font-weight:400;line-height:1.7;color:var(--text-muted);margin:0">Deposit, cancellations, and rescheduling — clearly outlined.</p>
+      <!-- LEFT: sticky service panel (desktop only) -->
+      <div class="hidden lg:block self-stretch">
+        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
+          <img src="images/grand-event.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.25);z-index:1;pointer-events:none"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:70%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+          <a href="specialist-chef-services.html" style="position:absolute;top:24px;left:24px;z-index:10;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-satoshi);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none;background:rgba(0,0,0,.25);backdrop-filter:blur(6px);padding:8px 14px;border-radius:100px;border:1px solid rgba(239,231,210,.15)">&larr; All Services</a>
+          <div style="position:absolute;bottom:0;left:0;padding:40px;z-index:3">
+            <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.55);margin:0 0 12px 0">Travel Catering</p>
+            <h1 style="font-family:var(--font-forum);font-size:clamp(32px,3.8vw,52px);text-transform:uppercase;line-height:1;letter-spacing:.02em;color:rgb(239,231,210);margin:0 0 20px 0">Private Jet<br>&amp; Travel</h1>
+            <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:400;line-height:1.7;color:rgba(239,231,210,.68);margin:0;max-width:300px">Gourmet in-flight dining and on-arrival meals for private jet travel. The standard does not drop because you are in transit.</p>
           </div>
         </div>
       </div>
 
-      <!-- Right: content -->
-      <div class="pol-right">
+      <!-- RIGHT: scrollable content cards -->
+      <div class="flex flex-col" style="gap:16px">
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Deposit</h2>
-        <p class="pol-p">A non-refundable deposit is required at the time of booking to confirm your reservation. The deposit amount will be communicated during the inquiry process and will be deducted from your total event fee.</p>
-      </div>
+        <!-- Mobile-only: service header -->
+        <div class="lg:hidden" style="position:relative;overflow:hidden;height:240px;border-radius:16px;border:1px solid var(--border)">
+          <img src="images/grand-event.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,20,16,.65);z-index:1;pointer-events:none"></div>
+          <a href="specialist-chef-services.html" style="position:absolute;top:20px;left:20px;z-index:10;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-satoshi);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,231,210,.8);text-decoration:none;background:rgba(0,0,0,.25);backdrop-filter:blur(6px);padding:7px 12px;border-radius:100px;border:1px solid rgba(239,231,210,.15)">&larr; All Services</a>
+          <div style="position:absolute;bottom:0;left:0;padding:24px;z-index:2">
+            <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin:0 0 6px 0">Travel Catering</p>
+            <h1 style="font-family:var(--font-forum);font-size:clamp(26px,6vw,36px);text-transform:uppercase;line-height:1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Private Jet &amp; Travel</h1>
+          </div>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Cancellations</h2>
-        <p class="pol-p">If you cancel your booking for any reason, your deposit is forfeited in full. No additional charges will be made beyond the deposit, unless bespoke work has already commenced on your behalf — such as custom menu development or advance ingredient sourcing — in which case those costs may be passed on at our discretion.</p>
-      </div>
+        <!-- Card 1: Overview -->
+        <div class="fade-up p-6 sm:p-8 lg:p-10" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);margin-bottom:16px">Overview</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.15;letter-spacing:.02em;color:var(--text);margin-bottom:16px">Private Dining That Travels With You</h2>
+          <p style="font-family:var(--font-satoshi);font-size:16px;font-weight:400;line-height:1.8;color:var(--text-muted)">In-flight catering and on-arrival meals for private jet travel. The quality of a restaurant kitchen, prepared and delivered to the aircraft. Planned around your flight schedule and every passenger's dietary requirements.</p>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Rescheduling</h2>
-        <p class="pol-p">You may reschedule your event with a minimum of <strong>7 days&rsquo; advance notice</strong> at no additional cost. Your deposit will transfer to the new date.</p>
-        <p class="pol-p">Requests to reschedule with fewer than 7 days&rsquo; notice will be treated as a cancellation, and your deposit will be forfeited. A new deposit will be required to secure an alternative date.</p>
-      </div>
+        <!-- Card 2: What's Included -->
+        <div class="fade-up p-6 sm:p-8 lg:p-10" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);margin-bottom:20px">What's Included</span>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+            <li style="display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted)"><span style="width:4px;height:4px;border-radius:50%;background:rgba(0,46,40,.35);flex-shrink:0;display:inline-block"></span>In-flight meals for all passengers and crew</li>
+            <li style="display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted)"><span style="width:4px;height:4px;border-radius:50%;background:rgba(0,46,40,.35);flex-shrink:0;display:inline-block"></span>Catering for pre-departure lounges on request</li>
+            <li style="display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted)"><span style="width:4px;height:4px;border-radius:50%;background:rgba(0,46,40,.35);flex-shrink:0;display:inline-block"></span>On-arrival dining at the destination</li>
+            <li style="display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted)"><span style="width:4px;height:4px;border-radius:50%;background:rgba(0,46,40,.35);flex-shrink:0;display:inline-block"></span>Dietary and allergy requirements met for every passenger</li>
+            <li style="display:flex;align-items:center;gap:14px;padding:13px 0;font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted)"><span style="width:4px;height:4px;border-radius:50%;background:rgba(0,46,40,.35);flex-shrink:0;display:inline-block"></span>Packaging and presentation designed for in-flight service</li>
+          </ul>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Remaining Balance</h2>
-        <p class="pol-p">The remaining balance is due no later than <strong>48 hours before</strong> the event date. Failure to complete payment may result in cancellation of the booking, and the deposit will not be refunded.</p>
-      </div>
+        <!-- Card 3: How it Works -->
+        <div class="fade-up p-6 sm:p-8 lg:p-10" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);margin-bottom:24px">How it Works</span>
+          <div style="display:flex;flex-direction:column;gap:24px">
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <span style="font-family:var(--font-forum);font-size:26px;color:rgba(0,46,40,.18);line-height:1;flex-shrink:0;width:36px">01</span>
+              <div>
+                <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:600;color:var(--text);margin:0 0 4px 0">Share the flight schedule</p>
+                <p style="font-family:var(--font-satoshi);font-size:14px;color:var(--text-muted);margin:0;line-height:1.6">Departure times, tail number, passenger count, and any dietary requirements or preferences.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <span style="font-family:var(--font-forum);font-size:26px;color:rgba(0,46,40,.18);line-height:1;flex-shrink:0;width:36px">02</span>
+              <div>
+                <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:600;color:var(--text);margin:0 0 4px 0">Menu built around the flight</p>
+                <p style="font-family:var(--font-satoshi);font-size:14px;color:var(--text-muted);margin:0;line-height:1.6">Menus are planned around flight times, duration, and passenger preferences. Submitted for approval before prep begins.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <span style="font-family:var(--font-forum);font-size:26px;color:rgba(0,46,40,.18);line-height:1;flex-shrink:0;width:36px">03</span>
+              <div>
+                <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:600;color:var(--text);margin:0 0 4px 0">Delivered to the aircraft</p>
+                <p style="font-family:var(--font-satoshi);font-size:14px;color:var(--text-muted);margin:0;line-height:1.6">Meals are prepared and delivered to the aircraft before boarding. Available for domestic and international routes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Exceptional Circumstances</h2>
-        <p class="pol-p">In the unlikely event that Chef Donovan must cancel due to illness or circumstances entirely beyond his control, a full refund of your deposit will be issued, or an alternative date offered at your discretion.</p>
-      </div>
+        <!-- Card 4: Photo -->
+        <div class="fade-up" style="border-radius:16px;overflow:hidden;height:300px;position:relative;border:1px solid var(--border)">
+          <img src="images/luxury-private-lunch.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Contact</h2>
-        <p class="pol-p">To reschedule or discuss your booking, please reach out at <a href="mailto:booking@chefdonsmith.com" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">booking@chefdonsmith.com</a>.</p>
-      </div>
+        <!-- Card 5: CTA -->
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:var(--bg-primary);border-radius:16px;text-align:center">
+          <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:.02em;color:var(--text-inv)">Planning a Flight?</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:rgba(239,231,210,.65);max-width:400px;margin:16px auto 32px">Share the schedule and passenger count. Chef Donovan will come back with a proposed menu and a quote.</p>
+          <a href="reservation.html" class="btn btn-dark">Start Planning</a>
+        </div>
 
-      </div>
-    </div>
+      </div><!-- /right col -->
+    </div><!-- /grid -->
 
-    <!-- Footer -->
     <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
       <div style="margin-bottom:32px">
         <span class="footer-brand">Chef Donovan Smith</span>
         <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
       </div>
       <nav class="footer-nav">
-        <a href="index.html"       class="footer-link">Home</a>
-        <a href="about.html"       class="footer-link">About</a>
-        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="menu.html" class="footer-link">Menu</a>
         <a href="experiences.html" class="footer-link">Experiences</a>
-        <a href="gallery.html"     class="footer-link">Gallery</a>
-        <a href="reviews.html"     class="footer-link">Reviews</a>
-        <a href="blog.html"        class="footer-link">Blog</a>
+        <a href="gallery.html" class="footer-link">Gallery</a>
+        <a href="reviews.html" class="footer-link">Reviews</a>
+        <a href="blog.html" class="footer-link">Blog</a>
       </nav>
       <div class="footer-bottom">
         <div class="footer-bottom-left">
           <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
           <span class="footer-sep">|</span>
-          <a href="terms-and-conditions.html"       class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-          <a href="privacy-policy.html"             class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
-          <a href="refunds-and-cancellation.html"   class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+          <a href="terms-and-conditions.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+          <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="refunds-and-cancellation.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
         </div>
         <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
       </div>
@@ -218,7 +240,6 @@
 
   </div>
 </div>
-
 <script src="js/main.js"></script>
 </body>
 </html>

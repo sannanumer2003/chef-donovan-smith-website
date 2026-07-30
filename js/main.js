@@ -202,4 +202,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile nav accordions: multi-level, exclusive at each level
+  document.querySelectorAll('.mobile-accordion-trigger').forEach(function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var accordion = this.closest('.mobile-accordion');
+      var body = accordion.querySelector(':scope > .mobile-accordion-body');
+      var isOpen = body.style.display === 'flex';
+
+      // Close all sibling accordions at this nesting level
+      var parent = accordion.parentElement;
+      parent.querySelectorAll(':scope > .mobile-accordion').forEach(function(sib) {
+        if (sib === accordion) return;
+        var sibBody = sib.querySelector(':scope > .mobile-accordion-body');
+        var sibTrigger = sib.querySelector(':scope > .mobile-accordion-trigger');
+        if (sibBody) sibBody.style.display = 'none';
+        if (sibTrigger) sibTrigger.classList.remove('is-open');
+        // Also collapse any nested accordions inside the sibling
+        sib.querySelectorAll('.mobile-accordion-body').forEach(function(nb) { nb.style.display = 'none'; });
+        sib.querySelectorAll('.mobile-accordion-trigger').forEach(function(nt) { nt.classList.remove('is-open'); });
+      });
+
+      // Toggle this accordion
+      body.style.display = isOpen ? 'none' : 'flex';
+      if (!isOpen) body.style.flexDirection = 'column';
+      this.classList.toggle('is-open', !isOpen);
+    });
+  });
+
 });

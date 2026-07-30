@@ -25,7 +25,7 @@
     .hero-nav .nav-link::after { background: rgb(239,231,210); }
     .hero-btn-outline { color: rgb(239,231,210) !important; border-color: rgba(239,231,210,0.4) !important; }
 
-    /* â”€â”€ Private Services â”€â”€ */
+    /* â"€â"€ Private Services â"€â"€ */
     .svc-card > img {
       position:absolute;inset:0;width:100%;height:100%;
       object-fit:cover;
@@ -106,7 +106,7 @@
       .svc-modal-body { padding:24px 24px 32px; }
     }
 
-    /* â”€â”€ Reel feed â”€â”€ */
+    /* â"€â"€ Reel feed â"€â"€ */
     @keyframes reelScroll {
       from { transform:translateX(0); }
       to   { transform:translateX(-50%); }
@@ -143,7 +143,7 @@
       -webkit-mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
       mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
     }
-    /* â”€â”€ 4-col private services cards â”€â”€ */
+    /* â"€â"€ 4-col private services cards â"€â"€ */
     @keyframes psvcIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
     .psvc-card {
       position:relative;overflow:hidden;border-radius:14px;
@@ -207,12 +207,44 @@
     </button>
   </div>
   <nav class="flex flex-col items-center gap-8">
-    <a href="menu.html"        class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Menu</a>
-    <a href="about.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">About</a>
-    <a href="experiences.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Experiences</a>
-    <a href="gallery.html"   class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Gallery</a>
-    <a href="reviews.html"     class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity=.5" onmouseout="this.style.opacity=1">Reviews</a>
-    <a href="blog.html"       class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Blog</a>
+    <a href="index.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Home</a>
+    <!-- 1. Experiences accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Experiences<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:16px;margin-top:18px">
+        <!-- Specialist Chef Services nested accordion -->
+        <div class="mobile-accordion" style="text-align:center">
+          <button class="mobile-accordion-trigger" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.82);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Specialist Chef Services<svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.4)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+          <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:12px">
+            <a href="villa-residencies.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Villa Residencies</a>
+            <a href="yacht-islands.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Yacht &amp; Islands</a>
+            <a href="private-jet-travel.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Private Jet &amp; Travel</a>
+            <a href="events-celebrations.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Events &amp; Celebrations</a>
+          </div>
+        </div>
+        <a href="experiences.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Single Bespoke Experiences</a>
+      </div>
+    </div>
+    <!-- 2. Menus accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Menus<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="experiences-breakfast.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Breakfast</a>
+        <a href="experiences-lunch.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Lunch</a>
+        <a href="experiences-dining.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Dining</a>
+      </div>
+    </div>
+    <!-- 3. Reviews -->
+    <a href="reviews.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+    <!-- 4. More accordion -->
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">More<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="about.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">About</a>
+        <a href="gallery.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Gallery</a>
+        <a href="blog.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Blog</a>
+      </div>
+    </div>
   </nav>
   <div style="position:absolute;bottom:32px;left:32px;right:32px">
     <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
@@ -221,7 +253,7 @@
 
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
 
-  <!-- â”€â”€ HERO â”€â”€ -->
+  <!-- â"€â"€ HERO â"€â"€ -->
   <div class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]" style="grid-template-columns:1fr minmax(360px,0.3fr)">
 
     <!-- Left: hero video panel (dark; all overlaid text pinned to cream) -->
@@ -237,13 +269,44 @@
         <header class="hero-nav flex items-center justify-between px-8 sm:px-10 py-6">
           <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:rgb(239,231,210);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
           <nav class="hidden md:flex items-center gap-8">
-            <a href="menu.html"        class="nav-link">Menu</a>
-            <a href="about.html"       class="nav-link">About</a>
-            <a href="experiences.html" class="nav-link">Experiences</a>
-            <a href="gallery.html"   class="nav-link">Gallery</a>
-            <a href="reviews.html"     class="nav-link">Reviews</a>
-        <a href="blog.html"       class="nav-link">Blog</a>
-          </nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <!-- 1. Experiences -->
+        <div class="nav-dropdown-wrap">
+          <a href="experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown" style="min-width:230px">
+            <div class="nav-dropdown-nested-wrap">
+              <a href="specialist-chef-services.html" class="nav-dropdown-item nav-dropdown-nested-trigger">Specialist Chef Services <svg width="6" height="10" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"><polyline points="1 1 5 5 1 9"/></svg></a>
+              <div class="nav-dropdown-nested">
+                <a href="villa-residencies.html" class="nav-dropdown-item">Villa Residencies</a>
+                <a href="yacht-islands.html" class="nav-dropdown-item">Yacht &amp; Islands</a>
+                <a href="private-jet-travel.html" class="nav-dropdown-item">Private Jet &amp; Travel</a>
+                <a href="events-celebrations.html" class="nav-dropdown-item">Events &amp; Celebrations</a>
+              </div>
+            </div>
+            <a href="experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
+          </div>
+        </div>
+        <!-- 2. Menus -->
+        <div class="nav-dropdown-wrap">
+          <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="experiences-breakfast.html" class="nav-dropdown-item">Breakfast</a>
+            <a href="experiences-lunch.html" class="nav-dropdown-item">Lunch</a>
+            <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
+          </div>
+        </div>
+        <!-- 3. Reviews -->
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <!-- 4. More -->
+        <div class="nav-dropdown-wrap">
+          <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-dropdown-item">About</a>
+            <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
+            <a href="blog.html" class="nav-dropdown-item">Blog</a>
+          </div>
+        </div>
+      </nav>
           <div class="flex items-center gap-4" style="flex-shrink:0">
             <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline">Plan Your Experience</a>
             <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
@@ -273,6 +336,42 @@
     <!-- Right: nav cards (dark photo backgrounds; labels stay cream) -->
     <div class="flex flex-col gap-4 lg:h-full lg:pb-0">
       <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
+        <a href="specialist-chef-services.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
+          <div class="nav-card-inner">
+            <img src="images/villa-gathering.jpg" alt="" class="w-full h-full object-cover">
+            <div class="grain absolute inset-0"></div>
+            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
+            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
+              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Specialist Chef Services</span>
+            </div>
+          </div>
+          <div class="card-circle-arrow">
+            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="21"/>
+            </svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
+        <a href="experiences.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
+          <div class="nav-card-inner">
+            <img src="images/anniversary-dinner.jpg" alt="" class="w-full h-full object-cover">
+            <div class="grain absolute inset-0"></div>
+            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
+            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
+              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Single Bespoke Experience</span>
+            </div>
+          </div>
+          <div class="card-circle-arrow">
+            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="22" r="21"/>
+            </svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </a>
+      </div>
+      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
         <a href="menu.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
           <div class="nav-card-inner">
             <img src="images/our-menu-hero.jpg" alt="" class="w-full h-full object-cover">
@@ -280,42 +379,6 @@
             <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
             <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
               <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">The Menu</span>
-            </div>
-          </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21"/>
-            </svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </a>
-      </div>
-      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
-        <a href="reservation.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
-          <div class="nav-card-inner">
-            <img src="images/plan-your-experience.jpg" alt="" class="w-full h-full object-cover">
-            <div class="grain absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
-            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
-              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Plan Your Experience</span>
-            </div>
-          </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21"/>
-            </svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </a>
-      </div>
-      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
-        <a href="about.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
-          <div class="nav-card-inner">
-            <img src="images/our-story.jpg" alt="" class="w-full h-full object-cover">
-            <div class="grain absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
-            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
-              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Our Story</span>
             </div>
           </div>
           <div class="card-circle-arrow">
@@ -351,7 +414,74 @@
     </div>
   </div>
 
-  <!-- â”€â”€ CURATED EXPERIENCES â”€â”€ -->
+
+  <!-- SPECIALIST CHEF SERVICES -->
+  <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
+    <div class="fade-up" style="margin-bottom:28px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px">
+        <h2 style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text);text-transform:uppercase">Specialist Chef Services</h2>
+        <a href="specialist-chef-services.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">Explore All</a>
+      </div>
+      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">Extended stays, yacht itineraries, private travel, and milestone celebrations.</p>
+      <a href="specialist-chef-services.html" class="btn btn-primary md:hidden" style="margin-top:16px">Explore All</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2" style="gap:12px">
+      <a href="villa-residencies.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/villa-gathering.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Extended Stays</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Villa Residencies</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+      <a href="yacht-islands.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/luxury-private-dining-2.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Yacht & Private Island</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Yacht & Islands</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+      <a href="private-jet-travel.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/grand-event.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Travel Catering</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Private Jet & Travel</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+      <a href="events-celebrations.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/anniversary-dinner.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Milestone Occasions</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Events & Celebrations</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- â"€â"€ CURATED EXPERIENCES â"€â"€ -->
   <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
     <div class="fade-up" style="margin-bottom:28px">
       <div class="flex items-end justify-between" style="margin-bottom:12px">
@@ -412,7 +542,7 @@
     </div>
   </section>
 
-  <!-- â”€â”€ PRIVATE SERVICES GRID â”€â”€ -->
+  <!-- â"€â"€ PRIVATE SERVICES GRID â"€â"€ -->
   <section class="px-5 pb-4 sm:px-8 lg:px-20">
     <div class="fade-up" style="margin-bottom:28px">
       <div class="flex items-end justify-between" style="margin-bottom:12px">
@@ -522,7 +652,7 @@
   })();
   </script>
 
-  <!-- â”€â”€ REVIEW CAROUSEL â”€â”€ -->
+  <!-- â"€â"€ REVIEW CAROUSEL â"€â"€ -->
   <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
     <div id="testimonial-carousel" style="max-width:800px;margin:0 auto;text-align:center">
       <div class="select-none" aria-hidden="true" style="font-family:var(--font-forum);font-size:120px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:52px">&ldquo;</div>
@@ -612,7 +742,7 @@
   </section>
 
 
-  <!-- â”€â”€ REEL FEED â”€â”€ -->
+  <!-- â"€â"€ REEL FEED â"€â"€ -->
   <section class="fade-up mt-4 py-14 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
     <!-- Header -->
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 clamp(24px,4vw,52px);margin-bottom:clamp(28px,4vw,44px)">
@@ -663,7 +793,7 @@
   })();
   </script>
 
-  <!-- â”€â”€ FOOTER â”€â”€ -->
+  <!-- â"€â"€ FOOTER â"€â"€ -->
   <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
 
     <div style="margin-bottom:32px">

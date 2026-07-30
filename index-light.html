@@ -87,12 +87,44 @@
           <a href="index-light.html" style="font-family:var(--font-forum);font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:rgb(239,231,210);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
           <!-- .nav-link is hardcoded cream in style.css — stays cream âœ“ -->
           <nav class="hidden md:flex items-center gap-6">
-            <a href="menu.html"      class="nav-link">Menu</a>
-            <a href="about.html"     class="nav-link">About</a>
-            <a href="portfolio.html" class="nav-link">Portfolio</a>
-            <a href="reviews.html"   class="nav-link">Reviews</a>
-        <a href="blog.html"       class="nav-link">Blog</a>
-          </nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <!-- 1. Experiences -->
+        <div class="nav-dropdown-wrap">
+          <a href="experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown" style="min-width:230px">
+            <div class="nav-dropdown-nested-wrap">
+              <a href="specialist-chef-services.html" class="nav-dropdown-item nav-dropdown-nested-trigger">Specialist Chef Services <svg width="6" height="10" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"><polyline points="1 1 5 5 1 9"/></svg></a>
+              <div class="nav-dropdown-nested">
+                <a href="villa-residencies.html" class="nav-dropdown-item">Villa Residencies</a>
+                <a href="yacht-islands.html" class="nav-dropdown-item">Yacht &amp; Islands</a>
+                <a href="private-jet-travel.html" class="nav-dropdown-item">Private Jet &amp; Travel</a>
+                <a href="events-celebrations.html" class="nav-dropdown-item">Events &amp; Celebrations</a>
+              </div>
+            </div>
+            <a href="experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
+          </div>
+        </div>
+        <!-- 2. Menus -->
+        <div class="nav-dropdown-wrap">
+          <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="experiences-breakfast.html" class="nav-dropdown-item">Breakfast</a>
+            <a href="experiences-lunch.html" class="nav-dropdown-item">Lunch</a>
+            <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
+          </div>
+        </div>
+        <!-- 3. Reviews -->
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <!-- 4. More -->
+        <div class="nav-dropdown-wrap">
+          <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-dropdown-item">About</a>
+            <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
+            <a href="blog.html" class="nav-dropdown-item">Blog</a>
+          </div>
+        </div>
+      </nav>
           <!-- hero-btn-outline class forces cream on dark video -->
           <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline" style="flex-shrink:0">Plan Your Experience</a>
           <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">

@@ -573,3 +573,134 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0); curso
 }
 .nav-link:hover { color: var(--text); }
 .nav-link:hover::after { width: 100%; }
+
+
+/* -- Specialist Chef Services Nav Dropdown --------------------------------- */
+.nav-dropdown-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+/* Bridge: transparent strip below trigger covers the gap so hover stays active */
+.nav-dropdown-wrap::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  right: -10px;
+  height: 16px;
+}
+.nav-has-dropdown::after { display: none; }
+.nav-dd-chevron {
+  display: inline-block;
+  margin-left: 4px;
+  vertical-align: middle;
+  transition: transform .2s ease;
+}
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  min-width: 210px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s .2s;
+  z-index: 200;
+  box-shadow: 0 10px 28px rgba(0,46,40,.1);
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity .18s ease, transform .18s ease, visibility 0s 0s;
+}
+.nav-dropdown-wrap:hover .nav-dd-chevron { transform: rotate(180deg); }
+.nav-dropdown-item {
+  display: block;
+  padding: 9px 14px;
+  font-family: var(--font-satoshi);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 7px;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.nav-dropdown-item:hover { background: rgba(0,46,40,.07); }
+
+/* -- Mobile accordion ------------------------------------------------------ */
+.mobile-accordion-trigger.is-open .mobile-accordion-chevron { transform: rotate(180deg); }
+.mobile-accordion-chevron { transition: transform .25s ease; }
+
+/* -- Nested dropdown (Specialist Chef Services inside Experiences) ---------- */
+.nav-dropdown-nested-wrap { position: relative; }
+/* Bridge: keeps hover alive over the gap between item and nested panel */
+.nav-dropdown-nested-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 10px;
+  height: 100%;
+}
+.nav-dropdown-nested {
+  position: absolute;
+  top: -6px;
+  left: calc(100% + 6px);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  min-width: 195px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s ease, visibility 0s .2s;
+  z-index: 300;
+  box-shadow: 0 10px 28px rgba(0,46,40,.1);
+}
+.nav-dropdown-nested-wrap:hover .nav-dropdown-nested {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .18s ease, visibility 0s 0s;
+}
+.nav-dropdown-nested-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+/* More button (non-link nav trigger) */
+.nav-dd-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* -- Mobile panel: scrollable, CTA pushed to bottom ----------------------- */
+.mobile-menu-panel {
+  justify-content: flex-start !important;
+  overflow-y: auto;
+}
+.mobile-menu-panel nav {
+  padding-bottom: 28px !important;
+}
+/* Override the absolute-positioned CTA div to normal flow */
+.mobile-menu-panel > div:last-child {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin-top: auto;
+  width: 100%;
+  padding: 0 32px 40px !important;
+  box-sizing: border-box;
+}
