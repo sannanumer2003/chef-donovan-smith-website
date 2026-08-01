@@ -72,20 +72,21 @@
       margin-top:4px;
     }
 
-    /* Preview Access button â€” cream bg, dark green text, right arrow */
+    /* Preview Access â€” matches site .btn: 12px / 500 / 0.1em tracking */
     .cs-btn{
-      display:inline-flex;align-items:center;gap:10px;
-      font-family:'Satoshi',sans-serif;font-size:11px;font-weight:500;
-      text-transform:uppercase;letter-spacing:.2em;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:500;
+      text-transform:uppercase;letter-spacing:0.1em;
       color:rgb(0,46,40);
       background:rgb(239,231,210);border:none;
-      border-radius:99px;padding:12px 28px;
+      border-radius:999px;padding:14px 28px;
       cursor:pointer;
-      transition:background .2s;
+      white-space:nowrap;
+      transition:background .2s,transform .15s;
     }
-    .cs-btn:hover{background:rgb(220,212,191)}
-    .cs-btn svg{transition:transform .2s}
-    .cs-btn:hover svg{transform:translateX(2px)}
+    .cs-btn:hover{background:rgb(220,212,191);transform:scale(1.02)}
+    .cs-btn svg{transition:transform .2s ease}
+    .cs-btn:hover svg{transform:translateX(3px)}
 
     /* Modal overlay */
     .cs-overlay{
@@ -153,22 +154,24 @@
     .cs-field input::placeholder{color:rgba(239,231,210,.22)}
     .cs-field input:focus{border-color:rgba(239,231,210,.32)}
 
-    /* Enter button â€” cream bg, flex row so arrow sits on right */
+    /* Enter button â€” same .btn match: 12px / 500 / 0.1em tracking */
     .cs-submit{
       width:100%;margin-top:8px;
-      display:flex;align-items:center;justify-content:center;gap:10px;
+      display:flex;align-items:center;justify-content:center;gap:8px;
       background:rgb(239,231,210);
       color:rgb(0,46,40);
-      border:none;border-radius:99px;
-      padding:14px;
-      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:600;
-      text-transform:uppercase;letter-spacing:.18em;
+      border:none;border-radius:999px;
+      padding:14px 28px;
+      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:500;
+      text-transform:uppercase;letter-spacing:0.1em;
+      white-space:nowrap;
       cursor:pointer;
-      transition:background .15s;
+      transition:background .15s,transform .15s;
     }
-    .cs-submit:hover{background:rgb(220,212,191)}
-    .cs-submit svg{transition:transform .2s}
-    .cs-submit:hover svg{transform:translateX(2px)}
+    .cs-submit:hover{background:rgb(220,212,191);transform:scale(1.02)}
+    .cs-submit:active{transform:scale(0.98)}
+    .cs-submit svg{transition:transform .2s ease}
+    .cs-submit:hover svg{transform:translateX(3px)}
 
     .cs-err{
       display:none;
@@ -205,7 +208,7 @@
 
   <button class="cs-btn" id="cs-access-btn">
     Preview Access
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </button>
 
   <p class="cs-footer">&copy; 2026 chefdonsmith.com</p>
@@ -231,7 +234,7 @@
       </div>
       <button type="submit" class="cs-submit">
         <span>Enter</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
       <p class="cs-err" id="cs-err">Incorrect credentials. Please try again.</p>
     </form>
@@ -272,7 +275,7 @@ overlay.addEventListener('click',function(e){
 });
 
 var U_HASH='09cdbbe0058bb46689ab1c6ea40fcd06c75118964cd29e4d26d2877d465f16d4';
-var P_HASH='efe0bc43cbea9ddd327c75b304a7d9ee3448f061b70c952b15c2845f11c5385a';
+var P_HASH='070bb3c3c068720dcf0c187e94f122ef9527312b652b7b9994285a1ffcc6a5d8';
 
 async function sha256(str){
   var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
