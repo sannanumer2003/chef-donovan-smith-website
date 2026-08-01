@@ -295,6 +295,8 @@
         <a href="about.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">About</a>
         <a href="gallery.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Gallery</a>
         <a href="blog.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Blog</a>
+        <a href="partner.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Partner</a>
+        <a href="signature-standard.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Our Standard</a>
       </div>
     </div>
   </nav>
@@ -345,6 +347,8 @@
             <a href="about.html" class="nav-dropdown-item">About</a>
             <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
             <a href="blog.html" class="nav-dropdown-item">Blog</a>
+            <a href="partner.html" class="nav-dropdown-item">Partner</a>
+            <a href="signature-standard.html" class="nav-dropdown-item">Our Standard</a>
           </div>
         </div>
       </nav>
@@ -379,7 +383,7 @@
     <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Ready to Begin?</h2>
       <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:460px;margin:20px auto 40px">Found the one? Tell him the date and the headcount, he'll handle the rest.</p>
-      <a href="reservation.html" class="btn btn-dark">Plan Your Experience</a>
+      <a href="reservation.html?type=bespoke" class="btn btn-dark">Plan Your Experience</a>
     </div>
 
     <!-- Footer -->
@@ -398,6 +402,8 @@
       <a href="gallery.html"     class="footer-link">Gallery</a>
       <a href="reviews.html"     class="footer-link">Reviews</a>
       <a href="blog.html"        class="footer-link">Blog</a>
+        <a href="partner.html" class="footer-link">Partner</a>
+        <a href="signature-standard.html" class="footer-link">Our Standard</a>
     </nav>
 
     <div class="footer-bottom">
@@ -546,8 +552,10 @@
   // Decode HTML entities for use in JS contexts (src attributes, alt text)
   function dec(s) { const t=document.createElement('textarea'); t.innerHTML=s; return t.value; }
 
+  const EXP_SLUGS=['fire-feast','caribbean-omakase','italian-villa-night','mexican-smoke-agave','chefs-table','cook-with-chef','seafood-sunset','rum-spice'];
   function openModal(i) {
     const exp = EXPS[i];
+    document.querySelector('.exp-modal-cta').href='reservation.html?type=bespoke&exp='+EXP_SLUGS[i];
     mImg.src   = dec(exp.img);
     mImg.alt   = dec(exp.name);
     mNum.textContent   = exp.num;

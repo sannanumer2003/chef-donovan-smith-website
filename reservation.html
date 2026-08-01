@@ -244,6 +244,14 @@
     .cal-day.is-today{border-color:rgba(239,231,210,.22)}
     .cal-day.past{opacity:.2;cursor:default;pointer-events:none}
     .cal-day.empty{cursor:default;pointer-events:none}
+    .cal-day.in-range{background:rgba(239,231,210,.07)}
+    .cal-day.hover-range{background:rgba(239,231,210,.04);border-color:rgba(239,231,210,.08)}
+    .jet-route{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .jet-route .f-in{flex:1}
+    .jet-arrow{color:var(--muted);font-size:18px;flex-shrink:0;user-select:none;line-height:1}
+    .jet-remove{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:rgba(239,231,210,.22);font-size:18px;padding:0;line-height:1;transition:color .15s}
+    .jet-remove:hover{color:rgba(239,231,210,.65)}
+    .other-input-wrap{margin-top:12px}
     @media(max-width:768px){
       .cal-panel{
         position:fixed;
@@ -452,49 +460,10 @@
     </div>
   </div>
 
-  <!-- Q1 -->
-  <div class="slide" id="s-1">
-    <div class="inner">
-      <div class="q-row"><span class="q-num">1</span><h2 class="q-h">What is your full name?</h2></div>
-      <div class="f-wrap">
-        <input type="text" class="f-in" id="i-name" placeholder="Type your answer here…" autocomplete="name">
-        <div class="f-line"></div>
-      </div>
-      <p class="f-err" id="e-name"></p>
-      <button class="ok" data-next>OK</button>
-    </div>
-  </div>
-
-  <!-- Q2 -->
-  <div class="slide" id="s-2">
-    <div class="inner">
-      <div class="q-row"><span class="q-num">2</span><h2 class="q-h">What is your email address?</h2></div>
-      <div class="f-wrap">
-        <input type="email" class="f-in" id="i-email" placeholder="name@example.com" autocomplete="email">
-        <div class="f-line"></div>
-      </div>
-      <p class="f-err" id="e-email"></p>
-      <button class="ok" data-next>OK</button>
-    </div>
-  </div>
-
-  <!-- Q3 -->
-  <div class="slide" id="s-3">
-    <div class="inner">
-      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">Your phone number?</h2></div>
-      <div class="f-wrap">
-        <input type="tel" class="f-in" id="i-phone" placeholder="+1 (242) 000 0000" autocomplete="tel">
-        <div class="f-line"></div>
-      </div>
-      <p class="f-err" id="e-phone"></p>
-      <button class="ok" data-next>OK</button>
-    </div>
-  </div>
-
   <!-- Q4 Guests -->
-  <div class="slide" id="s-4">
+  <div class="slide" id="s-guests">
     <div class="inner">
-      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">How many guests are you expecting?</h2></div>
+      <div class="q-row"><span class="q-num">5</span><h2 class="q-h">How many guests are you expecting?</h2></div>
       <div class="opts" id="opts-guests">
         <button class="opt" data-v="2–5 guests"><span class="opt-key">A</span><span class="opt-txt">2 – 5 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
         <button class="opt" data-v="6–10 guests"><span class="opt-key">B</span><span class="opt-txt">6 – 10 guests</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
@@ -509,14 +478,14 @@
   <!-- Q5 Branch -->
   <div class="slide" id="s-5">
     <div class="inner">
-      <div class="q-row"><span class="q-num">5</span><h2 class="q-h">Do you have a specific experience in mind?</h2></div>
+      <div class="q-row"><span class="q-num">2</span><h2 class="q-h">Do you have a specific experience in mind?</h2></div>
       <div class="opts" id="opts-branch">
         <button class="opt br" data-branch="yes">
-          <div class="opt-head"><span class="opt-key">A</span><span class="opt-txt" style="font-weight:500">Yes, I do</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div class="opt-head"><span class="opt-key">A</span><span class="opt-txt" style="font-weight:500">I want to select from the experiences listed on the site</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
           <p class="opt-sub">I'd like to pick from the experiences listed on the site</p>
         </button>
         <button class="opt br" data-branch="no">
-          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">Not yet</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">I want to describe my own experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
           <p class="opt-sub">I'd like to describe what I'm picturing</p>
         </button>
       </div>
@@ -527,7 +496,7 @@
   <!-- Q6a -->
   <div class="slide" id="s-6a">
     <div class="inner">
-      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Which experience interests you?</h2></div>
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">Which experience interests you?</h2></div>
       <div class="opts" id="opts-exp">
         <button class="opt" data-v="Fire &amp; Feast Experience"><span class="opt-key">A</span><span class="opt-txt">Fire &amp; Feast Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
         <button class="opt" data-v="Caribbean Omakase"><span class="opt-key">B</span><span class="opt-txt">Caribbean Omakase</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
@@ -545,7 +514,7 @@
   <!-- Q6b -->
   <div class="slide" id="s-6b">
     <div class="inner">
-      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">What are you picturing?</h2></div>
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">What are you picturing?</h2></div>
       <div class="f-wrap">
         <textarea class="f-ta" id="i-vision" placeholder="Setting, cuisine, mood, special details…" rows="3"></textarea>
         <div class="f-line"></div>
@@ -558,7 +527,7 @@
   <!-- Q-menu: Pre-curated Menu -->
   <div class="slide" id="s-menu">
     <div class="inner">
-      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Do you have a menu in mind?</h2></div>
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Do you have a menu in mind?</h2></div>
 
       <!-- Yes / No -->
       <div class="opts" id="opts-menu-yn">
@@ -611,7 +580,7 @@
   </div>
 
   <!-- Q8 Date -->
-  <div class="slide" id="s-7">
+  <div class="slide" id="s-date">
     <div class="inner">
       <div class="q-row"><span class="q-num">8</span><h2 class="q-h">What is your preferred date?</h2></div>
       <div class="f-wrap" id="date-wrap" style="position:relative">
@@ -642,7 +611,7 @@
   </div>
 
   <!-- Q9 Location -->
-  <div class="slide" id="s-8">
+  <div class="slide" id="s-loc">
     <div class="inner">
       <div class="q-row"><span class="q-num">9</span><h2 class="q-h">Which island or location?</h2></div>
       <div class="f-wrap">
@@ -696,6 +665,298 @@
     </div>
   </div>
 
+  <!-- NEW: s-type -->
+  <div class="slide" id="s-type">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">1</span><h2 class="q-h">What kind of experience are you planning?</h2></div>
+      <div class="opts" id="opts-type">
+        <button class="opt br" data-v="bespoke">
+          <div class="opt-head"><span class="opt-key">A</span><span class="opt-txt" style="font-weight:500">Single Bespoke Experience</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="opt-sub">A dinner, brunch, celebration, tasting menu or custom occasion</p>
+        </button>
+        <button class="opt br" data-v="specialist">
+          <div class="opt-head"><span class="opt-key">B</span><span class="opt-txt" style="font-weight:500">Specialist Chef Services</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <p class="opt-sub">Villa stays, yacht travel, jet catering or large events</p>
+        </button>
+      </div>
+      <p class="f-err" id="e-type" style="margin-top:10px"></p>
+    </div>
+  </div>
+
+  <!-- NEW: s-svc-pick -->
+  <div class="slide" id="s-svc-pick">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">2</span><h2 class="q-h">Which service interests you?</h2></div>
+      <div class="opts" id="opts-svc">
+        <button class="opt" data-v="Villa Residencies"><span class="opt-key">A</span><span class="opt-txt">Villa Residencies</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Yacht and Islands"><span class="opt-key">B</span><span class="opt-txt">Yacht &amp; Islands</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Private Jet and Travel"><span class="opt-key">C</span><span class="opt-txt">Private Jet &amp; Travel</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Events and Celebrations"><span class="opt-key">D</span><span class="opt-txt">Events &amp; Celebrations</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+      </div>
+      <p class="f-err" id="e-svc"></p>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Villa dates -->
+  <div class="slide" id="s-sp-villa-dates">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">When is the stay?</h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;margin-top:-20px">Select your arrival date, then your departure date</p>
+      <div class="f-wrap" id="villa-date-wrap" style="position:relative">
+        <div class="date-trigger" id="villa-date-trigger" tabindex="0" role="button" aria-haspopup="true"><span id="villa-date-label" class="ph">Select arrival date...</span></div>
+        <div class="f-line"></div>
+        <div class="cal-panel" id="villa-cal-panel">
+          <div class="cal-head"><button class="cal-nav" id="villa-cal-prev" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><span class="cal-title" id="villa-cal-title"></span><button class="cal-nav" id="villa-cal-next" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+          <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-grid" id="villa-cal-grid"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:6px;min-height:18px"><a id="villa-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear dates</a></div>
+      <p class="f-err" id="e-villa-dates"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Villa location -->
+  <div class="slide" id="s-sp-villa-loc">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Where will you be staying?</h2></div>
+      <div class="f-wrap"><input type="text" class="f-in" id="i-villaloc" placeholder="e.g. Sandy Lane Estate, Barbados"><div class="f-line"></div></div>
+      <p class="f-err" id="e-villaloc"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Villa meals -->
+  <div class="slide" id="s-sp-villa-meals">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Which meals would you like covered each day?</h2></div>
+      <div class="opts" id="opts-villa-meals">
+        <button class="opt" data-v="Breakfast"><span class="opt-key">A</span><span class="opt-txt">Breakfast</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Lunch"><span class="opt-key">B</span><span class="opt-txt">Lunch</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Dinner"><span class="opt-key">C</span><span class="opt-txt">Dinner</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Snacks and Canapes"><span class="opt-key">D</span><span class="opt-txt">Snacks &amp; Canapés</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt br" data-v="other"><div class="opt-head"><span class="opt-key">E</span><span class="opt-txt" style="font-weight:500">Something else</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><p class="opt-sub">Tell us what you have in mind</p></button>
+      </div>
+      <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-villa-meals-other" placeholder="Describe what you have in mind..." rows="2"></textarea><div class="f-line"></div></div></div>
+      <p class="f-err" id="e-villa-meals"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Villa kitchen -->
+  <div class="slide" id="s-sp-villa-kitchen">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Tell us about the villa kitchen</h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">This helps the chef plan equipment and provisioning</p>
+      <div class="f-wrap"><textarea class="f-ta" id="i-villakitchen" placeholder="e.g. Full kitchen with 6-burner range, limited counter space, outdoor grill..." rows="3"></textarea><div class="f-line"></div></div>
+      <p class="f-err" id="e-villakitchen"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Yacht dates -->
+  <div class="slide" id="s-sp-yacht-dates">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">When does the charter run?</h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;margin-top:-20px">Select your charter start date, then end date</p>
+      <div class="f-wrap" id="yacht-date-wrap" style="position:relative">
+        <div class="date-trigger" id="yacht-date-trigger" tabindex="0" role="button" aria-haspopup="true"><span id="yacht-date-label" class="ph">Select start date...</span></div>
+        <div class="f-line"></div>
+        <div class="cal-panel" id="yacht-cal-panel">
+          <div class="cal-head"><button class="cal-nav" id="yacht-cal-prev" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><span class="cal-title" id="yacht-cal-title"></span><button class="cal-nav" id="yacht-cal-next" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+          <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-grid" id="yacht-cal-grid"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:6px;min-height:18px"><a id="yacht-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear dates</a></div>
+      <p class="f-err" id="e-yacht-dates"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Yacht itinerary -->
+  <div class="slide" id="s-sp-yacht-dest">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Which islands or ports are on the itinerary?</h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">List stops in order if you have a route in mind</p>
+      <div class="f-wrap"><textarea class="f-ta" id="i-yachtdest" placeholder="e.g. St Barts, Gustavia, Anguilla, Sandy Island..." rows="3"></textarea><div class="f-line"></div></div>
+      <p class="f-err" id="e-yachtdest"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Yacht galley -->
+  <div class="slide" id="s-sp-yacht-galley">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Tell us about the galley</h2></div>
+      <div class="f-wrap"><textarea class="f-ta" id="i-yachtgalley" placeholder="e.g. Full galley with induction cooktop, 4-burner range, limited refrigeration..." rows="3"></textarea><div class="f-line"></div></div>
+      <p class="f-err" id="e-yachtgalley"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Jet date -->
+  <div class="slide" id="s-sp-jet-date">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">When is the flight?</h2></div>
+      <div class="f-wrap" id="jet-date-wrap" style="position:relative">
+        <div class="date-trigger" id="jet-date-trigger" tabindex="0" role="button" aria-haspopup="true"><span id="jet-date-label" class="ph">Select flight date...</span></div>
+        <div class="f-line"></div>
+        <div class="cal-panel" id="jet-cal-panel">
+          <div class="cal-head"><button class="cal-nav" id="jet-cal-prev" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><span class="cal-title" id="jet-cal-title"></span><button class="cal-nav" id="jet-cal-next" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+          <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-grid" id="jet-cal-grid"></div>
+        </div>
+      </div>
+      <div style="margin-top:6px;min-height:18px"><a id="jet-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear date</a></div>
+      <p class="f-err" id="e-jet-date"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Jet routes -->
+  <div class="slide" id="s-sp-jet-routes">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">What's the route?</h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">Add as many legs as you need</p>
+      <div id="jet-routes-list">
+        <div class="jet-route">
+          <input type="text" class="f-in" placeholder="From" data-role="jet-from" style="margin-bottom:0">
+          <span class="jet-arrow">&#8594;</span>
+          <input type="text" class="f-in" placeholder="To" data-role="jet-to" style="margin-bottom:0">
+        </div>
+      </div>
+      <div style="margin-top:14px"><a id="jet-add-route" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">&#43; Add another route</a></div>
+      <p class="f-err" id="e-jet-routes"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Jet notes -->
+  <div class="slide" id="s-sp-jet-notes">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Any packaging, timing or delivery notes? <span style="font-family:var(--fs);font-size:14px;font-weight:400;color:rgba(239,231,210,.38)">(optional)</span></h2></div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">Temperature requirements, service timing, plating style</p>
+      <div class="f-wrap"><textarea class="f-ta" id="i-jetnotes" placeholder="e.g. Cold canapes, ready 90 minutes before departure, keto-friendly packaging..." rows="3"></textarea><div class="f-line"></div></div>
+      <p class="f-err" id="e-jetnotes"></p>
+      <div style="margin-top:12px"><a id="jet-notes-skip" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">Skip</a></div>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Event date -->
+  <div class="slide" id="s-sp-event-date">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">When is the event?</h2></div>
+      <div class="f-wrap" id="evt-date-wrap" style="position:relative">
+        <div class="date-trigger" id="evt-date-trigger" tabindex="0" role="button" aria-haspopup="true"><span id="evt-date-label" class="ph">Select event date...</span></div>
+        <div class="f-line"></div>
+        <div class="cal-panel" id="evt-cal-panel">
+          <div class="cal-head"><button class="cal-nav" id="evt-cal-prev" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><span class="cal-title" id="evt-cal-title"></span><button class="cal-nav" id="evt-cal-next" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button></div>
+          <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+          <div class="cal-grid" id="evt-cal-grid"></div>
+        </div>
+      </div>
+      <div style="margin-top:6px;min-height:18px"><a id="evt-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear date</a></div>
+      <p class="f-err" id="e-event-date"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Event venue -->
+  <div class="slide" id="s-sp-event-venue">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Where is the event taking place?</h2></div>
+      <div class="f-wrap"><input type="text" class="f-in" id="i-eventvenue" placeholder="e.g. Four Seasons Great Exuma, private estate, beachfront..."><div class="f-line"></div></div>
+      <p class="f-err" id="e-eventvenue"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Event type -->
+  <div class="slide" id="s-sp-event-type">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">5</span><h2 class="q-h">What kind of event?</h2></div>
+      <div class="opts" id="opts-event-type">
+        <button class="opt" data-v="Birthday"><span class="opt-key">A</span><span class="opt-txt">Birthday</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Wedding"><span class="opt-key">B</span><span class="opt-txt">Wedding</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Corporate event"><span class="opt-key">C</span><span class="opt-txt">Corporate event</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Private party"><span class="opt-key">D</span><span class="opt-txt">Private party</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt br" data-v="other"><div class="opt-head"><span class="opt-key">E</span><span class="opt-txt" style="font-weight:500">Something else</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><p class="opt-sub">Tell us what you have in mind</p></button>
+      </div>
+      <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-event-type-other" placeholder="Describe the event..." rows="2"></textarea><div class="f-line"></div></div></div>
+      <p class="f-err" id="e-event-type"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- SPECIALIST: Event style -->
+  <div class="slide" id="s-sp-event-style">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">How would you like the food served?</h2></div>
+      <div class="opts" id="opts-event-style">
+        <button class="opt" data-v="Plated dinner"><span class="opt-key">A</span><span class="opt-txt">Plated dinner</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Cocktail reception"><span class="opt-key">B</span><span class="opt-txt">Cocktail reception</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt" data-v="Buffet"><span class="opt-key">C</span><span class="opt-txt">Buffet</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        <button class="opt br" data-v="other"><div class="opt-head"><span class="opt-key">D</span><span class="opt-txt" style="font-weight:500">Something else</span><svg class="opt-chk" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><p class="opt-sub">Tell us what you have in mind</p></button>
+      </div>
+      <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-event-style-other" placeholder="Describe the service style..." rows="2"></textarea><div class="f-line"></div></div></div>
+      <p class="f-err" id="e-event-style"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+  <!-- NEW: s-occasion -->
+  <div class="slide" id="s-occasion">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">6</span><h2 class="q-h">What's the occasion?</h2></div>
+      <div class="f-wrap">
+        <textarea class="f-ta" id="i-occasion" placeholder="Anniversary, birthday, corporate dinner, family gathering..." rows="3"></textarea>
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-occasion"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- NEW: s-allergy -->
+  <div class="slide" id="s-allergy">
+    <div class="inner">
+      <div class="q-row"><span class="q-num">7</span><h2 class="q-h">Any food allergies or dietary preferences? <span style="font-family:var(--fs);font-size:14px;font-weight:400;color:rgba(239,231,210,.38)">(optional)</span></h2></div>
+      <div class="f-wrap">
+        <textarea class="f-ta" id="i-allergy" placeholder="e.g. gluten-free, no shellfish, vegetarian..." rows="3"></textarea>
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-allergy"></p>
+      <div style="margin-top:12px"><a id="allergy-skip" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">Skip</a></div>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
+  <!-- NEW: s-lead -->
+  <div class="slide" id="s-lead">
+    <div class="inner">
+      <span class="ey">Almost there</span>
+      <div class="q-row"><h2 class="q-h">How can we reach you?</h2></div>
+      <div class="f-wrap" style="margin-bottom:24px">
+        <input type="text" class="f-in" id="i-name" placeholder="Full name" autocomplete="name">
+        <div class="f-line"></div>
+      </div>
+      <div class="f-wrap" style="margin-bottom:24px">
+        <input type="email" class="f-in" id="i-email" placeholder="Email address" autocomplete="email">
+        <div class="f-line"></div>
+      </div>
+      <div class="f-wrap">
+        <input type="tel" class="f-in" id="i-phone" placeholder="Phone number" autocomplete="tel">
+        <div class="f-line"></div>
+      </div>
+      <p class="f-err" id="e-lead"></p>
+      <button class="ok" data-next>OK</button>
+    </div>
+  </div>
+
 </div>
 
 <!-- Menu Detail Popup -->
@@ -728,11 +989,64 @@
 'use strict';
 
 const ST={cur:'intro',branch:null,data:{}};
-const AUTO=['4','5','6a'];
+const AUTO=['type','5','6a','svc-pick','guests'];
 
-function seq(){return['intro','1','2','3','4','5',ST.branch==='yes'?'6a':'6b','menu','7','8','review','done'];}
+/* -- Preselection from URL params -- */
+const _p=new URLSearchParams(location.search);
+const PRE_TYPE=_p.get('type');
+const PRE_EXP =_p.get('exp');
 
-/* â”€â”€ Navigate â”€â”€ */
+const EXP_SLUGS={
+  'fire-feast':          'Fire & Feast Experience',
+  'caribbean-omakase':   'Caribbean Omakase',
+  'italian-villa-night': 'Italian Villa Night',
+  'mexican-smoke-agave': 'Mexican Smoke & Agave',
+  'chefs-table':         "Chef's Table Tasting Menu",
+  'cook-with-chef':      'Cook With the Chef',
+  'seafood-sunset':      'Seafood & Sunset Experience',
+  'rum-spice':           'Rum & Spice Experience',
+  'villa-residencies':   'Villa Residencies',
+  'yacht-islands':       'Yacht & Islands',
+  'private-jet-travel':  'Private Jet & Travel',
+  'events-celebrations': 'Events & Celebrations',
+};
+
+if(PRE_TYPE)ST.data.expType=PRE_TYPE;
+if(PRE_EXP&&EXP_SLUGS[PRE_EXP])ST.data.experience=EXP_SLUGS[PRE_EXP];
+
+/* -- Sequence -- */
+function seq(){
+  const s=[];
+  const expType=PRE_TYPE||ST.data.expType;
+  if(!PRE_TYPE&&!PRE_EXP)s.push('intro');
+  if(!PRE_TYPE)s.push('type');
+  if(expType==='specialist'){
+    if(!PRE_EXP)s.push('svc-pick');
+    const svc=ST.data.experience;
+    if(svc==='Villa Residencies')s.push('sp-villa-dates','sp-villa-loc','guests','sp-villa-meals','sp-villa-kitchen');
+    else if(svc==='Yacht and Islands')s.push('sp-yacht-dates','sp-yacht-dest','guests','sp-yacht-galley');
+    else if(svc==='Private Jet and Travel')s.push('sp-jet-date','sp-jet-routes','guests','sp-jet-notes');
+    else if(svc==='Events and Celebrations')s.push('sp-event-date','sp-event-venue','sp-event-type','sp-event-style','guests');
+    s.push('allergy','lead');
+  }else{
+    if(!PRE_EXP){
+      s.push('5');
+      if(ST.branch==='yes')s.push('6a');
+      else if(ST.branch==='no')s.push('6b');
+    }
+    s.push('menu','guests','occasion','allergy','date','loc','lead');
+  }
+  s.push('review','done');
+  return s;
+}
+function buildQMap(){
+  const map={};
+  seq().filter(s=>!['intro','review','done'].includes(s))
+       .forEach((s,i)=>{map[s]=i+1;});
+  return map;
+}
+
+/* -- Navigate -- */
 function goNext(){
   if(!validate())return;
   saveData();
@@ -747,9 +1061,9 @@ function goBack(){
   if(i<=0)return;
   go(ST.cur,s[i-1],'bck');
 }
+function firstSlide(){return seq().find(s=>s!=='intro')||'type';}
 function go(from,to,dir){
   const fe=G('s-'+from),te=G('s-'+to);
-  // Restore topbar/prog when entering a new slide
   G('topbar').classList.remove('scrolled-up');
   G('prog').classList.remove('scrolled-up');
   fe.classList.remove('active');
@@ -763,13 +1077,18 @@ function go(from,to,dir){
   setTimeout(()=>{const inp=te.querySelector('.f-in:not([type=date]),.f-ta');if(inp)inp.focus();},300);
 }
 
-/* â”€â”€ Validate â”€â”€ */
+/* -- Validate -- */
+function hasOtherValid(optsId){
+  const el=G(optsId);if(!el)return true;
+  const ob=el.querySelector('.opt[data-v="other"].chosen');if(!ob)return true;
+  const wrap=el.parentElement?el.parentElement.querySelector('.other-input-wrap'):null;
+  const ta=wrap?wrap.querySelector('.f-ta'):null;
+  return !!(ta&&ta.value.trim());
+}
 function validate(){
   clearErrs();const c=ST.cur;
-  if(c==='1'){if(!v('i-name')){e('e-name','Please enter your full name.');return false;}}
-  if(c==='2'){const em=v('i-email');if(!em){e('e-email','Please enter your email.');return false;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){e('e-email','Please enter a valid email.');return false;}}
-  if(c==='3'){if(!v('i-phone')){e('e-phone','Please enter your phone number.');return false;}}
-  if(c==='4'){if(!ST.data.guests){e('e-guests','Please select a guest count.');return false;}}
+  if(c==='type'){if(!ST.data.expType){e('e-type','Please select an experience type.');return false;}}
+  if(c==='svc-pick'){if(!ST.data.experience){e('e-svc','Please select a service.');return false;}}
   if(c==='5'){if(!ST.branch){e('e-branch','Please select an option.');return false;}}
   if(c==='6a'){if(!ST.data.experience){e('e-exp','Please select an experience.');return false;}}
   if(c==='6b'){if(!v('i-vision')){e('e-vision','Please describe your experience.');return false;}}
@@ -777,37 +1096,136 @@ function validate(){
     if(!ST.data.menuChoice){e('e-menu','Please select an option.');return false;}
     if(ST.data.menuChoice==='yes'&&!ST.data.selectedMenu){e('e-menu','Please select a menu or choose "No" to continue.');return false;}
   }
-  if(c==='7'){const dv=v('i-date'),today=new Date().toISOString().split('T')[0];if(!dv){e('e-date','Please select a preferred date.');return false;}if(dv<today){e('e-date','Please select a future date.');return false;}}
-  if(c==='8'){if(!v('i-loc')){e('e-loc','Please enter your island or location.');return false;}}
+  if(c==='guests'){if(!ST.data.guests){e('e-guests','Please select a guest count.');return false;}}
+  if(c==='occasion'){if(!v('i-occasion')){e('e-occasion','Please describe the occasion.');return false;}}
+  if(c==='date'){const dv=v('i-date'),today=new Date().toISOString().split('T')[0];if(!dv){e('e-date','Please select a preferred date.');return false;}if(dv<today){e('e-date','Please select a future date.');return false;}}
+  if(c==='loc'){if(!v('i-loc')){e('e-loc','Please enter your island or location.');return false;}}
+  if(c==='lead'){
+    if(!v('i-name')){e('e-lead','Please enter your full name.');return false;}
+    const em=v('i-email');
+    if(!em){e('e-lead','Please enter your email address.');return false;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){e('e-lead','Please enter a valid email address.');return false;}
+    if(!v('i-phone')){e('e-lead','Please enter your phone number.');return false;}
+  }
+  /* Specialist slides */
+  if(c==='sp-villa-dates'){if(!ST.data.villaStart){e('e-villa-dates','Please select your arrival date.');return false;}}
+  if(c==='sp-villa-loc'){if(!v('i-villaloc')){e('e-villaloc','Please enter the villa or location.');return false;}}
+  if(c==='sp-villa-meals'){
+    const el=G('opts-villa-meals');
+    if(!el||!el.querySelector('.opt.chosen')){e('e-villa-meals','Please select at least one meal.');return false;}
+    if(!hasOtherValid('opts-villa-meals')){e('e-villa-meals','Please describe what you have in mind.');return false;}
+  }
+  if(c==='sp-villa-kitchen'){if(!v('i-villakitchen')){e('e-villakitchen','Please describe the kitchen setup.');return false;}}
+  if(c==='sp-yacht-dates'){if(!ST.data.yachtStart){e('e-yacht-dates','Please select the charter start date.');return false;}}
+  if(c==='sp-yacht-dest'){if(!v('i-yachtdest')){e('e-yachtdest','Please enter the itinerary.');return false;}}
+  if(c==='sp-yacht-galley'){if(!v('i-yachtgalley')){e('e-yachtgalley','Please describe the galley.');return false;}}
+  if(c==='sp-jet-date'){if(!ST.data.jetDate){e('e-jet-date','Please select the flight date.');return false;}}
+  if(c==='sp-jet-routes'){
+    const rows=[...G('jet-routes-list').querySelectorAll('.jet-route')];
+    const ok=rows.some(r=>r.querySelector('[data-role="jet-from"]').value.trim()&&r.querySelector('[data-role="jet-to"]').value.trim());
+    if(!ok){e('e-jet-routes','Please enter at least one complete route.');return false;}
+  }
+  if(c==='sp-event-date'){if(!ST.data.eventDate){e('e-event-date','Please select the event date.');return false;}}
+  if(c==='sp-event-venue'){if(!v('i-eventvenue')){e('e-eventvenue','Please enter the venue.');return false;}}
+  if(c==='sp-event-type'){
+    const el=G('opts-event-type');
+    if(!el||!el.querySelector('.opt.chosen')){e('e-event-type','Please select an event type.');return false;}
+    if(!hasOtherValid('opts-event-type')){e('e-event-type','Please describe what you have in mind.');return false;}
+  }
+  if(c==='sp-event-style'){
+    const el=G('opts-event-style');
+    if(!el||!el.querySelector('.opt.chosen')){e('e-event-style','Please select a catering style.');return false;}
+    if(!hasOtherValid('opts-event-style')){e('e-event-style','Please describe what you have in mind.');return false;}
+  }
   return true;
 }
 function v(id){const el=G(id);return el?el.value.trim():'';}
 function e(id,m){const el=G(id);if(el)el.textContent=m;}
-function clearErrs(){document.querySelectorAll('.f-err').forEach(x=>x.textContent='');}
-
-/* â”€â”€ Save â”€â”€ */
+function clearErrs(){document.querySelectorAll('.f-err').forEach(x=>x.textContent='');}/* -- Save -- */
+function getOptVal(optsId){
+  const el=G(optsId);if(!el)return '';
+  const chosen=el.querySelector('.opt.chosen');if(!chosen)return '';
+  if(chosen.dataset.v==='other'){
+    const wrap=el.parentElement?el.parentElement.querySelector('.other-input-wrap'):null;
+    const ta=wrap?wrap.querySelector('.f-ta'):null;
+    return ta?ta.value.trim():'';
+  }
+  return chosen.dataset.v;
+}
+function getMultiOptVal(optsId){
+  const el=G(optsId);if(!el)return '';
+  const parts=[];
+  el.querySelectorAll('.opt.chosen').forEach(o=>{
+    if(o.dataset.v==='other'){
+      const wrap=el.parentElement?el.parentElement.querySelector('.other-input-wrap'):null;
+      const ta=wrap?wrap.querySelector('.f-ta'):null;
+      if(ta&&ta.value.trim())parts.push(ta.value.trim());
+    }else{parts.push(o.dataset.v);}
+  });
+  return parts.join(', ');
+}
 function saveData(){
   const c=ST.cur;
-  if(c==='1')ST.data.fullName=v('i-name');
-  if(c==='2')ST.data.email=v('i-email');
-  if(c==='3')ST.data.phone=v('i-phone');
   if(c==='6b')ST.data.vision=v('i-vision');
   if(c==='menu')ST.data.menuNote=v('i-menu-desc');
-  if(c==='7')ST.data.date=v('i-date');
-  if(c==='8')ST.data.location=v('i-loc');
-}
-
-/* â”€â”€ Option cards â”€â”€ */
+  if(c==='occasion')ST.data.occasion=v('i-occasion');
+  if(c==='allergy')ST.data.allergies=v('i-allergy');
+  if(c==='date')ST.data.date=v('i-date');
+  if(c==='loc')ST.data.location=v('i-loc');
+  if(c==='lead'){ST.data.fullName=v('i-name');ST.data.email=v('i-email');ST.data.phone=v('i-phone');}
+  /* Specialist */
+  if(c==='sp-villa-loc')ST.data.villaLocation=v('i-villaloc');
+  if(c==='sp-villa-meals')ST.data.villaMeals=getMultiOptVal('opts-villa-meals');
+  if(c==='sp-villa-kitchen')ST.data.villaKitchen=v('i-villakitchen');
+  if(c==='sp-yacht-dest')ST.data.yachtItinerary=v('i-yachtdest');
+  if(c==='sp-yacht-galley')ST.data.yachtGalley=v('i-yachtgalley');
+  if(c==='sp-jet-routes'){
+    const rows=[...G('jet-routes-list').querySelectorAll('.jet-route')];
+    ST.data.jetRoutes=rows.map(r=>({from:r.querySelector('[data-role="jet-from"]').value.trim(),to:r.querySelector('[data-role="jet-to"]').value.trim()})).filter(r=>r.from||r.to);
+  }
+  if(c==='sp-jet-notes')ST.data.jetNotes=v('i-jetnotes');
+  if(c==='sp-event-venue')ST.data.eventVenue=v('i-eventvenue');
+  if(c==='sp-event-type')ST.data.eventType=getOptVal('opts-event-type');
+  if(c==='sp-event-style')ST.data.eventStyle=getOptVal('opts-event-style');
+}/* -- Option cards -- */
 function bindOpts(cid,cb){
-  G(cid).querySelectorAll('.opt').forEach(o=>{
+  const el=G(cid);if(!el)return;
+  el.querySelectorAll('.opt').forEach(o=>{
     o.addEventListener('click',()=>{
-      G(cid).querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
-      o.classList.add('chosen');cb(o);setTimeout(goNext,280);
+      el.querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
+      o.classList.add('chosen');cb(o);
+      const isOther=o.dataset.v==='other';
+      const wrap=el.parentElement?el.parentElement.querySelector('.other-input-wrap'):null;
+      if(wrap)wrap.style.display=isOther?'block':'none';
+      if(AUTO.includes(ST.cur)&&!isOther)setTimeout(goNext,280);
     });
   });
 }
+function bindMultiOpts(cid){
+  const el=G(cid);if(!el)return;
+  el.querySelectorAll('.opt').forEach(o=>{
+    o.addEventListener('click',()=>{
+      o.classList.toggle('chosen');
+      if(o.dataset.v==='other'){
+        const wrap=el.parentElement?el.parentElement.querySelector('.other-input-wrap'):null;
+        if(wrap){
+          wrap.style.display=o.classList.contains('chosen')?'block':'none';
+          if(!o.classList.contains('chosen')){const ta=wrap.querySelector('.f-ta');if(ta)ta.value='';}
+        }
+      }
+    });
+  });
+}
+bindOpts('opts-type',o=>{
+  ST.data.expType=o.dataset.v;
+  delete ST.data.experience;delete ST.data.vision;ST.branch=null;
+});
+bindOpts('opts-svc',o=>{ST.data.experience=o.dataset.v;});
 bindOpts('opts-guests',o=>{ST.data.guests=o.dataset.v;});
 bindOpts('opts-exp',o=>{ST.data.experience=o.dataset.v;});
+bindOpts('opts-event-type',o=>{/* saved in saveData via getOptVal */});
+bindOpts('opts-event-style',o=>{/* saved in saveData via getOptVal */});
+bindMultiOpts('opts-villa-meals');
 G('opts-branch').querySelectorAll('.opt').forEach(o=>{
   o.addEventListener('click',()=>{
     const ch=o.dataset.branch;
@@ -816,10 +1234,7 @@ G('opts-branch').querySelectorAll('.opt').forEach(o=>{
     G('opts-branch').querySelectorAll('.opt').forEach(x=>x.classList.remove('chosen'));
     o.classList.add('chosen');setTimeout(goNext,280);
   });
-});
-
-/* â”€â”€ Menu slide â”€â”€ */
-const MENUS={
+});/* -- Menu slide -- */const MENUS={
   dining:[
     {title:'Latin American BBQ',sections:[
       {name:'Starters',items:[{n:'Cornbread & Pandebono',d:'Warm baked breads served with whipped butter and pickled onions'},{n:'Baby Greens Salad',d:'Crisp greens, plantain croutons, cotija cheese, avocado dressing'},{n:'Ceviche Duo',d:'Citrus-marinated seafood with chili, herbs, and fresh lime'},{n:'Charred Octopus',d:'Flame-kissed, served with pistachio and shallot vinaigrette'}]},
@@ -970,26 +1385,56 @@ G('opts-menu-cat').querySelectorAll('.opt').forEach(o=>{
 });
 
 /* â”€â”€ Review â”€â”€ */
+/* -- Review -- */
+function fmtD(d){
+  if(!d)return '--';
+  if(d instanceof Date)return d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  return d;
+}
 function buildReview(){
   saveData();const d=ST.data;
-  const fmt=d.date?new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'—';
-  const rows=arr=>arr.map(([k,val])=>`<div class="rev-row"><span class="rev-k">${k}</span><span class="rev-v">${val||'—'}</span></div>`).join('');
-  const menuVal=d.menuChoice==='yes'?(d.selectedMenu||'—'):(d.menuNote||'To discuss on call');
-  G('rev-card').innerHTML=
-    `<div class="rev-sec"><span class="rev-lbl">Contact</span>${rows([['Name',d.fullName],['Email',d.email],['Phone',d.phone]])}</div>`+
-    `<div class="rev-sec"><span class="rev-lbl">Experience</span>${rows([['Guests',d.guests],d.experience?['Experience',d.experience]:['Vision',d.vision]])}</div>`+
-    `<div class="rev-sec"><span class="rev-lbl">Menu</span>${rows([['Menu',menuVal]])}</div>`+
-    `<div class="rev-sec"><span class="rev-lbl">Details</span>${rows([['Date',fmt],['Location',d.location]])}</div>`;
-}
-
-/* â”€â”€ Submit â”€â”€ */
+  const rows=arr=>arr.map(([k,val])=>`<div class="rev-row"><span class="rev-k">${k}</span><span class="rev-v">${val||'--'}</span></div>`).join('');
+  let html='';
+  if(d.expType==='specialist'){
+    const svc=d.experience||'--';
+    html+=`<div class="rev-sec"><span class="rev-lbl">Service</span>${rows([['Type',svc]])}</div>`;
+    if(svc==='Villa Residencies'){
+      const dr=(d.villaStart&&d.villaEnd)?`${fmtD(d.villaStart)} \u2013 ${fmtD(d.villaEnd)}`:(d.villaStart?fmtD(d.villaStart):'--');
+      html+=`<div class="rev-sec"><span class="rev-lbl">Stay Details</span>${rows([['Dates',dr],['Location',d.villaLocation||'--'],['Guests',d.guests||'--'],['Meals',d.villaMeals||'--']])}</div>`;
+      html+=`<div class="rev-sec"><span class="rev-lbl">Kitchen</span>${rows([['Details',d.villaKitchen||'--']])}</div>`;
+    } else if(svc==='Yacht and Islands'){
+      const dr=(d.yachtStart&&d.yachtEnd)?`${fmtD(d.yachtStart)} \u2013 ${fmtD(d.yachtEnd)}`:(d.yachtStart?fmtD(d.yachtStart):'--');
+      html+=`<div class="rev-sec"><span class="rev-lbl">Charter Details</span>${rows([['Dates',dr],['Itinerary',d.yachtItinerary||'--'],['Guests',d.guests||'--']])}</div>`;
+      html+=`<div class="rev-sec"><span class="rev-lbl">Galley</span>${rows([['Details',d.yachtGalley||'--']])}</div>`;
+    } else if(svc==='Private Jet and Travel'){
+      const routes=(d.jetRoutes&&d.jetRoutes.length)?d.jetRoutes.map(r=>`${r.from||'?'} \u2192 ${r.to||'?'}`).join('<br>'):'--';
+      html+=`<div class="rev-sec"><span class="rev-lbl">Flight Details</span>${rows([['Date',fmtD(d.jetDate)],['Passengers',d.guests||'--']])}</div>`;
+      html+=`<div class="rev-sec"><span class="rev-lbl">Route(s)</span><div class="rev-row"><span class="rev-k">Legs</span><span class="rev-v">${routes}</span></div></div>`;
+      if(d.jetNotes)html+=`<div class="rev-sec"><span class="rev-lbl">Notes</span>${rows([['Details',d.jetNotes]])}</div>`;
+    } else if(svc==='Events and Celebrations'){
+      html+=`<div class="rev-sec"><span class="rev-lbl">Event Details</span>${rows([['Date',fmtD(d.eventDate)],['Venue',d.eventVenue||'--'],['Type',d.eventType||'--'],['Style',d.eventStyle||'--'],['Guests',d.guests||'--']])}</div>`;
+    }
+    if(d.allergies)html+=`<div class="rev-sec"><span class="rev-lbl">Dietary</span>${rows([['Notes',d.allergies]])}</div>`;
+  } else {
+    const fmt=d.date?new Date(d.date+'T12:00:00').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}):'--';
+    const menuVal=d.menuChoice==='yes'?(d.selectedMenu||'--'):(d.menuNote||'To discuss on call');
+    const expLine=d.experience?['Experience',d.experience]:['Vision',d.vision||'--'];
+    html+=`<div class="rev-sec"><span class="rev-lbl">Experience</span>${rows([['Type','Single Bespoke Experience'],expLine])}</div>`;
+    html+=`<div class="rev-sec"><span class="rev-lbl">Menu</span>${rows([['Selection',menuVal]])}</div>`;
+    html+=`<div class="rev-sec"><span class="rev-lbl">Event Details</span>${rows([['Guests',d.guests||'--'],['Occasion',d.occasion||'--']])}</div>`;
+    if(d.allergies)html+=`<div class="rev-sec"><span class="rev-lbl">Dietary</span>${rows([['Notes',d.allergies]])}</div>`;
+    html+=`<div class="rev-sec"><span class="rev-lbl">Date & Location</span>${rows([['Date',fmt],['Location',d.location||'--']])}</div>`;
+  }
+  html+=`<div class="rev-sec"><span class="rev-lbl">Contact</span>${rows([['Name',d.fullName||'--'],['Email',d.email||'--'],['Phone',d.phone||'--']])}</div>`;
+  G('rev-card').innerHTML=html;
+}/* -- Submit -- */
 async function doSubmit(){
   const cb=G('consent-cb'),err=G('e-consent');
   if(!cb.checked){err.style.display='block';cb.closest('div').style.borderColor='rgba(220,80,80,.5)';return;}
   err.style.display='none';
   const btn=G('submit-btn'),mOk=G('m-ok');
-  btn.disabled=true;btn.textContent='Sending…';
-  mOk.disabled=true;mOk.textContent='Sending…';
+  btn.disabled=true;btn.textContent='Sending...';
+  mOk.disabled=true;mOk.textContent='Sending...';
   try{await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ST.data)});}catch(_){}
   go('review','done','fwd');
 }
@@ -998,11 +1443,12 @@ G('consent-cb').addEventListener('change',function(){
   if(this.checked){G('e-consent').style.display='none';this.closest('div').style.borderColor='';}
 });
 
-/* â”€â”€ Chrome â”€â”€ */
+/* -- Chrome -- */
 function chrome(){
   const c=ST.cur;
-  const qMap={'1':1,'2':2,'3':3,'4':4,'5':5,'6a':6,'6b':6,'menu':7,'7':8,'8':9};
-  const qn=qMap[c]||0,tot=9;
+  const qMap=buildQMap();
+  const qn=qMap[c]||0;
+  const tot=seq().filter(s=>!['intro','review','done'].includes(s)).length;
   const ctr=G('t-cnt');
   if(c==='intro'||c==='done'||c==='review'){ctr.textContent='';ctr.classList.remove('on');}
   else{ctr.textContent=qn+' / '+tot;ctr.classList.add('on');}
@@ -1011,51 +1457,66 @@ function chrome(){
   pg.classList.toggle('show',!isEdge);
   if(c==='intro')pf.style.width='0%';
   else if(c==='review'||c==='done')pf.style.width='100%';
-  else pf.style.width=((qn-1)/tot*100)+'%';
+  else if(qn>0)pf.style.width=((qn-1)/tot*100)+'%';
   const showNav=c!=='intro'&&c!=='done';
   G('nav').classList.toggle('on',showNav);
-  G('nav-up').disabled=(c==='1');
+  G('nav-up').disabled=(c===firstSlide());
 }
 
-/* â”€â”€ Mobile nav â”€â”€ */
+/* -- Mobile nav -- */
 function updateMobileNav(){
-  const c=ST.cur;
+  const c=ST.cur;const fs=firstSlide();
   const back=G('m-back'),ok=G('m-ok');
-  back.classList.toggle('hide', c==='intro'||c==='1'||c==='done');
+  back.classList.toggle('hide',c==='intro'||c===fs||c==='done');
   if(c==='intro')ok.textContent='Plan My Night';
   else if(c==='done')ok.textContent='Return to site';
   else if(c==='review')ok.textContent='Send Inquiry';
   else ok.textContent='OK';
   ok.disabled=false;
-  // Show "Takes 2 minutes" only on intro
-  G('m-takes').classList.toggle('show', c==='intro');
+  G('m-takes').classList.toggle('show',c==='intro');
 }
 
-/* â”€â”€ Events â”€â”€ */
-G('begin-btn').addEventListener('click',()=>go('intro','1','fwd'));
+/* -- Events -- */
+G('begin-btn').addEventListener('click',()=>{const fs=firstSlide();go('intro',fs,'fwd');});
 document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',goNext));
 G('nav-up').addEventListener('click',goBack);
 G('nav-dn').addEventListener('click',()=>{if(ST.cur==='review')doSubmit();else goNext();});
 G('m-back').addEventListener('click',goBack);
 G('m-ok').addEventListener('click',()=>{
-  const c=ST.cur;
-  if(c==='intro'){go('intro','1','fwd');return;}
+  const c=ST.cur;const fs=firstSlide();
+  if(c==='intro'){go('intro',fs,'fwd');return;}
   if(c==='done'){window.location.href='index.html';return;}
   if(c==='review'){doSubmit();return;}
   goNext();
 });
+const allergySkip=G('allergy-skip');
+if(allergySkip)allergySkip.addEventListener('click',()=>{saveData();goNext();});
+const jetNotesSkip=G('jet-notes-skip');
+if(jetNotesSkip)jetNotesSkip.addEventListener('click',()=>{saveData();goNext();});
+const jetAddRoute=G('jet-add-route');
+if(jetAddRoute)jetAddRoute.addEventListener('click',()=>{
+  const list=G('jet-routes-list');
+  const tpl=list.querySelector('.jet-route');
+  const clone=tpl.cloneNode(true);
+  clone.querySelectorAll('input').forEach(i=>i.value='');
+  const rm=document.createElement('button');
+  rm.type='button';rm.className='jet-remove';rm.innerHTML='&#215;';
+  rm.addEventListener('click',()=>clone.remove());
+  clone.appendChild(rm);
+  list.appendChild(clone);
+});
 
-/* â”€â”€ Keyboard â”€â”€ */
+/* -- Keyboard -- */
 document.addEventListener('keydown',ev=>{
   if(ev.key!=='Enter')return;
-  const c=ST.cur;
-  if(c==='intro'){go('intro','1','fwd');return;}
+  const c=ST.cur;const fs=firstSlide();
+  if(c==='intro'){go('intro',fs,'fwd');return;}
   if(c==='done'||c==='review'||AUTO.includes(c)||c==='menu')return;
-  if((c==='6b'||c==='menu')&&document.activeElement?.tagName==='TEXTAREA')return;
+  if((c==='6b'||c==='occasion'||c==='allergy'||c==='lead'||c==='sp-villa-meals'||c==='sp-villa-kitchen'||c==='sp-yacht-dest'||c==='sp-yacht-galley'||c==='sp-jet-notes')&&document.activeElement&&document.activeElement.tagName==='TEXTAREA')return;
   ev.preventDefault();goNext();
 });
 
-/* â”€â”€ Textarea grow + follow caret â”€â”€ */
+/* -- Textarea grow -- */
 document.querySelectorAll('.f-ta').forEach(ta=>{
   ta.addEventListener('input',function(){
     const slide=this.closest('.slide');
@@ -1064,9 +1525,7 @@ document.querySelectorAll('.f-ta').forEach(ta=>{
     this.style.height=this.scrollHeight+'px';
     if(!slide)return;
     requestAnimationFrame(()=>{
-      // Restore scroll first (layout recalc can reset it to 0)
       slide.scrollTop=prevScroll;
-      // Then advance scroll to keep textarea bottom in view
       const taRect=this.getBoundingClientRect();
       const slideRect=slide.getBoundingClientRect();
       const gap=taRect.bottom+40-slideRect.bottom;
@@ -1075,7 +1534,7 @@ document.querySelectorAll('.f-ta').forEach(ta=>{
   });
 });
 
-/* â”€â”€ Scroll-to-hide topbar & prog â”€â”€ */
+/* -- Scroll-to-hide topbar -- */
 document.querySelectorAll('.slide').forEach(slide=>{
   slide.addEventListener('scroll',()=>{
     const gone=slide.scrollTop>8;
@@ -1084,16 +1543,14 @@ document.querySelectorAll('.slide').forEach(slide=>{
   },{passive:true});
 });
 
-/* â”€â”€ Custom date picker â”€â”€ */
+/* -- Custom date picker -- */
 (function(){
   const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   const today=new Date();today.setHours(0,0,0,0);
   let cur=new Date(today);
   let picked=null;
-
   const panel=G('cal-panel'),trigger=G('date-trigger'),label=G('date-label');
   const grid=G('cal-grid'),title=G('cal-title');
-
   function render(){
     title.textContent=MONTHS[cur.getMonth()]+' '+cur.getFullYear();
     grid.innerHTML='';
@@ -1111,7 +1568,6 @@ document.querySelectorAll('.slide').forEach(slide=>{
       grid.appendChild(cell);
     }
   }
-
   function pick(date){
     picked=date;
     const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');
@@ -1120,46 +1576,167 @@ document.querySelectorAll('.slide').forEach(slide=>{
     label.classList.remove('ph');
     close();
   }
-
   let preCalScroll=0;
   function open(){
-    preCalScroll=G('s-7').scrollTop;
+    preCalScroll=G('s-date').scrollTop;
     panel.classList.add('open');trigger.classList.add('open');render();
-    // Desktop only: nudge content up so calendar doesn't feel glued to the bottom
     if(window.innerWidth>768){
       requestAnimationFrame(()=>requestAnimationFrame(()=>{
-        const slide=G('s-7');
+        const slide=G('s-date');
         const panelH=panel.offsetHeight;
         const wrapBottom=G('date-wrap').getBoundingClientRect().bottom;
         const slideBottom=slide.getBoundingClientRect().bottom-80;
         const overflow=wrapBottom+12+panelH-slideBottom;
-        if(overflow>0){
-          slide.scrollTo({top:preCalScroll+Math.min(overflow,100),behavior:'smooth'});
-        }
+        if(overflow>0)slide.scrollTo({top:preCalScroll+Math.min(overflow,100),behavior:'smooth'});
       }));
     }
   }
   function close(){
     panel.classList.remove('open');trigger.classList.remove('open');
-    if(window.innerWidth>768){
-      G('s-7').scrollTo({top:preCalScroll,behavior:'smooth'});
-    }
+    if(window.innerWidth>768)G('s-date').scrollTo({top:preCalScroll,behavior:'smooth'});
   }
-
   trigger.addEventListener('click',()=>panel.classList.contains('open')?close():open());
   trigger.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();open();}});
-
   G('cal-prev').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()-1);render();});
   G('cal-next').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()+1);render();});
-
   document.addEventListener('click',ev=>{if(!G('date-wrap').contains(ev.target))close();});
 })();
 
-/* â”€â”€ Preloader â”€â”€ */
+/* -- Specialist calendars -- */
+(function(){
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const today=new Date();today.setHours(0,0,0,0);
+
+  function makeCal(opts){
+    let cur=new Date(today);
+    let rangeStart=null,rangeEnd=null;
+    const panel=G(opts.prefix+'-cal-panel'),trigger=G(opts.prefix+'-date-trigger'),label=G(opts.prefix+'-date-label');
+    const grid=G(opts.prefix+'-cal-grid'),title=G(opts.prefix+'-cal-title');
+    const clearLink=G(opts.prefix+'-date-clear');
+    if(!panel||!trigger)return;
+
+    if(clearLink){
+      clearLink.addEventListener('click',ev=>{
+        ev.preventDefault();
+        rangeStart=null;rangeEnd=null;
+        label.textContent=opts.placeholder||'Select a date...';
+        label.classList.add('ph');
+        if(opts.onClear)opts.onClear();
+        clearLink.style.display='none';
+        if(panel.classList.contains('open'))render();
+      });
+    }
+
+    function fmtS(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+    function clearHover(){grid.querySelectorAll('.hover-range').forEach(c=>c.classList.remove('hover-range'));}
+
+    function render(){
+      title.textContent=MONTHS[cur.getMonth()]+' '+cur.getFullYear();
+      grid.innerHTML='';
+      const first=new Date(cur.getFullYear(),cur.getMonth(),1).getDay();
+      const total=new Date(cur.getFullYear(),cur.getMonth()+1,0).getDate();
+      for(let i=0;i<first;i++){const d=document.createElement('div');d.className='cal-day empty';grid.appendChild(d);}
+      for(let d=1;d<=total;d++){
+        const cd=new Date(cur.getFullYear(),cur.getMonth(),d);
+        const cell=document.createElement('div');cell.className='cal-day';cell.textContent=d;
+        cell.dataset.ts=cd.getTime();
+        if(cd<today)cell.classList.add('past');
+        if(cd.getTime()===today.getTime())cell.classList.add('is-today');
+        if(rangeStart&&cd.toDateString()===rangeStart.toDateString())cell.classList.add('selected');
+        if(rangeEnd&&cd.toDateString()===rangeEnd.toDateString())cell.classList.add('selected');
+        if(opts.mode==='range'&&rangeStart&&rangeEnd&&cd>rangeStart&&cd<rangeEnd)cell.classList.add('in-range');
+        if(cd>=today){
+          cell.addEventListener('click',ev=>{ev.stopPropagation();pick(cd);});
+          if(opts.mode==='range'){
+            cell.addEventListener('mouseover',()=>{
+              if(!rangeStart||rangeEnd)return;
+              clearHover();
+              grid.querySelectorAll('.cal-day[data-ts]').forEach(c=>{
+                const ct=new Date(parseInt(c.dataset.ts));
+                if(ct>rangeStart&&ct<cd)c.classList.add('hover-range');
+              });
+            });
+          }
+        }
+        grid.appendChild(cell);
+      }
+      if(opts.mode==='range')grid.addEventListener('mouseleave',clearHover,{once:true});
+      if(clearLink)clearLink.style.display=rangeStart?'inline':'none';
+    }
+
+    function pick(date){
+      if(opts.mode==='range'){
+        if(!rangeStart||rangeEnd||(date<=rangeStart)){
+          rangeStart=date;rangeEnd=null;
+          label.textContent=fmtS(date)+' \u2192 select end date';
+          label.classList.remove('ph');
+          render();
+        }else{
+          rangeEnd=date;
+          clearHover();
+          label.textContent=fmtS(rangeStart)+' \u2013 '+fmtS(rangeEnd);
+          opts.onPick(rangeStart,rangeEnd);
+          render();setTimeout(close,300);
+        }
+      }else{
+        rangeStart=date;
+        label.textContent=fmtS(date);label.classList.remove('ph');
+        opts.onPick(date,null);
+        if(clearLink)clearLink.style.display='inline';
+        close();
+      }
+    }
+
+    let _hideTimer=null;
+    /* Start hidden so closed panel takes no layout space (no scrollbar) */
+    panel.style.display='none';
+    function open(){
+      clearTimeout(_hideTimer);
+      panel.style.display='block';
+      panel.getBoundingClientRect(); /* force reflow so opacity transition fires */
+      panel.classList.add('open');trigger.classList.add('open');render();
+    }
+    function close(){
+      panel.classList.remove('open');trigger.classList.remove('open');
+      clearTimeout(_hideTimer);
+      _hideTimer=setTimeout(()=>{panel.style.display='none';},260);
+    }
+    trigger.addEventListener('click',ev=>{ev.stopPropagation();panel.classList.contains('open')?close():open();});
+    trigger.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();open();}});
+    G(opts.prefix+'-cal-prev').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()-1);render();});
+    G(opts.prefix+'-cal-next').addEventListener('click',ev=>{ev.stopPropagation();cur.setMonth(cur.getMonth()+1);render();});
+    document.addEventListener('click',ev=>{
+      const wrap=G(opts.prefix+'-date-wrap');
+      if(wrap&&!wrap.contains(ev.target)&&!panel.contains(ev.target))close();
+    });
+  }
+
+  makeCal({slideId:'s-sp-villa-dates',prefix:'villa',placeholder:'Select arrival date...',mode:'range',
+    onPick:(s,e)=>{ST.data.villaStart=s;ST.data.villaEnd=e;},
+    onClear:()=>{ST.data.villaStart=null;ST.data.villaEnd=null;}});
+  makeCal({slideId:'s-sp-yacht-dates',prefix:'yacht',placeholder:'Select start date...',mode:'range',
+    onPick:(s,e)=>{ST.data.yachtStart=s;ST.data.yachtEnd=e;},
+    onClear:()=>{ST.data.yachtStart=null;ST.data.yachtEnd=null;}});
+  makeCal({slideId:'s-sp-jet-date',prefix:'jet',placeholder:'Select flight date...',mode:'single',
+    onPick:(s)=>{ST.data.jetDate=s;},
+    onClear:()=>{ST.data.jetDate=null;}});
+  makeCal({slideId:'s-sp-event-date',prefix:'evt',placeholder:'Select event date...',mode:'single',
+    onPick:(s)=>{ST.data.eventDate=s;},
+    onClear:()=>{ST.data.eventDate=null;}});
+})();
+/* -- Preloader -- */
 setTimeout(()=>{
   const pre=G('preloader');
   pre.classList.add('gone');
   setTimeout(()=>pre.style.display='none',820);
+  if(PRE_TYPE||PRE_EXP){
+    const fs=firstSlide();
+    const intro=G('s-intro');
+    if(intro){intro.classList.remove('active');}
+    const te=G('s-'+fs);
+    if(te){te.classList.add('active');te.style.cssText='';}
+    ST.cur=fs;chrome();updateMobileNav();
+  }
 },2800);
 
 function G(id){return document.getElementById(id);}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Donovan Smith &mdash; Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;background:rgb(0,46,40);color:rgb(239,231,210);font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
+
+    /* â”€â”€ Page layout â”€â”€ */
+    .cs-wrap{
+      min-height:100vh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:40px 24px;
+      text-align:center;
+      position:relative;
+    }
+
+    /* â”€â”€ Logo â”€â”€ */
+    .cs-logo{
+      font-family:'Forum',serif;
+      font-size:clamp(22px,4vw,38px);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:rgb(239,231,210);
+      margin-bottom:48px;
+      opacity:.9;
+    }
+
+    /* â”€â”€ Divider line â”€â”€ */
+    .cs-rule{
+      width:40px;height:1px;
+      background:rgba(239,231,210,.3);
+      margin:0 auto 48px;
+    }
+
+    /* â”€â”€ Coming soon label â”€â”€ */
+    .cs-eyebrow{
+      font-size:10px;font-weight:500;
+      text-transform:uppercase;letter-spacing:.26em;
+      color:rgba(239,231,210,.45);
+      margin-bottom:20px;
+    }
+
+    /* â”€â”€ Countdown â”€â”€ */
+    .cs-timer{
+      display:flex;align-items:flex-start;justify-content:center;
+      gap:clamp(20px,4vw,48px);
+      margin-bottom:56px;
+    }
+    .cs-unit{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .cs-num{
+      font-family:'Forum',serif;
+      font-size:clamp(44px,7vw,80px);
+      line-height:1;
+      letter-spacing:.02em;
+      color:rgb(239,231,210);
+      min-width:2ch;
+      text-align:center;
+    }
+    .cs-label{
+      font-size:9px;font-weight:500;
+      text-transform:uppercase;letter-spacing:.2em;
+      color:rgba(239,231,210,.35);
+    }
+    .cs-colon{
+      font-family:'Forum',serif;
+      font-size:clamp(40px,6vw,72px);
+      line-height:1;
+      color:rgba(239,231,210,.2);
+      margin-top:4px;
+    }
+
+    /* â”€â”€ Access button â”€â”€ */
+    .cs-btn{
+      display:inline-flex;align-items:center;gap:10px;
+      font-family:'Satoshi',sans-serif;font-size:11px;font-weight:500;
+      text-transform:uppercase;letter-spacing:.2em;
+      color:rgba(239,231,210,.5);
+      background:none;border:1px solid rgba(239,231,210,.18);
+      border-radius:99px;padding:12px 28px;
+      cursor:pointer;
+      transition:color .2s,border-color .2s;
+    }
+    .cs-btn:hover{color:rgba(239,231,210,.85);border-color:rgba(239,231,210,.38)}
+    .cs-btn svg{opacity:.55;transition:opacity .2s}
+    .cs-btn:hover svg{opacity:1}
+
+    /* â”€â”€ Modal overlay â”€â”€ */
+    .cs-overlay{
+      display:none;
+      position:fixed;inset:0;z-index:500;
+      background:rgba(0,26,22,.82);
+      backdrop-filter:blur(6px);
+      -webkit-backdrop-filter:blur(6px);
+      align-items:center;justify-content:center;
+      padding:24px;
+    }
+    .cs-overlay.open{display:flex}
+
+    /* â”€â”€ Modal card â”€â”€ */
+    .cs-modal{
+      background:rgb(0,46,40);
+      border:1px solid rgba(239,231,210,.16);
+      border-radius:20px;
+      padding:clamp(32px,5vw,56px);
+      width:100%;max-width:400px;
+      text-align:left;
+      position:relative;
+      animation:modalIn .25s cubic-bezier(0.22,1,0.36,1);
+    }
+    @keyframes modalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
+    .cs-modal-close{
+      position:absolute;top:20px;right:20px;
+      background:none;border:none;cursor:pointer;
+      color:rgba(239,231,210,.4);
+      transition:color .15s;
+      padding:4px;
+    }
+    .cs-modal-close:hover{color:rgba(239,231,210,.8)}
+
+    .cs-modal h2{
+      font-family:'Forum',serif;
+      font-size:clamp(20px,3vw,28px);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:rgb(239,231,210);
+      margin-bottom:8px;
+    }
+    .cs-modal p{
+      font-size:13px;font-weight:400;
+      color:rgba(239,231,210,.45);
+      line-height:1.6;
+      margin-bottom:28px;
+    }
+
+    .cs-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+    .cs-field label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:rgba(239,231,210,.38)}
+    .cs-field input{
+      width:100%;
+      background:rgba(239,231,210,.06);
+      border:1px solid rgba(239,231,210,.14);
+      border-radius:8px;
+      padding:12px 14px;
+      font-family:'Satoshi',sans-serif;font-size:14px;font-weight:400;
+      color:rgb(239,231,210);
+      outline:none;
+      transition:border-color .2s;
+      box-sizing:border-box;
+    }
+    .cs-field input::placeholder{color:rgba(239,231,210,.22)}
+    .cs-field input:focus{border-color:rgba(239,231,210,.32)}
+
+    .cs-submit{
+      width:100%;margin-top:8px;
+      background:rgb(239,231,210);
+      color:rgb(0,46,40);
+      border:none;border-radius:99px;
+      padding:14px;
+      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:600;
+      text-transform:uppercase;letter-spacing:.18em;
+      cursor:pointer;
+      transition:background .15s;
+    }
+    .cs-submit:hover{background:rgb(220,212,191)}
+
+    .cs-err{
+      display:none;
+      margin-top:12px;
+      font-size:12px;color:rgba(230,100,80,.9);
+      text-align:center;letter-spacing:.03em;
+    }
+
+    /* â”€â”€ Footer note â”€â”€ */
+    .cs-footer{
+      position:absolute;bottom:28px;left:0;right:0;
+      font-size:10px;color:rgba(239,231,210,.2);
+      letter-spacing:.12em;text-transform:uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="cs-wrap">
+
+  <p class="cs-logo">Chef Donovan Smith</p>
+  <div class="cs-rule"></div>
+
+  <p class="cs-eyebrow">Coming Soon</p>
+
+  <div class="cs-timer">
+    <div class="cs-unit"><span class="cs-num" id="cs-d">00</span><span class="cs-label">Days</span></div>
+    <span class="cs-colon">:</span>
+    <div class="cs-unit"><span class="cs-num" id="cs-h">00</span><span class="cs-label">Hours</span></div>
+    <span class="cs-colon">:</span>
+    <div class="cs-unit"><span class="cs-num" id="cs-m">00</span><span class="cs-label">Minutes</span></div>
+    <span class="cs-colon">:</span>
+    <div class="cs-unit"><span class="cs-num" id="cs-s">00</span><span class="cs-label">Seconds</span></div>
+  </div>
+
+  <button class="cs-btn" id="cs-access-btn">
+    <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="14" height="10" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3"/></svg>
+    Preview Access
+  </button>
+
+  <p class="cs-footer">&copy; 2026 chefdonsmith.com</p>
+
+</div>
+
+<!-- Auth modal -->
+<div class="cs-overlay" id="cs-overlay">
+  <div class="cs-modal">
+    <button class="cs-modal-close" id="cs-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+    <h2>Preview Access</h2>
+    <p>Enter your credentials to browse the site before it goes live.</p>
+    <form id="cs-form" novalidate autocomplete="off">
+      <div class="cs-field">
+        <label>Username</label>
+        <input type="text" id="cs-user" placeholder="Enter username" autocomplete="off">
+      </div>
+      <div class="cs-field">
+        <label>Password</label>
+        <input type="password" id="cs-pass" placeholder="Enter password">
+      </div>
+      <button type="submit" class="cs-submit">Enter</button>
+      <p class="cs-err" id="cs-err">Incorrect credentials. Please try again.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+// â”€â”€ Countdown timer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+(function(){
+  var target=new Date('2026-08-08T00:00:00').getTime();
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var now=Date.now();
+    var diff=target-now;
+    if(diff<=0){diff=0}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    document.getElementById('cs-d').textContent=pad(d);
+    document.getElementById('cs-h').textContent=pad(h);
+    document.getElementById('cs-m').textContent=pad(m);
+    document.getElementById('cs-s').textContent=pad(s);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+
+// â”€â”€ Modal open/close â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+var overlay=document.getElementById('cs-overlay');
+document.getElementById('cs-access-btn').addEventListener('click',function(){
+  overlay.classList.add('open');
+  setTimeout(function(){document.getElementById('cs-user').focus();},80);
+});
+document.getElementById('cs-close').addEventListener('click',function(){
+  overlay.classList.remove('open');
+});
+overlay.addEventListener('click',function(e){
+  if(e.target===overlay)overlay.classList.remove('open');
+});
+
+// â”€â”€ Auth (SHA-256 hashed credentials, no plaintext stored) â”€â”€â”€â”€â”€â”€â”€
+var U_HASH='09cdbbe0058bb46689ab1c6ea40fcd06c75118964cd29e4d26d2877d465f16d4';
+var P_HASH='efe0bc43cbea9ddd327c75b304a7d9ee3448f061b70c952b15c2845f11c5385a';
+
+async function sha256(str){
+  var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+}
+
+document.getElementById('cs-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var u=document.getElementById('cs-user').value.trim();
+  var p=document.getElementById('cs-pass').value;
+  var err=document.getElementById('cs-err');
+  var btn=document.querySelector('.cs-submit');
+  btn.textContent='Checking...';btn.disabled=true;
+  var uHash=await sha256(u);
+  var pHash=await sha256(p);
+  btn.textContent='Enter';btn.disabled=false;
+  if(uHash===U_HASH&&pHash===P_HASH){
+    sessionStorage.setItem('preview_access','1');
+    window.location.href='/index.html';
+  }else{
+    err.style.display='block';
+    document.getElementById('cs-pass').value='';
+    document.getElementById('cs-pass').focus();
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Programme &#8212; Chef Donovan Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+  <script>tailwind={config:{theme:{extend:{fontFamily:{forum:['Forum','serif'],satoshi:['Satoshi','sans-serif']},borderRadius:{card:'16px',page:'48px'}}}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .scs-hero-eyebrow{display:block;font-family:'Satoshi',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);margin-bottom:24px}
+    .scs-hero-h1{font-family:'Forum',serif;font-size:clamp(36px,5vw,68px);line-height:.96;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px}
+    .scs-hero-sub{font-family:'Satoshi',sans-serif;font-size:16px;font-weight:400;line-height:1.7;color:var(--text-muted);max-width:480px}
+    .scs-rule{display:flex;align-items:center;gap:20px}
+    .scs-rule-label{font-family:'Satoshi',sans-serif;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);white-space:nowrap}
+    .scs-rule-line{flex:1;height:1px;background:var(--border)}
+    .pf-group{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+    .pf-label{font-family:'Satoshi',sans-serif;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted)}
+    .pf-in{width:100%;background:rgba(0,46,40,.05);border:1px solid var(--border);border-radius:8px;padding:13px 16px;font-family:'Satoshi',sans-serif;font-size:15px;font-weight:400;color:var(--text);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;box-sizing:border-box}
+    .pf-in::placeholder{color:rgba(0,46,40,.32)}
+    .pf-in:focus{border-color:rgba(0,46,40,.45)}
+    .pf-ta{resize:vertical;min-height:110px}
+    .pf-sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7' fill='none' stroke='rgba(0%2C46%2C40%2C.45)' stroke-width='1.6' stroke-linecap='round'%3E%3Cpolyline points='1 1 5 6 9 1'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;cursor:pointer}
+    .pf-sel option{background:var(--bg);color:var(--text)}
+    .pf-thanks{display:none;text-align:center;padding:40px 0}
+    .pf-custom-select{position:relative}
+    .pf-custom-trigger{display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left}
+    .pf-sel-chev{flex-shrink:0;transition:transform .2s ease}
+    .pf-custom-trigger.open .pf-sel-chev{transform:rotate(180deg)}
+    .pf-dd-panel{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:200;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 10px 28px rgba(0,46,40,.15)}
+    .pf-dd-panel.open{display:block}
+    .pf-dd-item{display:block;padding:9px 14px;font-family:'Satoshi',sans-serif;font-size:14px;font-weight:500;color:var(--text);border-radius:7px;cursor:pointer;transition:background .15s;-webkit-user-select:none;user-select:none}
+    .pf-dd-item:hover{background:rgba(0,46,40,.07)}
+  </style>
+</head>
+<body>
+
+<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+<div id="mobile-panel" class="mobile-menu-panel">
+  <div style="position:absolute;top:32px;right:32px">
+    <button id="close-menu-btn" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="flex flex-col items-center gap-8">
+    <a href="index.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Home</a>
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Experiences<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:16px;margin-top:18px">
+        <div class="mobile-accordion" style="text-align:center">
+          <button class="mobile-accordion-trigger" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.82);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Specialist Chef Services<svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.4)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+          <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:12px">
+            <a href="villa-residencies.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Villa Residencies</a>
+            <a href="yacht-islands.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Yacht &amp; Islands</a>
+            <a href="private-jet-travel.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Private Jet &amp; Travel</a>
+            <a href="events-celebrations.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Events &amp; Celebrations</a>
+          </div>
+        </div>
+        <a href="experiences.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Single Bespoke Experiences</a>
+      </div>
+    </div>
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Menus<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="experiences-breakfast.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Breakfast</a>
+        <a href="experiences-lunch.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Lunch</a>
+        <a href="experiences-dining.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Dining</a>
+      </div>
+    </div>
+    <a href="reviews.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
+    <div class="mobile-accordion" style="text-align:center">
+      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">More<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
+      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
+        <a href="about.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">About</a>
+        <a href="gallery.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Gallery</a>
+        <a href="blog.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Blog</a>
+        <a href="partner.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Partner</a>
+        <a href="signature-standard.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Our Standard</a>
+      </div>
+    </div>
+  </nav>
+  <div style="position:absolute;bottom:32px;left:32px;right:32px">
+    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
+  </div>
+</div>
+
+<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
+  <div class="flex flex-col" style="gap:16px">
+
+    <header class="flex items-center justify-between px-6 sm:px-10 py-6">
+      <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-dropdown-wrap">
+          <a href="experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown" style="min-width:230px">
+            <div class="nav-dropdown-nested-wrap">
+              <a href="specialist-chef-services.html" class="nav-dropdown-item nav-dropdown-nested-trigger">Specialist Chef Services <svg width="6" height="10" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"><polyline points="1 1 5 5 1 9"/></svg></a>
+              <div class="nav-dropdown-nested">
+                <a href="villa-residencies.html" class="nav-dropdown-item">Villa Residencies</a>
+                <a href="yacht-islands.html" class="nav-dropdown-item">Yacht &amp; Islands</a>
+                <a href="private-jet-travel.html" class="nav-dropdown-item">Private Jet &amp; Travel</a>
+                <a href="events-celebrations.html" class="nav-dropdown-item">Events &amp; Celebrations</a>
+              </div>
+            </div>
+            <a href="experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+          <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="experiences-breakfast.html" class="nav-dropdown-item">Breakfast</a>
+            <a href="experiences-lunch.html" class="nav-dropdown-item">Lunch</a>
+            <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
+          </div>
+        </div>
+        <a href="reviews.html" class="nav-link">Reviews</a>
+        <div class="nav-dropdown-wrap">
+          <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
+          <div class="nav-dropdown">
+            <a href="about.html" class="nav-dropdown-item">About</a>
+            <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
+            <a href="blog.html" class="nav-dropdown-item">Blog</a>
+            <a href="partner.html" class="nav-dropdown-item">Partner</a>
+            <a href="signature-standard.html" class="nav-dropdown-item">Our Standard</a>
+          </div>
+        </div>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="reservation.html" class="hidden md:inline-flex btn btn-primary">Plan Your Experience</a>
+        <button id="hamburger-btn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:rgba(0,46,40,.7)">
+          <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="fade-up px-6 sm:px-10 py-12 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+      <span class="scs-hero-eyebrow">Collaboration</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:end">
+        <h1 class="scs-hero-h1">Bring In Someone<br>Your Guests Will<br>Talk About for Years</h1>
+        <p class="scs-hero-sub">If you manage villas, captain charters, or arrange private travel, you already know that the chef is either the detail that lifts everything or the one thing guests noticed was missing. Here is how we work together.</p>
+      </div>
+    </div>
+
+    <!-- Rule -->
+    <div class="scs-rule px-1">
+      <span class="scs-rule-label">Collaboration</span>
+      <div class="scs-rule-line"></div>
+      <span class="scs-rule-label">Referral Partnership</span>
+    </div>
+
+    <!-- Sticky 2-col: LEFT = form, RIGHT = cards -->
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+
+      <!-- Left: sticky form -->
+      <div class="self-stretch">
+        <div class="sticky fade-up" style="top:16px">
+          <div class="p-6 sm:p-8 lg:p-10" style="border:1px solid var(--border);border-radius:16px">
+            <h2 style="font-family:var(--font-forum);font-size:clamp(22px,2.8vw,34px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:10px">Get in touch about working together</h2>
+            <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:400;line-height:1.65;color:var(--text-muted);margin-bottom:28px">Tell us about yourself and the guests you work with. We will come back to you personally.</p>
+            <form id="partner-form" novalidate>
+              <div class="pf-group">
+                <label class="pf-label" for="pf-name">Full name</label>
+                <input class="pf-in" type="text" id="pf-name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="pf-group">
+                <label class="pf-label">What best describes you?</label>
+                <div class="pf-custom-select" id="pf-role-wrap">
+                  <button type="button" class="pf-in pf-custom-trigger" id="pf-role-trigger" aria-haspopup="listbox">
+                    <span id="pf-role-display" style="color:rgba(0,46,40,.32)">Select your role</span>
+                    <svg class="pf-sel-chev" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="rgba(0,46,40,.45)" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg>
+                  </button>
+                  <div class="pf-dd-panel" id="pf-role-panel" role="listbox">
+                    <div class="pf-dd-item" data-val="Villa Manager or Concierge">Villa Manager or Concierge</div>
+                    <div class="pf-dd-item" data-val="Yacht Captain or Broker">Yacht Captain or Broker</div>
+                    <div class="pf-dd-item" data-val="Travel Advisor">Travel Advisor</div>
+                    <div class="pf-dd-item" data-val="Other">Other</div>
+                  </div>
+                </div>
+                <input type="hidden" id="pf-role" name="role">
+              </div>
+              <div class="pf-group">
+                <label class="pf-label" for="pf-business">Business or property</label>
+                <input class="pf-in" type="text" id="pf-business" name="business" placeholder="Villa name, company, fleet...">
+              </div>
+              <div class="pf-group">
+                <label class="pf-label" for="pf-email">Email address</label>
+                <input class="pf-in" type="email" id="pf-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="pf-group">
+                <label class="pf-label" for="pf-phone">Phone or WhatsApp <span style="opacity:.45;font-size:9px">(optional)</span></label>
+                <input class="pf-in" type="tel" id="pf-phone" name="phone" placeholder="+1 242 000 0000">
+              </div>
+              <div class="pf-group" style="margin-bottom:24px">
+                <label class="pf-label" for="pf-about">Your guests and where you work</label>
+                <textarea class="pf-in pf-ta" id="pf-about" name="about" placeholder="Type of guests, destinations, typical season..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;display:flex">Send my message</button>
+              <p id="pf-err" style="display:none;font-family:var(--font-satoshi);font-size:13px;color:rgba(239,100,80,.85);margin-top:14px;text-align:center"></p>
+            </form>
+            <div class="pf-thanks" id="pf-thanks">
+              <p style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,28px);text-transform:uppercase;letter-spacing:.02em;color:var(--text);margin-bottom:10px">We will be in touch.</p>
+              <p style="font-family:var(--font-satoshi);font-size:14px;font-weight:400;color:var(--text-muted);line-height:1.65">Someone from the team will come back to you personally, usually within a day or two.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: scrolling cards -->
+      <div class="flex flex-col" style="gap:16px">
+
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">Who this is for</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">The person who knows what a guest experience needs</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">If you manage a villa, captain a charter, or design travel for clients who expect everything to be exactly right, you already know that food is never just food. It sets the mood, holds the memory, and quietly defines whether a stay gets talked about for years or forgotten by the time the bags are packed.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">This is for people who would rather have a reliable name to pass along than make promises they cannot guarantee.</p>
+        </div>
+
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:var(--bg-primary);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:20px">Working together</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210);margin-bottom:20px">We love working with people who care about their guests the way we do</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:rgba(239,231,210,.65)">When you bring Chef Donovan and the team in, you are bringing someone who treats your space and your guests with the same care you do. Your name is attached to that experience, and we take that seriously.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:rgba(239,231,210,.65);margin-top:16px">The people who trust us with their guests become people we take care of right back. No complicated arrangements, no minimums to hit. Just a working relationship built on the quality of what we do together.</p>
+        </div>
+
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">What a collaboration looks like</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">The same standard, wherever the table gets set</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Multi-day villa stays handled from breakfast through dinner, every meal at the same level. Yacht charters where the food moves with the itinerary, managed quietly and without fuss. Private jet catering packaged and ready for departure, not rushed at the last moment.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">For events, from an intimate dinner for six to a celebration for sixty, Chef Donovan and his team have delivered across The Bahamas and internationally. The brief always starts with the guest, not the menu.</p>
+        </div>
+
+        <!-- Signature Standard card -->
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">The Signature Standard</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">Consistency you can put your name behind</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Every engagement Chef Donovan takes on follows the same approach. The same level of preparation, the same care, the same outcome whether the table is set at a hilltop villa, on a charter at sea, or mid-flight across the Atlantic.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">When you bring Chef Donovan in for your guests, you are putting your reputation behind the experience. We make sure that never feels like a risk.</p>
+          <div style="margin-top:28px">
+            <a href="signature-standard.html" class="btn btn-primary">Discover Our Standard</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rule 2 -->
+    <div class="scs-rule px-1">
+      <span class="scs-rule-label">Case Studies</span>
+      <div class="scs-rule-line"></div>
+      <span class="scs-rule-label">Real Work, Real Guests</span>
+    </div>
+
+    <!-- Case studies intro - hollow hero-style card -->
+    <div class="fade-up px-6 sm:px-10 py-10 sm:py-12" style="border:1px solid var(--border);border-radius:16px">
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:start">
+        <div>
+          <span class="scs-hero-eyebrow">From the field</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(28px,3.5vw,48px);line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:var(--text)">Where the work<br>actually happens</h2>
+        </div>
+        <p style="font-family:var(--font-satoshi);font-size:16px;font-weight:400;line-height:1.75;color:var(--text-muted);padding-top:4px">Each card below links to a case study showing Chef Donovan and the team at work on a real engagement, a villa in the Bahamas, a private charter, an international event. Read the ones that match the guests you work with.</p>
+      </div>
+    </div>
+
+    <!-- Audience cards (portfolio-card, exact pattern from specialist-chef-services.html) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style="gap:12px">
+
+      <a href="#" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:380px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/villa-gathering.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Multi-day stays</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Villa Managers<br>&amp; Concierges</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+      <a href="#" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:380px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/luxury-private-dining-2.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">On-water catering</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Yacht Captains<br>&amp; Brokers</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+      <a href="#" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:380px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
+        <img src="images/plan-your-experience.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
+        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
+          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Curated travel</p>
+          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Travel<br>Advisors</p>
+        </div>
+        <div class="card-circle-arrow">
+          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
+      <div style="margin-bottom:32px">
+        <span class="footer-brand">Chef Donovan Smith</span>
+        <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="menu.html" class="footer-link">Menu</a>
+        <a href="experiences.html" class="footer-link">Experiences</a>
+        <a href="gallery.html" class="footer-link">Gallery</a>
+        <a href="reviews.html" class="footer-link">Reviews</a>
+        <a href="blog.html" class="footer-link">Blog</a>
+        <a href="partner.html" class="footer-link">Partner</a>
+        <a href="signature-standard.html" class="footer-link">Our Standard</a>
+      </nav>
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
+          <span class="footer-sep">|</span>
+          <a href="terms-and-conditions.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+          <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="refunds-and-cancellation.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+        </div>
+        <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+(function(){
+  var trigger=document.getElementById('pf-role-trigger');
+  var panel=document.getElementById('pf-role-panel');
+  var display=document.getElementById('pf-role-display');
+  var hiddenInput=document.getElementById('pf-role');
+
+  if(trigger&&panel){
+    trigger.addEventListener('click',function(e){
+      e.stopPropagation();
+      var isOpen=panel.classList.contains('open');
+      panel.classList.toggle('open');
+      trigger.classList.toggle('open',!isOpen);
+    });
+
+    panel.querySelectorAll('.pf-dd-item').forEach(function(item){
+      item.addEventListener('click',function(){
+        var val=item.getAttribute('data-val');
+        hiddenInput.value=val;
+        display.textContent=val;
+        display.style.color='var(--text)';
+        panel.classList.remove('open');
+        trigger.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click',function(e){
+      var wrap=document.getElementById('pf-role-wrap');
+      if(wrap&&!wrap.contains(e.target)){
+        panel.classList.remove('open');
+        trigger.classList.remove('open');
+      }
+    });
+  }
+})();
+
+(function(){
+  var form=document.getElementById('partner-form');
+  var thanks=document.getElementById('pf-thanks');
+  var err=document.getElementById('pf-err');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('pf-name').value.trim();
+    var role=document.getElementById('pf-role').value;
+    var email=document.getElementById('pf-email').value.trim();
+    if(!name||!role||!email){
+      err.textContent='Please fill in your name, role, and email address.';
+      err.style.display='block';
+      return;
+    }
+    err.style.display='none';
+    var business=document.getElementById('pf-business').value.trim();
+    var phone=document.getElementById('pf-phone').value.trim();
+    var about=document.getElementById('pf-about').value.trim();
+    var body=['Name: '+name,'Role: '+role,'Business: '+business,'Email: '+email,'Phone: '+phone,'','About their guests:',about].join('\n');
+    window.location.href='mailto:booking@chefdonsmith.com?subject=Collaboration%20Enquiry%20%E2%80%94%20'+encodeURIComponent(name)+'&body='+encodeURIComponent(body);
+    form.style.display='none';
+    thanks.style.display='block';
+  });
+})();
+</script>
+
+</body>
+</html>

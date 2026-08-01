@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms &amp; Conditions — Chef Donovan Smith</title>
+  <title>Our Standard &#8212; Chef Donovan Smith</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -13,22 +13,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .pol-layout { display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start; }
-    .pol-cover-col { position:sticky;top:16px; }
-    .pol-cover { height:calc(100vh - 32px);border-radius:16px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,3vw,48px); }
-    .pol-cover-foot { }
-    .pol-cover-eye { display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);margin-bottom:24px; }
-    .pol-cover-title { font-family:var(--font-forum);font-size:clamp(40px,5.5vw,72px);line-height:.96;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin:0 0 20px; }
-    .pol-right { padding:8px 44px 80px 28px; }
-    .pol-section { padding:36px 0;border-top:1px solid var(--border); }
-    .pol-sh { font-family:var(--font-forum);font-size:clamp(20px,1.8vw,26px);letter-spacing:.01em;color:var(--text);margin:0 0 14px; }
-    .pol-p  { font-family:var(--font-satoshi);font-size:15.5px;font-weight:400;color:var(--text-muted);line-height:1.9;margin:0; }
-    .pol-p + .pol-p { margin-top:14px; }
-    @media(max-width:900px){
-      .pol-layout { grid-template-columns:1fr; }
-      .pol-cover-col { display:none; }
-      .pol-right { padding:0 0 60px; }
-    }
+    .scs-hero-eyebrow{display:block;font-family:'Satoshi',sans-serif;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.22em;color:var(--text-muted);margin-bottom:24px}
+    .scs-hero-h1{font-family:'Forum',serif;font-size:clamp(36px,5vw,68px);line-height:.96;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px}
+    .scs-hero-sub{font-family:'Satoshi',sans-serif;font-size:16px;font-weight:400;line-height:1.7;color:var(--text-muted);max-width:480px}
+    .scs-rule{display:flex;align-items:center;gap:20px}
+    .scs-rule-label{font-family:'Satoshi',sans-serif;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);white-space:nowrap}
+    .scs-rule-line{flex:1;height:1px;background:var(--border)}
   </style>
 </head>
 <body>
@@ -42,11 +32,9 @@
   </div>
   <nav class="flex flex-col items-center gap-8">
     <a href="index.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Home</a>
-    <!-- 1. Experiences accordion -->
     <div class="mobile-accordion" style="text-align:center">
       <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Experiences<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
       <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:16px;margin-top:18px">
-        <!-- Specialist Chef Services nested accordion -->
         <div class="mobile-accordion" style="text-align:center">
           <button class="mobile-accordion-trigger" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.82);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Specialist Chef Services<svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.4)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
           <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:12px">
@@ -59,7 +47,6 @@
         <a href="experiences.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Single Bespoke Experiences</a>
       </div>
     </div>
-    <!-- 2. Menus accordion -->
     <div class="mobile-accordion" style="text-align:center">
       <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Menus<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
       <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
@@ -68,9 +55,7 @@
         <a href="experiences-dining.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Dining</a>
       </div>
     </div>
-    <!-- 3. Reviews -->
     <a href="reviews.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
-    <!-- 4. More accordion -->
     <div class="mobile-accordion" style="text-align:center">
       <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">More<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
       <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
@@ -90,12 +75,10 @@
 <div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
   <div class="flex flex-col" style="gap:16px">
 
-    <!-- Header -->
     <header class="flex items-center justify-between px-6 sm:px-10 py-6">
       <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:var(--text);text-decoration:none">Chef Don Smith</a>
       <nav class="hidden md:flex items-center gap-8">
         <a href="index.html" class="nav-link">Home</a>
-        <!-- 1. Experiences -->
         <div class="nav-dropdown-wrap">
           <a href="experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
           <div class="nav-dropdown" style="min-width:230px">
@@ -111,7 +94,6 @@
             <a href="experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
           </div>
         </div>
-        <!-- 2. Menus -->
         <div class="nav-dropdown-wrap">
           <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
           <div class="nav-dropdown">
@@ -120,9 +102,7 @@
             <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
           </div>
         </div>
-        <!-- 3. Reviews -->
         <a href="reviews.html" class="nav-link">Reviews</a>
-        <!-- 4. More -->
         <div class="nav-dropdown-wrap">
           <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
           <div class="nav-dropdown">
@@ -142,95 +122,89 @@
       </div>
     </header>
 
-    <!-- Layout -->
-    <div class="pol-layout">
+    <!-- Hero -->
+    <div class="fade-up px-6 sm:px-10 py-12 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px">
+      <span class="scs-hero-eyebrow">The Signature Standard</span>
+      <div class="grid grid-cols-1 lg:grid-cols-2" style="gap:40px;align-items:start">
+        <h1 class="scs-hero-h1">The Same<br>Standard,<br>Every Time</h1>
+        <p class="scs-hero-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </div>
+    </div>
 
-      <!-- Left: hollow sticky card -->
-      <div class="pol-cover-col">
-        <div class="pol-cover">
-          <div class="pol-cover-foot">
-            <span class="pol-cover-eye">Chef Donovan Smith</span>
-            <p class="pol-cover-title">Terms &amp;<br>Conditions</p>
-            <p style="font-family:var(--font-satoshi);font-size:16px;font-weight:400;line-height:1.7;color:var(--text-muted);margin:0">The terms governing your booking and use of our services.</p>
+    <!-- Rule -->
+    <div class="scs-rule px-1">
+      <span class="scs-rule-label">How We Work</span>
+      <div class="scs-rule-line"></div>
+      <span class="scs-rule-label">Every Time</span>
+    </div>
+
+    <!-- Sticky 2-col -->
+    <div class="grid gap-4 grid-cols-1 lg:grid-cols-2" style="align-items:start">
+
+      <div class="hidden lg:block self-stretch">
+        <div class="grain sticky relative overflow-hidden" style="top:16px;height:calc(100vh - 6rem);border-radius:16px;border:1px solid var(--border)">
+          <img src="images/261005.jpg" alt="Chef Donovan Smith" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:65%;background:linear-gradient(to top,rgba(0,30,26,.94) 0%,transparent 100%);z-index:1"></div>
+          <div class="absolute bottom-0 left-0" style="padding:56px;z-index:2">
+            <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.42);margin-bottom:14px">Chef Donovan Smith</p>
+            <h2 class="select-none" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.08;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">Every detail.<br>Every time.</h2>
           </div>
         </div>
       </div>
 
-      <!-- Right: content -->
-      <div class="pol-right">
+      <div class="flex flex-col" style="gap:16px">
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Acceptance</h2>
-        <p class="pol-p">By submitting an inquiry or proceeding with a booking, you confirm that you have read and agree to these Terms &amp; Conditions in full. If you do not agree, please do not proceed with a booking.</p>
-      </div>
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">Preparation</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">How we prepare for every engagement</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Services</h2>
-        <p class="pol-p">Chef Donovan Smith provides bespoke private dining and culinary experience services. Each engagement is personalised to the client and confirmed through direct communication. The scope, menu, and logistics of each event will be agreed upon prior to the booking being confirmed. We reserve the right to decline any inquiry at our sole discretion.</p>
-      </div>
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:var(--bg-primary);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:20px">The team</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210);margin-bottom:20px">The team behind the table</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:rgba(239,231,210,.65)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:rgba(239,231,210,.65);margin-top:16px">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Bookings &amp; Deposits</h2>
-        <p class="pol-p">All bookings are confirmed upon receipt of a non-refundable deposit, the amount of which will be communicated during the inquiry process. A booking is not confirmed until the deposit has been received and acknowledged. Submitting an inquiry does not constitute a confirmed booking.</p>
-      </div>
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">On location</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">On location, any location</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Cancellations &amp; Rescheduling</h2>
-        <p class="pol-p">Please refer to our <a href="refunds-and-cancellation.html" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">Refunds &amp; Cancellation Policy</a> for full details on deposits, cancellations, and rescheduling windows.</p>
-      </div>
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="border:1px solid var(--border);border-radius:16px">
+          <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:20px">The guest experience</span>
+          <h2 style="font-family:var(--font-forum);font-size:clamp(24px,3vw,36px);line-height:1.12;letter-spacing:.01em;text-transform:uppercase;color:var(--text);margin-bottom:20px">What guests experience from start to finish</h2>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted);margin-top:16px">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+        </div>
 
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Dietary Restrictions &amp; Allergies</h2>
-        <p class="pol-p">Clients are solely responsible for disclosing all dietary restrictions, food allergies, and intolerances for all guests prior to the event. Chef Donovan will make reasonable efforts to accommodate all disclosed requirements. We cannot accept responsibility for any adverse reactions arising from information that was not disclosed to us before the event.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Client Responsibilities</h2>
-        <p class="pol-p">Clients are responsible for ensuring that: all event details provided at the time of booking are accurate and complete; the venue has adequate kitchen facilities, utilities, and access for the chef and team; any required permissions to cook at the venue have been obtained; and the environment is safe for our team to work in. Additional costs resulting from inaccurate information provided by the client may be charged at our discretion.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Intellectual Property</h2>
-        <p class="pol-p">All menus, recipes, creative concepts, photographs, and written content developed by or for Chef Donovan Smith remain his intellectual property. They may not be reproduced, distributed, or used commercially without prior written consent.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Limitation of Liability</h2>
-        <p class="pol-p">To the fullest extent permitted by applicable law, Chef Donovan Smith&rsquo;s total liability for any claim arising out of or in connection with a booking shall not exceed the total fees paid for that specific booking. We are not liable for any indirect, incidental, special, or consequential losses, including loss of enjoyment or opportunity.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Governing Law</h2>
-        <p class="pol-p">These Terms &amp; Conditions are governed by and construed in accordance with the laws of The Commonwealth of The Bahamas. Any disputes arising shall be subject to the jurisdiction of the courts of The Bahamas.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Changes to These Terms</h2>
-        <p class="pol-p">We may update these Terms &amp; Conditions from time to time. The &ldquo;Last updated&rdquo; date at the top of this page reflects the most recent revision. Continued use of our services after any changes constitutes your acceptance of the updated Terms.</p>
-      </div>
-
-      <div class="fade-up pol-section">
-        <h2 class="pol-sh">Contact</h2>
-        <p class="pol-p">For any questions regarding these Terms, please contact us at <a href="mailto:booking@chefdonsmith.com" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">booking@chefdonsmith.com</a>.</p>
-      </div>
+        <!-- CTA card matching about.html last card style -->
+        <div class="fade-up p-6 sm:p-8 lg:p-12" style="background:rgba(0,46,40,.05);border:1px solid var(--border);border-radius:16px;text-align:center">
+          <h3 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,32px);line-height:1.2;letter-spacing:.02em;color:var(--text);margin-bottom:16px">Ready to bring us in?</h3>
+          <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.6;color:var(--text-muted);max-width:400px;margin:0 auto 32px">If you manage a villa, a charter, or curate travel for guests who expect the best, we would love to hear from you.</p>
+          <a href="partner.html#enquire" class="btn btn-primary">Get in touch</a>
+        </div>
 
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
       <div style="margin-bottom:32px">
         <span class="footer-brand">Chef Donovan Smith</span>
         <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
       </div>
       <nav class="footer-nav">
-        <a href="index.html"       class="footer-link">Home</a>
-        <a href="about.html"       class="footer-link">About</a>
-        <a href="menu.html"        class="footer-link">Menu</a>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="menu.html" class="footer-link">Menu</a>
         <a href="experiences.html" class="footer-link">Experiences</a>
-        <a href="gallery.html"     class="footer-link">Gallery</a>
-        <a href="reviews.html"     class="footer-link">Reviews</a>
-        <a href="blog.html"        class="footer-link">Blog</a>
+        <a href="gallery.html" class="footer-link">Gallery</a>
+        <a href="reviews.html" class="footer-link">Reviews</a>
+        <a href="blog.html" class="footer-link">Blog</a>
         <a href="partner.html" class="footer-link">Partner</a>
         <a href="signature-standard.html" class="footer-link">Our Standard</a>
       </nav>
@@ -238,9 +212,9 @@
         <div class="footer-bottom-left">
           <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
           <span class="footer-sep">|</span>
-          <a href="terms-and-conditions.html"       class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-          <a href="privacy-policy.html"             class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
-          <a href="refunds-and-cancellation.html"   class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
+          <a href="terms-and-conditions.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+          <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="refunds-and-cancellation.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
         </div>
         <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
       </div>
