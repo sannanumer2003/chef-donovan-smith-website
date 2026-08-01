@@ -13,7 +13,6 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%;background:rgb(0,46,40);color:rgb(239,231,210);font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
 
-    /* â”€â”€ Page layout â”€â”€ */
     .cs-wrap{
       min-height:100vh;
       display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -22,7 +21,6 @@
       position:relative;
     }
 
-    /* â”€â”€ Logo â”€â”€ */
     .cs-logo{
       font-family:'Forum',serif;
       font-size:clamp(22px,4vw,38px);
@@ -33,14 +31,12 @@
       opacity:.9;
     }
 
-    /* â”€â”€ Divider line â”€â”€ */
     .cs-rule{
       width:40px;height:1px;
       background:rgba(239,231,210,.3);
       margin:0 auto 48px;
     }
 
-    /* â”€â”€ Coming soon label â”€â”€ */
     .cs-eyebrow{
       font-size:10px;font-weight:500;
       text-transform:uppercase;letter-spacing:.26em;
@@ -48,7 +44,6 @@
       margin-bottom:20px;
     }
 
-    /* â”€â”€ Countdown â”€â”€ */
     .cs-timer{
       display:flex;align-items:flex-start;justify-content:center;
       gap:clamp(20px,4vw,48px);
@@ -77,22 +72,22 @@
       margin-top:4px;
     }
 
-    /* â”€â”€ Access button â”€â”€ */
+    /* Preview Access button â€” cream bg, dark green text, right arrow */
     .cs-btn{
       display:inline-flex;align-items:center;gap:10px;
       font-family:'Satoshi',sans-serif;font-size:11px;font-weight:500;
       text-transform:uppercase;letter-spacing:.2em;
-      color:rgba(239,231,210,.5);
-      background:none;border:1px solid rgba(239,231,210,.18);
+      color:rgb(0,46,40);
+      background:rgb(239,231,210);border:none;
       border-radius:99px;padding:12px 28px;
       cursor:pointer;
-      transition:color .2s,border-color .2s;
+      transition:background .2s;
     }
-    .cs-btn:hover{color:rgba(239,231,210,.85);border-color:rgba(239,231,210,.38)}
-    .cs-btn svg{opacity:.55;transition:opacity .2s}
-    .cs-btn:hover svg{opacity:1}
+    .cs-btn:hover{background:rgb(220,212,191)}
+    .cs-btn svg{transition:transform .2s}
+    .cs-btn:hover svg{transform:translateX(2px)}
 
-    /* â”€â”€ Modal overlay â”€â”€ */
+    /* Modal overlay */
     .cs-overlay{
       display:none;
       position:fixed;inset:0;z-index:500;
@@ -104,7 +99,7 @@
     }
     .cs-overlay.open{display:flex}
 
-    /* â”€â”€ Modal card â”€â”€ */
+    /* Modal card */
     .cs-modal{
       background:rgb(0,46,40);
       border:1px solid rgba(239,231,210,.16);
@@ -158,8 +153,10 @@
     .cs-field input::placeholder{color:rgba(239,231,210,.22)}
     .cs-field input:focus{border-color:rgba(239,231,210,.32)}
 
+    /* Enter button â€” cream bg, flex row so arrow sits on right */
     .cs-submit{
       width:100%;margin-top:8px;
+      display:flex;align-items:center;justify-content:center;gap:10px;
       background:rgb(239,231,210);
       color:rgb(0,46,40);
       border:none;border-radius:99px;
@@ -170,6 +167,8 @@
       transition:background .15s;
     }
     .cs-submit:hover{background:rgb(220,212,191)}
+    .cs-submit svg{transition:transform .2s}
+    .cs-submit:hover svg{transform:translateX(2px)}
 
     .cs-err{
       display:none;
@@ -178,7 +177,6 @@
       text-align:center;letter-spacing:.03em;
     }
 
-    /* â”€â”€ Footer note â”€â”€ */
     .cs-footer{
       position:absolute;bottom:28px;left:0;right:0;
       font-size:10px;color:rgba(239,231,210,.2);
@@ -206,8 +204,8 @@
   </div>
 
   <button class="cs-btn" id="cs-access-btn">
-    <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="14" height="10" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3"/></svg>
     Preview Access
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </button>
 
   <p class="cs-footer">&copy; 2026 chefdonsmith.com</p>
@@ -231,14 +229,16 @@
         <label>Password</label>
         <input type="password" id="cs-pass" placeholder="Enter password">
       </div>
-      <button type="submit" class="cs-submit">Enter</button>
+      <button type="submit" class="cs-submit">
+        <span>Enter</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
       <p class="cs-err" id="cs-err">Incorrect credentials. Please try again.</p>
     </form>
   </div>
 </div>
 
 <script>
-// â”€â”€ Countdown timer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 (function(){
   var target=new Date('2026-08-08T00:00:00').getTime();
   function pad(n){return String(n).padStart(2,'0')}
@@ -259,7 +259,6 @@
   setInterval(tick,1000);
 })();
 
-// â”€â”€ Modal open/close â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 var overlay=document.getElementById('cs-overlay');
 document.getElementById('cs-access-btn').addEventListener('click',function(){
   overlay.classList.add('open');
@@ -272,7 +271,6 @@ overlay.addEventListener('click',function(e){
   if(e.target===overlay)overlay.classList.remove('open');
 });
 
-// â”€â”€ Auth (SHA-256 hashed credentials, no plaintext stored) â”€â”€â”€â”€â”€â”€â”€
 var U_HASH='09cdbbe0058bb46689ab1c6ea40fcd06c75118964cd29e4d26d2877d465f16d4';
 var P_HASH='efe0bc43cbea9ddd327c75b304a7d9ee3448f061b70c952b15c2845f11c5385a';
 
@@ -287,10 +285,11 @@ document.getElementById('cs-form').addEventListener('submit',async function(e){
   var p=document.getElementById('cs-pass').value;
   var err=document.getElementById('cs-err');
   var btn=document.querySelector('.cs-submit');
-  btn.textContent='Checking...';btn.disabled=true;
+  var lbl=btn.querySelector('span');
+  lbl.textContent='Checking...';btn.disabled=true;
   var uHash=await sha256(u);
   var pHash=await sha256(p);
-  btn.textContent='Enter';btn.disabled=false;
+  lbl.textContent='Enter';btn.disabled=false;
   if(uHash===U_HASH&&pHash===P_HASH){
     sessionStorage.setItem('preview_access','1');
     window.location.href='/index.html';
