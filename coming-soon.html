@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chef Donovan Smith &mdash; Coming Soon</title>
+  <title>{{ENTITY_NAME}} | Coming Soon</title>
+  <meta name="description" content="{{ENTITY_NAME}} is arriving soon. Private culinary experiences across The Bahamas and the Caribbean, led by Chef Don Smith.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -34,7 +35,14 @@
     .cs-rule{
       width:40px;height:1px;
       background:rgba(239,231,210,.3);
-      margin:0 auto 48px;
+      margin:0 auto 32px;
+    }
+
+    .cs-tagline{
+      font-size:12px;font-weight:400;
+      letter-spacing:.03em;
+      color:rgba(239,231,210,.4);
+      margin-bottom:40px;
     }
 
     .cs-eyebrow{
@@ -194,6 +202,8 @@
   <p class="cs-logo">Chef Donovan Smith</p>
   <div class="cs-rule"></div>
 
+  <p class="cs-tagline">A new chapter in private dining, arriving soon.</p>
+
   <p class="cs-eyebrow">Coming Soon</p>
 
   <div class="cs-timer">
@@ -222,7 +232,7 @@
       <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
     </button>
     <h2>Preview Access</h2>
-    <p>Enter your credentials to browse the site before it goes live.</p>
+    <p>Enter your access details to preview the site before launch.</p>
     <form id="cs-form" novalidate autocomplete="off">
       <div class="cs-field">
         <label>Username</label>
@@ -236,7 +246,7 @@
         <span>Enter</span>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
-      <p class="cs-err" id="cs-err">Incorrect credentials. Please try again.</p>
+      <p class="cs-err" id="cs-err">That didn't match. Please try again.</p>
     </form>
   </div>
 </div>

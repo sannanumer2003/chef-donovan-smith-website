@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan Your Experience — Chef Donovan Smith</title>
+  <title>Plan Your Experience | {{ENTITY_NAME}}</title>
+  <meta name="description" content="Start planning your Chef Don Smith experience: tell us about the trip, the guests, and the moments you want them to remember.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -450,8 +451,8 @@
   <div class="slide active" id="s-intro">
     <div class="inner" style="text-align:center">
       <span class="ey" style="display:block;text-align:center">Chef Donovan Smith</span>
-      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Tell Him About The Night You're Planning.</h1>
-      <p class="big-p" style="margin-left:auto;margin-right:auto">Nine quick questions, about two minutes. He follows up directly, with a real plan based on what you tell him, not a generic email.</p>
+      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Tell Us About The Experience You're Planning.</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Nine quick questions, about two minutes. Our culinary concierge follows up with a tailored plan, not a generic email.</p>
       <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Plan My Night</button>
       <p id="desktop-takes" style="margin-top:16px;font-family:var(--fs);font-size:13px;font-weight:400;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -514,13 +515,13 @@
   <!-- Q6b -->
   <div class="slide" id="s-6b">
     <div class="inner">
-      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">What are you picturing?</h2></div>
+      <div class="q-row"><span class="q-num">3</span><h2 class="q-h">Tell us about the trip, the guests, and the moments you want them to remember.</h2></div>
       <div class="f-wrap">
         <textarea class="f-ta" id="i-vision" placeholder="Setting, cuisine, mood, special details…" rows="3"></textarea>
         <div class="f-line"></div>
       </div>
       <p class="f-err" id="e-vision"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -569,13 +570,13 @@
       <!-- Optional text (revealed when No chosen) -->
       <div id="menu-describe" style="display:none;margin-top:20px">
         <div class="f-wrap">
-          <textarea class="f-ta" id="i-menu-desc" placeholder="Optional, briefly describe your culinary preferences" rows="2"></textarea>
+          <textarea class="f-ta" id="i-menu-desc" placeholder="Tell him what flavors you love (or want to avoid)" rows="2"></textarea>
           <div class="f-line"></div>
         </div>
       </div>
 
       <p class="f-err" id="e-menu" style="margin-top:10px"></p>
-      <button class="ok" data-next type="button">OK</button>
+      <button class="ok" data-next type="button">Continue</button>
     </div>
   </div>
 
@@ -606,7 +607,7 @@
         </div>
       </div>
       <p class="f-err" id="e-date"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -640,7 +641,7 @@
       </div>
       <p class="f-err" id="e-consent" style="display:none;margin-bottom:12px">Please accept the policies before submitting.</p>
       <button class="ok" id="submit-btn">Send Inquiry</button>
-      <p class="sub-note">No commitment required. Chef Donovan's team will reach out within 24 hours.</p>
+      <p class="sub-note">There's no cost or commitment to inquire. Pricing is confirmed once he understands your vision. Chef Donovan's team will reach out within 24 hours.</p>
     </div>
   </div>
 
@@ -649,9 +650,9 @@
     <div class="inner" style="text-align:center">
       <span class="ey" style="display:block;text-align:center">Inquiry received</span>
       <h1 class="big-h" style="font-size:clamp(28px,4.5vw,48px);line-height:1.2">Thank you for reaching out. We'll be in touch soon.</h1>
-      <p class="big-p" style="margin-left:auto;margin-right:auto">Chef Donovan's team will reach out within 24 hours to begin crafting your experience.</p>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Next, he'll review what you shared and come back with a proposed menu and a quote. Nothing to pay until you approve it.</p>
       <div class="socials" style="justify-content:center">
-        <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="soc-btn" title="Instagram" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
+        <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener" class="soc-btn" title="Instagram" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#fff" stroke="none"/></svg>
         </a>
         <a href="https://facebook.com" target="_blank" rel="noopener" class="soc-btn" title="Facebook" style="background:#1877F2">
@@ -714,7 +715,7 @@
 
       <div style="margin-top:6px;min-height:18px"><a id="villa-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear dates</a></div>
       <p class="f-err" id="e-villa-dates"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -724,7 +725,7 @@
       <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Where will you be staying?</h2></div>
       <div class="f-wrap"><input type="text" class="f-in" id="i-villaloc" placeholder="e.g. Sandy Lane Estate, Barbados"><div class="f-line"></div></div>
       <p class="f-err" id="e-villaloc"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -741,7 +742,7 @@
       </div>
       <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-villa-meals-other" placeholder="Describe what you have in mind..." rows="2"></textarea><div class="f-line"></div></div></div>
       <p class="f-err" id="e-villa-meals"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -752,7 +753,7 @@
       <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">This helps the chef plan equipment and provisioning</p>
       <div class="f-wrap"><textarea class="f-ta" id="i-villakitchen" placeholder="e.g. Full kitchen with 6-burner range, limited counter space, outdoor grill..." rows="3"></textarea><div class="f-line"></div></div>
       <p class="f-err" id="e-villakitchen"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -773,7 +774,7 @@
 
       <div style="margin-top:6px;min-height:18px"><a id="yacht-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear dates</a></div>
       <p class="f-err" id="e-yacht-dates"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -784,7 +785,7 @@
       <p style="font-size:13px;color:var(--muted);margin-bottom:20px;margin-top:-16px">List stops in order if you have a route in mind</p>
       <div class="f-wrap"><textarea class="f-ta" id="i-yachtdest" placeholder="e.g. St Barts, Gustavia, Anguilla, Sandy Island..." rows="3"></textarea><div class="f-line"></div></div>
       <p class="f-err" id="e-yachtdest"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -794,7 +795,7 @@
       <div class="q-row"><span class="q-num">6</span><h2 class="q-h">Tell us about the galley</h2></div>
       <div class="f-wrap"><textarea class="f-ta" id="i-yachtgalley" placeholder="e.g. Full galley with induction cooktop, 4-burner range, limited refrigeration..." rows="3"></textarea><div class="f-line"></div></div>
       <p class="f-err" id="e-yachtgalley"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -813,7 +814,7 @@
       </div>
       <div style="margin-top:6px;min-height:18px"><a id="jet-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear date</a></div>
       <p class="f-err" id="e-jet-date"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -831,7 +832,7 @@
       </div>
       <div style="margin-top:14px"><a id="jet-add-route" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">&#43; Add another route</a></div>
       <p class="f-err" id="e-jet-routes"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -843,7 +844,7 @@
       <div class="f-wrap"><textarea class="f-ta" id="i-jetnotes" placeholder="e.g. Cold canapes, ready 90 minutes before departure, keto-friendly packaging..." rows="3"></textarea><div class="f-line"></div></div>
       <p class="f-err" id="e-jetnotes"></p>
       <div style="margin-top:12px"><a id="jet-notes-skip" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">Skip</a></div>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -862,7 +863,7 @@
       </div>
       <div style="margin-top:6px;min-height:18px"><a id="evt-date-clear" href="#" onclick="return false" style="display:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,231,210,.35);text-decoration:none;font-family:var(--fs);font-weight:500">&#215; Clear date</a></div>
       <p class="f-err" id="e-event-date"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -872,7 +873,7 @@
       <div class="q-row"><span class="q-num">4</span><h2 class="q-h">Where is the event taking place?</h2></div>
       <div class="f-wrap"><input type="text" class="f-in" id="i-eventvenue" placeholder="e.g. Four Seasons Great Exuma, private estate, beachfront..."><div class="f-line"></div></div>
       <p class="f-err" id="e-eventvenue"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -889,7 +890,7 @@
       </div>
       <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-event-type-other" placeholder="Describe the event..." rows="2"></textarea><div class="f-line"></div></div></div>
       <p class="f-err" id="e-event-type"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -905,7 +906,7 @@
       </div>
       <div class="other-input-wrap" style="display:none"><div class="f-wrap"><textarea class="f-ta" id="i-event-style-other" placeholder="Describe the service style..." rows="2"></textarea><div class="f-line"></div></div></div>
       <p class="f-err" id="e-event-style"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
   <!-- NEW: s-occasion -->
@@ -917,7 +918,7 @@
         <div class="f-line"></div>
       </div>
       <p class="f-err" id="e-occasion"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -931,7 +932,7 @@
       </div>
       <p class="f-err" id="e-allergy"></p>
       <div style="margin-top:12px"><a id="allergy-skip" href="#" style="font-family:var(--fs);font-size:12px;color:rgba(239,231,210,.38);text-decoration:none;cursor:pointer" onclick="return false">Skip</a></div>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -953,7 +954,7 @@
         <div class="f-line"></div>
       </div>
       <p class="f-err" id="e-lead"></p>
-      <button class="ok" data-next>OK</button>
+      <button class="ok" data-next>Continue</button>
     </div>
   </div>
 
@@ -1471,7 +1472,7 @@ function updateMobileNav(){
   if(c==='intro')ok.textContent='Plan My Night';
   else if(c==='done')ok.textContent='Return to site';
   else if(c==='review')ok.textContent='Send Inquiry';
-  else ok.textContent='OK';
+  else ok.textContent='Continue';
   ok.disabled=false;
   G('m-takes').classList.toggle('show',c==='intro');
 }

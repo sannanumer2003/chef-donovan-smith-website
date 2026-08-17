@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experiences — Chef Donovan Smith</title>
+  <title>Experiences | {{ENTITY_NAME}}</title>
+  <meta name="description" content="Eight bespoke private dining experiences, from live-fire cooking to a chef's table tasting menu, across The Bahamas and the Caribbean.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -383,7 +384,7 @@
     <div class="fade-up p-6 sm:p-10 lg:p-20" style="background:var(--bg-primary);border-radius:16px;text-align:center">
       <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:.02em;color:var(--text-inv)">Ready to Begin?</h2>
       <p style="font-family:var(--font-satoshi);font-weight:400;font-size:18px;line-height:1.6;color:rgba(239,231,210,.65);max-width:460px;margin:20px auto 40px">Found the one? Tell him the date and the headcount, he'll handle the rest.</p>
-      <a href="reservation.html?type=bespoke" class="btn btn-dark">Plan Your Experience</a>
+      <a href="reservation.html?type=bespoke" class="btn btn-dark">Plan My Night</a>
     </div>
 
     <!-- Footer -->
@@ -391,7 +392,8 @@
 
     <div style="margin-bottom:32px">
       <span class="footer-brand">Chef Donovan Smith</span>
-      <a href="https://instagram.com/kitchenking101" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@kitchenking101</a>
+            <span class="footer-tagline" style="display:block;margin-top:4px;font-family:var(--font-satoshi,sans-serif);font-size:11px;letter-spacing:.04em;opacity:.4">{{ENTITY_NAME}}</span>
+      <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@chef.donsmith</a>
     </div>
 
     <nav class="footer-nav">
@@ -456,56 +458,56 @@
     {
       num:'01', name:'Fire &amp; Feast Experience',
       tagline:'Live fire. Smoke. Embers.',
-      desc:'An open-fire dining experience where every course is cooked over flame, smoke, and embers. Perfect for beachfront villas, garden dinners, and luxury outdoor events.',
+      desc:'Every course comes off open flame: grilled, charred, or slow-smoked in front of your guests. Built for beachfront villas, garden dinners, and any outdoor space that can hold a fire pit.',
       features:['Live fire cooking','Wood-smoked meats &amp; seafood','Rustic luxury presentation','Interactive chef storytelling'],
       img:'images/Fire &amp; Feast Experience.jpg'
     },
     {
       num:'02', name:'Caribbean Omakase',
       tagline:'8–12 courses. Chef\'s choice. Island soul.',
-      desc:'A multi-course tasting journey inspired by Caribbean flavors, served chef\'s-choice style with elegant presentation and seasonal island ingredients.',
+      desc:'Eight to twelve small courses, chosen by the chef and built around whatever is in season on the island that week. No menu to pick from, just plates arriving one after another.',
       features:['8–12 curated bites and courses','Chef-guided experience','Seasonal island ingredients','Luxury plated dining'],
       img:'images/Caribbean Omakase.jpg'
     },
     {
       num:'03', name:'Italian Villa Night',
       tagline:'Amalfi Coast meets Tuscan countryside.',
-      desc:'A warm and elevated Italian-inspired dining experience inspired by the Amalfi Coast and Tuscan countryside.',
+      desc:'Handmade pasta rolled to order, tableside finishing, and a menu drawn from the Amalfi Coast and Tuscan hill towns, the kind of dinner that runs long because no one wants it to end.',
       features:['Handmade pasta','Tableside finishing','Wine pairing add-on','Family-style or plated service'],
       img:'images/Italian Villa Night.jpg'
     },
     {
       num:'04', name:'Mexican Smoke &amp; Agave',
       tagline:'Bold flavors. Smoke. Tequila pairings.',
-      desc:'A bold and vibrant culinary experience featuring refined Mexican flavors, smoke, spice, and tequila pairings.',
+      desc:'A live taco and ceviche station, charcoal-grilled mains, and a tequila pairing built to match the heat: loud, hands-on, and meant to be eaten standing up.',
       features:['Live taco &amp; ceviche stations','Charcoal grilled dishes','Agave cocktail pairings','Late-night street food bites'],
       img:'images/Mexican Smoke &amp; Agave.jpg'
     },
     {
       num:'05', name:'Chef\'s Table Tasting Menu',
       tagline:'Fine dining. Your villa. Your table.',
-      desc:'A luxury fine-dining experience with a curated multi-course tasting menu served restaurant-style in your villa or private residence.',
-      features:['5–7 course tasting menu','Premium wine pairings','Personalized menu design','Interactive plating moments'],
+      desc:'Five to seven courses, plated and finished tableside the way a tasting menu should be, just moved out of the restaurant and into your own dining room.',
+      features:['5–7 course tasting menu','Premium wine pairings','Personalized menu design','Interactive plating moments','Personally planned by Chef Don Smith'],
       img:'images/Chef’s Table Tasting Menu.jpg'
     },
     {
       num:'06', name:'Cook With the Chef',
-      tagline:'Hands-on. Intimate. Unforgettable.',
-      desc:'A hands-on culinary experience where guests cook alongside the chef and enjoy the meal together.',
+      tagline:'Hands-on. Intimate. Just the two of you and a hot pan.',
+      desc:'Chef Donovan hands you a knife and a station, walks you through the dishes course by course, and you sit down together to eat what you made.',
       features:['Interactive cooking session','Cocktail pairing available','Recipe cards included','Perfect for groups and couples'],
       img:'images/Cook With the Chef.jpg'
     },
     {
       num:'07', name:'Seafood &amp; Sunset Experience',
       tagline:'Fresh catch. Poolside. Champagne.',
-      desc:'A coastal-inspired dinner featuring fresh seafood, tropical flavors, and sunset service.',
+      desc:'Whatever came off the boat that morning, grilled or served raw-bar style poolside as the sun goes down, champagne and oysters if you want them.',
       features:['Fresh local catch','Beachfront or poolside setup','Raw bar add-ons','Champagne &amp; oyster upgrade'],
       img:'images/Seafood and sunset.jpg'
     },
     {
       num:'08', name:'Rum &amp; Spice Experience',
       tagline:'Aged rum. Island spice. Flame-kissed.',
-      desc:'An immersive Caribbean dining experience celebrating aged rum, bold island spices, and flame-kissed cuisine.',
+      desc:'Aged rum poured alongside flame-kissed island dishes built on Scotch bonnet, allspice, and clove, the flavors that define Caribbean cooking, kept at full strength for the table.',
       features:['Curated rum pairings','Caribbean-inspired tasting menu','Live cocktail crafting','Optional cigar pairing add-on'],
       img:'images/rum and spice experience.jpg'
     }
@@ -528,10 +530,7 @@
         '<h3 class="exp-card-name">' + exp.name + '</h3>' +
         '<p class="exp-card-tagline">' + exp.tagline + '</p>' +
         '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">' +
-          '<button class="exp-card-btn" tabindex="-1">Explore' +
-            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
-          '</button>' +
-          '<button class="exp-card-btn" tabindex="-1">View Album' +
+          '<button class="exp-card-btn" tabindex="-1">See the Menu' +
             '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
           '</button>' +
         '</div>' +
