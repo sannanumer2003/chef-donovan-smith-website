@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ENTITY_NAME}} | Private Chef, Bahamas &amp; Caribbean</title>
-  <meta name="description" content="For more than 11 years, Chef Don Smith and his culinary team have brought epicurean dining to villas, yachts, and destinations across The Bahamas and beyond. {{ENTITY_NAME}}.">
+  <title>Chef Donovan Smith | Private Chef, Bahamas &amp; Caribbean</title>
+  <meta name="description" content="For more than 11 years, Chef Don Smith and his culinary team have brought epicurean dining to villas, yachts, and destinations across The Bahamas and beyond. Chef Donovan Smith.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
@@ -172,29 +172,6 @@
     @media(max-width:640px){
       .reel-card { width:190px; height:340px; }
     }
-    .hvt-vcard:hover img { transform:scale(1.05); }
-    @media(max-width:640px){ .hvt-vcard { height:300px!important; } }
-    /* video overlay */
-    .vpov{position:fixed;inset:0;z-index:9900;background:rgba(0,0,0,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 20px 20px;gap:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
-    .vpov.open{opacity:1;pointer-events:all}
-    .vpov-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(239,231,210,.08);border:1px solid rgba(239,231,210,.14);color:rgba(239,231,210,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0}
-    .vpov-close:hover{background:rgba(239,231,210,.16)}
-    .vpov-inner{position:relative;height:min(460px,calc(100dvh - 280px));aspect-ratio:9/16;border-radius:18px;overflow:hidden;flex-shrink:0}
-    .vpov-thumb{width:100%;height:100%;object-fit:cover;display:block}
-    .vpov-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.12) 55%,transparent 100%)}
-    .vpov-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(239,231,210,.13);border:2px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .15s;padding:0}
-    .vpov-center:hover{background:rgba(239,231,210,.26);transform:translate(-50%,-50%) scale(1.06)}
-    .vpov-controls{position:absolute;bottom:0;left:0;right:0;padding:0 16px 18px}
-    .vpov-prog-track{width:100%;height:3px;background:rgba(239,231,210,.18);border-radius:99px;cursor:pointer;overflow:hidden;margin-bottom:10px}
-    .vpov-prog-fill{height:100%;background:rgba(239,231,210,.85);border-radius:99px;width:0%}
-    .vpov-meta{display:flex;align-items:center;justify-content:space-between}
-    .vpov-time{font-size:10.5px;color:rgba(239,231,210,.45);font-family:var(--font-satoshi);letter-spacing:.04em}
-    .vpov-icons{display:flex;gap:14px;align-items:center}
-    .vpov-icons svg{width:15px;height:15px;fill:none;stroke:rgba(239,231,210,.45);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:stroke .2s}
-    .vpov-icons svg:hover{stroke:rgba(239,231,210,.88)}
-    .vpov-info{text-align:center;max-width:280px;flex-shrink:0}
-    .vpov-info-quote{font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.65);line-height:1.6;margin-bottom:8px}
-    .vpov-info-name{font-family:var(--font-satoshi);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.35)}
   </style>
 </head>
 <body>
@@ -397,14 +374,6 @@
     </div>
   </div>
 
-  <!-- ONE TEAM -->
-  <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
-    <div class="fade-up" style="max-width:640px">
-      <span style="display:block;font-family:var(--font-satoshi);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:24px">One Team</span>
-      <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text);margin-bottom:16px">Every Culinary Moment Of Your Stay</h2>
-      <p style="font-family:var(--font-satoshi);font-weight:400;font-size:16px;line-height:1.8;color:var(--text-muted)">From arrival provisions and daily villa dining to yacht service, private celebrations, and live-fire Caribbean experiences, Chef Don Smith and his team handle the culinary side of your trip, start to finish.</p>
-    </div>
-  </section>
 
   <!-- Services Modal -->
   <div id="svc-modal" class="svc-modal" aria-hidden="true">
@@ -701,60 +670,6 @@
     </div>
   </section>
 
-  <!-- ── VIDEO TESTIMONIALS ── -->
-  <section class="px-5 sm:px-8 lg:px-20 pb-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px">
-
-      <div class="hvt-vcard" data-vt="0" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
-        <img src="images/anniversary-dinner.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
-          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Nassau, Bahamas</span>
-          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">M. &amp; J. Harrison</p>
-        </div>
-      </div>
-
-      <div class="hvt-vcard" data-vt="1" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
-        <img src="images/luxury-private-dining-2.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
-          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">New York, USA</span>
-          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">The Williams Family</p>
-        </div>
-      </div>
-
-      <div class="hvt-vcard" data-vt="2" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
-        <img src="images/grand-event.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
-          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Paradise Island, Bahamas</span>
-          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">R. Clarke</p>
-        </div>
-      </div>
-
-      <div class="hvt-vcard" data-vt="3" style="position:relative;overflow:hidden;border-radius:14px;height:460px;cursor:pointer">
-        <img src="images/dinner-table.jpg" alt="" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.92) 0%,rgba(0,46,40,.28) 55%,transparent 100%)"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(239,231,210,.13);border:1.5px solid rgba(239,231,210,.38);display:flex;align-items:center;justify-content:center;pointer-events:none">
-          <svg viewBox="0 0 24 24" fill="rgb(239,231,210)" width="14" height="14" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px">
-          <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.6);margin-bottom:10px">Exuma, Bahamas</span>
-          <p style="margin:0;font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210)">S. Fontaine</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
 
   <!-- â"€â"€ REEL FEED â"€â"€ -->
@@ -813,7 +728,7 @@
 
     <div style="margin-bottom:32px">
       <span class="footer-brand">Chef Donovan Smith</span>
-            <span class="footer-tagline" style="display:block;margin-top:4px;font-family:var(--font-satoshi,sans-serif);font-size:11px;letter-spacing:.04em;opacity:.4">{{ENTITY_NAME}}</span>
+            <span class="footer-tagline" style="display:block;margin-top:4px;font-family:var(--font-satoshi,sans-serif);font-size:11px;letter-spacing:.04em;opacity:.4">Chef Donovan Smith</span>
       <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@chef.donsmith</a>
     </div>
 
@@ -844,104 +759,7 @@
 
 </div>
 
-<!-- Video Player Overlay -->
-<div class="vpov" id="idx-vpov">
-  <button class="vpov-close" id="idx-vpov-close" type="button" aria-label="Close video">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-  </button>
-  <div class="vpov-inner">
-    <img class="vpov-thumb" id="idx-vpov-thumb" src="" alt="Video testimonial" draggable="false">
-    <div class="vpov-shade"></div>
-    <button class="vpov-center" id="idx-vpov-play-btn" type="button" aria-label="Play video">
-      <svg id="idx-vpov-icon-play" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="24" height="24" style="margin-left:3px"><polygon points="5,3 19,12 5,21"/></svg>
-      <svg id="idx-vpov-icon-pause" viewBox="0 0 24 24" fill="rgb(239,231,210)" width="22" height="22" style="display:none"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
-    </button>
-    <div class="vpov-controls">
-      <div class="vpov-prog-track" id="idx-vpov-prog-track">
-        <div class="vpov-prog-fill" id="idx-vpov-prog-fill"></div>
-      </div>
-      <div class="vpov-meta">
-        <span class="vpov-time" id="idx-vpov-time">0:00 / 2:47</span>
-        <div class="vpov-icons">
-          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="vpov-info">
-    <p class="vpov-info-quote" id="idx-vpov-info-quote"></p>
-    <p class="vpov-info-name" id="idx-vpov-info-name"></p>
-  </div>
-</div>
 
 <script src="js/main.js"></script>
-<script>
-(function(){
-  var VT=[
-    {img:'images/anniversary-dinner.jpg',name:'M. & J. Harrison',loc:'Nassau, Bahamas',quote:'Chef Donovan transformed our anniversary into something we will never stop talking about.'},
-    {img:'images/luxury-private-dining-2.jpg',name:'The Williams Family',loc:'New York, USA',quote:"Private dinner was the highlight of our entire trip. His Caribbean fusion is unlike anything we've experienced."},
-    {img:'images/grand-event.jpg',name:'R. Clarke',loc:'Paradise Island, Bahamas',quote:'40 guests, flawless execution. The team is still talking about it months later.'},
-    {img:'images/dinner-table.jpg',name:'S. Fontaine',loc:'Exuma, Bahamas',quote:'He created a completely custom menu around my preferences. I have never felt so taken care of.'},
-  ];
-  var overlay=document.getElementById('idx-vpov');
-  var isPlaying=false,progPct=0,progInt=null;
-
-  function openVP(t){
-    document.getElementById('idx-vpov-thumb').src=t.img;
-    document.getElementById('idx-vpov-info-quote').textContent=t.quote;
-    document.getElementById('idx-vpov-info-name').textContent=t.name+', '+t.loc;
-    resetPlayer();
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-  }
-  function closeVP(){
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
-    resetPlayer();
-  }
-  function resetPlayer(){
-    isPlaying=false;progPct=0;clearInterval(progInt);progInt=null;
-    document.getElementById('idx-vpov-prog-fill').style.width='0%';
-    document.getElementById('idx-vpov-time').textContent='0:00 / 2:47';
-    document.getElementById('idx-vpov-icon-play').style.display='';
-    document.getElementById('idx-vpov-icon-pause').style.display='none';
-  }
-  function updateTime(p){
-    var e=Math.round(p/100*167);
-    document.getElementById('idx-vpov-time').textContent=Math.floor(e/60)+':'+(e%60<10?'0':'')+e%60+' / 2:47';
-  }
-
-  document.querySelectorAll('.hvt-vcard').forEach(function(card){
-    card.addEventListener('click',function(){ openVP(VT[+card.dataset.vt]); });
-  });
-  document.getElementById('idx-vpov-close').addEventListener('click',closeVP);
-  overlay.addEventListener('click',function(e){ if(e.target===overlay) closeVP(); });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&overlay.classList.contains('open')) closeVP(); });
-
-  document.getElementById('idx-vpov-play-btn').addEventListener('click',function(){
-    isPlaying=!isPlaying;
-    document.getElementById('idx-vpov-icon-play').style.display=isPlaying?'none':'';
-    document.getElementById('idx-vpov-icon-pause').style.display=isPlaying?'':'none';
-    if(isPlaying){
-      progInt=setInterval(function(){
-        progPct+=100/1670;
-        if(progPct>=100){progPct=100;clearInterval(progInt);isPlaying=false;
-          document.getElementById('idx-vpov-icon-play').style.display='';
-          document.getElementById('idx-vpov-icon-pause').style.display='none';}
-        document.getElementById('idx-vpov-prog-fill').style.width=progPct+'%';
-        updateTime(progPct);
-      },100);
-    } else { clearInterval(progInt);progInt=null; }
-  });
-
-  document.getElementById('idx-vpov-prog-track').addEventListener('click',function(e){
-    var rect=e.currentTarget.getBoundingClientRect();
-    progPct=Math.max(0,Math.min(100,(e.clientX-rect.left)/rect.width*100));
-    document.getElementById('idx-vpov-prog-fill').style.width=progPct+'%';
-    updateTime(progPct);
-  });
-})();
-</script>
 </body>
 </html>
