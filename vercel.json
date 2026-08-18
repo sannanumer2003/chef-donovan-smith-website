@@ -1,6 +1,0 @@
-{
-  "routes": [
-    { "src": "^/$", "dest": "/coming-soon.html" },
-    { "handle": "filesystem" }
-  ]
-}
