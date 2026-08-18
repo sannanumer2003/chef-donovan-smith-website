@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan Your Experience | {{ENTITY_NAME}}</title>
+  <title>Plan Your Experience | Chef Donovan Smith</title>
   <meta name="description" content="Start planning your Chef Don Smith experience: tell us about the trip, the guests, and the moments you want them to remember.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1007,9 +1007,9 @@ const EXP_SLUGS={
   'seafood-sunset':      'Seafood & Sunset Experience',
   'rum-spice':           'Rum & Spice Experience',
   'villa-residencies':   'Villa Residencies',
-  'yacht-islands':       'Yacht & Islands',
-  'private-jet-travel':  'Private Jet & Travel',
-  'events-celebrations': 'Events & Celebrations',
+  'yacht-islands':       'Yacht and Islands',
+  'private-jet-travel':  'Private Jet and Travel',
+  'events-celebrations': 'Events and Celebrations',
 };
 
 if(PRE_TYPE)ST.data.expType=PRE_TYPE;
@@ -1453,6 +1453,7 @@ function chrome(){
   const ctr=G('t-cnt');
   if(c==='intro'||c==='done'||c==='review'){ctr.textContent='';ctr.classList.remove('on');}
   else{ctr.textContent=qn+' / '+tot;ctr.classList.add('on');}
+  const ae=G('s-'+c);if(ae&&qn>0){const qb=ae.querySelector('.q-num');if(qb)qb.textContent=qn;}
   const pf=G('pfill'),pg=G('prog');
   const isEdge=(c==='intro'||c==='done');
   pg.classList.toggle('show',!isEdge);
