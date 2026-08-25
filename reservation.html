@@ -451,9 +451,9 @@
   <div class="slide active" id="s-intro">
     <div class="inner" style="text-align:center">
       <span class="ey" style="display:block;text-align:center">Chef Donovan Smith</span>
-      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Tell Us About The Experience You're Planning.</h1>
-      <p class="big-p" style="margin-left:auto;margin-right:auto">Nine quick questions, about two minutes. Our culinary concierge follows up with a tailored plan, not a generic email.</p>
-      <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Plan My Night</button>
+      <h1 class="big-h" style="font-size:clamp(38px,6vw,62px)">Tell Us About The Experience You Are Planning</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Share a few details and our culinary concierge will follow up with a tailored plan.</p>
+      <button class="ok" id="begin-btn" style="margin-left:auto;margin-right:auto">Start Planning</button>
       <p id="desktop-takes" style="margin-top:16px;font-family:var(--fs);font-size:13px;font-weight:400;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         Takes 2 minutes
@@ -570,7 +570,7 @@
       <!-- Optional text (revealed when No chosen) -->
       <div id="menu-describe" style="display:none;margin-top:20px">
         <div class="f-wrap">
-          <textarea class="f-ta" id="i-menu-desc" placeholder="Tell him what flavors you love (or want to avoid)" rows="2"></textarea>
+          <textarea class="f-ta" id="i-menu-desc" placeholder="Tell us what flavors you love (or want to avoid)" rows="2"></textarea>
           <div class="f-line"></div>
         </div>
       </div>
@@ -641,7 +641,7 @@
       </div>
       <p class="f-err" id="e-consent" style="display:none;margin-bottom:12px">Please accept the policies before submitting.</p>
       <button class="ok" id="submit-btn">Send Inquiry</button>
-      <p class="sub-note">There's no cost or commitment to inquire. Pricing is confirmed once he understands your vision. Chef Donovan's team will reach out within 24 hours.</p>
+      <p class="sub-note">There is no cost or commitment to inquire. Once we understand your plans, our culinary team will follow up with the next steps.</p>
     </div>
   </div>
 
@@ -649,8 +649,8 @@
   <div class="slide" id="s-done">
     <div class="inner" style="text-align:center">
       <span class="ey" style="display:block;text-align:center">Inquiry received</span>
-      <h1 class="big-h" style="font-size:clamp(28px,4.5vw,48px);line-height:1.2">Thank you for reaching out. We'll be in touch soon.</h1>
-      <p class="big-p" style="margin-left:auto;margin-right:auto">Next, he'll review what you shared and come back with a proposed menu and a quote. Nothing to pay until you approve it.</p>
+      <h1 class="big-h" style="font-size:clamp(28px,4.5vw,48px);line-height:1.2">Your Inquiry Has Been Received.</h1>
+      <p class="big-p" style="margin-left:auto;margin-right:auto">Thank you for reaching out. Our team will review the details you have shared and follow up with the appropriate menu, planning information and pricing.</p>
       <div class="socials" style="justify-content:center">
         <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener" class="soc-btn" title="Instagram" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#fff" stroke="none"/></svg>
@@ -981,7 +981,7 @@
     <button id="m-back" class="hide">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <button id="m-ok">Plan My Night</button>
+    <button id="m-ok">Start Planning</button>
   </div>
 </div>
 
@@ -1470,7 +1470,7 @@ function updateMobileNav(){
   const c=ST.cur;const fs=firstSlide();
   const back=G('m-back'),ok=G('m-ok');
   back.classList.toggle('hide',c==='intro'||c===fs||c==='done');
-  if(c==='intro')ok.textContent='Plan My Night';
+  if(c==='intro')ok.textContent='Start Planning';
   else if(c==='done')ok.textContent='Return to site';
   else if(c==='review')ok.textContent='Send Inquiry';
   else ok.textContent='Continue';
