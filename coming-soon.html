@@ -1,318 +1,527 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ENTITY_NAME}} | Coming Soon</title>
-  <meta name="description" content="{{ENTITY_NAME}} is arriving soon. Private culinary experiences across The Bahamas and the Caribbean, led by Chef Don Smith.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;background:rgb(0,46,40);color:rgb(239,231,210);font-family:'Satoshi',sans-serif;-webkit-font-smoothing:antialiased}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chef Donovan Smith | Coming Soon</title>
+    <meta
+      name="description"
+      content="Chef Donovan Smith is arriving soon. Private culinary experiences across The Bahamas and the Caribbean. Leave your email and we'll notify you at launch."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --dark: rgb(0, 46, 40);
+        --cream: rgb(239, 231, 210);
+        --bg: rgb(234, 225, 202);
+        --accent: rgb(97, 133, 180);
+      }
+      html,
+      body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--dark);
+        font-family: "Satoshi", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    .cs-wrap{
-      min-height:100vh;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      padding:40px 24px;
-      text-align:center;
-      position:relative;
-    }
+      .cs2-page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+        gap: 18px;
+        padding: 18px;
+      }
 
-    .cs-logo{
-      font-family:'Forum',serif;
-      font-size:clamp(22px,4vw,38px);
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      color:rgb(239,231,210);
-      margin-bottom:48px;
-      opacity:.9;
-    }
+      /* ---------- Left: dark panel ---------- */
+      .cs2-panel {
+        position: relative;
+        background: var(--dark);
+        border-radius: 18px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 520px;
+        min-width: 0;
+      }
+      .cs2-texture {
+        position: absolute;
+        inset: 0;
+        opacity: 0.5;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M14 9v10M9 14h10' stroke='%23efe7d2' stroke-width='1' stroke-linecap='round' opacity='0.35'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+      }
 
-    .cs-rule{
-      width:40px;height:1px;
-      background:rgba(239,231,210,.3);
-      margin:0 auto 32px;
-    }
+      .cs2-marquee {
+        position: relative;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 36px 0;
+        min-width: 0;
+      }
+      .cs2-track {
+        display: flex;
+        align-items: center;
+        gap: clamp(28px, 4vw, 56px);
+        width: max-content;
+        will-change: transform;
+        animation: cs2Scroll 38s linear infinite;
+      }
 
-    .cs-tagline{
-      font-size:12px;font-weight:400;
-      letter-spacing:.03em;
-      color:rgba(239,231,210,.4);
-      margin-bottom:40px;
-    }
+      @keyframes cs2Scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
 
-    .cs-eyebrow{
-      font-size:10px;font-weight:500;
-      text-transform:uppercase;letter-spacing:.26em;
-      color:rgba(239,231,210,.45);
-      margin-bottom:20px;
-    }
+      .cs2-shape {
+        position: relative;
+        flex: 0 0 auto;
+        width: clamp(180px, 20vw, 300px);
+        height: clamp(180px, 20vw, 300px);
+      }
+      .cs2-shape img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .cs2-accent-dot {
+        position: absolute;
+        left: 22%;
+        top: 22%;
+        width: 26%;
+        height: 26%;
+        border-radius: 50%;
+        background: var(--accent);
+        pointer-events: none;
+      }
 
-    .cs-timer{
-      display:flex;align-items:flex-start;justify-content:center;
-      gap:clamp(20px,4vw,48px);
-      margin-bottom:56px;
-    }
-    .cs-unit{display:flex;flex-direction:column;align-items:center;gap:8px}
-    .cs-num{
-      font-family:'Forum',serif;
-      font-size:clamp(44px,7vw,80px);
-      line-height:1;
-      letter-spacing:.02em;
-      color:rgb(239,231,210);
-      min-width:2ch;
-      text-align:center;
-    }
-    .cs-label{
-      font-size:9px;font-weight:500;
-      text-transform:uppercase;letter-spacing:.2em;
-      color:rgba(239,231,210,.35);
-    }
-    .cs-colon{
-      font-family:'Forum',serif;
-      font-size:clamp(40px,6vw,72px);
-      line-height:1;
-      color:rgba(239,231,210,.2);
-      margin-top:4px;
-    }
+      .cs2-panel-footer {
+        position: relative;
+        margin-top: auto;
+        padding: 26px clamp(24px, 4vw, 44px) 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .cs2-headline {
+        font-family: "Forum", serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        font-size: clamp(26px, 4.2vw, 50px);
+        line-height: 1.05;
+        color: var(--cream);
+      }
+      .cs2-sub {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: 400;
+        color: rgba(239, 231, 210, 0.55);
+        letter-spacing: 0.01em;
+      }
+      .cs2-social {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .cs2-social a {
+        color: rgba(239, 231, 210, 0.6);
+        text-decoration: none;
+        transition: color 0.2s;
+        display: flex;
+      }
+      .cs2-social a:hover {
+        color: rgba(239, 231, 210, 1);
+      }
 
-    /* Preview Access â€” matches site .btn: 12px / 500 / 0.1em tracking */
-    .cs-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:500;
-      text-transform:uppercase;letter-spacing:0.1em;
-      color:rgb(0,46,40);
-      background:rgb(239,231,210);border:none;
-      border-radius:999px;padding:14px 28px;
-      cursor:pointer;
-      white-space:nowrap;
-      transition:background .2s,transform .15s;
-    }
-    .cs-btn:hover{background:rgb(220,212,191);transform:scale(1.02)}
-    .cs-btn svg{transition:transform .2s ease}
-    .cs-btn:hover svg{transform:translateX(3px)}
+      /* ---------- Right: side column ---------- */
+      .cs2-side {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-height: 0;
+        min-width: 0;
+      }
+      .cs2-card {
+        background: var(--bg);
+        border: 1px solid rgba(0, 46, 40, 0.35);
+        border-radius: 22px;
+        padding: 24px;
+      }
 
-    /* Modal overlay */
-    .cs-overlay{
-      display:none;
-      position:fixed;inset:0;z-index:500;
-      background:rgba(0,26,22,.82);
-      backdrop-filter:blur(6px);
-      -webkit-backdrop-filter:blur(6px);
-      align-items:center;justify-content:center;
-      padding:24px;
-    }
-    .cs-overlay.open{display:flex}
+      .cs2-card-form input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(0, 46, 40, 0.3);
+        padding: 6px 2px 12px;
+        font-family: "Satoshi", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--dark);
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .cs2-card-form input::placeholder {
+        color: rgba(0, 46, 40, 0.45);
+      }
+      .cs2-card-form input:focus {
+        border-color: rgba(0, 46, 40, 0.7);
+      }
 
-    /* Modal card */
-    .cs-modal{
-      background:rgb(0,46,40);
-      border:1px solid rgba(239,231,210,.16);
-      border-radius:20px;
-      padding:clamp(32px,5vw,56px);
-      width:100%;max-width:400px;
-      text-align:left;
-      position:relative;
-      animation:modalIn .25s cubic-bezier(0.22,1,0.36,1);
-    }
-    @keyframes modalIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+      .cs2-notify {
+        width: 100%;
+        margin-top: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--dark);
+        color: var(--cream);
+        border: none;
+        border-radius: 999px;
+        padding: 14px 28px;
+        font-family: "Satoshi", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .cs2-notify:hover {
+        background: rgb(20, 64, 57);
+        transform: scale(1.02);
+      }
+      .cs2-notify:active {
+        transform: scale(0.98);
+      }
+      .cs2-notify svg {
+        transition: transform 0.2s ease;
+      }
+      .cs2-notify:hover svg {
+        transform: translateX(3px);
+      }
 
-    .cs-modal-close{
-      position:absolute;top:20px;right:20px;
-      background:none;border:none;cursor:pointer;
-      color:rgba(239,231,210,.4);
-      transition:color .15s;
-      padding:4px;
-    }
-    .cs-modal-close:hover{color:rgba(239,231,210,.8)}
+      .cs2-msg {
+        min-height: 16px;
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        color: rgba(0, 46, 40, 0.5);
+      }
+      .cs2-msg.is-error {
+        color: #a33b2c;
+      }
+      .cs2-msg.is-success {
+        color: rgb(0, 46, 40);
+      }
 
-    .cs-modal h2{
-      font-family:'Forum',serif;
-      font-size:clamp(20px,3vw,28px);
-      text-transform:uppercase;
-      letter-spacing:.04em;
-      color:rgb(239,231,210);
-      margin-bottom:8px;
-    }
-    .cs-modal p{
-      font-size:13px;font-weight:400;
-      color:rgba(239,231,210,.45);
-      line-height:1.6;
-      margin-bottom:28px;
-    }
+      .cs2-card-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .cs2-info-text {
+        font-family: "Forum", serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: clamp(19px, 2vw, 25px);
+        line-height: 1.28;
+        letter-spacing: 0.005em;
+        color: var(--dark);
+        max-width: 30ch;
+      }
+      .cs2-icons {
+        margin-top: auto;
+        padding-top: 32px;
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+      .cs2-icon-badge {
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .cs-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-    .cs-field label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:rgba(239,231,210,.38)}
-    .cs-field input{
-      width:100%;
-      background:rgba(239,231,210,.06);
-      border:1px solid rgba(239,231,210,.14);
-      border-radius:8px;
-      padding:12px 14px;
-      font-family:'Satoshi',sans-serif;font-size:14px;font-weight:400;
-      color:rgb(239,231,210);
-      outline:none;
-      transition:border-color .2s;
-      box-sizing:border-box;
-    }
-    .cs-field input::placeholder{color:rgba(239,231,210,.22)}
-    .cs-field input:focus{border-color:rgba(239,231,210,.32)}
+      .cs2-icon-badge img {
+        width: 16px;
+        height: 16px;
+      }
 
-    /* Enter button â€” same .btn match: 12px / 500 / 0.1em tracking */
-    .cs-submit{
-      width:100%;margin-top:8px;
-      display:flex;align-items:center;justify-content:center;gap:8px;
-      background:rgb(239,231,210);
-      color:rgb(0,46,40);
-      border:none;border-radius:999px;
-      padding:14px 28px;
-      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:500;
-      text-transform:uppercase;letter-spacing:0.1em;
-      white-space:nowrap;
-      cursor:pointer;
-      transition:background .15s,transform .15s;
-    }
-    .cs-submit:hover{background:rgb(220,212,191);transform:scale(1.02)}
-    .cs-submit:active{transform:scale(0.98)}
-    .cs-submit svg{transition:transform .2s ease}
-    .cs-submit:hover svg{transform:translateX(3px)}
+      @media (max-width: 900px) {
+        .cs2-page {
+          grid-template-columns: 1fr;
+          padding: 14px;
+          gap: 14px;
+        }
+        .cs2-panel {
+          min-height: 440px;
+        }
+        .cs2-side {
+          flex-direction: row;
+        }
+        .cs2-card-info {
+          min-height: 220px;
+        }
+      }
+      @media (max-width: 640px) {
+        .cs2-side {
+          flex-direction: column;
+        }
+        .cs2-panel-footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Shared shape masks -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs></defs>
+    </svg>
 
-    .cs-err{
-      display:none;
-      margin-top:12px;
-      font-size:12px;color:rgba(230,100,80,.9);
-      text-align:center;letter-spacing:.03em;
-    }
+    <div class="cs2-page">
+      <!-- Left: dark panel with drifting shapes -->
+      <div class="cs2-panel">
+        <div class="cs2-texture"></div>
 
-    .cs-footer{
-      position:absolute;bottom:28px;left:0;right:0;
-      font-size:10px;color:rgba(239,231,210,.2);
-      letter-spacing:.12em;text-transform:uppercase;
-    }
-  </style>
-</head>
-<body>
+        <div class="cs2-marquee">
+          <div class="cs2-track" id="cs2Track"></div>
+        </div>
 
-<div class="cs-wrap">
-
-  <p class="cs-logo">Chef Donovan Smith</p>
-  <div class="cs-rule"></div>
-
-  <p class="cs-tagline">A new chapter in private dining, arriving soon.</p>
-
-  <p class="cs-eyebrow">Coming Soon</p>
-
-  <div class="cs-timer">
-    <div class="cs-unit"><span class="cs-num" id="cs-d">00</span><span class="cs-label">Days</span></div>
-    <span class="cs-colon">:</span>
-    <div class="cs-unit"><span class="cs-num" id="cs-h">00</span><span class="cs-label">Hours</span></div>
-    <span class="cs-colon">:</span>
-    <div class="cs-unit"><span class="cs-num" id="cs-m">00</span><span class="cs-label">Minutes</span></div>
-    <span class="cs-colon">:</span>
-    <div class="cs-unit"><span class="cs-num" id="cs-s">00</span><span class="cs-label">Seconds</span></div>
-  </div>
-
-  <button class="cs-btn" id="cs-access-btn">
-    Preview Access
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-
-  <p class="cs-footer">&copy; 2026 chefdonsmith.com</p>
-
-</div>
-
-<!-- Auth modal -->
-<div class="cs-overlay" id="cs-overlay">
-  <div class="cs-modal">
-    <button class="cs-modal-close" id="cs-close" aria-label="Close">
-      <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
-    </button>
-    <h2>Preview Access</h2>
-    <p>Enter your access details to preview the site before launch.</p>
-    <form id="cs-form" novalidate autocomplete="off">
-      <div class="cs-field">
-        <label>Username</label>
-        <input type="text" id="cs-user" placeholder="Enter username" autocomplete="off">
+        <div class="cs2-panel-footer">
+          <div>
+            <h1 class="cs2-headline">You're early. We like that.</h1>
+            <p class="cs2-sub">
+              We're building something new, and you're invited to be among the
+              first to experience it.
+            </p>
+          </div>
+          <div class="cs2-social">
+            <a
+              href="https://instagram.com/chef.donsmith"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r=".5"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com/in/donovansmith242"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="cs-field">
-        <label>Password</label>
-        <input type="password" id="cs-pass" placeholder="Enter password">
+
+      <!-- Right: email capture -->
+      <div class="cs2-side">
+        <div class="cs2-card cs2-card-form">
+          <form id="cs2Form" novalidate>
+            <input
+              type="email"
+              id="cs2Email"
+              placeholder="Type your email here..."
+              autocomplete="email"
+              required
+            />
+            <button type="submit" class="cs2-notify" id="cs2Btn">
+              <span>Notify me</span>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </form>
+          <p class="cs2-msg" id="cs2Msg"></p>
+        </div>
+
+        <div class="cs2-card cs2-card-info">
+          <p class="cs2-info-text">
+            Leave your email above and we'll send you a notification as soon as
+            we go live.
+          </p>
+          <div class="cs2-icons">
+            <span class="cs2-icon-badge">
+              <img src="Assets/Frame-1.svg" alt="" />
+            </span>
+
+            <span class="cs2-icon-badge">
+              <img src="Assets/Frame-2.svg" alt="" />
+            </span>
+
+            <span class="cs2-icon-badge">
+              <img src="Assets/Frame-3.svg" alt="" />
+            </span>
+
+            <span class="cs2-icon-badge">
+              <img src="Assets/Frame.svg" alt="" />
+            </span>
+          </div>
+        </div>
       </div>
-      <button type="submit" class="cs-submit">
-        <span>Enter</span>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-      <p class="cs-err" id="cs-err">That didn't match. Please try again.</p>
-    </form>
-  </div>
-</div>
+    </div>
 
-<script>
-(function(){
-  var target=new Date('2026-08-08T00:00:00').getTime();
-  function pad(n){return String(n).padStart(2,'0')}
-  function tick(){
-    var now=Date.now();
-    var diff=target-now;
-    if(diff<=0){diff=0}
-    var d=Math.floor(diff/86400000);
-    var h=Math.floor((diff%86400000)/3600000);
-    var m=Math.floor((diff%3600000)/60000);
-    var s=Math.floor((diff%60000)/1000);
-    document.getElementById('cs-d').textContent=pad(d);
-    document.getElementById('cs-h').textContent=pad(h);
-    document.getElementById('cs-m').textContent=pad(m);
-    document.getElementById('cs-s').textContent=pad(s);
-  }
-  tick();
-  setInterval(tick,1000);
-})();
+    <script>
+      (function () {
+        var shapes = [
+          {
+            cls: "cs2-shape--a",
+            src: "Assets/Frame.png",
+            accent: true,
+          },
+          {
+            cls: "cs2-shape--b",
+            src: "Assets/Frame-1.png",
+            accent: false,
+          },
+          {
+            cls: "cs2-shape--c",
+            src: "Assets/Frame-2.png",
+            accent: false,
+          },
+          {
+            cls: "cs2-shape--d",
+            src: "Assets/Frame-3.png",
+            accent: false,
+          },
+        ];
 
-var overlay=document.getElementById('cs-overlay');
-document.getElementById('cs-access-btn').addEventListener('click',function(){
-  overlay.classList.add('open');
-  setTimeout(function(){document.getElementById('cs-user').focus();},80);
-});
-document.getElementById('cs-close').addEventListener('click',function(){
-  overlay.classList.remove('open');
-});
-overlay.addEventListener('click',function(e){
-  if(e.target===overlay)overlay.classList.remove('open');
-});
+        var track = document.getElementById("cs2Track");
+        var html = shapes
+          .map(function (s) {
+            return (
+              '<div class="cs2-shape ' +
+              s.cls +
+              '">' +
+              '<img src="' +
+              s.src +
+              '" alt="">' +
+              "</div>"
+            );
+          })
+          .join("");
+        // duplicate the sequence so the marquee loops seamlessly
+        track.innerHTML = html + html;
+      })();
 
-var U_HASH='09cdbbe0058bb46689ab1c6ea40fcd06c75118964cd29e4d26d2877d465f16d4';
-var P_HASH='53a46262467d10e718a6d3a6390412f5cf8b0bb9aab0e01514f8b45b05eef604';
+      (function () {
+        var form = document.getElementById("cs2Form");
+        var input = document.getElementById("cs2Email");
+        var msg = document.getElementById("cs2Msg");
+        var btn = document.getElementById("cs2Btn");
+        var btnLabel = btn.querySelector("span");
 
-async function sha256(str){
-  var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-}
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var email = input.value.trim();
+          var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-document.getElementById('cs-form').addEventListener('submit',async function(e){
-  e.preventDefault();
-  var u=document.getElementById('cs-user').value.trim();
-  var p=document.getElementById('cs-pass').value;
-  var err=document.getElementById('cs-err');
-  var btn=document.querySelector('.cs-submit');
-  var lbl=btn.querySelector('span');
-  lbl.textContent='Checking...';btn.disabled=true;
-  var uHash=await sha256(u);
-  var pHash=await sha256(p);
-  lbl.textContent='Enter';btn.disabled=false;
-  if(uHash===U_HASH&&pHash===P_HASH){
-    sessionStorage.setItem('preview_access','1');
-    window.location.href='/index.html';
-  }else{
-    err.style.display='block';
-    document.getElementById('cs-pass').value='';
-    document.getElementById('cs-pass').focus();
-  }
-});
-</script>
+          if (!valid) {
+            msg.textContent = "Please enter a valid email address.";
+            msg.classList.remove("is-success");
+            msg.classList.add("is-error");
+            input.focus();
+            return;
+          }
 
-</body>
+          try {
+            var list = JSON.parse(
+              localStorage.getItem("cs_notify_emails") || "[]",
+            );
+            if (list.indexOf(email) === -1) {
+              list.push(email);
+              localStorage.setItem("cs_notify_emails", JSON.stringify(list));
+            }
+          } catch (err) {}
+
+          msg.textContent = "You're on the list — we'll be in touch.";
+          msg.classList.remove("is-error");
+          msg.classList.add("is-success");
+          input.value = "";
+          btnLabel.textContent = "Added";
+          setTimeout(function () {
+            btnLabel.textContent = "Notify me";
+          }, 2400);
+        });
+      })();
+    </script>
+  </body>
 </html>
