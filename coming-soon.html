@@ -195,6 +195,9 @@
       .cs2-card-form input:focus {
         border-color: rgba(0, 46, 40, 0.7);
       }
+      .cs2-card-form input + input {
+        margin-top: 16px;
+      }
 
       .cs2-notify {
         width: 100%;
@@ -388,6 +391,20 @@
         <div class="cs2-card cs2-card-form">
           <form id="cs2Form" novalidate>
             <input
+              type="text"
+              id="cs2Name"
+              placeholder="Name"
+              autocomplete="name"
+              required
+            />
+            <input
+              type="tel"
+              id="cs2Number"
+              placeholder="Number"
+              autocomplete="tel"
+              required
+            />
+            <input
               type="email"
               id="cs2Email"
               placeholder="Type your email here..."
@@ -484,6 +501,8 @@
 
       (function () {
         var form = document.getElementById("cs2Form");
+        var nameInput = document.getElementById("cs2Name");
+        var numberInput = document.getElementById("cs2Number");
         var input = document.getElementById("cs2Email");
         var msg = document.getElementById("cs2Msg");
         var btn = document.getElementById("cs2Btn");
@@ -491,8 +510,26 @@
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
+          var name = nameInput.value.trim();
+          var number = numberInput.value.trim();
           var email = input.value.trim();
           var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+          if (!name) {
+            msg.textContent = "Please enter your name.";
+            msg.classList.remove("is-success");
+            msg.classList.add("is-error");
+            nameInput.focus();
+            return;
+          }
+
+          if (!number) {
+            msg.textContent = "Please enter your number.";
+            msg.classList.remove("is-success");
+            msg.classList.add("is-error");
+            numberInput.focus();
+            return;
+          }
 
           if (!valid) {
             msg.textContent = "Please enter a valid email address.";
@@ -506,15 +543,15 @@
             var list = JSON.parse(
               localStorage.getItem("cs_notify_emails") || "[]",
             );
-            if (list.indexOf(email) === -1) {
-              list.push(email);
-              localStorage.setItem("cs_notify_emails", JSON.stringify(list));
-            }
+            list.push({ name: name, number: number, email: email });
+            localStorage.setItem("cs_notify_emails", JSON.stringify(list));
           } catch (err) {}
 
           msg.textContent = "You're on the list — we'll be in touch.";
           msg.classList.remove("is-error");
           msg.classList.add("is-success");
+          nameInput.value = "";
+          numberInput.value = "";
           input.value = "";
           btnLabel.textContent = "Added";
           setTimeout(function () {
