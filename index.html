@@ -1,765 +1,3179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chef Donovan Smith | Private Chef, Bahamas &amp; Caribbean</title>
-  <meta name="description" content="For more than 11 years, Chef Don Smith and his culinary team have brought epicurean dining to villas, yachts, and destinations across The Bahamas and beyond. Chef Donovan Smith.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <script>
-    tailwind = { config: { theme: { extend: {
-      fontFamily: { forum: ['Forum','serif'], satoshi: ['Satoshi','sans-serif'] },
-      borderRadius: { card: '16px', page: '48px' }
-    }}}}
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* nav-link in CSS is dark green; force cream on the dark hero video */
-    .hero-nav .nav-link { color: rgba(239,231,210,0.7); }
-    .hero-nav .nav-link:hover { color: rgb(239,231,210); }
-    .hero-nav .nav-link::after { background: rgb(239,231,210); }
-    .hero-btn-outline { color: rgb(239,231,210) !important; border-color: rgba(239,231,210,0.4) !important; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chef Donovan Smith | Private Chef, Bahamas &amp; Caribbean</title>
+    <meta
+      name="description"
+      content="For more than 11 years, Chef Don Smith and his culinary team have brought epicurean dining to villas, yachts, and destinations across The Bahamas and beyond. Chef Donovan Smith."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind = {
+        config: {
+          theme: {
+            extend: {
+              fontFamily: {
+                forum: ["Forum", "serif"],
+                satoshi: ["Satoshi", "sans-serif"],
+              },
+              borderRadius: { card: "16px", page: "48px" },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* nav-link in CSS is dark green; force cream on the dark hero video */
+      .hero-nav .nav-link {
+        color: rgba(239, 231, 210, 0.7);
+      }
+      .hero-nav .nav-link:hover {
+        color: rgb(239, 231, 210);
+      }
+      .hero-nav .nav-link::after {
+        background: rgb(239, 231, 210);
+      }
+      .hero-btn-outline {
+        color: rgb(239, 231, 210) !important;
+        border-color: rgba(239, 231, 210, 0.4) !important;
+      }
 
-    /* â"€â"€ Private Services â"€â"€ */
-    .svc-card > img {
-      position:absolute;inset:0;width:100%;height:100%;
-      object-fit:cover;
-      transition:transform .75s cubic-bezier(.22,1,.36,1);
-    }
-    .svc-card:hover > img { transform:scale(1.05); }
-    .svc-explore {
-      display:inline-flex;align-items:center;gap:6px;
-      margin-top:20px;padding:11px 24px;
-      background:rgb(239,231,210);color:rgb(0,46,40);
-      border:none;border-radius:100px;
-      font-family:'Satoshi',sans-serif;font-size:11px;font-weight:700;
-      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-      transition:opacity .2s,transform .15s;
-    }
-    .svc-explore:hover { opacity:.88;transform:translateY(-1px); }
-    /* Services modal */
-    .svc-modal {
-      position:fixed;inset:0;z-index:3000;
-      background:rgba(0,8,6,.75);
-      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-      display:flex;align-items:center;justify-content:center;
-      padding:16px;
-      opacity:0;pointer-events:none;
-      transition:opacity .3s ease;
-    }
-    .svc-modal.open { opacity:1;pointer-events:all; }
-    .svc-modal-box {
-      width:100%;max-width:580px;max-height:92vh;
-      background:rgb(0,46,40);
-      border:1px solid rgba(239,231,210,.1);
-      border-radius:20px;overflow:hidden;
-      display:flex;flex-direction:column;
-      transform:scale(.96) translateY(16px);
-      transition:transform .4s cubic-bezier(.22,1,.36,1);
-    }
-    .svc-modal.open .svc-modal-box { transform:scale(1) translateY(0); }
-    .svc-modal-photo { position:relative;height:200px;overflow:hidden;flex-shrink:0; }
-    .svc-modal-photo img { width:100%;height:100%;object-fit:cover;display:block; }
-    .svc-modal-photo-grad { position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,46,40,0) 0%,rgba(0,30,24,.65) 100%); }
-    .svc-modal-close {
-      position:absolute;top:14px;right:14px;
-      width:32px;height:32px;border-radius:50%;
-      background:rgba(0,46,40,.6);border:1px solid rgba(239,231,210,.18);
-      display:flex;align-items:center;justify-content:center;
-      color:rgba(239,231,210,.8);cursor:pointer;
-      backdrop-filter:blur(4px);
-      transition:background .2s;
-    }
-    .svc-modal-close:hover { background:rgba(0,46,40,.85); }
-    .svc-modal-body { padding:36px 36px 40px;overflow-y:auto; }
-    .svc-modal-body::-webkit-scrollbar { width:3px; }
-    .svc-modal-body::-webkit-scrollbar-thumb { background:rgba(239,231,210,.15);border-radius:2px; }
-    .svc-modal-hl {
-      display:flex;flex-direction:column;gap:0;margin-bottom:36px;
-    }
-    .svc-modal-hl li {
-      display:flex;align-items:center;gap:12px;
-      padding:11px 0;border-bottom:1px solid rgba(239,231,210,.07);
-      font-family:'Satoshi',sans-serif;font-size:14px;color:rgba(239,231,210,.75);
-    }
-    .svc-modal-hl li::before {
-      content:'';width:4px;height:4px;border-radius:50%;
-      background:rgba(239,231,210,.4);flex-shrink:0;
-    }
-    .svc-modal-cta {
-      display:block;width:100%;padding:15px;
-      background:rgb(239,231,210);color:rgb(0,46,40);
-      font-family:'Satoshi',sans-serif;font-size:12px;font-weight:700;
-      letter-spacing:.1em;text-transform:uppercase;
-      text-decoration:none;text-align:center;border-radius:10px;
-      transition:opacity .2s,transform .15s;
-    }
-    .svc-modal-cta:hover { opacity:.88;transform:translateY(-1px); }
-    @media(max-width:767px){
-      .svc-grid { grid-template-columns:1fr !important; }
-      .svc-card { aspect-ratio:16/9 !important; max-height:260px !important; }
-      .svc-modal-body { padding:24px 24px 32px; }
-    }
+      /* â"€â"€ Private Services â"€â"€ */
+      .svc-card > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .svc-card:hover > img {
+        transform: scale(1.05);
+      }
+      .svc-explore {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 20px;
+        padding: 11px 24px;
+        background: rgb(239, 231, 210);
+        color: rgb(0, 46, 40);
+        border: none;
+        border-radius: 100px;
+        font-family: "Satoshi", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+      }
+      .svc-explore:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      /* Services modal */
+      .svc-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        background: rgba(0, 8, 6, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .svc-modal.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .svc-modal-box {
+        width: 100%;
+        max-width: 580px;
+        max-height: 92vh;
+        background: rgb(0, 46, 40);
+        border: 1px solid rgba(239, 231, 210, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transform: scale(0.96) translateY(16px);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .svc-modal.open .svc-modal-box {
+        transform: scale(1) translateY(0);
+      }
+      .svc-modal-photo {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .svc-modal-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .svc-modal-photo-grad {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 46, 40, 0) 0%,
+          rgba(0, 30, 24, 0.65) 100%
+        );
+      }
+      .svc-modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(0, 46, 40, 0.6);
+        border: 1px solid rgba(239, 231, 210, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(239, 231, 210, 0.8);
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        transition: background 0.2s;
+      }
+      .svc-modal-close:hover {
+        background: rgba(0, 46, 40, 0.85);
+      }
+      .svc-modal-body {
+        padding: 36px 36px 40px;
+        overflow-y: auto;
+      }
+      .svc-modal-body::-webkit-scrollbar {
+        width: 3px;
+      }
+      .svc-modal-body::-webkit-scrollbar-thumb {
+        background: rgba(239, 231, 210, 0.15);
+        border-radius: 2px;
+      }
+      .svc-modal-hl {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 36px;
+      }
+      .svc-modal-hl li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(239, 231, 210, 0.07);
+        font-family: "Satoshi", sans-serif;
+        font-size: 14px;
+        color: rgba(239, 231, 210, 0.75);
+      }
+      .svc-modal-hl li::before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(239, 231, 210, 0.4);
+        flex-shrink: 0;
+      }
+      .svc-modal-cta {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: rgb(239, 231, 210);
+        color: rgb(0, 46, 40);
+        font-family: "Satoshi", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 10px;
+        transition:
+          opacity 0.2s,
+          transform 0.15s;
+      }
+      .svc-modal-cta:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+      }
+      @media (max-width: 767px) {
+        .svc-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .svc-card {
+          aspect-ratio: 16/9 !important;
+          max-height: 260px !important;
+        }
+        .svc-modal-body {
+          padding: 24px 24px 32px;
+        }
+      }
 
-    /* â"€â"€ Reel feed â"€â"€ */
-    @keyframes reelScroll {
-      from { transform:translateX(0); }
-      to   { transform:translateX(-50%); }
-    }
-    .reel-track {
-      display:flex; gap:10px; width:max-content;
-      animation:reelScroll 80s linear infinite;
-    }
-    .reel-track:hover { animation-play-state:paused; }
-    .reel-card {
-      width:260px; height:465px; border-radius:14px;
-      overflow:hidden; position:relative; flex-shrink:0; cursor:pointer;
-    }
-    .reel-card img {
-      width:100%; height:100%; object-fit:cover; display:block;
-      transition:transform .55s ease;
-    }
-    .reel-card:hover img { transform:scale(1.05); }
-    .reel-play {
-      position:absolute;top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      width:42px;height:42px;border-radius:50%;
-      background:rgba(255,255,255,.18);
-      border:1.5px solid rgba(255,255,255,.4);
-      display:flex;align-items:center;justify-content:center;
-      backdrop-filter:blur(4px);
-      transition:background .2s, transform .2s;
-    }
-    .reel-card:hover .reel-play {
-      background:rgba(255,255,255,.28);
-      transform:translate(-50%,-50%) scale(1.08);
-    }
-    .reel-mask {
-      -webkit-mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
-      mask-image:linear-gradient(to right,transparent 0%,black 1%,black 99%,transparent 100%);
-    }
-    /* â"€â"€ 4-col private services cards â"€â"€ */
-    @keyframes psvcIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-    .psvc-card {
-      position:relative;overflow:hidden;border-radius:14px;
-      height:460px;cursor:pointer;
-      animation:psvcIn .75s cubic-bezier(.22,1,.36,1) both;
-    }
-    .psvc-card .pimg { position:absolute;inset:0;transition:transform .7s cubic-bezier(.22,1,.36,1); }
-    .psvc-card .pimg img { width:100%;height:100%;object-fit:cover; }
-    .psvc-card:hover .pimg { transform:scale(1.05); }
-    .psvc-card .pov { position:absolute;inset:0;background:linear-gradient(to top,rgba(0,20,16,.95) 0%,rgba(0,46,40,.3) 55%,transparent 100%);transition:opacity .3s; }
-    .psvc-card:hover .pov { opacity:.88; }
-    .psvc-card .pc { position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:4; }
-    .psvc-card .pgrain { position:absolute;inset:0;background-image:var(--noise);background-repeat:repeat;background-size:256px 256px;opacity:.04;mix-blend-mode:overlay;pointer-events:none;z-index:3; }
-    .psvc-num { display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,231,210,.8);margin-bottom:10px; }
-    .psvc-name { font-family:var(--font-forum);font-size:clamp(18px,1.6vw,23px);line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210); }
-    .psvc-tag { font-family:var(--font-satoshi);font-size:13px;color:rgba(239,231,210,.88);max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin-top .3s ease; }
-    .psvc-card:hover .psvc-tag { max-height:50px;opacity:1;margin-top:8px; }
-    .psvc-btn { display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:9px 20px;background:rgba(239,231,210,.1);border:1px solid rgba(239,231,210,.22);border-radius:100px;font-family:var(--font-satoshi);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgb(239,231,210);cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease,background .2s; }
-    .psvc-card:hover .psvc-btn { opacity:1;transform:translateY(0); }
-    .psvc-btn:hover { background:rgba(239,231,210,.2); }
-    @media(max-width:640px){ .psvc-card { height:300px; } }
-    @media(max-width:768px){
-      .psvc-tag { max-height:50px;opacity:.88;margin-top:7px; }
-      .psvc-btn { opacity:1;transform:translateY(0); }
-    }
-    @media(max-width:640px){
-      .reel-card { width:190px; height:340px; }
-    }
-  </style>
-</head>
-<body>
+      /* â"€â"€ Reel feed â"€â"€ */
+      @keyframes reelScroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .reel-track {
+        display: flex;
+        gap: 10px;
+        width: max-content;
+        animation: reelScroll 80s linear infinite;
+      }
+      .reel-track:hover {
+        animation-play-state: paused;
+      }
+      .reel-card {
+        width: 260px;
+        height: 465px;
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .reel-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.55s ease;
+      }
+      .reel-card:hover img {
+        transform: scale(1.05);
+      }
+      .reel-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .reel-card:hover .reel-play {
+        background: rgba(255, 255, 255, 0.28);
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .reel-mask {
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          black 1%,
+          black 99%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          black 1%,
+          black 99%,
+          transparent 100%
+        );
+      }
+      /* â"€â"€ 4-col private services cards â"€â"€ */
+      @keyframes psvcIn {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .psvc-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        height: 460px;
+        cursor: pointer;
+        animation: psvcIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      .psvc-card .pimg {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .psvc-card .pimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .psvc-card:hover .pimg {
+        transform: scale(1.05);
+      }
+      .psvc-card .pov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 20, 16, 0.95) 0%,
+          rgba(0, 46, 40, 0.3) 55%,
+          transparent 100%
+        );
+        transition: opacity 0.3s;
+      }
+      .psvc-card:hover .pov {
+        opacity: 0.88;
+      }
+      .psvc-card .pc {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 28px;
+        z-index: 4;
+      }
+      .psvc-card .pgrain {
+        position: absolute;
+        inset: 0;
+        background-image: var(--noise);
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        opacity: 0.04;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        z-index: 3;
+      }
+      .psvc-num {
+        display: block;
+        font-family: var(--font-satoshi);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(239, 231, 210, 0.8);
+        margin-bottom: 10px;
+      }
+      .psvc-name {
+        font-family: var(--font-forum);
+        font-size: clamp(18px, 1.6vw, 23px);
+        line-height: 1.1;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        color: rgb(239, 231, 210);
+      }
+      .psvc-tag {
+        font-family: var(--font-satoshi);
+        font-size: 13px;
+        color: rgba(239, 231, 210, 0.88);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.35s ease,
+          opacity 0.3s ease,
+          margin-top 0.3s ease;
+      }
+      .psvc-card:hover .psvc-tag {
+        max-height: 50px;
+        opacity: 1;
+        margin-top: 8px;
+      }
+      .psvc-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 16px;
+        padding: 9px 20px;
+        background: rgba(239, 231, 210, 0.1);
+        border: 1px solid rgba(239, 231, 210, 0.22);
+        border-radius: 100px;
+        font-family: var(--font-satoshi);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgb(239, 231, 210);
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          background 0.2s;
+      }
+      .psvc-card:hover .psvc-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .psvc-btn:hover {
+        background: rgba(239, 231, 210, 0.2);
+      }
+      @media (max-width: 640px) {
+        .psvc-card {
+          height: 300px;
+        }
+      }
+      @media (max-width: 768px) {
+        .psvc-tag {
+          max-height: 50px;
+          opacity: 0.88;
+          margin-top: 7px;
+        }
+        .psvc-btn {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 640px) {
+        .reel-card {
+          width: 190px;
+          height: 340px;
+        }
+      }
 
-<div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
-<div id="mobile-panel" class="mobile-menu-panel">
-  <div style="position:absolute;top:32px;right:32px">
-    <button id="close-menu-btn" aria-label="Close menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
-    </button>
-  </div>
-  <nav class="flex flex-col items-center gap-8">
-    <a href="index.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Home</a>
-    <!-- 1. Experiences accordion -->
-    <div class="mobile-accordion" style="text-align:center">
-      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Experiences<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
-      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:16px;margin-top:18px">
-        <!-- Specialist Chef Services nested accordion -->
-        <div class="mobile-accordion" style="text-align:center">
-          <button class="mobile-accordion-trigger" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.82);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Specialist Chef Services<svg class="mobile-accordion-chevron" width="16" height="16" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.4)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
-          <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:12px">
-            <a href="villa-residencies.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Villa Residencies</a>
-            <a href="yacht-islands.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Yacht &amp; Islands</a>
-            <a href="private-jet-travel.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Private Jet &amp; Travel</a>
-            <a href="events-celebrations.html" style="font-family:var(--font-satoshi);font-size:clamp(16px,4vw,22px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(239,231,210,.65);text-decoration:none">Events &amp; Celebrations</a>
-          </div>
-        </div>
-        <a href="single-bespoke-experiences.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Single Bespoke Experiences</a>
+
+
+
+/* ===== DINNER SERIES ===== */
+
+.dinner-series-section {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgb(239, 231, 210);
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* VIDEO */
+.dinner-series-video {
+  width: 100%;
+  height: clamp(360px, 40vw, 610px);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+}
+
+.dinner-series-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* CONTENT UNDER VIDEO */
+.dinner-series-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  align-items: start;
+  gap: clamp(30px, 5vw, 90px);
+  padding: 34px 32px 26px;
+}
+
+/* HEADING */
+.dinner-series-heading h2 {
+  margin: 0;
+  font-family: var(--font-forum);
+  font-size: clamp(25px, 2.5vw, 38px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: .01em;
+  color: rgb(0, 46, 40);
+}
+
+/* DESCRIPTION */
+.dinner-series-description {
+  max-width: 340px;
+}
+
+.dinner-series-description p {
+  margin: 0 0 24px 0;
+  font-family: var(--font-satoshi);
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+  color: rgba(0, 46, 40, .88);
+}
+
+.dinner-series-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA AREA */
+.dinner-series-action {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dinner-series-btn {
+  width: 100%;
+  max-width: 520px;
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 12px 26px;
+
+  background: rgb(0, 46, 40);
+  color: rgb(239, 231, 210);
+
+  border-radius: 999px;
+
+  font-family: var(--font-satoshi);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.dinner-series-btn:hover {
+  transform: translateY(-2px);
+  background: rgb(0, 55, 47);
+}
+
+.dinner-series-arrow {
+  font-size: 15px;
+  line-height: 1;
+  transition: transform .25s ease;
+}
+
+.dinner-series-btn:hover .dinner-series-arrow {
+  transform: translateX(4px);
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+
+  .dinner-series-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dinner-series-action {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
+  .dinner-series-btn {
+    max-width: 100%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+
+  .dinner-series-section {
+    padding: 10px;
+  }
+
+  .dinner-series-video {
+    height: 300px;
+  }
+
+  .dinner-series-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 26px 14px 18px;
+  }
+
+  .dinner-series-heading h2 {
+    font-size: 30px;
+  }
+
+  .dinner-series-description {
+    max-width: none;
+  }
+
+  .dinner-series-description p {
+    font-size: 13px;
+  }
+
+  .dinner-series-action {
+    grid-column: auto;
+  }
+
+  .dinner-series-btn {
+    max-width: none;
+  }
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+    <div id="mobile-panel" class="mobile-menu-panel">
+      <div style="position: absolute; top: 32px; right: 32px">
+        <button
+          id="close-menu-btn"
+          aria-label="Close menu"
+          style="
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(239, 231, 210, 0.7);
+          "
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 22 22"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          >
+            <line x1="4" y1="4" x2="18" y2="18" />
+            <line x1="18" y1="4" x2="4" y2="18" />
+          </svg>
+        </button>
       </div>
-    </div>
-    <!-- 2. Menus accordion -->
-    <div class="mobile-accordion" style="text-align:center">
-      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">Menus<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
-      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
-        <a href="experiences-breakfast.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Breakfast</a>
-        <a href="experiences-lunch.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Lunch</a>
-        <a href="experiences-dining.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Dining</a>
-      </div>
-    </div>
-    <!-- 3. Reviews -->
-    <a href="reviews.html" class="mobile-nav-link uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);text-decoration:none">Reviews</a>
-    <!-- 4. More accordion -->
-    <div class="mobile-accordion" style="text-align:center">
-      <button class="mobile-accordion-trigger uppercase" style="font-family:var(--font-forum);font-size:clamp(36px,9vw,60px);line-height:1;color:rgb(239,231,210);background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;padding:0">More<svg class="mobile-accordion-chevron" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="rgba(239,231,210,.55)" stroke-width="1.8" stroke-linecap="round"><polyline points="4 8 11 15 18 8"/></svg></button>
-      <div class="mobile-accordion-body" style="display:none;flex-direction:column;align-items:center;gap:14px;margin-top:16px">
-        <a href="about.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">About</a>
-        <a href="gallery.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Gallery</a>
-        <a href="blog.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Blog</a>
-        <a href="partner.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Partner</a>
-        <a href="signature-standard.html" style="font-family:var(--font-forum);font-size:clamp(26px,6vw,38px);line-height:1;text-transform:uppercase;color:rgba(239,231,210,.75);text-decoration:none">Our Standard</a>
-      </div>
-    </div>
-  </nav>
-  <div style="position:absolute;bottom:32px;left:32px;right:32px">
-    <a href="reservation.html" class="mobile-nav-link btn btn-dark" style="display:flex;justify-content:center">Plan Your Experience</a>
-  </div>
-</div>
-
-<div class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]" style="background:var(--bg)">
-
-  <!-- â"€â"€ HERO â"€â"€ -->
-  <div class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]" style="grid-template-columns:1fr minmax(360px,0.3fr)">
-
-    <!-- Left: hero video panel (dark; all overlaid text pinned to cream) -->
-    <div class="grain relative overflow-hidden h-[80vh] lg:h-full" style="border-radius:16px;border:1px solid var(--border)">
-      <img src="images/main-hero-image-2.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
-      <!-- top scrim: darkens nav area -->
-      <div class="absolute inset-x-0 top-0 pointer-events-none" style="height:40%;z-index:1;background:linear-gradient(to bottom,rgba(0,20,18,.72) 0%,transparent 100%)"></div>
-      <!-- bottom scrim: darkens title area -->
-      <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:92%;z-index:1;background:linear-gradient(to top,rgba(0,10,8,.88) 0%,rgba(0,10,8,.65) 38%,rgba(0,10,8,.38) 60%,rgba(0,10,8,.15) 80%,transparent 100%)"></div>
-
-      <!-- Header (on dark video — full-width, logo/links/button spread) -->
-      <div class="absolute top-0 left-0 right-0" style="z-index:20">
-        <header class="hero-nav flex items-center justify-between px-8 sm:px-10 py-6">
-          <a href="index.html" style="font-family:var(--font-forum);font-size:24px;text-transform:uppercase;letter-spacing:.1em;color:rgb(239,231,210);text-decoration:none;white-space:nowrap;flex-shrink:0">Chef Don Smith</a>
-          <nav class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="nav-link">Home</a>
-        <!-- 1. Experiences -->
-        <div class="nav-dropdown-wrap">
-          <a href="single-bespoke-experiences.html" class="nav-link nav-has-dropdown">Experiences <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
-          <div class="nav-dropdown" style="min-width:230px">
-            <div class="nav-dropdown-nested-wrap">
-              <a href="specialist-chef-services.html" class="nav-dropdown-item nav-dropdown-nested-trigger">Specialist Chef Services <svg width="6" height="10" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"><polyline points="1 1 5 5 1 9"/></svg></a>
-              <div class="nav-dropdown-nested">
-                <a href="villa-residencies.html" class="nav-dropdown-item">Villa Residencies</a>
-                <a href="yacht-islands.html" class="nav-dropdown-item">Yacht &amp; Islands</a>
-                <a href="private-jet-travel.html" class="nav-dropdown-item">Private Jet &amp; Travel</a>
-                <a href="events-celebrations.html" class="nav-dropdown-item">Events &amp; Celebrations</a>
+      <nav class="flex flex-col items-center gap-8">
+        <a
+          href="index.html"
+          class="mobile-nav-link uppercase"
+          style="
+            font-family: var(--font-forum);
+            font-size: clamp(36px, 9vw, 60px);
+            line-height: 1;
+            color: rgb(239, 231, 210);
+            text-decoration: none;
+          "
+          >Home</a
+        >
+        <!-- 1. Experiences accordion -->
+        <div class="mobile-accordion" style="text-align: center">
+          <button
+            class="mobile-accordion-trigger uppercase"
+            style="
+              font-family: var(--font-forum);
+              font-size: clamp(36px, 9vw, 60px);
+              line-height: 1;
+              color: rgb(239, 231, 210);
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0;
+            "
+          >
+            Experiences<svg
+              class="mobile-accordion-chevron"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              stroke="rgba(239,231,210,.55)"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <polyline points="4 8 11 15 18 8" />
+            </svg>
+          </button>
+          <div
+            class="mobile-accordion-body"
+            style="
+              display: none;
+              flex-direction: column;
+              align-items: center;
+              gap: 16px;
+              margin-top: 18px;
+            "
+          >
+            <!-- Specialist Chef Services nested accordion -->
+            <div class="mobile-accordion" style="text-align: center">
+              <button
+                class="mobile-accordion-trigger"
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(26px, 6vw, 38px);
+                  line-height: 1;
+                  text-transform: uppercase;
+                  color: rgba(239, 231, 210, 0.82);
+                  background: none;
+                  border: none;
+                  cursor: pointer;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 0;
+                "
+              >
+                Specialist Chef Services<svg
+                  class="mobile-accordion-chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 22 22"
+                  fill="none"
+                  stroke="rgba(239,231,210,.4)"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                >
+                  <polyline points="4 8 11 15 18 8" />
+                </svg>
+              </button>
+              <div
+                class="mobile-accordion-body"
+                style="
+                  display: none;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 10px;
+                  margin-top: 12px;
+                "
+              >
+                <a
+                  href="villa-residencies.html"
+                  style="
+                    font-family: var(--font-satoshi);
+                    font-size: clamp(16px, 4vw, 22px);
+                    font-weight: 500;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: rgba(239, 231, 210, 0.65);
+                    text-decoration: none;
+                  "
+                  >Villa Residencies</a
+                >
+                <a
+                  href="yacht-islands.html"
+                  style="
+                    font-family: var(--font-satoshi);
+                    font-size: clamp(16px, 4vw, 22px);
+                    font-weight: 500;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: rgba(239, 231, 210, 0.65);
+                    text-decoration: none;
+                  "
+                  >Yacht &amp; Islands</a
+                >
+                <a
+                  href="private-jet-travel.html"
+                  style="
+                    font-family: var(--font-satoshi);
+                    font-size: clamp(16px, 4vw, 22px);
+                    font-weight: 500;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: rgba(239, 231, 210, 0.65);
+                    text-decoration: none;
+                  "
+                  >Private Jet &amp; Travel</a
+                >
+                <a
+                  href="events-celebrations.html"
+                  style="
+                    font-family: var(--font-satoshi);
+                    font-size: clamp(16px, 4vw, 22px);
+                    font-weight: 500;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+                    color: rgba(239, 231, 210, 0.65);
+                    text-decoration: none;
+                  "
+                  >Events &amp; Celebrations</a
+                >
               </div>
             </div>
-            <a href="single-bespoke-experiences.html" class="nav-dropdown-item">Single Bespoke Experiences</a>
+            <a
+              href="single-bespoke-experiences.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Single Bespoke Experiences</a
+            >
           </div>
         </div>
-        <!-- 2. Menus -->
-        <div class="nav-dropdown-wrap">
-          <a href="menu.html" class="nav-link nav-has-dropdown">Menus <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></a>
-          <div class="nav-dropdown">
-            <a href="experiences-breakfast.html" class="nav-dropdown-item">Breakfast</a>
-            <a href="experiences-lunch.html" class="nav-dropdown-item">Lunch</a>
-            <a href="experiences-dining.html" class="nav-dropdown-item">Dining</a>
+        <!-- 2. Menus accordion -->
+        <div class="mobile-accordion" style="text-align: center">
+          <button
+            class="mobile-accordion-trigger uppercase"
+            style="
+              font-family: var(--font-forum);
+              font-size: clamp(36px, 9vw, 60px);
+              line-height: 1;
+              color: rgb(239, 231, 210);
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0;
+            "
+          >
+            Menus<svg
+              class="mobile-accordion-chevron"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              stroke="rgba(239,231,210,.55)"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <polyline points="4 8 11 15 18 8" />
+            </svg>
+          </button>
+          <div
+            class="mobile-accordion-body"
+            style="
+              display: none;
+              flex-direction: column;
+              align-items: center;
+              gap: 14px;
+              margin-top: 16px;
+            "
+          >
+            <a
+              href="experiences-breakfast.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Breakfast</a
+            >
+            <a
+              href="experiences-lunch.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Lunch</a
+            >
+            <a
+              href="experiences-dining.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Dining</a
+            >
           </div>
         </div>
         <!-- 3. Reviews -->
-        <a href="reviews.html" class="nav-link">Reviews</a>
-        <!-- 4. More -->
-        <div class="nav-dropdown-wrap">
-          <span class="nav-link nav-has-dropdown nav-dd-btn">More <svg class="nav-dd-chevron" width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polyline points="1 1 5 6 9 1"/></svg></span>
-          <div class="nav-dropdown">
-            <a href="about.html" class="nav-dropdown-item">About</a>
-            <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
-            <a href="blog.html" class="nav-dropdown-item">Blog</a>
-            <a href="partner.html" class="nav-dropdown-item">Partner</a>
-            <a href="signature-standard.html" class="nav-dropdown-item">Our Standard</a>
+        <a
+          href="reviews.html"
+          class="mobile-nav-link uppercase"
+          style="
+            font-family: var(--font-forum);
+            font-size: clamp(36px, 9vw, 60px);
+            line-height: 1;
+            color: rgb(239, 231, 210);
+            text-decoration: none;
+          "
+          >Reviews</a
+        >
+        <!-- 4. More accordion -->
+        <div class="mobile-accordion" style="text-align: center">
+          <button
+            class="mobile-accordion-trigger uppercase"
+            style="
+              font-family: var(--font-forum);
+              font-size: clamp(36px, 9vw, 60px);
+              line-height: 1;
+              color: rgb(239, 231, 210);
+              background: none;
+              border: none;
+              cursor: pointer;
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              padding: 0;
+            "
+          >
+            More<svg
+              class="mobile-accordion-chevron"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              stroke="rgba(239,231,210,.55)"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            >
+              <polyline points="4 8 11 15 18 8" />
+            </svg>
+          </button>
+          <div
+            class="mobile-accordion-body"
+            style="
+              display: none;
+              flex-direction: column;
+              align-items: center;
+              gap: 14px;
+              margin-top: 16px;
+            "
+          >
+            <a
+              href="about.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >About</a
+            >
+            <a
+              href="gallery.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Gallery</a
+            >
+            <a
+              href="blog.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Blog</a
+            >
+            <a
+              href="partner.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Partner</a
+            >
+            <a
+              href="signature-standard.html"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 6vw, 38px);
+                line-height: 1;
+                text-transform: uppercase;
+                color: rgba(239, 231, 210, 0.75);
+                text-decoration: none;
+              "
+              >Our Standard</a
+            >
           </div>
         </div>
       </nav>
-          <div class="flex items-center gap-4" style="flex-shrink:0">
-            <a href="reservation.html" class="hidden md:inline-flex btn btn-outline hero-btn-outline">Plan Your Experience</a>
-            <button id="hamburger-btn" class="md:hidden" aria-label="Open menu" style="background:none;border:none;cursor:pointer;color:rgba(239,231,210,.7)">
-              <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><line x1="0" y1="5" x2="24" y2="5"/><line x1="6" y1="13" x2="24" y2="13"/></svg>
+      <div style="position: absolute; bottom: 32px; left: 32px; right: 32px">
+        <a
+          href="reservation.html"
+          class="mobile-nav-link btn btn-dark"
+          style="display: flex; justify-content: center"
+          >Plan Your Experience</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="p-3 sm:p-4 rounded-2xl sm:rounded-[48px]"
+      style="background: var(--bg)"
+    >
+      <!-- â"€â"€ HERO â"€â"€ -->
+      <div
+        class="flex flex-col lg:grid gap-4 lg:h-[calc(100vh-2rem)]"
+        style="grid-template-columns: 1fr minmax(360px, 0.3fr)"
+      >
+        <!-- Left: hero video panel (dark; all overlaid text pinned to cream) -->
+        <div
+          class="grain relative overflow-hidden h-[80vh] lg:h-full"
+          style="border-radius: 16px; border: 1px solid var(--border)"
+        >
+          <img
+            src="images/main-hero-image-2.jpg"
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          <!-- top scrim: darkens nav area -->
+          <div
+            class="absolute inset-x-0 top-0 pointer-events-none"
+            style="
+              height: 40%;
+              z-index: 1;
+              background: linear-gradient(
+                to bottom,
+                rgba(0, 20, 18, 0.72) 0%,
+                transparent 100%
+              );
+            "
+          ></div>
+          <!-- bottom scrim: darkens title area -->
+          <div
+            class="absolute inset-x-0 bottom-0 pointer-events-none"
+            style="
+              height: 92%;
+              z-index: 1;
+              background: linear-gradient(
+                to top,
+                rgba(0, 10, 8, 0.88) 0%,
+                rgba(0, 10, 8, 0.65) 38%,
+                rgba(0, 10, 8, 0.38) 60%,
+                rgba(0, 10, 8, 0.15) 80%,
+                transparent 100%
+              );
+            "
+          ></div>
+
+          <!-- Header (on dark video — full-width, logo/links/button spread) -->
+          <div class="absolute top-0 left-0 right-0" style="z-index: 20">
+            <header
+              class="hero-nav flex items-center justify-between px-8 sm:px-10 py-6"
+            >
+              <a
+                href="index.html"
+                style="
+                  font-family: var(--font-forum);
+                  font-size: 24px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: rgb(239, 231, 210);
+                  text-decoration: none;
+                  white-space: nowrap;
+                  flex-shrink: 0;
+                "
+                >Chef Don Smith</a
+              >
+              <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <!-- 1. Experiences -->
+                <div class="nav-dropdown-wrap">
+                  <a
+                    href="single-bespoke-experiences.html"
+                    class="nav-link nav-has-dropdown"
+                    >Experiences
+                    <svg
+                      class="nav-dd-chevron"
+                      width="10"
+                      height="7"
+                      viewBox="0 0 10 7"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    >
+                      <polyline points="1 1 5 6 9 1" /></svg
+                  ></a>
+                  <div class="nav-dropdown" style="min-width: 230px">
+                    <div class="nav-dropdown-nested-wrap">
+                      <a
+                        href="specialist-chef-services.html"
+                        class="nav-dropdown-item nav-dropdown-nested-trigger"
+                        >Specialist Chef Services
+                        <svg
+                          width="6"
+                          height="10"
+                          viewBox="0 0 6 10"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          opacity=".45"
+                        >
+                          <polyline points="1 1 5 5 1 9" /></svg
+                      ></a>
+                      <div class="nav-dropdown-nested">
+                        <a
+                          href="villa-residencies.html"
+                          class="nav-dropdown-item"
+                          >Villa Residencies</a
+                        >
+                        <a href="yacht-islands.html" class="nav-dropdown-item"
+                          >Yacht &amp; Islands</a
+                        >
+                        <a
+                          href="private-jet-travel.html"
+                          class="nav-dropdown-item"
+                          >Private Jet &amp; Travel</a
+                        >
+                        <a
+                          href="events-celebrations.html"
+                          class="nav-dropdown-item"
+                          >Events &amp; Celebrations</a
+                        >
+                      </div>
+                    </div>
+                    <a
+                      href="single-bespoke-experiences.html"
+                      class="nav-dropdown-item"
+                      >Single Bespoke Experiences</a
+                    >
+                  </div>
+                </div>
+                <!-- 2. Menus -->
+                <div class="nav-dropdown-wrap">
+                  <a href="menu.html" class="nav-link nav-has-dropdown"
+                    >Menus
+                    <svg
+                      class="nav-dd-chevron"
+                      width="10"
+                      height="7"
+                      viewBox="0 0 10 7"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    >
+                      <polyline points="1 1 5 6 9 1" /></svg
+                  ></a>
+                  <div class="nav-dropdown">
+                    <a
+                      href="experiences-breakfast.html"
+                      class="nav-dropdown-item"
+                      >Breakfast</a
+                    >
+                    <a href="experiences-lunch.html" class="nav-dropdown-item"
+                      >Lunch</a
+                    >
+                    <a href="experiences-dining.html" class="nav-dropdown-item"
+                      >Dining</a
+                    >
+                  </div>
+                </div>
+                <!-- 3. Reviews -->
+                <a href="reviews.html" class="nav-link">Reviews</a>
+                <!-- 4. More -->
+                <div class="nav-dropdown-wrap">
+                  <span class="nav-link nav-has-dropdown nav-dd-btn"
+                    >More
+                    <svg
+                      class="nav-dd-chevron"
+                      width="10"
+                      height="7"
+                      viewBox="0 0 10 7"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    >
+                      <polyline points="1 1 5 6 9 1" /></svg
+                  ></span>
+                  <div class="nav-dropdown">
+                    <a href="about.html" class="nav-dropdown-item">About</a>
+                    <a href="gallery.html" class="nav-dropdown-item">Gallery</a>
+                    <a href="blog.html" class="nav-dropdown-item">Blog</a>
+                    <a href="partner.html" class="nav-dropdown-item">Partner</a>
+                    <a href="signature-standard.html" class="nav-dropdown-item"
+                      >Our Standard</a
+                    >
+                  </div>
+                </div>
+              </nav>
+              <div class="flex items-center gap-4" style="flex-shrink: 0">
+                <a
+                  href="reservation.html"
+                  class="hidden md:inline-flex btn btn-outline hero-btn-outline"
+                  >Plan Your Experience</a
+                >
+                <button
+                  id="hamburger-btn"
+                  class="md:hidden"
+                  aria-label="Open menu"
+                  style="
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: rgba(239, 231, 210, 0.7);
+                  "
+                >
+                  <svg
+                    width="24"
+                    height="18"
+                    viewBox="0 0 24 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="square"
+                  >
+                    <line x1="0" y1="5" x2="24" y2="5" />
+                    <line x1="6" y1="13" x2="24" y2="13" />
+                  </svg>
+                </button>
+              </div>
+            </header>
+          </div>
+
+          <!-- Hero title (cream, on dark video) -->
+          <div
+            class="absolute bottom-0 left-0 px-10 pb-10"
+            style="z-index: 10; max-width: 680px"
+          >
+            <h1
+              class="hero-line uppercase select-none"
+              style="
+                font-family: var(--font-forum);
+                color: rgb(239, 231, 210);
+                font-size: clamp(36px, 4.2vw, 66px);
+                letter-spacing: 0.01em;
+                line-height: 1.05;
+                margin-bottom: 16px;
+              "
+            >
+              Skip The Restaurant.<br />Keep The View.
+            </h1>
+            <p
+              class="hero-line"
+              style="
+                font-family: &quot;Satoshi&quot;, sans-serif;
+                color: rgba(239, 231, 210, 0.72);
+                font-size: clamp(13px, 1.1vw, 16px);
+                line-height: 1.65;
+                max-width: 460px;
+              "
+            >
+              Private dining, villa chefs, yacht catering and bespoke culinary
+              experiences brought directly to you.
+            </p>
+            <a
+              href="reservation.html"
+              class="hero-line btn btn-outline hero-btn-outline inline-flex"
+              style="margin-top: 24px"
+              >Plan Your Experience</a
+            >
+          </div>
+
+          <!-- Social icons (cream, on dark hero — icon only) -->
+          <div
+            style="
+              position: absolute;
+              bottom: 22px;
+              right: 22px;
+              z-index: 10;
+              display: flex;
+              gap: 14px;
+              align-items: center;
+              opacity: 0;
+              animation: heroFadeUp 0.6s ease 1.2s forwards;
+            "
+          >
+            <a
+              href="https://instagram.com/chef.donsmith"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              style="
+                color: rgba(239, 231, 210, 0.6);
+                text-decoration: none;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'rgba(239,231,210,1)'"
+              onmouseout="this.style.color = 'rgba(239,231,210,.6)'"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r=".5"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com/in/donovansmith242"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              style="
+                color: rgba(239, 231, 210, 0.6);
+                text-decoration: none;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'rgba(239,231,210,1)'"
+              onmouseout="this.style.color = 'rgba(239,231,210,.6)'"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: nav cards (dark photo backgrounds; labels stay cream) -->
+        <div class="flex flex-col gap-4 lg:h-full lg:pb-0">
+          <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
+            <a
+              href="specialist-chef-services.html"
+              class="nav-card"
+              style="border-radius: 16px; border: 1px solid var(--border)"
+            >
+              <div class="nav-card-inner">
+                <img
+                  src="images/villa-gathering.jpg"
+                  alt=""
+                  class="w-full h-full object-cover"
+                />
+                <div class="grain absolute inset-0"></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 pointer-events-none"
+                  style="
+                    height: 75%;
+                    background: linear-gradient(
+                      to top,
+                      rgba(0, 30, 26, 0.88) 0%,
+                      transparent 100%
+                    );
+                    z-index: 4;
+                  "
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0"
+                  style="padding: 32px; z-index: 5"
+                >
+                  <span
+                    class="block uppercase"
+                    style="
+                      font-family: var(--font-forum);
+                      font-size: clamp(20px, 2.5vw, 32px);
+                      line-height: 1.1;
+                      letter-spacing: 0.02em;
+                      color: rgb(239, 231, 210);
+                    "
+                    >Specialist Chef Services</span
+                  >
+                </div>
+              </div>
+              <div class="card-circle-arrow">
+                <svg
+                  class="c-ring"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="22" cy="22" r="21" />
+                </svg>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(239,231,210,.85)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="position: relative; z-index: 1"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
+            <a
+              href="single-bespoke-experiences.html"
+              class="nav-card"
+              style="border-radius: 16px; border: 1px solid var(--border)"
+            >
+              <div class="nav-card-inner">
+                <img
+                  src="images/anniversary-dinner.jpg"
+                  alt=""
+                  class="w-full h-full object-cover"
+                />
+                <div class="grain absolute inset-0"></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 pointer-events-none"
+                  style="
+                    height: 75%;
+                    background: linear-gradient(
+                      to top,
+                      rgba(0, 30, 26, 0.88) 0%,
+                      transparent 100%
+                    );
+                    z-index: 4;
+                  "
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0"
+                  style="padding: 32px; z-index: 5"
+                >
+                  <span
+                    class="block uppercase"
+                    style="
+                      font-family: var(--font-forum);
+                      font-size: clamp(20px, 2.5vw, 32px);
+                      line-height: 1.1;
+                      letter-spacing: 0.02em;
+                      color: rgb(239, 231, 210);
+                    "
+                    >Single Bespoke Experiences</span
+                  >
+                </div>
+              </div>
+              <div class="card-circle-arrow">
+                <svg
+                  class="c-ring"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="22" cy="22" r="21" />
+                </svg>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(239,231,210,.85)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="position: relative; z-index: 1"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
+            <a
+              href="menu.html"
+              class="nav-card"
+              style="border-radius: 16px; border: 1px solid var(--border)"
+            >
+              <div class="nav-card-inner">
+                <img
+                  src="images/our-menu-hero.jpg"
+                  alt=""
+                  class="w-full h-full object-cover"
+                />
+                <div class="grain absolute inset-0"></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 pointer-events-none"
+                  style="
+                    height: 75%;
+                    background: linear-gradient(
+                      to top,
+                      rgba(0, 30, 26, 0.88) 0%,
+                      transparent 100%
+                    );
+                    z-index: 4;
+                  "
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0"
+                  style="padding: 32px; z-index: 5"
+                >
+                  <span
+                    class="block uppercase"
+                    style="
+                      font-family: var(--font-forum);
+                      font-size: clamp(20px, 2.5vw, 32px);
+                      line-height: 1.1;
+                      letter-spacing: 0.02em;
+                      color: rgb(239, 231, 210);
+                    "
+                    >The Menu</span
+                  >
+                </div>
+              </div>
+              <div class="card-circle-arrow">
+                <svg
+                  class="c-ring"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="22" cy="22" r="21" />
+                </svg>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(239,231,210,.85)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="position: relative; z-index: 1"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Modal -->
+      <div id="svc-modal" class="svc-modal" aria-hidden="true">
+        <div class="svc-modal-box">
+          <div class="svc-modal-photo">
+            <img id="svc-modal-img" src="" alt="" />
+            <div class="svc-modal-photo-grad"></div>
+            <button
+              id="svc-modal-close"
+              class="svc-modal-close"
+              aria-label="Close"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 22 22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              >
+                <line x1="4" y1="4" x2="18" y2="18" />
+                <line x1="18" y1="4" x2="4" y2="18" />
+              </svg>
             </button>
           </div>
-        </header>
-      </div>
-
-      <!-- Hero title (cream, on dark video) -->
-      <div class="absolute bottom-0 left-0 px-10 pb-10" style="z-index:10;max-width:680px">
-        <h1 class="hero-line uppercase select-none" style="font-family:var(--font-forum);color:rgb(239,231,210);font-size:clamp(36px,4.2vw,66px);letter-spacing:.01em;line-height:1.05;margin-bottom:16px">Skip The Restaurant.<br>Keep The View.</h1>
-        <p class="hero-line" style="font-family:'Satoshi',sans-serif;color:rgba(239,231,210,.72);font-size:clamp(13px,1.1vw,16px);line-height:1.65;max-width:460px">Private dining, villa chefs, yacht catering and bespoke culinary experiences brought directly to you.</p>
-        <a href="reservation.html" class="hero-line btn btn-outline hero-btn-outline inline-flex" style="margin-top:24px">Plan Your Experience</a>
-      </div>
-
-      <!-- Social icons (cream, on dark hero — icon only) -->
-      <div style="position:absolute;bottom:22px;right:22px;z-index:10;display:flex;gap:14px;align-items:center;opacity:0;animation:heroFadeUp .6s ease 1.2s forwards">
-        <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:rgba(239,231,210,.6);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgba(239,231,210,1)'" onmouseout="this.style.color='rgba(239,231,210,.6)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/donovansmith242" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="color:rgba(239,231,210,.6);text-decoration:none;transition:color .2s" onmouseover="this.style.color='rgba(239,231,210,1)'" onmouseout="this.style.color='rgba(239,231,210,.6)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Right: nav cards (dark photo backgrounds; labels stay cream) -->
-    <div class="flex flex-col gap-4 lg:h-full lg:pb-0">
-      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
-        <a href="specialist-chef-services.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
-          <div class="nav-card-inner">
-            <img src="images/villa-gathering.jpg" alt="" class="w-full h-full object-cover">
-            <div class="grain absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
-            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
-              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Specialist Chef Services</span>
-            </div>
+          <div class="svc-modal-body">
+            <span
+              id="svc-modal-eyebrow"
+              style="
+                display: block;
+                font-family: var(--font-satoshi);
+                font-size: 10px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: rgba(239, 231, 210, 0.38);
+                margin-bottom: 14px;
+              "
+            ></span>
+            <h2
+              id="svc-modal-name"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(26px, 3.5vw, 36px);
+                line-height: 1.05;
+                letter-spacing: 0.01em;
+                text-transform: uppercase;
+                color: rgb(239, 231, 210);
+                margin-bottom: 20px;
+              "
+            ></h2>
+            <div
+              style="
+                height: 1px;
+                background: rgba(239, 231, 210, 0.1);
+                margin-bottom: 20px;
+              "
+            ></div>
+            <p
+              id="svc-modal-desc"
+              style="
+                font-family: var(--font-satoshi);
+                font-size: 15px;
+                line-height: 1.78;
+                color: rgba(239, 231, 210, 0.6);
+                margin-bottom: 28px;
+              "
+            ></p>
+            <span
+              style="
+                display: block;
+                font-family: var(--font-satoshi);
+                font-size: 10px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: rgba(239, 231, 210, 0.38);
+                margin-bottom: 14px;
+              "
+              >What's included</span
+            >
+            <ul class="svc-modal-hl" id="svc-modal-hl"></ul>
+            <a href="reservation.html" class="svc-modal-cta"
+              >Book This Experience &rarr;</a
+            >
           </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21"/>
-            </svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </div>
+      </div>
+
+      <!-- SPECIALIST CHEF SERVICES -->
+      <section
+        class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20"
+      >
+        <div class="fade-up" style="margin-bottom: 28px">
+          <div
+            style="
+              display: flex;
+              align-items: flex-end;
+              justify-content: space-between;
+              margin-bottom: 12px;
+            "
+          >
+            <h2
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(28px, 4vw, 48px);
+                line-height: 1.2;
+                letter-spacing: 0.02em;
+                color: var(--text);
+                text-transform: uppercase;
+              "
+            >
+              Specialist Chef Services
+            </h2>
+            <a
+              href="specialist-chef-services.html"
+              class="btn btn-primary hidden md:inline-flex"
+              style="flex-shrink: 0; margin-left: 16px"
+              >View All Services</a
+            >
           </div>
-        </a>
-      </div>
-      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
-        <a href="single-bespoke-experiences.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
-          <div class="nav-card-inner">
-            <img src="images/anniversary-dinner.jpg" alt="" class="w-full h-full object-cover">
-            <div class="grain absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
-            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
-              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Single Bespoke Experiences</span>
-            </div>
-          </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21"/>
-            </svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </a>
-      </div>
-      <div class="nav-card-anim h-[200px] lg:flex-1 lg:h-auto lg:min-h-0">
-        <a href="menu.html" class="nav-card" style="border-radius:16px;border:1px solid var(--border)">
-          <div class="nav-card-inner">
-            <img src="images/our-menu-hero.jpg" alt="" class="w-full h-full object-cover">
-            <div class="grain absolute inset-0"></div>
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:75%;background:linear-gradient(to top,rgba(0,30,26,.88) 0%,transparent 100%);z-index:4"></div>
-            <div class="absolute bottom-0 left-0" style="padding:32px;z-index:5">
-              <span class="block uppercase" style="font-family:var(--font-forum);font-size:clamp(20px,2.5vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">The Menu</span>
-            </div>
-          </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="22" cy="22" r="21"/>
-            </svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Services Modal -->
-  <div id="svc-modal" class="svc-modal" aria-hidden="true">
-    <div class="svc-modal-box">
-      <div class="svc-modal-photo">
-        <img id="svc-modal-img" src="" alt="">
-        <div class="svc-modal-photo-grad"></div>
-        <button id="svc-modal-close" class="svc-modal-close" aria-label="Close">
-          <svg width="13" height="13" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="svc-modal-body">
-        <span id="svc-modal-eyebrow" style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:14px"></span>
-        <h2 id="svc-modal-name" style="font-family:var(--font-forum);font-size:clamp(26px,3.5vw,36px);line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:rgb(239,231,210);margin-bottom:20px"></h2>
-        <div style="height:1px;background:rgba(239,231,210,.1);margin-bottom:20px"></div>
-        <p id="svc-modal-desc" style="font-family:var(--font-satoshi);font-size:15px;line-height:1.78;color:rgba(239,231,210,.6);margin-bottom:28px"></p>
-        <span style="display:block;font-family:var(--font-satoshi);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(239,231,210,.38);margin-bottom:14px">What's included</span>
-        <ul class="svc-modal-hl" id="svc-modal-hl"></ul>
-        <a href="reservation.html" class="svc-modal-cta">Book This Experience &rarr;</a>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SPECIALIST CHEF SERVICES -->
-  <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
-    <div class="fade-up" style="margin-bottom:28px">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px">
-        <h2 style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text);text-transform:uppercase">Specialist Chef Services</h2>
-        <a href="specialist-chef-services.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">View All Services</a>
-      </div>
-      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">Extended stays, private yacht charters, luxury travel and milestone celebrations - all handled to one culinary standard.</p>
-      <a href="specialist-chef-services.html" class="btn btn-primary md:hidden" style="margin-top:16px">View All Services</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2" style="gap:12px">
-      <a href="villa-residencies.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
-        <img src="images/villa-gathering.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
-        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Extended Stays</p>
-          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Villa Residencies</p>
+          <p
+            style="
+              font-family: var(--font-satoshi);
+              font-size: 15px;
+              color: var(--text-muted);
+              line-height: 1.6;
+            "
+          >
+            Extended stays, private yacht charters, luxury travel and milestone
+            celebrations - all handled to one culinary standard.
+          </p>
+          <a
+            href="specialist-chef-services.html"
+            class="btn btn-primary md:hidden"
+            style="margin-top: 16px"
+            >View All Services</a
+          >
         </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-      <a href="yacht-islands.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
-        <img src="images/luxury-private-dining-2.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
-        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Yacht &amp; Islands</p>
-          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Yacht & Islands</p>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-      <a href="private-jet-travel.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
-        <img src="images/grand-event.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
-        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Travel Catering</p>
-          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Private Jet & Travel</p>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-      <a href="events-celebrations.html" class="portfolio-card" style="display:block;position:relative;overflow:hidden;height:320px;border-radius:16px;border:1px solid rgba(0,46,40,.18);text-decoration:none">
-        <img src="images/anniversary-dinner.jpg" alt="" class="portfolio-card-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,46,40,.15);z-index:1;pointer-events:none"></div>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(0,20,16,.96),transparent);z-index:2;pointer-events:none"></div>
-        <div style="position:absolute;bottom:0;left:0;padding:32px;z-index:3">
-          <p style="font-family:var(--font-satoshi);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,231,210,.65);margin:0 0 8px 0">Milestone Occasions</p>
-          <p style="font-family:var(--font-forum);font-size:clamp(22px,2.5vw,30px);text-transform:uppercase;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210);margin:0">Events & Celebrations</p>
-        </div>
-        <div class="card-circle-arrow">
-          <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- â"€â"€ PRIVATE SERVICES GRID â"€â"€ -->
-  <section class="px-5 pb-4 sm:px-8 lg:px-20">
-    <div class="fade-up" style="margin-bottom:28px">
-      <div class="flex items-end justify-between" style="margin-bottom:12px">
-        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">Single Bespoke Experiences</h2>
-        <a href="single-bespoke-experiences.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">View All Experiences</a>
-      </div>
-      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">From intimate dinners to immersive culinary experiences, every occasion is built around your setting, your guests and the way you want it to feel.</p>
-      <a href="single-bespoke-experiences.html" class="btn btn-primary md:hidden" style="margin-top:16px">View All Experiences</a>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" style="gap:12px">
-
-      <div class="psvc-card fade-up" data-svc="0" style="animation-delay:.05s">
-        <div class="pimg"><img src="images/dinner-table.jpg" alt="Intimate Dining" loading="lazy"></div>
-        <div class="pgrain"></div>
-        <div class="pov"></div>
-        <div class="pc">
-          <span class="psvc-num">2-10 Guests</span>
-          <h3 class="psvc-name">Intimate Dining</h3>
-          <p class="psvc-tag">Your villa. Your table. Entirely yours.</p>
-          <button class="psvc-btn" data-svc="0">Explore
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="psvc-card fade-up" data-svc="1" style="animation-delay:.13s">
-        <div class="pimg"><img src="images/villa-gathering.jpg" alt="Private Gathering" loading="lazy"></div>
-        <div class="pgrain"></div>
-        <div class="pov"></div>
-        <div class="pc">
-          <span class="psvc-num">10-30 Guests</span>
-          <h3 class="psvc-name">Private Gathering</h3>
-          <p class="psvc-tag">Celebrations and milestone occasions.</p>
-          <button class="psvc-btn" data-svc="1">Explore
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="psvc-card fade-up" data-svc="2" style="animation-delay:.21s">
-        <div class="pimg"><img src="images/anniversary-dinner.jpg" alt="Private Event" loading="lazy"></div>
-        <div class="pgrain"></div>
-        <div class="pov"></div>
-        <div class="pc">
-          <span class="psvc-num">Private Events</span>
-          <h3 class="psvc-name">Private Event</h3>
-          <p class="psvc-tag">Private events delivered by a dedicated culinary and service team.</p>
-          <button class="psvc-btn" data-svc="2">Explore
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="psvc-card fade-up" data-svc="3" style="animation-delay:.29s">
-        <div class="pimg"><img src="images/grand-event.jpg" alt="Grand Celebration" loading="lazy"></div>
-        <div class="pgrain"></div>
-        <div class="pov"></div>
-        <div class="pc">
-          <span class="psvc-num">Large-Scale Celebrations</span>
-          <h3 class="psvc-name">Grand Celebration</h3>
-          <p class="psvc-tag">Large-scale celebrations delivered by a dedicated culinary and service team.</p>
-          <button class="psvc-btn" data-svc="3">Explore
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- â"€â"€ CURATED EXPERIENCES â"€â"€ -->
-  <section class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20">
-    <div class="fade-up" style="margin-bottom:28px">
-      <div class="flex items-end justify-between" style="margin-bottom:12px">
-        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:.02em;color:var(--text)">The Menus</h2>
-        <a href="menu.html" class="btn btn-primary hidden md:inline-flex" style="flex-shrink:0;margin-left:16px">View All Menus</a>
-      </div>
-      <p style="font-family:var(--font-satoshi);font-size:15px;color:var(--text-muted);line-height:1.6">Choose a menu or make it your starting point. We tailor the rest around your table.</p>
-      <a href="menu.html" class="btn btn-primary md:hidden" style="margin-top:16px">View All Menus</a>
-    </div>
-    <div class="flex flex-col lg:grid gap-4" style="grid-template-columns:3fr 2fr">
-      <div class="fade-up">
-        <a href="experiences-dining.html" class="portfolio-card grain block relative overflow-hidden h-[280px] sm:h-[400px] lg:h-[560px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
-          <img src="images/luxury-private-dining-2.jpg" alt="Luxury Private Dining" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-          <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-          <div class="absolute bottom-0 left-0" style="padding:32px;z-index:3">
-            <p class="meta-label" style="color:rgba(239,231,210,.65);margin-bottom:8px">7 Signature Menus</p>
-            <p class="uppercase" style="font-family:var(--font-forum);font-size:clamp(22px,3vw,32px);line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private Dining</p>
-          </div>
-          <div class="card-circle-arrow">
-            <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </a>
-      </div>
-      <div class="flex flex-col gap-4">
-        <div class="fade-up">
-          <a href="experiences-breakfast.html" class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
-            <img src="images/luxury-private-breakfast.jpg" alt="Luxury Private Breakfast" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-            <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-            <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
-              <p class="meta-label" style="color:rgba(239,231,210,.65);margin-bottom:6px">5 Morning Menus</p>
-              <p class="uppercase" style="font-family:var(--font-forum);font-size:22px;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private Breakfast</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2" style="gap: 12px">
+          <a
+            href="villa-residencies.html"
+            class="portfolio-card"
+            style="
+              display: block;
+              position: relative;
+              overflow: hidden;
+              height: 320px;
+              border-radius: 16px;
+              border: 1px solid rgba(0, 46, 40, 0.18);
+              text-decoration: none;
+            "
+          >
+            <img
+              src="images/villa-gathering.jpg"
+              alt=""
+              class="portfolio-card-img"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              "
+            />
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 46, 40, 0.15);
+                z-index: 1;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 60%;
+                background: linear-gradient(
+                  to top,
+                  rgba(0, 20, 16, 0.96),
+                  transparent
+                );
+                z-index: 2;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 32px;
+                z-index: 3;
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-satoshi);
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: rgba(239, 231, 210, 0.65);
+                  margin: 0 0 8px 0;
+                "
+              >
+                Extended Stays
+              </p>
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(22px, 2.5vw, 30px);
+                  text-transform: uppercase;
+                  line-height: 1.1;
+                  letter-spacing: 0.02em;
+                  color: rgb(239, 231, 210);
+                  margin: 0;
+                "
+              >
+                Villa Residencies
+              </p>
             </div>
             <div class="card-circle-arrow">
-              <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              <svg
+                class="c-ring"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="22" cy="22" r="21" />
+              </svg>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(239,231,210,.85)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="position: relative; z-index: 1"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </div>
+          </a>
+          <a
+            href="yacht-islands.html"
+            class="portfolio-card"
+            style="
+              display: block;
+              position: relative;
+              overflow: hidden;
+              height: 320px;
+              border-radius: 16px;
+              border: 1px solid rgba(0, 46, 40, 0.18);
+              text-decoration: none;
+            "
+          >
+            <img
+              src="images/luxury-private-dining-2.jpg"
+              alt=""
+              class="portfolio-card-img"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              "
+            />
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 46, 40, 0.15);
+                z-index: 1;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 60%;
+                background: linear-gradient(
+                  to top,
+                  rgba(0, 20, 16, 0.96),
+                  transparent
+                );
+                z-index: 2;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 32px;
+                z-index: 3;
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-satoshi);
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: rgba(239, 231, 210, 0.65);
+                  margin: 0 0 8px 0;
+                "
+              >
+                Yacht &amp; Islands
+              </p>
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(22px, 2.5vw, 30px);
+                  text-transform: uppercase;
+                  line-height: 1.1;
+                  letter-spacing: 0.02em;
+                  color: rgb(239, 231, 210);
+                  margin: 0;
+                "
+              >
+                Yacht & Islands
+              </p>
+            </div>
+            <div class="card-circle-arrow">
+              <svg
+                class="c-ring"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="22" cy="22" r="21" />
+              </svg>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(239,231,210,.85)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="position: relative; z-index: 1"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </div>
+          </a>
+          <a
+            href="private-jet-travel.html"
+            class="portfolio-card"
+            style="
+              display: block;
+              position: relative;
+              overflow: hidden;
+              height: 320px;
+              border-radius: 16px;
+              border: 1px solid rgba(0, 46, 40, 0.18);
+              text-decoration: none;
+            "
+          >
+            <img
+              src="images/grand-event.jpg"
+              alt=""
+              class="portfolio-card-img"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              "
+            />
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 46, 40, 0.15);
+                z-index: 1;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 60%;
+                background: linear-gradient(
+                  to top,
+                  rgba(0, 20, 16, 0.96),
+                  transparent
+                );
+                z-index: 2;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 32px;
+                z-index: 3;
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-satoshi);
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: rgba(239, 231, 210, 0.65);
+                  margin: 0 0 8px 0;
+                "
+              >
+                Travel Catering
+              </p>
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(22px, 2.5vw, 30px);
+                  text-transform: uppercase;
+                  line-height: 1.1;
+                  letter-spacing: 0.02em;
+                  color: rgb(239, 231, 210);
+                  margin: 0;
+                "
+              >
+                Private Jet & Travel
+              </p>
+            </div>
+            <div class="card-circle-arrow">
+              <svg
+                class="c-ring"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="22" cy="22" r="21" />
+              </svg>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(239,231,210,.85)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="position: relative; z-index: 1"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </div>
+          </a>
+          <a
+            href="events-celebrations.html"
+            class="portfolio-card"
+            style="
+              display: block;
+              position: relative;
+              overflow: hidden;
+              height: 320px;
+              border-radius: 16px;
+              border: 1px solid rgba(0, 46, 40, 0.18);
+              text-decoration: none;
+            "
+          >
+            <img
+              src="images/anniversary-dinner.jpg"
+              alt=""
+              class="portfolio-card-img"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              "
+            />
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 46, 40, 0.15);
+                z-index: 1;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 60%;
+                background: linear-gradient(
+                  to top,
+                  rgba(0, 20, 16, 0.96),
+                  transparent
+                );
+                z-index: 2;
+                pointer-events: none;
+              "
+            ></div>
+            <div
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 32px;
+                z-index: 3;
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-satoshi);
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 0.18em;
+                  text-transform: uppercase;
+                  color: rgba(239, 231, 210, 0.65);
+                  margin: 0 0 8px 0;
+                "
+              >
+                Milestone Occasions
+              </p>
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(22px, 2.5vw, 30px);
+                  text-transform: uppercase;
+                  line-height: 1.1;
+                  letter-spacing: 0.02em;
+                  color: rgb(239, 231, 210);
+                  margin: 0;
+                "
+              >
+                Events & Celebrations
+              </p>
+            </div>
+            <div class="card-circle-arrow">
+              <svg
+                class="c-ring"
+                viewBox="0 0 44 44"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="22" cy="22" r="21" />
+              </svg>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(239,231,210,.85)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="position: relative; z-index: 1"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
             </div>
           </a>
         </div>
-        <div class="fade-up">
-          <a href="experiences-lunch.html" class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]" style="border-radius:16px;border:1px solid var(--border);text-decoration:none">
-            <img src="images/luxury-private-lunch.jpg" alt="Luxury Private Lunch" class="portfolio-card-img absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:60%;background:linear-gradient(to top,rgba(0,20,16,.96) 0%,transparent 100%);z-index:2"></div>
-            <div class="portfolio-card-overlay absolute inset-0 pointer-events-none" style="background:rgb(0,46,40);opacity:.15;z-index:1"></div>
-            <div class="absolute bottom-0 left-0" style="padding:28px;z-index:3">
-              <p class="meta-label" style="color:rgba(239,231,210,.65);margin-bottom:6px">5 Afternoon Menus</p>
-              <p class="uppercase" style="font-family:var(--font-forum);font-size:22px;line-height:1.1;letter-spacing:.02em;color:rgb(239,231,210)">Luxury Private Lunch</p>
+      </section>
+
+      <!-- â"€â"€ PRIVATE SERVICES GRID â"€â"€ -->
+      <section class="px-5 pb-4 sm:px-8 lg:px-20">
+        <div class="fade-up" style="margin-bottom: 28px">
+          <div
+            class="flex items-end justify-between"
+            style="margin-bottom: 12px"
+          >
+            <h2
+              class="uppercase"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(28px, 4vw, 48px);
+                line-height: 1.2;
+                letter-spacing: 0.02em;
+                color: var(--text);
+              "
+            >
+              Single Bespoke Experiences
+            </h2>
+            <a
+              href="single-bespoke-experiences.html"
+              class="btn btn-primary hidden md:inline-flex"
+              style="flex-shrink: 0; margin-left: 16px"
+              >View All Experiences</a
+            >
+          </div>
+          <p
+            style="
+              font-family: var(--font-satoshi);
+              font-size: 15px;
+              color: var(--text-muted);
+              line-height: 1.6;
+            "
+          >
+            From intimate dinners to immersive culinary experiences, every
+            occasion is built around your setting, your guests and the way you
+            want it to feel.
+          </p>
+          <a
+            href="single-bespoke-experiences.html"
+            class="btn btn-primary md:hidden"
+            style="margin-top: 16px"
+            >View All Experiences</a
+          >
+        </div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          style="gap: 12px"
+        >
+          <div
+            class="psvc-card fade-up"
+            data-svc="0"
+            style="animation-delay: 0.05s"
+          >
+            <div class="pimg">
+              <img
+                src="images/dinner-table.jpg"
+                alt="Intimate Dining"
+                loading="lazy"
+              />
             </div>
-            <div class="card-circle-arrow">
-              <svg class="c-ring" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="21"/></svg>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(239,231,210,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            <div class="pgrain"></div>
+            <div class="pov"></div>
+            <div class="pc">
+              <span class="psvc-num">2-10 Guests</span>
+              <h3 class="psvc-name">Intimate Dining</h3>
+              <p class="psvc-tag">Your villa. Your table. Entirely yours.</p>
+              <button class="psvc-btn" data-svc="0">
+                Explore
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </button>
             </div>
+          </div>
+
+          <div
+            class="psvc-card fade-up"
+            data-svc="1"
+            style="animation-delay: 0.13s"
+          >
+            <div class="pimg">
+              <img
+                src="images/villa-gathering.jpg"
+                alt="Private Gathering"
+                loading="lazy"
+              />
+            </div>
+            <div class="pgrain"></div>
+            <div class="pov"></div>
+            <div class="pc">
+              <span class="psvc-num">10-30 Guests</span>
+              <h3 class="psvc-name">Private Gathering</h3>
+              <p class="psvc-tag">Celebrations and milestone occasions.</p>
+              <button class="psvc-btn" data-svc="1">
+                Explore
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="psvc-card fade-up"
+            data-svc="2"
+            style="animation-delay: 0.21s"
+          >
+            <div class="pimg">
+              <img
+                src="images/anniversary-dinner.jpg"
+                alt="Private Event"
+                loading="lazy"
+              />
+            </div>
+            <div class="pgrain"></div>
+            <div class="pov"></div>
+            <div class="pc">
+              <span class="psvc-num">Private Events</span>
+              <h3 class="psvc-name">Private Event</h3>
+              <p class="psvc-tag">
+                Private events delivered by a dedicated culinary and service
+                team.
+              </p>
+              <button class="psvc-btn" data-svc="2">
+                Explore
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="psvc-card fade-up"
+            data-svc="3"
+            style="animation-delay: 0.29s"
+          >
+            <div class="pimg">
+              <img
+                src="images/grand-event.jpg"
+                alt="Grand Celebration"
+                loading="lazy"
+              />
+            </div>
+            <div class="pgrain"></div>
+            <div class="pov"></div>
+            <div class="pc">
+              <span class="psvc-num">Large-Scale Celebrations</span>
+              <h3 class="psvc-name">Grand Celebration</h3>
+              <p class="psvc-tag">
+                Large-scale celebrations delivered by a dedicated culinary and
+                service team.
+              </p>
+              <button class="psvc-btn" data-svc="3">
+                Explore
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- â"€â"€ CURATED EXPERIENCES â"€â"€ -->
+      <section
+        class="px-5 pt-16 pb-12 sm:px-8 sm:pt-20 sm:pb-16 lg:px-20 lg:pt-24 lg:pb-20"
+      >
+        <div class="fade-up" style="margin-bottom: 28px">
+          <div
+            class="flex items-end justify-between"
+            style="margin-bottom: 12px"
+          >
+            <h2
+              class="uppercase"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(28px, 4vw, 48px);
+                line-height: 1.2;
+                letter-spacing: 0.02em;
+                color: var(--text);
+              "
+            >
+              The Menus
+            </h2>
+            <a
+              href="menu.html"
+              class="btn btn-primary hidden md:inline-flex"
+              style="flex-shrink: 0; margin-left: 16px"
+              >View All Menus</a
+            >
+          </div>
+          <p
+            style="
+              font-family: var(--font-satoshi);
+              font-size: 15px;
+              color: var(--text-muted);
+              line-height: 1.6;
+            "
+          >
+            Choose a menu or make it your starting point. We tailor the rest
+            around your table.
+          </p>
+          <a
+            href="menu.html"
+            class="btn btn-primary md:hidden"
+            style="margin-top: 16px"
+            >View All Menus</a
+          >
+        </div>
+        <div
+          class="flex flex-col lg:grid gap-4"
+          style="grid-template-columns: 3fr 2fr"
+        >
+          <div class="fade-up">
+            <a
+              href="experiences-dining.html"
+              class="portfolio-card grain block relative overflow-hidden h-[280px] sm:h-[400px] lg:h-[560px]"
+              style="
+                border-radius: 16px;
+                border: 1px solid var(--border);
+                text-decoration: none;
+              "
+            >
+              <img
+                src="images/luxury-private-dining-2.jpg"
+                alt="Luxury Private Dining"
+                class="portfolio-card-img absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-x-0 bottom-0 pointer-events-none"
+                style="
+                  height: 60%;
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 20, 16, 0.96) 0%,
+                    transparent 100%
+                  );
+                  z-index: 2;
+                "
+              ></div>
+              <div
+                class="portfolio-card-overlay absolute inset-0 pointer-events-none"
+                style="background: rgb(0, 46, 40); opacity: 0.15; z-index: 1"
+              ></div>
+              <div
+                class="absolute bottom-0 left-0"
+                style="padding: 32px; z-index: 3"
+              >
+                <p
+                  class="meta-label"
+                  style="color: rgba(239, 231, 210, 0.65); margin-bottom: 8px"
+                >
+                  7 Signature Menus
+                </p>
+                <p
+                  class="uppercase"
+                  style="
+                    font-family: var(--font-forum);
+                    font-size: clamp(22px, 3vw, 32px);
+                    line-height: 1.1;
+                    letter-spacing: 0.02em;
+                    color: rgb(239, 231, 210);
+                  "
+                >
+                  Luxury Private Dining
+                </p>
+              </div>
+              <div class="card-circle-arrow">
+                <svg
+                  class="c-ring"
+                  viewBox="0 0 44 44"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="22" cy="22" r="21" />
+                </svg>
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(239,231,210,.85)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="position: relative; z-index: 1"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="fade-up">
+              <a
+                href="experiences-breakfast.html"
+                class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  text-decoration: none;
+                "
+              >
+                <img
+                  src="images/luxury-private-breakfast.jpg"
+                  alt="Luxury Private Breakfast"
+                  class="portfolio-card-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div
+                  class="absolute inset-x-0 bottom-0 pointer-events-none"
+                  style="
+                    height: 60%;
+                    background: linear-gradient(
+                      to top,
+                      rgba(0, 20, 16, 0.96) 0%,
+                      transparent 100%
+                    );
+                    z-index: 2;
+                  "
+                ></div>
+                <div
+                  class="portfolio-card-overlay absolute inset-0 pointer-events-none"
+                  style="background: rgb(0, 46, 40); opacity: 0.15; z-index: 1"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0"
+                  style="padding: 28px; z-index: 3"
+                >
+                  <p
+                    class="meta-label"
+                    style="color: rgba(239, 231, 210, 0.65); margin-bottom: 6px"
+                  >
+                    5 Morning Menus
+                  </p>
+                  <p
+                    class="uppercase"
+                    style="
+                      font-family: var(--font-forum);
+                      font-size: 22px;
+                      line-height: 1.1;
+                      letter-spacing: 0.02em;
+                      color: rgb(239, 231, 210);
+                    "
+                  >
+                    Luxury Private Breakfast
+                  </p>
+                </div>
+                <div class="card-circle-arrow">
+                  <svg
+                    class="c-ring"
+                    viewBox="0 0 44 44"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="22" cy="22" r="21" />
+                  </svg>
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(239,231,210,.85)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="position: relative; z-index: 1"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <div class="fade-up">
+              <a
+                href="experiences-lunch.html"
+                class="portfolio-card grain block relative overflow-hidden h-[200px] sm:h-[240px] lg:h-[272px]"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  text-decoration: none;
+                "
+              >
+                <img
+                  src="images/luxury-private-lunch.jpg"
+                  alt="Luxury Private Lunch"
+                  class="portfolio-card-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div
+                  class="absolute inset-x-0 bottom-0 pointer-events-none"
+                  style="
+                    height: 60%;
+                    background: linear-gradient(
+                      to top,
+                      rgba(0, 20, 16, 0.96) 0%,
+                      transparent 100%
+                    );
+                    z-index: 2;
+                  "
+                ></div>
+                <div
+                  class="portfolio-card-overlay absolute inset-0 pointer-events-none"
+                  style="background: rgb(0, 46, 40); opacity: 0.15; z-index: 1"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0"
+                  style="padding: 28px; z-index: 3"
+                >
+                  <p
+                    class="meta-label"
+                    style="color: rgba(239, 231, 210, 0.65); margin-bottom: 6px"
+                  >
+                    5 Afternoon Menus
+                  </p>
+                  <p
+                    class="uppercase"
+                    style="
+                      font-family: var(--font-forum);
+                      font-size: 22px;
+                      line-height: 1.1;
+                      letter-spacing: 0.02em;
+                      color: rgb(239, 231, 210);
+                    "
+                  >
+                    Luxury Private Lunch
+                  </p>
+                </div>
+                <div class="card-circle-arrow">
+                  <svg
+                    class="c-ring"
+                    viewBox="0 0 44 44"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="22" cy="22" r="21" />
+                  </svg>
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(239,231,210,.85)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="position: relative; z-index: 1"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        (function () {
+          const SVCS = [
+            {
+              img: "images/dinner-table.jpg",
+              guests: "2-10 Guests",
+              name: "Intimate Dining",
+              desc: "The most personal experience we offer. Our culinary team arrives at your villa, yacht, or chosen location and crafts a complete dining experience built entirely around you, from the first amuse-bouche to the final dessert.",
+              hl: [
+                "Fully customised menu around your preferences",
+                "Served at your villa, yacht or private venue",
+                "Chef and dedicated team on-site",
+                "Dietary and allergy accommodations",
+                "Full setup, service and breakdown included",
+              ],
+            },
+            {
+              img: "images/villa-gathering.jpg",
+              guests: "10-30 Guests",
+              name: "Private Gathering",
+              desc: "For those moments that deserve a truly exceptional table. Private gatherings with our culinary team bring restaurant-quality precision and warmth to family celebrations, milestone occasions, and intimate corporate events across the Caribbean.",
+              hl: [
+                "Curated group menu, family-style or plated",
+                "Celebrations, milestones and corporate dinners",
+                "Full staffing and event logistics",
+                "Bar and cocktail service available",
+                "Customised to your theme and vision",
+              ],
+            },
+            {
+              img: "images/anniversary-dinner.jpg",
+              guests: "Private Events",
+              name: "Private Event",
+              desc: "Plated or stationed dining delivered by a dedicated culinary and service team. Menu built around the season, staff briefed on the room, and every logistic handled before your guests arrive.",
+              hl: [
+                "Plated or stations service format",
+                "Themed menu and décor coordination",
+                "Dedicated event staffing",
+                "Premium bar and beverage curation",
+                "Full event logistics management",
+              ],
+            },
+            {
+              img: "images/grand-event.jpg",
+              guests: "Large-Scale Celebrations",
+              name: "Grand Celebration",
+              desc: "Large-scale private event catering for those who demand world-class execution. Our culinary team manages every aspect, from logistics and setup to live cooking stations and premium service, at any scale.",
+              hl: [
+                "Scalable to any guest count",
+                "Multiple live cuisine stations",
+                "Complete event catering management",
+                "Premium bar and beverage service",
+                "Full staffing, setup and breakdown",
+              ],
+            },
+          ];
+          const modal = document.getElementById("svc-modal");
+          const mImg = document.getElementById("svc-modal-img");
+          const mEye = document.getElementById("svc-modal-eyebrow");
+          const mName = document.getElementById("svc-modal-name");
+          const mDesc = document.getElementById("svc-modal-desc");
+          const mHl = document.getElementById("svc-modal-hl");
+          function openSvc(i) {
+            const s = SVCS[i];
+            mImg.src = s.img;
+            mImg.alt = s.name;
+            mEye.textContent = s.guests;
+            mName.textContent = s.name;
+            mDesc.textContent = s.desc;
+            mHl.innerHTML = s.hl.map((h) => "<li>" + h + "</li>").join("");
+            document.querySelector(".svc-modal-cta").href =
+              "reservation.html?type=bespoke";
+            modal.classList.add("open");
+            modal.removeAttribute("aria-hidden");
+            document.body.style.overflow = "hidden";
+          }
+          function closeSvc() {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+          }
+          document.querySelectorAll(".psvc-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              openSvc(+btn.dataset.svc);
+            });
+          });
+          document.querySelectorAll(".psvc-card[data-svc]").forEach((card) => {
+            card.addEventListener("click", () => openSvc(+card.dataset.svc));
+          });
+          document
+            .getElementById("svc-modal-close")
+            .addEventListener("click", closeSvc);
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeSvc();
+          });
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal.classList.contains("open"))
+              closeSvc();
+          });
+        })();
+      </script>
+
+      <!-- â"€â"€ REVIEW CAROUSEL â"€â"€ -->
+      <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
+        <div
+          id="testimonial-carousel"
+          style="max-width: 800px; margin: 0 auto; text-align: center"
+        >
+          <div
+            class="select-none"
+            aria-hidden="true"
+            style="
+              font-family: var(--font-forum);
+              font-size: 120px;
+              line-height: 0;
+              color: rgba(0, 46, 40, 0.1);
+              margin-bottom: 52px;
+            "
+          >
+            &ldquo;
+          </div>
+          <!-- Track -->
+          <div style="position: relative; min-height: 240px">
+            <div class="testimonial-slide">
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(18px, 2.5vw, 32px);
+                  line-height: 1.4;
+                  letter-spacing: 0.01em;
+                  color: var(--text);
+                "
+              >
+                Chef Don didn&rsquo;t just cook dinner. He made our anniversary
+                something we will never stop talking about.
+              </p>
+              <p
+                class="meta-label"
+                style="color: var(--text-muted); margin-top: 40px"
+              >
+                J. &amp; M. Harrison &middot; Nassau, Bahamas &middot; 2024
+              </p>
+            </div>
+            <div class="testimonial-slide">
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(18px, 2.5vw, 32px);
+                  line-height: 1.4;
+                  letter-spacing: 0.01em;
+                  color: var(--text);
+                "
+              >
+                We flew in from New York and this private dinner was the
+                highlight of our entire trip. Donovan&rsquo;s Caribbean fusion,
+                plated course by course on our own terrace, is what we talk
+                about when people ask how the trip was.
+              </p>
+              <p
+                class="meta-label"
+                style="color: var(--text-muted); margin-top: 40px"
+              >
+                The Williams Family &middot; New York, USA &middot; 2024
+              </p>
+            </div>
+            <div class="testimonial-slide">
+              <p
+                style="
+                  font-family: var(--font-forum);
+                  font-size: clamp(18px, 2.5vw, 32px);
+                  line-height: 1.4;
+                  letter-spacing: 0.01em;
+                  color: var(--text);
+                "
+              >
+                The food was extraordinary but it was the personal attention
+                that made the difference. Donovan genuinely cares about creating
+                something meaningful for you.
+              </p>
+              <p
+                class="meta-label"
+                style="color: var(--text-muted); margin-top: 40px"
+              >
+                T. &amp; A. Morrison &middot; Toronto, Canada &middot; 2024
+              </p>
+            </div>
+          </div>
+          <!-- Dots -->
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 12px;
+              margin-top: 48px;
+            "
+          >
+            <button class="testimonial-dot" aria-label="Testimonial 1"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 2"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DINNER SERIES ===== -->
+      <section class="dinner-series-section fade-up">
+        <!-- VIDEO -->
+        <div class="dinner-series-video">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="videos/dinner-series.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="dinner-series-content">
+          <div class="dinner-series-heading">
+            <h2>
+              AFTER SUNSET<br />
+              THERE'S ANOTHER<br />
+              TABLE WAITING.
+            </h2>
+          </div>
+
+          <div class="dinner-series-description">
+            <p>
+              Chef Don Smith invites you to the Dinner Series, an intimate
+              supper club where every evening has its own setting, menu, and
+              story.
+            </p>
+
+            <p>
+              A small table. A changing location. Dinner worth keeping an
+              evening open for.
+            </p>
+          </div>
+
+          <div class="dinner-series-action">
+            <a href="#" class="dinner-series-btn">
+              <span>ENTER THE DINNER SERIES</span>
+              <span class="dinner-series-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+      <!-- â"€â"€ REEL FEED â"€â"€ -->
+      <section
+        class="fade-up mt-4 py-14 sm:py-16 lg:py-20"
+        style="
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          overflow: hidden;
+        "
+      >
+        <!-- Header -->
+        <div
+          style="
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 clamp(24px, 4vw, 52px);
+            margin-bottom: clamp(28px, 4vw, 44px);
+          "
+        >
+          <div>
+            <span
+              style="
+                display: block;
+                font-family: var(--font-satoshi);
+                font-size: 11px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: var(--text-muted);
+                margin-bottom: 14px;
+              "
+              >Behind the Table</span
+            >
+            <h2
+              class="uppercase"
+              style="
+                font-family: var(--font-forum);
+                font-size: clamp(24px, 3.5vw, 42px);
+                line-height: 1.05;
+                letter-spacing: 0.02em;
+                color: var(--text);
+              "
+            >
+              From the Feed
+            </h2>
+          </div>
+          <a
+            href="https://instagram.com/chef.donsmith"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              font-family: var(--font-satoshi);
+              font-size: 13px;
+              font-weight: 500;
+              color: var(--text-muted);
+              text-decoration: none;
+              transition: color 0.2s;
+              white-space: nowrap;
+            "
+            onmouseover="this.style.color = 'var(--text)'"
+            onmouseout="this.style.color = 'var(--text-muted)'"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r=".5"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+            @chef.donsmith
           </a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  (function(){
-    const SVCS=[
-      {img:'images/dinner-table.jpg',guests:'2-10 Guests',name:'Intimate Dining',desc:'The most personal experience we offer. Our culinary team arrives at your villa, yacht, or chosen location and crafts a complete dining experience built entirely around you, from the first amuse-bouche to the final dessert.',hl:['Fully customised menu around your preferences','Served at your villa, yacht or private venue','Chef and dedicated team on-site','Dietary and allergy accommodations','Full setup, service and breakdown included']},
-      {img:'images/villa-gathering.jpg',guests:'10-30 Guests',name:'Private Gathering',desc:'For those moments that deserve a truly exceptional table. Private gatherings with our culinary team bring restaurant-quality precision and warmth to family celebrations, milestone occasions, and intimate corporate events across the Caribbean.',hl:['Curated group menu, family-style or plated','Celebrations, milestones and corporate dinners','Full staffing and event logistics','Bar and cocktail service available','Customised to your theme and vision']},
-      {img:'images/anniversary-dinner.jpg',guests:'Private Events',name:'Private Event',desc:'Plated or stationed dining delivered by a dedicated culinary and service team. Menu built around the season, staff briefed on the room, and every logistic handled before your guests arrive.',hl:['Plated or stations service format','Themed menu and décor coordination','Dedicated event staffing','Premium bar and beverage curation','Full event logistics management']},
-      {img:'images/grand-event.jpg',guests:'Large-Scale Celebrations',name:'Grand Celebration',desc:'Large-scale private event catering for those who demand world-class execution. Our culinary team manages every aspect, from logistics and setup to live cooking stations and premium service, at any scale.',hl:['Scalable to any guest count','Multiple live cuisine stations','Complete event catering management','Premium bar and beverage service','Full staffing, setup and breakdown']}
-    ];
-    const modal=document.getElementById('svc-modal');
-    const mImg=document.getElementById('svc-modal-img');
-    const mEye=document.getElementById('svc-modal-eyebrow');
-    const mName=document.getElementById('svc-modal-name');
-    const mDesc=document.getElementById('svc-modal-desc');
-    const mHl=document.getElementById('svc-modal-hl');
-    function openSvc(i){
-      const s=SVCS[i];
-      mImg.src=s.img;mImg.alt=s.name;
-      mEye.textContent=s.guests;mName.textContent=s.name;
-      mDesc.textContent=s.desc;
-      mHl.innerHTML=s.hl.map(h=>'<li>'+h+'</li>').join('');
-      document.querySelector('.svc-modal-cta').href='reservation.html?type=bespoke';
-      modal.classList.add('open');modal.removeAttribute('aria-hidden');
-      document.body.style.overflow='hidden';
-    }
-    function closeSvc(){
-      modal.classList.remove('open');modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-    }
-    document.querySelectorAll('.psvc-btn').forEach(btn=>{
-      btn.addEventListener('click',e=>{e.stopPropagation();openSvc(+btn.dataset.svc);});
-    });
-    document.querySelectorAll('.psvc-card[data-svc]').forEach(card=>{
-      card.addEventListener('click',()=>openSvc(+card.dataset.svc));
-    });
-    document.getElementById('svc-modal-close').addEventListener('click',closeSvc);
-    modal.addEventListener('click',e=>{if(e.target===modal)closeSvc();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeSvc();});
-  })();
-  </script>
-
-  <!-- â"€â"€ REVIEW CAROUSEL â"€â"€ -->
-  <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
-    <div id="testimonial-carousel" style="max-width:800px;margin:0 auto;text-align:center">
-      <div class="select-none" aria-hidden="true" style="font-family:var(--font-forum);font-size:120px;line-height:0;color:rgba(0,46,40,.1);margin-bottom:52px">&ldquo;</div>
-      <!-- Track -->
-      <div style="position:relative;min-height:240px">
-        <div class="testimonial-slide">
-          <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
-            Chef Don didn&rsquo;t just cook dinner. He made our anniversary something we will never stop talking about.
-          </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">J. &amp; M. Harrison &middot; Nassau, Bahamas &middot; 2024</p>
+        <!-- Scrolling strip -->
+        <div class="reel-mask" style="overflow: hidden; padding: 4px 0">
+          <div class="reel-track" id="reel-track"></div>
         </div>
-        <div class="testimonial-slide">
-          <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
-            We flew in from New York and this private dinner was the highlight of our entire trip. Donovan&rsquo;s Caribbean fusion, plated course by course on our own terrace, is what we talk about when people ask how the trip was.
-          </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">The Williams Family &middot; New York, USA &middot; 2024</p>
+      </section>
+      <div style="height: 48px"></div>
+
+      <script>
+        (function () {
+          const reels = [
+            {
+              img: "images/dinner-table.jpg",
+              caption: "An intimate table set for two",
+            },
+            {
+              img: "images/villa-gathering.jpg",
+              caption: "Villa gathering, golden hour",
+            },
+            {
+              img: "images/anniversary-dinner.jpg",
+              caption: "Anniversary dinner, Nassau",
+            },
+            {
+              img: "images/grand-event.jpg",
+              caption: "Grand event, 80 guests",
+            },
+            {
+              img: "images/luxury-private-dining-2.jpg",
+              caption: "Private dining in the tropics",
+            },
+            {
+              img: "images/luxury-private-breakfast.jpg",
+              caption: "Morning table, Exuma",
+            },
+            {
+              img: "images/luxury-private-lunch.jpg",
+              caption: "Afternoon lunch on the deck",
+            },
+            {
+              img: "images/main-hero-image-2.jpg",
+              caption: "Where every evening begins",
+            },
+            {
+              img: "images/plan-your-experience.jpg",
+              caption: "Your experience, crafted",
+            },
+            {
+              img: "images/portfolio-photo.jpg",
+              caption: "The craft behind every course",
+            },
+          ];
+          const track = document.getElementById("reel-track");
+          const all = [...reels, ...reels]; // duplicate for seamless loop
+          all.forEach((r) => {
+            const card = document.createElement("div");
+            card.className = "reel-card";
+            card.innerHTML =
+              '<img src="' +
+              r.img +
+              '" alt="' +
+              r.caption +
+              '" loading="lazy">' +
+              '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,12,10,.88) 0%,transparent 55%);z-index:1"></div>' +
+              '<div class="reel-play" style="z-index:2">' +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>' +
+              "</div>" +
+              '<p style="position:absolute;bottom:18px;left:18px;right:18px;font-family:var(--font-satoshi);font-size:12px;font-weight:400;line-height:1.5;color:rgba(239,231,210,.85);z-index:2">' +
+              r.caption +
+              "</p>";
+            track.appendChild(card);
+          });
+        })();
+      </script>
+
+      <!-- â"€â"€ FOOTER â"€â"€ -->
+      <footer
+        class="px-6 sm:px-10 lg:px-20"
+        style="
+          border-top: 1px solid var(--border);
+          padding-top: 44px;
+          padding-bottom: 36px;
+        "
+      >
+        <div style="margin-bottom: 32px">
+          <span class="footer-brand">Chef Donovan Smith</span>
+          <span
+            class="footer-tagline"
+            style="
+              display: block;
+              margin-top: 4px;
+              font-family: var(--font-satoshi, sans-serif);
+              font-size: 11px;
+              letter-spacing: 0.04em;
+              opacity: 0.4;
+            "
+            >Chef Donovan Smith</span
+          >
+          <a
+            href="https://instagram.com/chef.donsmith"
+            target="_blank"
+            rel="noopener"
+            class="footer-link"
+            style="display: block; margin-top: 5px; opacity: 0.55"
+            >@chef.donsmith</a
+          >
         </div>
-        <div class="testimonial-slide">
-          <p style="font-family:var(--font-forum);font-size:clamp(18px,2.5vw,32px);line-height:1.4;letter-spacing:.01em;color:var(--text)">
-            The food was extraordinary but it was the personal attention that made the difference. Donovan genuinely cares about creating something meaningful for you.
-          </p>
-          <p class="meta-label" style="color:var(--text-muted);margin-top:40px">T. &amp; A. Morrison &middot; Toronto, Canada &middot; 2024</p>
+
+        <nav class="footer-nav">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="menu.html" class="footer-link">Menu</a>
+          <a href="single-bespoke-experiences.html" class="footer-link"
+            >Experiences</a
+          >
+          <a href="gallery.html" class="footer-link">Gallery</a>
+          <a href="reviews.html" class="footer-link">Reviews</a>
+          <a href="blog.html" class="footer-link">Blog</a>
+          <a href="partner.html" class="footer-link">Partner</a>
+          <a href="signature-standard.html" class="footer-link">Our Standard</a>
+        </nav>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-left">
+            <a
+              href="mailto:booking@chefdonsmith.com"
+              class="footer-link"
+              style="opacity: 0.6"
+              ><span style="opacity: 0.5">Inquiries:</span>
+              booking@chefdonsmith.com</a
+            >
+            <span class="footer-sep">|</span>
+            <a
+              href="terms-and-conditions.html"
+              class="footer-link"
+              style="opacity: 0.45"
+              target="_blank"
+              rel="noopener"
+              >Terms &amp; Conditions</a
+            >
+            <a
+              href="privacy-policy.html"
+              class="footer-link"
+              style="opacity: 0.45"
+              target="_blank"
+              rel="noopener"
+              >Privacy Policy</a
+            >
+            <a
+              href="refunds-and-cancellation.html"
+              class="footer-link"
+              style="opacity: 0.45"
+              target="_blank"
+              rel="noopener"
+              >Refunds &amp; Cancellation</a
+            >
+          </div>
+          <span class="footer-link" style="opacity: 0.32"
+            >&copy; 2026 chefdonsmith.com</span
+          >
         </div>
-      </div>
-      <!-- Dots -->
-      <div style="display:flex;justify-content:center;gap:12px;margin-top:48px">
-        <button class="testimonial-dot" aria-label="Testimonial 1"></button>
-        <button class="testimonial-dot" aria-label="Testimonial 2"></button>
-        <button class="testimonial-dot" aria-label="Testimonial 3"></button>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- â"€â"€ REEL FEED â"€â"€ -->
-  <section class="fade-up mt-4 py-14 sm:py-16 lg:py-20" style="border:1px solid var(--border);border-radius:16px;overflow:hidden">
-    <!-- Header -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 clamp(24px,4vw,52px);margin-bottom:clamp(28px,4vw,44px)">
-      <div>
-        <span style="display:block;font-family:var(--font-satoshi);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:var(--text-muted);margin-bottom:14px">Behind the Table</span>
-        <h2 class="uppercase" style="font-family:var(--font-forum);font-size:clamp(24px,3.5vw,42px);line-height:1.05;letter-spacing:.02em;color:var(--text)">From the Feed</h2>
-      </div>
-      <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-satoshi);font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color .2s;white-space:nowrap" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-muted)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
-        @chef.donsmith
-      </a>
-    </div>
-    <!-- Scrolling strip -->
-    <div class="reel-mask" style="overflow:hidden;padding:4px 0">
-      <div class="reel-track" id="reel-track"></div>
-    </div>
-  </section>
-  <div style="height:48px"></div>
-
-  <script>
-  (function(){
-    const reels = [
-      { img:'images/dinner-table.jpg',          caption:'An intimate table set for two' },
-      { img:'images/villa-gathering.jpg',        caption:'Villa gathering, golden hour' },
-      { img:'images/anniversary-dinner.jpg',     caption:'Anniversary dinner, Nassau' },
-      { img:'images/grand-event.jpg',            caption:'Grand event, 80 guests' },
-      { img:'images/luxury-private-dining-2.jpg',caption:'Private dining in the tropics' },
-      { img:'images/luxury-private-breakfast.jpg',caption:'Morning table, Exuma' },
-      { img:'images/luxury-private-lunch.jpg',   caption:'Afternoon lunch on the deck' },
-      { img:'images/main-hero-image-2.jpg',      caption:'Where every evening begins' },
-      { img:'images/plan-your-experience.jpg',   caption:'Your experience, crafted' },
-      { img:'images/portfolio-photo.jpg',        caption:'The craft behind every course' },
-    ];
-    const track = document.getElementById('reel-track');
-    const all = [...reels, ...reels]; // duplicate for seamless loop
-    all.forEach(r => {
-      const card = document.createElement('div');
-      card.className = 'reel-card';
-      card.innerHTML =
-        '<img src="' + r.img + '" alt="' + r.caption + '" loading="lazy">' +
-        '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,12,10,.88) 0%,transparent 55%);z-index:1"></div>' +
-        '<div class="reel-play" style="z-index:2">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>' +
-        '</div>' +
-        '<p style="position:absolute;bottom:18px;left:18px;right:18px;font-family:var(--font-satoshi);font-size:12px;font-weight:400;line-height:1.5;color:rgba(239,231,210,.85);z-index:2">' + r.caption + '</p>';
-      track.appendChild(card);
-    });
-  })();
-  </script>
-
-  <!-- â"€â"€ FOOTER â"€â"€ -->
-  <footer class="px-6 sm:px-10 lg:px-20" style="border-top:1px solid var(--border);padding-top:44px;padding-bottom:36px">
-
-    <div style="margin-bottom:32px">
-      <span class="footer-brand">Chef Donovan Smith</span>
-            <span class="footer-tagline" style="display:block;margin-top:4px;font-family:var(--font-satoshi,sans-serif);font-size:11px;letter-spacing:.04em;opacity:.4">Chef Donovan Smith</span>
-      <a href="https://instagram.com/chef.donsmith" target="_blank" rel="noopener" class="footer-link" style="display:block;margin-top:5px;opacity:.55">@chef.donsmith</a>
+      </footer>
     </div>
 
-    <nav class="footer-nav">
-      <a href="index.html"       class="footer-link">Home</a>
-      <a href="about.html"       class="footer-link">About</a>
-      <a href="menu.html"        class="footer-link">Menu</a>
-      <a href="single-bespoke-experiences.html" class="footer-link">Experiences</a>
-      <a href="gallery.html"     class="footer-link">Gallery</a>
-      <a href="reviews.html"     class="footer-link">Reviews</a>
-      <a href="blog.html"        class="footer-link">Blog</a>
-        <a href="partner.html" class="footer-link">Partner</a>
-        <a href="signature-standard.html" class="footer-link">Our Standard</a>
-    </nav>
-
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        <a href="mailto:booking@chefdonsmith.com" class="footer-link" style="opacity:.6"><span style="opacity:.5">Inquiries:</span> booking@chefdonsmith.com</a>
-        <span class="footer-sep">|</span>
-        <a href="terms-and-conditions.html"          class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Terms &amp; Conditions</a>
-        <a href="privacy-policy.html" class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Privacy Policy</a>
-        <a href="refunds-and-cancellation.html"        class="footer-link" style="opacity:.45" target="_blank" rel="noopener">Refunds &amp; Cancellation</a>
-      </div>
-      <span class="footer-link" style="opacity:.32">&copy; 2026 chefdonsmith.com</span>
-    </div>
-
-  </footer>
-
-</div>
-
-
-<script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
