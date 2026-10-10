@@ -1,0 +1,2514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Dinner Series | Chef Don Smith</title>
+    <meta
+      name="description"
+      content="An invitation-only supper club by Chef Don Smith. Ten to fifteen seats, twice a month. The location stays a secret until you're on the list."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #efe7d2;
+        --green: #002e28;
+        --line: rgba(0, 46, 40, 0.2);
+        --line-inv: rgba(239, 231, 210, 0.2);
+        --forum: "Forum", serif;
+        --satoshi: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --gutter: 48px;
+        --inner: 1516px;
+        --col: 284px;
+        --gap: 24px;
+        --section: 200px;
+        --h1: clamp(46px, 4.74vw, 91px);
+        --h2: clamp(38px, 3.6vw, 69px);
+        --h3: clamp(32px, 2.76vw, 53px);
+        --h4: clamp(26px, 2.08vw, 40px);
+        --display: clamp(60px, 8.07vw, 155px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: auto;
+        scroll-padding-top: 84px;
+        overflow-x: clip;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--green);
+        font-family: var(--satoshi);
+        font-size: 18px;
+        line-height: 24px;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      img,
+      video {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      p {
+        margin: 0;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        font-weight: 400;
+      }
+
+      .inner {
+        width: min(var(--inner), calc(100% - 2 * var(--gutter)));
+        margin-inline: auto;
+      }
+      .forum {
+        font-family: var(--forum);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .label {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 592px;
+        max-width: 100%;
+        padding: 30px 28px;
+        border-radius: 160px;
+        border: 1px solid var(--green);
+        background: var(--green);
+        color: var(--cream);
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background-color 0.3s var(--ease),
+          color 0.3s var(--ease),
+          border-color 0.3s var(--ease);
+      }
+      .btn:hover {
+        background: transparent;
+        color: var(--green);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--green);
+      }
+      .btn-outline:hover {
+        background: var(--green);
+        color: var(--cream);
+      }
+      .btn-outline-inv {
+        background: transparent;
+        color: var(--cream);
+        border-color: var(--cream);
+      }
+      .btn-outline-inv:hover {
+        background: var(--cream);
+        color: var(--green);
+      }
+      .btn svg {
+        width: 20px;
+        height: 20px;
+        flex: none;
+        transition: transform 0.3s var(--ease);
+      }
+      .btn:hover svg {
+        transform: translate(2px, -2px);
+      }
+
+      /* ---------- Header ---------- */
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 84px;
+        padding: 0 var(--gutter);
+        color: var(--cream);
+        background: rgba(0, 46, 40, 0);
+        transition:
+          background-color 0.4s var(--ease),
+          box-shadow 0.4s var(--ease);
+      }
+      .site-header.is-solid {
+        background: var(--green);
+        box-shadow: 0 1px 0 var(--line-inv);
+      }
+      .logo {
+        font-family: var(--forum);
+        font-size: 24px;
+        line-height: 36px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .nav {
+        display: flex;
+        gap: 80px;
+      }
+      .nav a {
+        position: relative;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        opacity: 0.85;
+        transition: opacity 0.2s;
+      }
+      .nav a:hover {
+        opacity: 1;
+      }
+      .nav a.is-active {
+        font-weight: 700;
+        opacity: 1;
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: 0;
+        padding: 8px;
+        cursor: pointer;
+        color: var(--cream);
+      }
+      .menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 1.5px;
+        background: currentColor;
+        margin: 6px 0;
+        transition:
+          transform 0.3s var(--ease),
+          opacity 0.3s;
+      }
+      .menu-open .menu-toggle span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg);
+      }
+      .menu-open .menu-toggle span:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-open .menu-toggle span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg);
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        height: 800px;
+        overflow: hidden;
+        color: var(--cream);
+      }
+      .hero-media,
+      .hero-media video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 46, 40, 0) 0%,
+            rgba(0, 46, 40, 0.3) 92.9%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(0, 46, 40, 0.3) 11.9%,
+            rgba(0, 46, 40, 0) 100%
+          );
+      }
+      .hero .inner {
+        position: relative;
+        height: 100%;
+      }
+      .hero h1 {
+        position: absolute;
+        top: 224px;
+        left: 0;
+        max-width: 8.2em;
+        font-size: var(--h1);
+        line-height: 1.055;
+      }
+      .hero-sub {
+        position: absolute;
+        left: 0;
+        bottom: 48px;
+        max-width: 414px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .hero-club {
+        position: absolute;
+        right: 0;
+        top: 530px;
+        width: 438px;
+        display: flex;
+        gap: 20px;
+      }
+      .hero-club::before {
+        content: "";
+        flex: none;
+        width: 4px;
+        background: var(--cream);
+      }
+      .hero-club p {
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .hero-club strong {
+        display: block;
+        margin-top: 12px;
+        font-family: var(--forum);
+        font-weight: 400;
+        font-size: var(--h3);
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+
+      /* Hero intro: media grows out of a small block in the top-left corner,
+         first to full width, then to full height. Then the title rises in letter by letter. */
+      .hero {
+        background: var(--cream);
+      }
+      .hero-media {
+        animation: hero-block 1.9s both;
+        will-change: clip-path;
+      }
+      .hero-media video {
+        animation: hero-zoom 2.6s var(--ease) both;
+      }
+      @keyframes hero-block {
+        0% {
+          clip-path: inset(0 86% 82% 0);
+          animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        48% {
+          clip-path: inset(0 0 82% 0);
+          animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        100% {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+      @keyframes hero-zoom {
+        from {
+          transform: scale(1.25);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .hero .hl {
+        display: block;
+        will-change: translate, opacity;
+      }
+      .hero .w {
+        display: inline-block;
+        overflow: hidden;
+        padding-bottom: 0.06em;
+        margin-bottom: -0.06em;
+        vertical-align: top;
+      }
+      .hero .c {
+        display: inline-block;
+        animation: hero-char 1.6s cubic-bezier(0.19, 1, 0.22, 1) both;
+        animation-delay: calc(1.5s + var(--ci) * 45ms);
+      }
+      @keyframes hero-char {
+        from {
+          transform: translateY(105%);
+          filter: blur(6px);
+        }
+        to {
+          transform: none;
+          filter: none;
+        }
+      }
+      .hero-sub,
+      .hero-club {
+        will-change: translate, opacity;
+      }
+      .hero-sub > span,
+      .hero-club p {
+        display: block;
+        animation: hero-blur 1.4s var(--ease) 2.1s both;
+      }
+      .hero-club::before {
+        transform-origin: top;
+        animation: hero-bar 1.2s var(--ease) 1.9s both;
+      }
+      @keyframes hero-blur {
+        from {
+          opacity: 0;
+          filter: blur(10px);
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          filter: none;
+          transform: none;
+        }
+      }
+      @keyframes hero-bar {
+        from {
+          transform: scaleY(0);
+        }
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      /* ---------- Countdown bar ---------- */
+      .countdown-bar {
+        display: grid;
+        grid-template-columns: 396px 1fr 592px;
+        align-items: start;
+        padding: 48px var(--gutter) 0;
+      }
+      .countdown-bar .label {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+      .countdown {
+        font-family: var(--forum);
+        font-size: var(--h2);
+        line-height: 72px;
+        letter-spacing: 0.5px;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      /* ---------- How it works ---------- */
+      .steps {
+        position: relative;
+        height: 762px;
+        margin-top: var(--section);
+      }
+      .step {
+        position: absolute;
+        top: calc(var(--i) * 112px);
+        left: calc(var(--i) * 20.3166%);
+        width: 39.05%;
+        height: 426px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--green);
+        border-radius: 16px;
+        background: var(--cream);
+        color: var(--green);
+        transition:
+          transform 0.5s var(--ease),
+          box-shadow 0.5s var(--ease);
+      }
+      .step:nth-child(even) {
+        background: var(--green);
+        color: var(--cream);
+      }
+      .step:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 48px -24px rgba(0, 46, 40, 0.45);
+        z-index: 5;
+      }
+      .step-tag {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .step-tag img {
+        width: 20px;
+        height: 20px;
+      }
+      .step h3 {
+        font-family: var(--forum);
+        font-size: var(--h3);
+        line-height: 56px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .step p {
+        max-width: 512px;
+      }
+      .step:nth-child(2) p,
+      .step:nth-child(3) p {
+        max-width: 244px;
+      }
+
+      /* ---------- Next dinner ---------- */
+      .next-dinner {
+        position: relative;
+        overflow: hidden;
+        margin-top: var(--section);
+        padding: 48px;
+        border: 1px solid var(--green);
+        border-radius: 16px;
+      }
+      .nd-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+      }
+      .nd-top h2 {
+        max-width: 7.9em;
+        font-size: var(--h2);
+        line-height: 1.045;
+      }
+      .pill {
+        flex: none;
+        padding: 12px 24px;
+        border-radius: 32px;
+        background: var(--green);
+        color: var(--cream);
+        letter-spacing: 1px;
+      }
+      .nd-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 56px;
+        font-size: var(--h4);
+        line-height: 48px;
+      }
+      .nd-desc {
+        max-width: 390px;
+        margin-top: 16px;
+        font-weight: 500;
+      }
+      .nd-grid {
+        display: grid;
+        grid-template-columns: 236px 1fr;
+        gap: 0 25px;
+        margin-top: 120px;
+      }
+      .nd-facts {
+        display: grid;
+        grid-template-columns: 236px 236px;
+        gap: 40px 25px;
+        align-content: start;
+      }
+      .nd-facts p:not(.label) {
+        margin-top: 20px;
+        font-weight: 500;
+      }
+      .nd-facts .label + p {
+        margin-top: 20px;
+      }
+      .nd-menu {
+        margin-left: calc(568px - 261px);
+        margin-right: -48px;
+      }
+      .nd-menu .label {
+        margin-bottom: 20px;
+      }
+      .menu-row {
+        position: relative;
+        display: flex;
+        gap: 24px;
+      }
+      .menu-row::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 258px;
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          var(--cream),
+          rgba(239, 231, 210, 0)
+        );
+        pointer-events: none;
+      }
+      .menu-item {
+        position: relative;
+        flex: none;
+        width: 284px;
+        height: 184px;
+        overflow: hidden;
+        border: 1px solid var(--green);
+        border-radius: 8px;
+        background: var(--cream);
+      }
+      .menu-item img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s var(--ease);
+      }
+      .menu-item:hover img {
+        transform: scale(1.05);
+      }
+      .menu-item.is-revealed {
+        background: var(--green);
+        border-color: var(--green);
+      }
+      .menu-item.is-revealed::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          210deg,
+          rgba(0, 0, 0, 0) 16.4%,
+          rgba(0, 0, 0, 0.5) 87.1%
+        );
+      }
+      .menu-item span {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+        z-index: 2;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      .menu-item.is-revealed span {
+        color: var(--cream);
+      }
+
+      /* ---------- Green band: chef + testimonial ---------- */
+      .band {
+        position: relative;
+        margin-top: var(--section);
+        padding-top: 264px;
+        color: var(--cream);
+      }
+      .band::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 164px 0;
+        z-index: -1;
+        background: url("images/dinner-series/green-wave.svg") center / 100%
+          100% no-repeat;
+      }
+      .chef {
+        display: grid;
+        grid-template-columns: 592px 1fr;
+        gap: 104px;
+      }
+
+      .chef-photo {
+        aspect-ratio: 592 / 789;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .chef-photo img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        object-fit: fill;
+        object-position: center center;
+      }
+      .chef-body {
+        display: flex;
+        flex-direction: column;
+      }
+      .chef-body .meet {
+        padding-left: 5px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .chef-body h2 {
+        margin-top: 12px;
+        font-size: var(--display);
+        line-height: 1.032;
+      }
+      .chef-body p.bio {
+        margin: 24px 0 0 228px;
+        max-width: 592px;
+        font-weight: 300;
+      }
+      .chef-body .btn {
+        margin-top: auto;
+      }
+
+      .table-card {
+        position: relative;
+        margin-top: var(--section);
+        height: 852px;
+        overflow: hidden;
+        border-radius: 16px;
+        padding: 48px;
+      }
+      .table-card .bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          opacity 0.8s var(--ease),
+          transform 1.2s var(--ease);
+      }
+      .table-card .bg:not(.is-active) {
+        opacity: 0;
+        transform: scale(1.04);
+      }
+      .table-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 46, 40, 0.2);
+        pointer-events: none;
+      }
+      .table-card > *:not(.bg) {
+        position: relative;
+        z-index: 2;
+      }
+      .table-card h2 {
+        font-size: var(--h2);
+        line-height: 1.045;
+      }
+      .quote {
+        position: absolute !important;
+        left: 71.1%;
+        top: 324px;
+        width: 390px;
+      }
+      .quote p {
+        font-weight: 500;
+        transition: opacity 0.5s var(--ease);
+      }
+      .quote strong {
+        display: block;
+        margin-top: 32px;
+        font-family: var(--forum);
+        font-weight: 400;
+        font-size: var(--h3);
+        line-height: 56px;
+        text-transform: uppercase;
+      }
+      .quote small {
+        display: block;
+        margin-top: 12px;
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+      .quote.is-swapping > * {
+        opacity: 0;
+      }
+      .quote > * {
+        transition: opacity 0.4s var(--ease);
+      }
+      .avatars {
+        position: absolute !important;
+        left: 48px;
+        bottom: 48px;
+        display: flex;
+        gap: 24px;
+      }
+      .avatars button {
+        width: 56px;
+        height: 56px;
+        padding: 0;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: none;
+        cursor: pointer;
+        transition:
+          border-color 0.3s,
+          padding 0.3s var(--ease);
+      }
+      .avatars button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: border-radius 0.3s;
+      }
+      .avatars button[aria-pressed="true"] {
+        border-color: var(--cream);
+        padding: 5px;
+      }
+      .avatars button[aria-pressed="true"] img {
+        border-radius: 4px;
+      }
+
+      /* ---------- From the table ---------- */
+      .gallery {
+        position: relative;
+        margin-top: var(--section);
+      }
+      .gallery h2 {
+        position: absolute;
+        top: 0;
+        left: max(var(--gutter), calc((100% - var(--inner)) / 2));
+        font-size: var(--h2);
+        line-height: 1.045;
+        z-index: 2;
+      }
+      .gallery-track {
+        display: flex;
+        gap: 24px;
+        padding-top: 36px;
+        margin-left: calc(50% - 960px - 260px);
+        will-change: transform;
+      }
+      .gallery-track figure {
+        flex: none;
+        width: 438px;
+        height: 610px;
+        margin: 0;
+        margin-top: calc((4 - var(--i)) * 64px);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .gallery-track img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s var(--ease);
+      }
+      .gallery-track figure:hover img {
+        transform: scale(1.04);
+      }
+      .gallery .btn {
+        display: flex;
+        margin: -16px auto 0;
+      }
+
+      /* ---------- Pull up a chair ---------- */
+      .chair-section {
+        display: grid;
+        grid-template-columns: 1fr 900px;
+        gap: 24px;
+        margin-top: 138px;
+        padding-left: var(--gutter);
+        padding-right: max(var(--gutter), calc((100% - var(--inner)) / 2));
+      }
+      .chair {
+        position: relative;
+        width: 592px;
+        max-width: 100%;
+        aspect-ratio: 592 / 713;
+        margin-top: 31px;
+      }
+      .chair > img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scaleX(-1);
+      }
+      .chair .shadow {
+        position: absolute;
+        width: 31.6%;
+        aspect-ratio: 187.091 / 38.657;
+        transform: rotate(1.96deg);
+      }
+      .chair .shadow img {
+        position: absolute;
+        left: -29.66%;
+        top: -143.57%;
+        width: 159.32%;
+        height: 387.14%;
+        max-width: none;
+      }
+      .chair-form h2 {
+        font-size: var(--h2);
+        line-height: 1.045;
+      }
+      .chair-intro {
+        display: grid;
+        grid-template-columns: 154px 280px 1fr;
+        gap: 0;
+        margin-top: 24px;
+        font-weight: 500;
+      }
+      .chair-intro p:first-child {
+        grid-column: 2;
+      }
+      .chair-intro p:last-child {
+        grid-column: 3;
+        padding-top: 48px;
+        margin-left: 24px;
+        max-width: 592px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 48px;
+      }
+      .field {
+        position: relative;
+        display: block;
+        border-bottom: 1px solid var(--line);
+      }
+      .field.full {
+        grid-column: span 2;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 8px;
+        border: 0;
+        background: transparent;
+        outline: none;
+        font-size: 14px;
+        line-height: 24px;
+        color: var(--green);
+        border-radius: 0;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 40px;
+        display: block;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: var(--green);
+        opacity: 1;
+      }
+      .field select {
+        appearance: none;
+        -webkit-appearance: none;
+        padding-right: 40px;
+        cursor: pointer;
+      }
+      .field select:invalid {
+        color: var(--green);
+      }
+      .field.select::after {
+        content: "";
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+        background: url("images/dinner-series/chevron.svg") center / 24px
+          no-repeat;
+      }
+      .field::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 1px;
+        background: var(--green);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s var(--ease);
+      }
+      .field:focus-within::before {
+        transform: scaleX(1);
+      }
+      .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 64px;
+      }
+      .form-note {
+        margin-top: 16px;
+        text-align: right;
+        font-size: 14px;
+        min-height: 20px;
+      }
+
+      /* ---------- FAQ ---------- */
+      .faq {
+        display: grid;
+        grid-template-columns: 1fr 746px;
+        gap: 24px;
+        margin-top: var(--section);
+      }
+      .faq h2 {
+        max-width: 7.9em;
+        font-size: var(--h2);
+        line-height: 1.045;
+      }
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .faq-item {
+        border: 1px solid var(--green);
+        border-radius: 16px;
+      }
+      .faq-item button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        padding: 48px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        text-align: left;
+        font-weight: 500;
+        transition: padding-bottom 0.45s var(--ease);
+      }
+      .faq-item.is-open button {
+        padding-bottom: 24px;
+      }
+      .faq-item button img {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.4s var(--ease);
+      }
+      .faq-item.is-open button img {
+        transform: rotate(180deg);
+      }
+      .faq-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.45s var(--ease);
+      }
+      .faq-panel > div {
+        overflow: hidden;
+      }
+      .faq-panel p {
+        padding: 0 48px 48px;
+      }
+      .faq-item.is-open .faq-panel {
+        grid-template-rows: 1fr;
+      }
+
+      /* ---------- Footer ---------- */
+      .footer {
+        position: relative;
+        margin-top: var(--section);
+        height: 954px;
+        overflow: hidden;
+        background: var(--green);
+        color: var(--cream);
+        padding-top: 128px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 437px 1px 1fr;
+      }
+      .footer-grid > div {
+        margin-left: 178px;
+      }
+      .footer-grid > :first-child {
+        grid-column: 1;
+      }
+      .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        font-family: var(--forum);
+        font-size: 31px;
+        line-height: 36px;
+        text-transform: uppercase;
+      }
+      .footer-nav a {
+        width: fit-content;
+        background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px
+          no-repeat;
+        transition: background-size 0.4s var(--ease);
+      }
+      .footer-nav a:hover {
+        background-size: 100% 1px;
+      }
+      .footer-rule {
+        width: 1px;
+        height: 495px;
+        background: var(--cream);
+      }
+      .footer-form {
+        width: 592px;
+        max-width: 100%;
+      }
+      .footer-form .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .footer-form input {
+        width: 100%;
+        padding: 8px;
+        border: 0;
+        border-bottom: 1px solid var(--line-inv);
+        background: transparent;
+        outline: none;
+        font-size: 14px;
+        line-height: 24px;
+        color: var(--cream);
+        border-radius: 0;
+        transition: border-color 0.3s;
+      }
+      .footer-form input::placeholder {
+        color: rgba(239, 231, 210, 0.72);
+      }
+      .footer-form input:focus {
+        border-color: var(--cream);
+      }
+      .footer-form button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        margin-top: 32px;
+        padding: 14px 28px;
+        border: 1px solid var(--cream);
+        border-radius: 999px;
+        background: var(--cream);
+        color: var(--green);
+        font-size: 11.8px;
+        line-height: 18px;
+        font-weight: 500;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      .footer-form button:hover {
+        background: transparent;
+        color: var(--cream);
+      }
+      .footer-form .form-note {
+        text-align: left;
+        color: rgba(239, 231, 210, 0.72);
+      }
+      .footer-cta {
+        margin-top: 36px;
+        max-width: 900px;
+        font-size: var(--display);
+        line-height: 1.032;
+      }
+      .footer-table {
+        position: absolute;
+        left: var(--gutter);
+        right: var(--gutter);
+        top: 679px;
+        aspect-ratio: 1824 / 896;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      }
+      .footer-table img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ---------- Reveal ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.9s var(--ease),
+          transform 0.9s var(--ease);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      .step.reveal.in:hover {
+        transform: translateY(-8px);
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 1600px) {
+        .chef {
+          grid-template-columns: 39% 1fr;
+          gap: 6.9%;
+        }
+        .chef-body p.bio {
+          margin-left: 15%;
+        }
+        .chair-section {
+          grid-template-columns: 1fr minmax(0, 900px);
+        }
+        .nd-menu {
+          margin-left: 0;
+        }
+        .nd-grid {
+          grid-template-columns: auto 1fr;
+          gap: 0 48px;
+        }
+        .nd-facts {
+          grid-template-columns: 200px 200px;
+        }
+        .menu-row {
+          overflow: hidden;
+        }
+        .footer-grid {
+          grid-template-columns: minmax(220px, 1fr) 1px minmax(0, 900px);
+        }
+        .footer-grid > div {
+          margin-left: clamp(48px, 9vw, 178px);
+        }
+      }
+      @media (max-width: 1280px) {
+        :root {
+          --section: 140px;
+        }
+        .nav {
+          gap: 48px;
+        }
+        .countdown-bar {
+          grid-template-columns: 1fr auto;
+          gap: 24px;
+        }
+        .countdown-bar .btn {
+          grid-column: span 2;
+          width: 100%;
+        }
+        .nd-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 48px;
+        }
+        .nd-menu {
+          margin-right: -48px;
+        }
+        .quote {
+          left: auto;
+          right: 48px;
+        }
+        .faq {
+          grid-template-columns: 1fr 1.4fr;
+        }
+        .chair-intro {
+          grid-template-columns: 1fr 1.6fr;
+          gap: 24px;
+        }
+        .chair-intro p:first-child {
+          grid-column: 1;
+        }
+        .chair-intro p:last-child {
+          grid-column: 2;
+          padding-top: 0;
+          margin-left: 0;
+        }
+      }
+      @media (max-width: 1024px) {
+        :root {
+          --gutter: 32px;
+          --section: 120px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .nav {
+          position: fixed;
+          inset: 84px 0 auto 0;
+          flex-direction: column;
+          gap: 0;
+          padding: 8px var(--gutter) 24px;
+          background: var(--green);
+          transform: translateY(-8px);
+          opacity: 0;
+          pointer-events: none;
+          transition:
+            opacity 0.3s var(--ease),
+            transform 0.3s var(--ease);
+        }
+        .nav a {
+          padding: 16px 0;
+          border-bottom: 1px solid var(--line-inv);
+          font-size: 16px;
+        }
+        .menu-open .nav {
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+        }
+        .menu-open.site-header {
+          background: var(--green);
+        }
+        .hero {
+          height: 720px;
+        }
+        .hero h1 {
+          top: 180px;
+        }
+        .hero-club {
+          top: auto;
+          bottom: 150px;
+          left: 0;
+          right: auto;
+          width: auto;
+        }
+        .steps {
+          height: auto;
+          display: grid;
+          gap: 24px;
+        }
+        .step {
+          position: relative;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: auto;
+          min-height: 320px;
+          gap: 80px;
+        }
+        .step:nth-child(even) {
+          margin-left: 10%;
+          width: 90%;
+        }
+        .chef {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 48px;
+        }
+        .chef-photo {
+          max-width: 520px;
+        }
+        .chef-body .btn {
+          margin-top: 48px;
+        }
+        .chef-body p.bio {
+          margin-left: 0;
+        }
+        .table-card {
+          height: 760px;
+        }
+        .quote {
+          left: 48px;
+          right: 48px;
+          top: auto;
+          bottom: 136px;
+          width: auto;
+          max-width: 390px;
+        }
+        .chair-section {
+          grid-template-columns: minmax(0, 1fr);
+          padding-inline: var(--gutter);
+        }
+        .chair {
+          width: 420px;
+          margin: 0 auto;
+        }
+        .faq {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 48px;
+        }
+        .footer {
+          height: auto;
+          padding-bottom: 260px;
+        }
+        .footer-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 56px;
+        }
+        .footer-grid > :first-child {
+          grid-column: auto;
+        }
+        .footer-rule {
+          display: none;
+        }
+        .footer-grid > div {
+          margin-left: 0;
+        }
+        .footer-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 16px 32px;
+          font-size: 24px;
+        }
+        .footer-table {
+          top: auto;
+          bottom: -60%;
+        }
+      }
+      @media (max-width: 680px) {
+        :root {
+          --gutter: 16px;
+          --section: 96px;
+        }
+        body {
+          font-size: 16px;
+        }
+        .site-header {
+          height: 68px;
+        }
+        .nav {
+          inset: 68px 0 auto 0;
+        }
+        html {
+          scroll-padding-top: 68px;
+        }
+        .logo {
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+        .hero {
+          height: 640px;
+        }
+        .hero h1 {
+          top: 140px;
+        }
+        .hero-sub {
+          bottom: 32px;
+          font-size: 14px;
+          line-height: 20px;
+        }
+        .hero-club {
+          bottom: 120px;
+        }
+        .countdown-bar {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          padding-top: 32px;
+        }
+        .countdown-bar .btn {
+          grid-column: auto;
+          margin-top: 16px;
+        }
+        .countdown {
+          line-height: 1.1;
+        }
+        .btn {
+          padding: 22px 24px;
+          font-size: 15px;
+        }
+        .step {
+          padding: 28px;
+          min-height: 280px;
+        }
+        .step:nth-child(even) {
+          margin-left: 0;
+          width: 100%;
+        }
+        .step h3 {
+          line-height: 1.1;
+        }
+        .next-dinner {
+          padding: 28px;
+        }
+        .nd-top {
+          flex-direction: column-reverse;
+        }
+        .nd-title {
+          flex-direction: column;
+          gap: 4px;
+          margin-top: 40px;
+          line-height: 1.2;
+        }
+        .nd-grid {
+          margin-top: 56px;
+        }
+        .nd-facts {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 16px;
+        }
+        .nd-menu {
+          margin-right: -28px;
+        }
+        .menu-row {
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          padding-right: 28px;
+        }
+        .menu-row::after {
+          display: none;
+        }
+        .menu-item {
+          width: 220px;
+          height: 150px;
+          scroll-snap-align: start;
+        }
+        .band {
+          padding-top: 140px;
+        }
+        .band::before {
+          bottom: 120px;
+        }
+        .table-card {
+          margin-top: 96px;
+          height: 640px;
+          padding: 28px;
+        }
+        .table-card h2 {
+          line-height: 1.05;
+        }
+        .quote {
+          left: 28px;
+          right: 28px;
+          bottom: 112px;
+        }
+        .quote strong {
+          margin-top: 20px;
+          line-height: 1.1;
+        }
+        .quote small {
+          font-size: 18px;
+          line-height: 24px;
+          margin-top: 4px;
+        }
+        .avatars {
+          left: 28px;
+          bottom: 28px;
+          gap: 12px;
+        }
+        .gallery {
+          margin-top: 120px;
+        }
+        .gallery h2 {
+          position: static;
+          margin: 0 var(--gutter) 24px;
+        }
+        .gallery-track {
+          margin-left: 0;
+          padding: 0 var(--gutter);
+          gap: 16px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          transform: none !important;
+        }
+        .gallery-track figure {
+          width: 72vw;
+          height: 100vw;
+          margin-top: 0;
+          scroll-snap-align: center;
+        }
+        .gallery .btn {
+          margin-top: 32px;
+          width: calc(100% - 2 * var(--gutter));
+        }
+        .chair-section {
+          margin-top: 96px;
+        }
+        .chair {
+          width: 280px;
+          overflow: visible;
+        }
+        .chair-section {
+          overflow: hidden;
+        }
+        .chair-intro {
+          grid-template-columns: 1fr;
+        }
+        .chair-intro p:last-child {
+          grid-column: 1;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .field.full {
+          grid-column: auto;
+        }
+        .form-actions .btn {
+          width: 100%;
+        }
+        .form-note {
+          text-align: left;
+        }
+        .faq-item button {
+          padding: 24px;
+        }
+        .faq-panel p {
+          padding: 0 24px 24px;
+        }
+        .faq-item.is-open button {
+          padding-bottom: 16px;
+        }
+        .footer {
+          padding-top: 80px;
+          padding-bottom: 180px;
+        }
+        .footer-nav {
+          font-size: 20px;
+          gap: 12px 24px;
+        }
+        .footer-form .row {
+          grid-template-columns: 1fr;
+        }
+        .footer-table {
+          bottom: -40%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .gallery-track {
+          transform: none !important;
+        }
+        .hero-media,
+        .hero-media video,
+        .hero .c,
+        .hero-sub > span,
+        .hero-club p,
+        .hero-club::before {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header: transparent over the hero, turns solid green once the hero is scrolled past -->
+    <header class="site-header" id="siteHeader">
+      <a href="index.html" class="logo">Chef Don Smith</a>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="siteNav"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="siteNav" aria-label="Dinner series">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#next-dinner">Next Dinner</a>
+        <a href="#the-chef">The Chef</a>
+        <a href="#the-table">The Table</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="hero">
+        <div class="hero-media">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="images/dinner-series/hero-poster.jpg"
+          >
+            <source src="images/dinner-series/hero.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="inner">
+          <h1 class="forum" aria-label="Dinner is served after sunset.">
+            <span class="hl" aria-hidden="true">Dinner is served</span>
+            <span class="hl" aria-hidden="true">after sunset.</span>
+          </h1>
+          <p class="hero-sub">
+            <span
+              >Ten to fifteen seats. Twice a month.<br />The location stays a
+              secret until you're on the list.</span
+            >
+          </p>
+          <div class="hero-club">
+            <p>
+              An invitation-only supper club by <strong>Chef Don Smith</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <div class="countdown-bar">
+        <p class="label">Next table sets in...</p>
+        <p class="countdown" data-countdown="dinner" aria-live="off">
+          07d 18h 32m
+        </p>
+        <a href="#request" class="btn">Request an Invitation</a>
+      </div>
+
+      <!-- How it works -->
+      <section id="how-it-works" class="inner steps" aria-label="How it works">
+        <article class="step reveal" style="--i: 0">
+          <p class="step-tag">
+            <img
+              src="images/dinner-series/step-1.svg"
+              width="20"
+              height="20"
+              alt=""
+            />Step - 01
+          </p>
+          <div>
+            <h3>Request.</h3>
+            <p>Tell us who you are.<br />Every seat is chosen by hand.</p>
+          </div>
+        </article>
+        <article class="step reveal" style="--i: 1">
+          <p class="step-tag">
+            <img
+              src="images/dinner-series/step-2.svg"
+              width="20"
+              height="20"
+              alt=""
+            />Step - 02
+          </p>
+          <div>
+            <h3>Receive.</h3>
+            <p>
+              If there's a place for you, your invitation arrives by text and
+              email.
+            </p>
+          </div>
+        </article>
+        <article class="step reveal" style="--i: 2">
+          <p class="step-tag">
+            <img
+              src="images/dinner-series/step-3.svg"
+              width="20"
+              height="20"
+              alt=""
+            />Step - 03
+          </p>
+          <div>
+            <h3>Reserve.</h3>
+            <p>Confirm your seat through your private payment link.</p>
+          </div>
+        </article>
+        <article class="step reveal" style="--i: 3">
+          <p class="step-tag">
+            <img
+              src="images/dinner-series/step-4.svg"
+              width="20"
+              height="20"
+              alt=""
+            />Step - 04
+          </p>
+          <div>
+            <h3>Arrive.</h3>
+            <p>
+              The address is revealed 48 hours before dinner.<br />Come hungry.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Next dinner -->
+      <section id="next-dinner" class="inner next-dinner reveal">
+        <div class="nd-top">
+          <h2 class="forum">The next dinner is taking shape.</h2>
+          <span class="pill">Waitlist only</span>
+        </div>
+        <div class="nd-title forum">
+          <h3>Island Smoke</h3>
+          <p>Saturday, Oct 17</p>
+        </div>
+        <p class="nd-desc">
+          A dinner built around fire, smoke, island ingredients, and the things
+          that taste better after dark.
+        </p>
+        <div class="nd-grid">
+          <div class="nd-facts">
+            <div>
+              <p class="label">The setting</p>
+              <p>A beach house, somewhere on the coast.</p>
+            </div>
+            <div></div>
+            <div>
+              <p class="label">The pairing</p>
+              <p>Wine and rum,<br />course by course.</p>
+            </div>
+            <div>
+              <p class="label">Seats</p>
+              <p>4 of 12 remaining.</p>
+            </div>
+          </div>
+          <div class="nd-menu">
+            <p class="label">The Menu</p>
+            <div class="menu-row">
+              <div class="menu-item is-revealed">
+                <img
+                  src="images/dinner-series/menu-1.webp"
+                  alt="Smash burgers on checkered paper"
+                  loading="lazy"
+                />
+                <span>Smash Burgers</span>
+              </div>
+              <div class="menu-item" aria-label="Next course, revealed soon">
+                <span data-countdown="course2">03d 12h 30m</span>
+              </div>
+              <div
+                class="menu-item"
+                aria-label="Final course, revealed at dinner"
+              >
+                <span data-countdown="dinner">07d 18h 32m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Green band: chef + the table -->
+      <section class="band">
+        <div id="the-chef" class="inner chef">
+          <div class="chef-photo reveal">
+            <img
+              src="images/dinner-series/chef.webp"
+              alt="Chef Don Smith, arms crossed"
+              loading="lazy"
+            />
+          </div>
+          <div class="chef-body reveal">
+            <p class="meet">Meet</p>
+            <h2 class="forum">Chef<br />Don Smith</h2>
+            <p class="bio">
+              He has spent [X years] cooking for [who]. The Private Dinner
+              Series is where he cooks without a menu board, a dining room, or
+              rules, for a table small enough to talk to everyone at it.
+            </p>
+            <a href="about.html" class="btn btn-outline-inv">
+              Meet Chef Don Smith
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M5.33 15 4.17 13.83l8-8H5V4.17h10v10h-1.67V7l-8 8Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div id="the-table" class="inner table-card reveal">
+          <img
+            class="bg is-active"
+            src="images/dinner-series/table-3.webp"
+            alt=""
+          />
+          <img
+            class="bg"
+            src="images/dinner-series/table-1.webp"
+            alt=""
+            loading="lazy"
+          />
+          <img
+            class="bg"
+            src="images/dinner-series/table-2.webp"
+            alt=""
+            loading="lazy"
+          />
+          <img
+            class="bg"
+            src="images/dinner-series/avatar-3.webp"
+            alt=""
+            loading="lazy"
+          />
+          <h2 class="forum">The table<br />is the point.</h2>
+          <blockquote class="quote" id="quote" style="margin: 0">
+            <p id="quoteText">
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+            </p>
+            <strong id="quoteName">Viola Davis,</strong>
+            <small id="quoteHandle">@VioDaVIs</small>
+          </blockquote>
+          <div class="avatars" role="group" aria-label="Guest stories">
+            <button
+              type="button"
+              aria-pressed="false"
+              data-bg="1"
+              aria-label="Guest story 1"
+            >
+              <img src="images/dinner-series/avatar-1.webp" alt="" />
+            </button>
+            <button
+              type="button"
+              aria-pressed="false"
+              data-bg="2"
+              aria-label="Guest story 2"
+            >
+              <img src="images/dinner-series/table-2.webp" alt="" />
+            </button>
+            <button
+              type="button"
+              aria-pressed="false"
+              data-bg="3"
+              aria-label="Guest story 3"
+            >
+              <img src="images/dinner-series/avatar-3.webp" alt="" />
+            </button>
+            <button
+              type="button"
+              aria-pressed="true"
+              data-bg="0"
+              aria-label="Guest story 4"
+            >
+              <img src="images/dinner-series/table-3.webp" alt="" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- From the table -->
+      <section class="gallery" aria-label="From the table">
+        <h2 class="forum">From the table</h2>
+        <div class="gallery-track" id="galleryTrack">
+          <figure style="--i: 0">
+            <img
+              src="images/dinner-series/gallery-1.webp"
+              alt="Grilling at a seaside fish fry"
+              loading="lazy"
+            />
+          </figure>
+          <figure style="--i: 1">
+            <img
+              src="images/dinner-series/gallery-2.webp"
+              alt="Dock and palms on the water"
+              loading="lazy"
+            />
+          </figure>
+          <figure style="--i: 2">
+            <img
+              src="images/dinner-series/gallery-3.webp"
+              alt="Shrimp and plantains with a cold beer"
+              loading="lazy"
+            />
+          </figure>
+          <figure style="--i: 3">
+            <img
+              src="images/dinner-series/gallery-4.webp"
+              alt="Guests sharing dinner"
+              loading="lazy"
+            />
+          </figure>
+          <figure style="--i: 4">
+            <img
+              src="images/dinner-series/gallery-5.webp"
+              alt="Lobster tails on the grill"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+        <a
+          href="https://instagram.com/chef.donsmith"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline"
+        >
+          Visit our Instagram page
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path
+              d="M5.33 15 4.17 13.83l8-8H5V4.17h10v10h-1.67V7l-8 8Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+      </section>
+
+      <!-- Pull up a chair -->
+      <section class="chair-section" id="request">
+        <div class="chair reveal" aria-hidden="true">
+          <span class="shadow" style="left: 3.5%; top: 90.5%"
+            ><img src="images/dinner-series/shadow-1.svg" alt=""
+          /></span>
+          <span class="shadow" style="left: 42.4%; top: 81.1%"
+            ><img src="images/dinner-series/shadow-1.svg" alt=""
+          /></span>
+          <span class="shadow" style="left: 95.6%; top: 87.1%"
+            ><img src="images/dinner-series/shadow-2.svg" alt=""
+          /></span>
+          <span class="shadow" style="left: 57.1%; top: 98.9%"
+            ><img src="images/dinner-series/shadow-2.svg" alt=""
+          /></span>
+          <img src="images/dinner-series/chair.webp" alt="" loading="lazy" />
+        </div>
+        <div class="chair-form">
+          <h2 class="forum">Pull up a chair</h2>
+          <div class="chair-intro">
+            <p>The table is intentionally small.</p>
+            <p>
+              Tell us a little about yourself, which dinner you'd like to join,
+              and who you're bringing. Every request is considered individually.
+            </p>
+          </div>
+          <form id="requestForm" novalidate>
+            <div class="form-grid">
+              <label class="field"
+                ><input
+                  name="name"
+                  type="text"
+                  placeholder="Name"
+                  autocomplete="name"
+                  required
+              /></label>
+              <label class="field"
+                ><input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  autocomplete="email"
+                  required
+              /></label>
+              <label class="field"
+                ><input
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone"
+                  autocomplete="tel"
+              /></label>
+              <label class="field"
+                ><input name="instagram" type="text" placeholder="Instagram"
+              /></label>
+              <label class="field select">
+                <select
+                  name="local"
+                  required
+                  aria-label="Are you local to The Bahamas or visiting?"
+                >
+                  <option value="" disabled selected>
+                    Are you local to The Bahamas or visiting?
+                  </option>
+                  <option>Local to The Bahamas</option>
+                  <option>Visiting</option>
+                </select>
+              </label>
+              <label class="field select">
+                <select name="source" aria-label="How did you hear about us?">
+                  <option value="" disabled selected>
+                    How did you hear about us?
+                  </option>
+                  <option>Instagram</option>
+                  <option>A friend or past guest</option>
+                  <option>Press</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label class="field full">
+                <textarea
+                  name="dietary"
+                  rows="1"
+                  placeholder="Any dietary restrictions or allergies?"
+                ></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn">Send Request</button>
+            </div>
+            <p class="form-note" id="requestNote" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="inner faq" aria-label="Questions before the table">
+        <h2 class="forum">Questions before the table</h2>
+        <div class="faq-list">
+          <div class="faq-item is-open">
+            <button type="button" aria-expanded="true">
+              What does a seat cost?<img
+                src="images/dinner-series/chevron.svg"
+                width="24"
+                height="24"
+                alt=""
+              />
+            </button>
+            <div class="faq-panel">
+              <div>
+                <p>
+                  Each dinner has its own price, depending on the menu,
+                  location, and experience. Your invitation will include the
+                  full details before you confirm your seat.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">
+              Where is the dinner?<img
+                src="images/dinner-series/chevron.svg"
+                width="24"
+                height="24"
+                alt=""
+              />
+            </button>
+            <div class="faq-panel">
+              <div>
+                <p>
+                  Somewhere special, and different every time. The exact address
+                  is shared privately with confirmed guests 48 hours before
+                  dinner.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">
+              Can I bring a guest?<img
+                src="images/dinner-series/chevron.svg"
+                width="24"
+                height="24"
+                alt=""
+              />
+            </button>
+            <div class="faq-panel">
+              <div>
+                <p>
+                  Tell us who you're bringing when you request a seat. Every
+                  guest is considered individually, and your invitation will
+                  confirm how many seats are held for you.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">
+              Is there a dress code?<img
+                src="images/dinner-series/chevron.svg"
+                width="24"
+                height="24"
+                alt=""
+              />
+            </button>
+            <div class="faq-panel">
+              <div>
+                <p>
+                  Your invitation will include any dress notes for the evening,
+                  based on the setting.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false">
+              Can you cater to dietary restrictions?<img
+                src="images/dinner-series/chevron.svg"
+                width="24"
+                height="24"
+                alt=""
+              />
+            </button>
+            <div class="faq-panel">
+              <div>
+                <p>
+                  Let us know about any allergies or restrictions in your
+                  request. The kitchen will confirm what's possible before you
+                  reserve.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="inner footer-grid">
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#next-dinner">Next Table</a>
+          <a href="#the-chef">The Chef</a>
+          <a href="#the-table">The Table</a>
+          <a
+            href="https://instagram.com/chef.donsmith"
+            target="_blank"
+            rel="noopener"
+            >@Chefdonsmith</a
+          >
+        </nav>
+        <span class="footer-rule" aria-hidden="true"></span>
+        <div>
+          <form class="footer-form" id="footerForm" novalidate>
+            <div class="row">
+              <input
+                name="name"
+                type="text"
+                placeholder="Name"
+                aria-label="Name"
+                autocomplete="name"
+                required
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                aria-label="Email"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <button type="submit">
+              Submit request <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-note" aria-live="polite"></p>
+          </form>
+          <p class="footer-cta forum">Request an invitation</p>
+        </div>
+      </div>
+      <div class="footer-table" aria-hidden="true">
+        <img
+          src="images/dinner-series/footer-table.webp"
+          alt=""
+          loading="lazy"
+        />
+      </div>
+    </footer>
+
+    <!-- Smooth scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+
+    <script>
+      (function () {
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (reduceMotion || typeof Lenis === "undefined") return;
+
+        const lenis = new Lenis({
+          duration: 1.15,
+
+          smoothWheel: true,
+
+          wheelMultiplier: 0.85,
+
+          touchMultiplier: 1,
+
+          easing: function (t) {
+            return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+          },
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        /* Smooth anchor links */
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            const targetId = link.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            lenis.scrollTo(target, {
+              offset: -84,
+              duration: 1.35,
+            });
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var header = document.getElementById("siteHeader");
+        var hero = document.getElementById("hero");
+        var toggle = document.getElementById("menuToggle");
+        var nav = document.getElementById("siteNav");
+
+        /* Header: solid green once the hero has scrolled out from under it */
+        function updateHeader() {
+          var past = hero.getBoundingClientRect().bottom <= header.offsetHeight;
+          header.classList.toggle("is-solid", past);
+        }
+
+        /* Mobile menu */
+        toggle.addEventListener("click", function () {
+          var open = header.classList.toggle("menu-open");
+          toggle.setAttribute("aria-expanded", open);
+          toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        nav.addEventListener("click", function (e) {
+          if (e.target.tagName === "A") {
+            header.classList.remove("menu-open");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        /* Active nav link follows the section in view */
+        var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+        var sections = links.map(function (a) {
+          return document.querySelector(a.getAttribute("href"));
+        });
+        function updateActive() {
+          var mark = window.innerHeight * 0.35;
+          var current = -1;
+          sections.forEach(function (s, i) {
+            if (s && s.getBoundingClientRect().top <= mark) current = i;
+          });
+          links.forEach(function (a, i) {
+            a.classList.toggle("is-active", i === current);
+          });
+        }
+
+        /* Gallery drifts sideways with scroll */
+        var track = document.getElementById("galleryTrack");
+        var reduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        function updateGallery() {
+          if (reduced || window.innerWidth <= 680) return;
+          var r = track.getBoundingClientRect();
+          var p =
+            (window.innerHeight - r.top) / (window.innerHeight + r.height);
+          p = Math.min(1, Math.max(0, p));
+          track.style.transform =
+            "translate3d(" + (100 - p * 200).toFixed(1) + "px,0,0)";
+        }
+
+        /* Hero title: split each line into words and letters for the rise-in */
+        var heroLines = hero.querySelectorAll(".hl");
+        if (!reduced) {
+          var ci = 0;
+          heroLines.forEach(function (line) {
+            var words = line.textContent.trim().split(/\s+/);
+            line.textContent = "";
+            words.forEach(function (word, wi) {
+              var w = document.createElement("span");
+              w.className = "w";
+              word.split("").forEach(function (ch) {
+                var c = document.createElement("span");
+                c.className = "c";
+                c.textContent = ch;
+                c.style.setProperty("--ci", ci++);
+                w.appendChild(c);
+              });
+              line.appendChild(w);
+              if (wi < words.length - 1)
+                line.appendChild(document.createTextNode(" "));
+            });
+          });
+        }
+
+        /* Hero on scroll: title lines split apart left and right, copy drifts down and fades,
+           club note slides right, media lags behind for depth */
+        var heroMedia = hero.querySelector(".hero-media");
+        var heroSub = hero.querySelector(".hero-sub");
+        var heroClub = hero.querySelector(".hero-club");
+        function updateHero() {
+          if (reduced) return;
+          var p = Math.min(1, Math.max(0, window.scrollY / hero.offsetHeight));
+          var shift = window.innerWidth * 0.35 * p;
+          var fade = Math.max(0, 1 - p * 1.8).toFixed(3);
+          heroLines.forEach(function (line, i) {
+            line.style.translate = (i % 2 ? shift : -shift).toFixed(1) + "px 0";
+            line.style.opacity = fade;
+          });
+          heroSub.style.translate = (p * 260).toFixed(1) + "px 0";
+          heroSub.style.opacity = fade;
+          heroClub.style.translate =
+            (shift * 0.6).toFixed(1) + "px " + (p * 80).toFixed(1) + "px";
+          heroClub.style.opacity = fade;
+          heroMedia.style.translate = "0 " + (p * 40).toFixed(2) + "%";
+        }
+
+        var ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            updateHeader();
+            updateActive();
+            updateGallery();
+            updateHero();
+            ticking = false;
+          });
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        onScroll();
+
+        /* Countdowns (Nassau time, UTC-4) */
+        var targets = {
+          dinner: new Date("2026-10-17T19:00:00-04:00").getTime(),
+          course2: new Date("2026-10-13T12:00:00-04:00").getTime(),
+        };
+        var countdownEls = document.querySelectorAll("[data-countdown]");
+        function pad(n) {
+          return (n < 10 ? "0" : "") + n;
+        }
+        function tick() {
+          var now = Date.now();
+          countdownEls.forEach(function (el) {
+            var diff = targets[el.getAttribute("data-countdown")] - now;
+            if (diff <= 0) {
+              el.textContent = "Tonight";
+              return;
+            }
+            var m = Math.floor(diff / 60000);
+            el.textContent =
+              pad(Math.floor(m / 1440)) +
+              "d " +
+              pad(Math.floor((m % 1440) / 60)) +
+              "h " +
+              pad(m % 60) +
+              "m";
+          });
+        }
+        tick();
+        setInterval(tick, 15000);
+
+        /* Guest stories */
+        var stories = [
+          {
+            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”",
+            name: "Viola Davis,",
+            handle: "@VioDaVIs",
+          },
+          {
+            text: "“Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.”",
+            name: "Guest Name,",
+            handle: "@guesthandle",
+          },
+          {
+            text: "“Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.”",
+            name: "Guest Name,",
+            handle: "@guesthandle",
+          },
+          {
+            text: "“Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”",
+            name: "Guest Name,",
+            handle: "@guesthandle",
+          },
+        ];
+        var bgs = document.querySelectorAll(".table-card .bg");
+        var quote = document.getElementById("quote");
+        var avatarBtns = document.querySelectorAll(".avatars button");
+        avatarBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            if (btn.getAttribute("aria-pressed") === "true") return;
+            var i = +btn.getAttribute("data-bg");
+            avatarBtns.forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn);
+            });
+            bgs.forEach(function (bg, j) {
+              bg.classList.toggle("is-active", j === i);
+            });
+            quote.classList.add("is-swapping");
+            setTimeout(function () {
+              document.getElementById("quoteText").textContent =
+                stories[i].text;
+              document.getElementById("quoteName").textContent =
+                stories[i].name;
+              document.getElementById("quoteHandle").textContent =
+                stories[i].handle;
+              quote.classList.remove("is-swapping");
+            }, 300);
+          });
+        });
+
+        /* FAQ accordion */
+        document.querySelectorAll(".faq-item button").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var item = btn.parentElement;
+            var open = !item.classList.contains("is-open");
+            item.classList.toggle("is-open", open);
+            btn.setAttribute("aria-expanded", open);
+          });
+        });
+
+        /* Forms: validate, then confirm (no backend wired yet) */
+        function handleForm(form, note, success) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+              note.textContent = "Please add your name and a valid email.";
+              var bad = form.querySelector(":invalid");
+              if (bad) bad.focus();
+              return;
+            }
+            note.textContent = success;
+            form.reset();
+          });
+        }
+        handleForm(
+          document.getElementById("requestForm"),
+          document.getElementById("requestNote"),
+          "Thank you. Your request is in, and we'll be in touch if there's a seat for you.",
+        );
+        var footerForm = document.getElementById("footerForm");
+        handleForm(
+          footerForm,
+          footerForm.querySelector(".form-note"),
+          "Thank you. We'll be in touch.",
+        );
+
+        /* Reveal on scroll */
+        var revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window && !reduced) {
+          var io = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (en) {
+                if (en.isIntersecting) {
+                  en.target.classList.add("in");
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+          revealEls.forEach(function (el, i) {
+            if (el.classList.contains("step")) {
+              el.style.transitionDelay =
+                el.style.getPropertyValue("--i") * 0.1 + "s";
+              el.addEventListener(
+                "transitionend",
+                function () {
+                  el.style.transitionDelay = "";
+                },
+                { once: true },
+              );
+            }
+            io.observe(el);
+          });
+        } else {
+          revealEls.forEach(function (el) {
+            el.classList.add("in");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
