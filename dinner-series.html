@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Forum&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400&display=swap"
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://api.fontshare.com" />
@@ -57,7 +57,8 @@
         font-size: 18px;
         line-height: 24px;
         -webkit-font-smoothing: antialiased;
-        overflow-x: hidden;
+        /* clip, not hidden: hidden makes body a scroll container and breaks position: sticky */
+        overflow-x: clip;
       }
       img,
       video {
@@ -426,18 +427,96 @@
         white-space: nowrap;
       }
 
+      /* ---------- Floating menu image preview ---------- */
+
+      .menu-hover-preview {
+        position: fixed;
+
+        width: 280px;
+        height: 190px;
+
+        left: 0;
+        top: 0;
+
+        z-index: 9999;
+
+        border-radius: 12px;
+        overflow: hidden;
+
+        border: 1px solid rgba(239, 231, 210, 0.8);
+
+        background: var(--green);
+
+        box-shadow: 0 18px 50px rgba(0, 46, 40, 0.24);
+
+        pointer-events: none;
+
+        opacity: 0;
+
+        transform: translate3d(-50%, -50%, 0) scale(0.9);
+
+        transition:
+          opacity 0.22s ease,
+          transform 0.35s var(--ease);
+
+        will-change: left, top, transform;
+      }
+
+      .menu-hover-preview.is-visible {
+        opacity: 1;
+
+        transform: translate3d(-50%, -50%, 0) scale(1);
+      }
+
+      .menu-hover-preview img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        display: block;
+      }
+
+      /* Only desktop */
+      @media (max-width: 1024px) {
+        .menu-hover-preview {
+          display: none;
+        }
+      }
+
       /* ---------- How it works ---------- */
-      .steps {
+      /* Pinned scroll sequence (desktop). The section is tall; .steps sticks under the
+         84px header while JS maps scroll progress to each card's entrance. */
+      .steps-scroll {
+        --header-h: 84px;
         position: relative;
-        height: 762px;
-        margin-top: var(--section);
+        /* pinned viewport + 2 viewports of scroll for the sequence and the hold */
+        height: calc(100vh - var(--header-h) + 200vh);
+        margin-top: 60px;
+      }
+      .steps {
+        --card-h: 426px;
+        /* vertical stagger shrinks on short laptop screens so the stack still fits */
+        --step-y: clamp(
+          56px,
+          calc((100vh - var(--header-h) - var(--card-h) - 64px) / 3),
+          112px
+        );
+        --stack-h: calc(var(--card-h) + 3 * var(--step-y));
+        position: sticky;
+        top: var(--header-h);
+        height: calc(100vh - var(--header-h));
       }
       .step {
         position: absolute;
-        top: calc(var(--i) * 112px);
+        /* the full stack is centred in the pinned area */
+        top: calc(
+          max(16px, (100% - var(--stack-h)) / 2) + var(--i) * var(--step-y)
+        );
         left: calc(var(--i) * 20.3166%);
+        z-index: calc(var(--i) + 1);
         width: 39.05%;
-        height: 426px;
+        height: var(--card-h);
         padding: 40px;
         display: flex;
         flex-direction: column;
@@ -446,18 +525,12 @@
         border-radius: 16px;
         background: var(--cream);
         color: var(--green);
-        transition:
-          transform 0.5s var(--ease),
-          box-shadow 0.5s var(--ease);
+        /* transform is driven by scroll in JS, so it must not transition */
+        will-change: transform;
       }
       .step:nth-child(even) {
         background: var(--green);
         color: var(--cream);
-      }
-      .step:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 24px 48px -24px rgba(0, 46, 40, 0.45);
-        z-index: 5;
       }
       .step-tag {
         display: flex;
@@ -558,19 +631,11 @@
         display: flex;
         gap: 24px;
       }
-      .menu-row::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 258px;
-        height: 100%;
-        background: linear-gradient(
-          to left,
-          var(--cream),
-          rgba(239, 231, 210, 0)
-        );
-        pointer-events: none;
+      /* The last card dissolves into the page: a mask fades the whole card
+         (photo, text, border) over its right 258px, as in the design */
+      .menu-item:last-child {
+        -webkit-mask-image: linear-gradient(to left, transparent, #000 258px);
+        mask-image: linear-gradient(to left, transparent, #000 258px);
       }
       .menu-item {
         position: relative;
@@ -582,7 +647,7 @@
         border-radius: 8px;
         background: var(--cream);
       }
-      .menu-item img {
+      .menu-item > img {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -590,7 +655,7 @@
         object-fit: cover;
         transition: transform 0.7s var(--ease);
       }
-      .menu-item:hover img {
+      .menu-item:hover > img {
         transform: scale(1.05);
       }
       .menu-item.is-revealed {
@@ -619,6 +684,50 @@
       }
       .menu-item.is-revealed span {
         color: var(--cream);
+      }
+      /* Locked courses: blurred, dimmed photo with teaser, countdown and timer on top */
+      .menu-item.is-locked {
+        background: var(--green);
+        border-color: var(--green);
+        color: var(--cream);
+      }
+      .menu-item.is-locked > img {
+        /* oversized so the blur never shows soft light edges */
+        inset: -20px -24px -10px;
+        width: calc(100% + 48px);
+        max-width: none;
+        height: calc(100% + 30px);
+        filter: blur(6px);
+      }
+      .menu-item.is-locked::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .menu-teaser,
+      .menu-item.is-locked span {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+      /* 15px inside the 1px border = 16px from the card edge, as in the design */
+      .menu-teaser {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        z-index: 2;
+      }
+      .menu-item.is-locked .menu-timer {
+        left: auto;
+        right: 15px;
+        display: flex;
+        padding: 8px;
+        border-radius: 24px;
+        background: var(--cream);
       }
 
       /* ---------- Green band: chef + testimonial ---------- */
@@ -692,8 +801,8 @@
         height: 100%;
         object-fit: cover;
         transition:
-          opacity 0.8s var(--ease),
-          transform 1.2s var(--ease);
+          opacity 1.2s ease,
+          transform 1.4s var(--ease);
       }
       .table-card .bg:not(.is-active) {
         opacity: 0;
@@ -794,21 +903,37 @@
         line-height: 1.045;
         z-index: 2;
       }
+      /* Desktop: diagonal conveyor. JS moves each figure along one line from top-right
+         to bottom-left (y derived from x) and sets the band's width and height.
+         The left/top below are only the static staircase used before JS runs. */
       .gallery-track {
-        display: flex;
-        gap: 24px;
-        padding-top: 36px;
-        margin-left: calc(50% - 960px - 260px);
-        will-change: transform;
+        position: relative;
+        height: 930px;
+        margin-inline: auto;
+        /* clip sideways only, so the frame entering at the top-right isn't cut off */
+        clip-path: inset(-200px 0);
+        /* drag to move: open hand over the gallery, closed hand while dragging;
+           vertical swipes still scroll the page on touch screens */
+        cursor: grab;
+        touch-action: pan-y;
+        user-select: none;
+      }
+      .gallery-track.is-dragging {
+        cursor: grabbing;
+      }
+      .gallery-track img {
+        -webkit-user-drag: none;
       }
       .gallery-track figure {
-        flex: none;
+        position: absolute;
+        left: calc(var(--i) * 462px);
+        top: calc((4 - var(--i)) * 64px + 64px);
         width: 438px;
         height: 610px;
         margin: 0;
-        margin-top: calc((4 - var(--i)) * 64px);
         border-radius: 8px;
         overflow: hidden;
+        will-change: transform;
       }
       .gallery-track img {
         width: 100%;
@@ -833,54 +958,101 @@
         padding-left: var(--gutter);
         padding-right: max(var(--gutter), calc((100% - var(--inner)) / 2));
       }
+      /* Chair.png already faces the right way and includes its floor shadows,
+         so it is shown whole: no flip, no crop. 792px keeps the chair itself ~592px wide */
       .chair {
-        position: relative;
-        width: 592px;
+        width: 620px;
         max-width: 100%;
-        aspect-ratio: 592 / 713;
         margin-top: 31px;
+        
+        justify-self: end;
+        margin-right: -20px;
       }
-      .chair > img {
-        position: relative;
-        z-index: 1;
+      .chair img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scaleX(-1);
+        height: auto;
       }
-      .chair .shadow {
-        position: absolute;
-        width: 31.6%;
-        aspect-ratio: 187.091 / 38.657;
-        transform: rotate(1.96deg);
+
+      /* Entrance: the chair glides in from the right, then the heading, intro, fields
+         and button follow into place. JS adds .will-animate (so content stays visible
+         without JS) and .is-in once the section scrolls into view. */
+      .chair-section.will-animate .chair,
+      .chair-section.will-animate .chair-form h2,
+      .chair-section.will-animate .chair-intro p,
+      .chair-section.will-animate .form-grid .field,
+      .chair-section.will-animate .form-actions {
+        opacity: 0;
+        transform: translate3d(var(--from, 80px), 0, 0);
       }
-      .chair .shadow img {
-        position: absolute;
-        left: -29.66%;
-        top: -143.57%;
-        width: 159.32%;
-        height: 387.14%;
-        max-width: none;
+      .chair-section.will-animate .chair {
+        --from: 45vw;
+      }
+      .chair-section.will-animate .chair-form h2 {
+        --d: 0.3s;
+      }
+      .chair-section.will-animate .chair-intro p:first-child {
+        --d: 0.42s;
+      }
+      .chair-section.will-animate .chair-intro p:last-child {
+        --d: 0.52s;
+      }
+      .chair-section.will-animate .field:nth-child(1) {
+        --d: 0.62s;
+      }
+      .chair-section.will-animate .field:nth-child(2) {
+        --d: 0.7s;
+      }
+      .chair-section.will-animate .field:nth-child(3) {
+        --d: 0.78s;
+      }
+      .chair-section.will-animate .field:nth-child(4) {
+        --d: 0.86s;
+      }
+      .chair-section.will-animate .field:nth-child(5) {
+        --d: 0.94s;
+      }
+      .chair-section.will-animate .field:nth-child(6) {
+        --d: 1.02s;
+      }
+      .chair-section.will-animate .field:nth-child(7) {
+        --d: 1.1s;
+      }
+      .chair-section.will-animate .form-actions {
+        --d: 1.22s;
+      }
+      .chair-section.is-in .chair,
+      .chair-section.is-in .chair-form h2,
+      .chair-section.is-in .chair-intro p,
+      .chair-section.is-in .form-grid .field,
+      .chair-section.is-in .form-actions {
+        opacity: 1;
+        transform: none;
+        /* transition only on the way in, so hiding on load is instant */
+        transition:
+          opacity 0.8s var(--ease) var(--d, 0s),
+          transform 1.2s var(--ease) var(--d, 0s);
+      }
+      .chair-section.is-in .chair {
+        transition-duration: 1s, 1.6s;
       }
       .chair-form h2 {
         font-size: var(--h2);
         line-height: 1.045;
       }
+      /* Offsets from the design's 900px form column (154px and 308px), as percentages
+         so they hold whenever the column narrows */
       .chair-intro {
-        display: grid;
-        grid-template-columns: 154px 280px 1fr;
-        gap: 0;
         margin-top: 24px;
         font-weight: 500;
       }
       .chair-intro p:first-child {
-        grid-column: 2;
+        max-width: 280px;
+        margin-left: 17.11%;
       }
       .chair-intro p:last-child {
-        grid-column: 3;
-        padding-top: 48px;
-        margin-left: 24px;
         max-width: 592px;
+        margin-top: 24px;
+        margin-left: 34.22%;
       }
       .form-grid {
         display: grid;
@@ -908,6 +1080,8 @@
         line-height: 24px;
         color: var(--green);
         border-radius: 0;
+        font-family: "Inter", var(--satoshi);
+        font-weight: 400;
       }
       .field textarea {
         resize: vertical;
@@ -1031,26 +1205,27 @@
       .footer {
         position: relative;
         margin-top: var(--section);
-        height: 954px;
+        height: 880px;
         overflow: hidden;
         background: var(--green);
         color: var(--cream);
-        padding-top: 128px;
+      }
+      /* top band: links | divider | headline, closed by a full-width rule */
+      .footer-top {
+        border-bottom: 1px solid var(--line-inv);
       }
       .footer-grid {
         display: grid;
         grid-template-columns: 437px 1px 1fr;
+        height: 520px;
       }
-      .footer-grid > div {
-        margin-left: 178px;
-      }
-      .footer-grid > :first-child {
-        grid-column: 1;
+      .footer-links {
+        padding-top: 128px;
       }
       .footer-nav {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 24px;
         font-family: var(--forum);
         font-size: 31px;
         line-height: 36px;
@@ -1065,82 +1240,75 @@
       .footer-nav a:hover {
         background-size: 100% 1px;
       }
-      .footer-rule {
-        width: 1px;
-        height: 495px;
-        background: var(--cream);
-      }
-      .footer-form {
-        width: 592px;
-        max-width: 100%;
-      }
-      .footer-form .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-      }
-      .footer-form input {
-        width: 100%;
-        padding: 8px;
-        border: 0;
-        border-bottom: 1px solid var(--line-inv);
-        background: transparent;
-        outline: none;
-        font-size: 14px;
+      .footer-insta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 64px;
+        padding: 11px 15px;
+        border: 1px solid var(--line-inv);
+        border-radius: 12px;
+        font-family: var(--forum);
+        font-size: 22px;
         line-height: 24px;
-        color: var(--cream);
-        border-radius: 0;
-        transition: border-color 0.3s;
+        transition: border-color 0.3s var(--ease);
       }
-      .footer-form input::placeholder {
-        color: rgba(239, 231, 210, 0.72);
-      }
-      .footer-form input:focus {
+      .footer-insta:hover {
         border-color: var(--cream);
       }
-      .footer-form button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        margin-top: 32px;
-        padding: 14px 28px;
-        border: 1px solid var(--cream);
-        border-radius: 999px;
-        background: var(--cream);
-        color: var(--green);
-        font-size: 11.8px;
-        line-height: 18px;
-        font-weight: 500;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition:
-          background-color 0.3s,
-          color 0.3s;
+      .footer-rule {
+        background: var(--line-inv);
       }
-      .footer-form button:hover {
-        background: transparent;
-        color: var(--cream);
-      }
-      .footer-form .form-note {
-        text-align: left;
-        color: rgba(239, 231, 210, 0.72);
+      .footer-headline {
+        margin-left: 178px;
+        padding-top: 105px;
       }
       .footer-cta {
-        margin-top: 36px;
         max-width: 900px;
         font-size: var(--display);
         line-height: 1.032;
       }
+      .footer-cta .nowrap {
+        white-space: nowrap;
+      }
+      /* sized in em so it scales with the headline (144 x 104 at 155px) */
+      .footer-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 0.929em;
+        height: 0.671em;
+        margin-left: 0.168em;
+        margin-top: 0.148em;
+        vertical-align: top;
+        border: 1px solid var(--cream);
+        border-radius: 160px;
+        background: var(--cream);
+        color: var(--green);
+        transition:
+          background-color 0.3s var(--ease),
+          color 0.3s var(--ease);
+      }
+      .footer-arrow svg {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.4s var(--ease);
+      }
+      .footer-arrow:hover {
+        background: transparent;
+        color: var(--cream);
+      }
+      .footer-arrow:hover svg {
+        transform: translate(2px, -2px);
+      }
+      /* the image carries its own soft shadow, so no box-shadow here
+         (a box-shadow drew a square outline around the rounded table) */
       .footer-table {
         position: absolute;
         left: var(--gutter);
         right: var(--gutter);
-        top: 679px;
+        top: 585px;
         aspect-ratio: 1824 / 896;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
       }
       .footer-table img {
         width: 100%;
@@ -1159,9 +1327,6 @@
       .reveal.in {
         opacity: 1;
         transform: none;
-      }
-      .step.reveal.in:hover {
-        transform: translateY(-8px);
       }
 
       /* ---------- Responsive ---------- */
@@ -1192,7 +1357,7 @@
         .footer-grid {
           grid-template-columns: minmax(220px, 1fr) 1px minmax(0, 900px);
         }
-        .footer-grid > div {
+        .footer-headline {
           margin-left: clamp(48px, 9vw, 178px);
         }
       }
@@ -1224,18 +1389,6 @@
         }
         .faq {
           grid-template-columns: 1fr 1.4fr;
-        }
-        .chair-intro {
-          grid-template-columns: 1fr 1.6fr;
-          gap: 24px;
-        }
-        .chair-intro p:first-child {
-          grid-column: 1;
-        }
-        .chair-intro p:last-child {
-          grid-column: 2;
-          padding-top: 0;
-          margin-left: 0;
         }
       }
       @media (max-width: 1024px) {
@@ -1286,19 +1439,24 @@
           right: auto;
           width: auto;
         }
+        /* Tablet/mobile: no pinning, plain vertical stack */
+        .steps-scroll {
+          height: auto;
+        }
         .steps {
+          position: relative;
+          top: auto;
           height: auto;
           display: grid;
           gap: 24px;
         }
         .step {
           position: relative;
-          left: 0;
-          top: 0;
+          left: auto;
+          top: auto;
           width: 100%;
           height: auto;
           min-height: 320px;
-          gap: 80px;
         }
         .step:nth-child(even) {
           margin-left: 10%;
@@ -1333,29 +1491,30 @@
           padding-inline: var(--gutter);
         }
         .chair {
-          width: 420px;
+          width: 560px;
           margin: 0 auto;
         }
         .faq {
           grid-template-columns: minmax(0, 1fr);
           gap: 48px;
         }
+        /* stacked: links, then headline; the table peeks in below */
         .footer {
           height: auto;
-          padding-bottom: 260px;
         }
         .footer-grid {
           grid-template-columns: minmax(0, 1fr);
           gap: 56px;
+          height: auto;
+          padding: 96px 0 64px;
         }
-        .footer-grid > :first-child {
-          grid-column: auto;
+        .footer-links,
+        .footer-headline {
+          padding-top: 0;
+          margin-left: 0;
         }
         .footer-rule {
           display: none;
-        }
-        .footer-grid > div {
-          margin-left: 0;
         }
         .footer-nav {
           flex-direction: row;
@@ -1363,9 +1522,15 @@
           gap: 16px 32px;
           font-size: 24px;
         }
+        .footer-insta {
+          margin-top: 40px;
+        }
         .footer-table {
+          position: relative;
+          left: auto;
+          right: auto;
           top: auto;
-          bottom: -60%;
+          margin: 64px var(--gutter) -27vw;
         }
       }
       @media (max-width: 680px) {
@@ -1457,8 +1622,10 @@
           scroll-snap-type: x mandatory;
           padding-right: 28px;
         }
-        .menu-row::after {
-          display: none;
+        /* swipeable row on phones: keep the last card fully visible */
+        .menu-item:last-child {
+          -webkit-mask-image: none;
+          mask-image: none;
         }
         .menu-item {
           width: 220px;
@@ -1505,19 +1672,27 @@
           position: static;
           margin: 0 var(--gutter) 24px;
         }
+        /* Phones: plain horizontal swipe gallery, no conveyor */
         .gallery-track {
-          margin-left: 0;
+          display: flex;
+          height: auto;
           padding: 0 var(--gutter);
           gap: 16px;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
-          transform: none !important;
+          clip-path: none;
+          cursor: auto;
+          touch-action: auto;
         }
         .gallery-track figure {
+          position: relative;
+          left: auto;
+          top: auto;
+          flex: none;
           width: 72vw;
           height: 100vw;
-          margin-top: 0;
           scroll-snap-align: center;
+          will-change: auto;
         }
         .gallery .btn {
           margin-top: 32px;
@@ -1527,17 +1702,15 @@
           margin-top: 96px;
         }
         .chair {
-          width: 280px;
+          width: 374px;
           overflow: visible;
         }
         .chair-section {
           overflow: hidden;
         }
-        .chair-intro {
-          grid-template-columns: 1fr;
-        }
+        .chair-intro p:first-child,
         .chair-intro p:last-child {
-          grid-column: 1;
+          margin-left: 0;
         }
         .form-grid {
           grid-template-columns: 1fr;
@@ -1561,19 +1734,15 @@
         .faq-item.is-open button {
           padding-bottom: 16px;
         }
-        .footer {
+        .footer-grid {
           padding-top: 80px;
-          padding-bottom: 180px;
         }
         .footer-nav {
           font-size: 20px;
           gap: 12px 24px;
         }
-        .footer-form .row {
-          grid-template-columns: 1fr;
-        }
-        .footer-table {
-          bottom: -40%;
+        .footer-cta {
+          font-size: clamp(40px, 12vw, 60px);
         }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -1585,9 +1754,6 @@
           transform: none;
           transition: none;
         }
-        .gallery-track {
-          transform: none !important;
-        }
         .hero-media,
         .hero-media video,
         .hero .c,
@@ -1597,8 +1763,20 @@
           animation: none;
         }
       }
+      /* Reduced motion on desktop: no pinned sequence, the stacked cards sit as a static block */
+      @media (prefers-reduced-motion: reduce) and (min-width: 1025px) {
+        .steps-scroll {
+          height: auto;
+        }
+        .steps {
+          position: relative;
+          top: auto;
+          height: calc(var(--stack-h) + 32px);
+        }
+      }
     </style>
   </head>
+
   <body>
     <!-- Header: transparent over the hero, turns solid green once the hero is scrolled past -->
     <header class="site-header" id="siteHeader">
@@ -1662,69 +1840,94 @@
         <a href="#request" class="btn">Request an Invitation</a>
       </div>
 
-      <!-- How it works -->
-      <section id="how-it-works" class="inner steps" aria-label="How it works">
-        <article class="step reveal" style="--i: 0">
-          <p class="step-tag">
-            <img
-              src="images/dinner-series/step-1.svg"
-              width="20"
-              height="20"
-              alt=""
-            />Step - 01
-          </p>
-          <div>
-            <h3>Request.</h3>
-            <p>Tell us who you are.<br />Every seat is chosen by hand.</p>
-          </div>
-        </article>
-        <article class="step reveal" style="--i: 1">
-          <p class="step-tag">
-            <img
-              src="images/dinner-series/step-2.svg"
-              width="20"
-              height="20"
-              alt=""
-            />Step - 02
-          </p>
-          <div>
-            <h3>Receive.</h3>
-            <p>
-              If there's a place for you, your invitation arrives by text and
-              email.
+      <!-- How it works - pinned scroll sequence -->
+      <section id="how-it-works" class="steps-scroll" aria-label="How it works">
+        <div class="inner steps">
+          <!-- STEP 01 -->
+          <article class="step" style="--i: 0">
+            <p class="step-tag">
+              <img
+                src="images/dinner-series/step-1.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              Step - 01
             </p>
-          </div>
-        </article>
-        <article class="step reveal" style="--i: 2">
-          <p class="step-tag">
-            <img
-              src="images/dinner-series/step-3.svg"
-              width="20"
-              height="20"
-              alt=""
-            />Step - 03
-          </p>
-          <div>
-            <h3>Reserve.</h3>
-            <p>Confirm your seat through your private payment link.</p>
-          </div>
-        </article>
-        <article class="step reveal" style="--i: 3">
-          <p class="step-tag">
-            <img
-              src="images/dinner-series/step-4.svg"
-              width="20"
-              height="20"
-              alt=""
-            />Step - 04
-          </p>
-          <div>
-            <h3>Arrive.</h3>
-            <p>
-              The address is revealed 48 hours before dinner.<br />Come hungry.
+
+            <div>
+              <h3>Request.</h3>
+
+              <p>
+                Tell us who you are.<br />
+                Every seat is chosen by hand.
+              </p>
+            </div>
+          </article>
+
+          <!-- STEP 02 -->
+          <article class="step" style="--i: 1">
+            <p class="step-tag">
+              <img
+                src="images/dinner-series/step-2.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              Step - 02
             </p>
-          </div>
-        </article>
+
+            <div>
+              <h3>Receive.</h3>
+
+              <p>
+                If there's a place for you, your invitation arrives by text and
+                email.
+              </p>
+            </div>
+          </article>
+
+          <!-- STEP 03 -->
+          <article class="step" style="--i: 2">
+            <p class="step-tag">
+              <img
+                src="images/dinner-series/step-3.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              Step - 03
+            </p>
+
+            <div>
+              <h3>Reserve.</h3>
+
+              <p>Confirm your seat through your private payment link.</p>
+            </div>
+          </article>
+
+          <!-- STEP 04 -->
+          <article class="step" style="--i: 3">
+            <p class="step-tag">
+              <img
+                src="images/dinner-series/step-4.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              Step - 04
+            </p>
+
+            <div>
+              <h3>Arrive.</h3>
+
+              <p>
+                The address is revealed 48 hours before dinner.<br />
+                Come hungry.
+              </p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <!-- Next dinner -->
@@ -1768,14 +1971,52 @@
                 />
                 <span>Smash Burgers</span>
               </div>
-              <div class="menu-item" aria-label="Next course, revealed soon">
+              <!-- Locked courses: teaser copy, countdown and timer icon stay fixed;
+                   swap only the blurred photo (img src) per dinner -->
+              <div
+                class="menu-item is-locked"
+                aria-label="Next course, revealed soon"
+              >
+                <img
+                  src="images/dinner-series/menu-2.webp"
+                  alt=""
+                  loading="lazy"
+                  style="object-position: 50% 61%"
+                />
+                <p class="menu-teaser">
+                  A little mystery,<br />a lot of flavour.
+                </p>
                 <span data-countdown="course2">03d 12h 30m</span>
+                <span class="menu-timer" aria-hidden="true">
+                  <img
+                    src="images/dinner-series/timer.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
               </div>
               <div
-                class="menu-item"
+                class="menu-item is-locked"
                 aria-label="Final course, revealed at dinner"
               >
+                <img
+                  src="images/dinner-series/menu-3.webp"
+                  alt=""
+                  loading="lazy"
+                />
+                <p class="menu-teaser">
+                  What comes next<br />is for your senses to discover.
+                </p>
                 <span data-countdown="dinner">07d 18h 32m</span>
+                <span class="menu-timer" aria-hidden="true">
+                  <img
+                    src="images/dinner-series/timer.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </span>
               </div>
             </div>
           </div>
@@ -1940,20 +2181,14 @@
 
       <!-- Pull up a chair -->
       <section class="chair-section" id="request">
-        <div class="chair reveal" aria-hidden="true">
-          <span class="shadow" style="left: 3.5%; top: 90.5%"
-            ><img src="images/dinner-series/shadow-1.svg" alt=""
-          /></span>
-          <span class="shadow" style="left: 42.4%; top: 81.1%"
-            ><img src="images/dinner-series/shadow-1.svg" alt=""
-          /></span>
-          <span class="shadow" style="left: 95.6%; top: 87.1%"
-            ><img src="images/dinner-series/shadow-2.svg" alt=""
-          /></span>
-          <span class="shadow" style="left: 57.1%; top: 98.9%"
-            ><img src="images/dinner-series/shadow-2.svg" alt=""
-          /></span>
-          <img src="images/dinner-series/chair.webp" alt="" loading="lazy" />
+        <div class="chair" aria-hidden="true">
+          <img
+            src="images/dinner-series/Chair.png"
+            width="843"
+            height="806"
+            alt=""
+            loading="lazy"
+          />
         </div>
         <div class="chair-form">
           <h2 class="forum">Pull up a chair</h2>
@@ -2136,51 +2371,54 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="inner footer-grid">
-        <nav class="footer-nav" aria-label="Footer">
-          <a href="#how-it-works">How It Works</a>
-          <a href="#next-dinner">Next Table</a>
-          <a href="#the-chef">The Chef</a>
-          <a href="#the-table">The Table</a>
-          <a
-            href="https://instagram.com/chef.donsmith"
-            target="_blank"
-            rel="noopener"
-            >@Chefdonsmith</a
-          >
-        </nav>
-        <span class="footer-rule" aria-hidden="true"></span>
-        <div>
-          <form class="footer-form" id="footerForm" novalidate>
-            <div class="row">
-              <input
-                name="name"
-                type="text"
-                placeholder="Name"
-                aria-label="Name"
-                autocomplete="name"
-                required
+      <div class="footer-top">
+        <div class="inner footer-grid">
+          <div class="footer-links">
+            <nav class="footer-nav" aria-label="Footer">
+              <a href="#how-it-works">How It Works</a>
+              <a href="#next-dinner">Next Table</a>
+              <a href="#the-chef">The Chef</a>
+              <a href="#the-table">The Table</a>
+            </nav>
+            <a
+              class="footer-insta"
+              href="https://instagram.com/chef.donsmith"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="images/dinner-series/instagram.svg"
+                width="16"
+                height="16"
+                alt=""
               />
-              <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                aria-label="Email"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <button type="submit">
-              Submit request <span aria-hidden="true">→</span>
-            </button>
-            <p class="form-note" aria-live="polite"></p>
-          </form>
-          <p class="footer-cta forum">Request an invitation</p>
+              @chefdonsmith
+            </a>
+          </div>
+          <span class="footer-rule" aria-hidden="true"></span>
+          <div class="footer-headline">
+            <p class="footer-cta forum">
+              Request an
+              <span class="nowrap"
+                >invitation<a
+                  href="#request"
+                  class="footer-arrow"
+                  aria-label="Request an invitation"
+                  ><svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6.4 18 5 16.6 14.6 7H6V5h12v12h-2V8.4L6.4 18Z"
+                      fill="currentColor"
+                    /></svg></a
+              ></span>
+            </p>
+          </div>
         </div>
       </div>
       <div class="footer-table" aria-hidden="true">
         <img
-          src="images/dinner-series/footer-table.webp"
+          src="images/dinner-series/footer-table-clean.webp"
+          width="1844"
+          height="916"
           alt=""
           loading="lazy"
         />
@@ -2283,20 +2521,10 @@
           });
         }
 
-        /* Gallery drifts sideways with scroll */
-        var track = document.getElementById("galleryTrack");
+        /* Used by the hero, how-it-works, gallery and reveal code below - keep it */
         var reduced = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
-        function updateGallery() {
-          if (reduced || window.innerWidth <= 680) return;
-          var r = track.getBoundingClientRect();
-          var p =
-            (window.innerHeight - r.top) / (window.innerHeight + r.height);
-          p = Math.min(1, Math.max(0, p));
-          track.style.transform =
-            "translate3d(" + (100 - p * 200).toFixed(1) + "px,0,0)";
-        }
 
         /* Hero title: split each line into words and letters for the rise-in */
         var heroLines = hero.querySelectorAll(".hl");
@@ -2344,6 +2572,216 @@
           heroMedia.style.translate = "0 " + (p * 40).toFixed(2) + "%";
         }
 
+        /* How it works: pinned sequence. Scroll position through the tall section drives
+           each card's entrance (no timers), so stopping the scroll freezes it in place.
+           Card 1 lands as the section pins; cards 2-4 share the pinned scroll; the last
+           HOLD share keeps all four on screen before the section unpins. */
+        var stepsSection = document.getElementById("how-it-works");
+        var stepsPin = stepsSection.querySelector(".steps");
+        var stepCards = Array.prototype.slice.call(
+          stepsSection.querySelectorAll(".step"),
+        );
+        var stackedSteps = window.matchMedia("(max-width: 1024px)");
+        var HEADER_H = 84;
+        var HOLD = 0.25;
+        function clamp01(v) {
+          return Math.min(1, Math.max(0, v));
+        }
+        function easeOut(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+        function updateSteps() {
+          if (reduced || stackedSteps.matches) {
+            stepCards.forEach(function (card) {
+              card.style.visibility = "";
+              card.style.transform = "";
+            });
+            return;
+          }
+          var rect = stepsSection.getBoundingClientRect();
+          var pinRange = stepsSection.offsetHeight - stepsPin.offsetHeight;
+          var last = stepCards.length - 1;
+          // Card 1 rises in over the final stretch of the approach, finishing at the pin
+          var approach = window.innerHeight * 0.55;
+          var first = clamp01(1 - (rect.top - HEADER_H) / approach);
+          // 0 → 3 across the pinned scroll (before the hold): one unit per later card
+          var seq =
+            clamp01((HEADER_H - rect.top) / (pinRange * (1 - HOLD))) * last;
+          // With only card 1 in, the stack sits lower so card 1 is centred; it drifts up
+          // as the others arrive, ending with the full stack centred
+          var stepY = stepCards[1].offsetTop - stepCards[0].offsetTop;
+          var lift = ((stepY * last) / 2) * (1 - seq / last);
+          var pinTop = stepsPin.getBoundingClientRect().top;
+          stepCards.forEach(function (card, i) {
+            var t = i === 0 ? first : clamp01(seq - (i - 1));
+            var e = easeOut(t);
+            // Solid slide-up, no fade: each card starts just below the bottom of the
+            // screen and rises fully opaque into its slot
+            var restTop = pinTop + card.offsetTop + lift;
+            var enter = Math.max(140, window.innerHeight - restTop + 24);
+            var y = lift + (1 - e) * enter;
+            card.style.visibility = t > 0 ? "" : "hidden";
+            card.style.transform = "translate3d(0," + y.toFixed(1) + "px,0)";
+          });
+        }
+
+        /* From the table: diagonal conveyor (desktop). Every figure travels the same line
+           from top-right to bottom-left, and its height is derived from its x, so the
+           staircase can never break. A figure leaving the left edge re-enters at the
+           top-right. Runs on time, not scroll; hovering a frame eases it to a stop. */
+        var galleryTrack = document.getElementById("galleryTrack");
+        var galleryFrames = Array.prototype.slice.call(
+          galleryTrack.querySelectorAll("figure"),
+        );
+        var swipeGallery = window.matchMedia("(max-width: 680px)");
+        var GAL_GAP = 24; // horizontal gap between frames
+        var GAL_RISE = 64; // each frame sits this much higher than its left neighbour
+        var GAL_TOP = 64; // headroom for the frame entering at the top-right
+        var GAL_SPEED = 40; // px per second
+        var galPos = 0;
+        var galSpeed = GAL_SPEED;
+        var galTarget = GAL_SPEED;
+        var galGeom = null;
+        var galRunning = false;
+        var galInView = true;
+        var galLast = 0;
+
+        function measureGallery() {
+          var fw = galleryFrames[0].offsetWidth;
+          var step = fw + GAL_GAP;
+          var cycle = step * galleryFrames.length;
+          // The visible band is at most one cycle minus a frame: then a frame is fully
+          // hidden at the left at the same moment its re-entry spot is hidden at the right
+          var band = Math.min(document.documentElement.clientWidth, cycle - fw);
+          galleryTrack.style.width = band + "px";
+          galleryTrack.style.height =
+            GAL_TOP +
+            (band * GAL_RISE) / step +
+            galleryFrames[0].offsetHeight +
+            "px";
+          galGeom = {
+            fw: fw,
+            step: step,
+            cycle: cycle,
+            band: band,
+            // start with the five frames centred in the band
+            offset: (band - (cycle - GAL_GAP)) / 2 + fw,
+          };
+        }
+
+        function placeGallery() {
+          var g = galGeom;
+          galleryFrames.forEach(function (fig, i) {
+            // x runs from the band's right edge down to -frame width, then wraps
+            var x =
+              ((((i * g.step + g.offset - galPos) % g.cycle) + g.cycle) %
+                g.cycle) -
+              g.fw;
+            // the frame whose right edge meets the band's right edge sits at y = 0
+            var y = GAL_TOP + ((g.band - g.fw - x) * GAL_RISE) / g.step;
+            fig.style.transform =
+              "translate3d(" + x.toFixed(2) + "px," + y.toFixed(2) + "px,0)";
+          });
+        }
+
+        function galleryTick(now) {
+          if (!galRunning) return;
+          var dt = Math.min(0.05, (now - galLast) / 1000);
+          galLast = now;
+          // while dragged, the pointer moves the frames (see the drag handlers)
+          if (!galDrag) {
+            // ease towards the target speed: hover pauses/resumes and a drag's
+            // throw both settle smoothly
+            galSpeed += (galTarget - galSpeed) * Math.min(1, dt * 3);
+            galPos = (galPos + galSpeed * dt) % galGeom.cycle;
+            placeGallery();
+          }
+          requestAnimationFrame(galleryTick);
+        }
+
+        function setupGallery() {
+          if (swipeGallery.matches) {
+            galRunning = false;
+            galleryTrack.style.width = "";
+            galleryTrack.style.height = "";
+            galleryFrames.forEach(function (fig) {
+              fig.style.left = "";
+              fig.style.top = "";
+              fig.style.transform = "";
+            });
+            return;
+          }
+          galleryFrames.forEach(function (fig) {
+            fig.style.left = "0";
+            fig.style.top = "0";
+          });
+          measureGallery();
+          placeGallery();
+          var run = !reduced && galInView;
+          if (run && !galRunning) {
+            galRunning = true;
+            galLast = performance.now();
+            requestAnimationFrame(galleryTick);
+          } else if (!run) {
+            galRunning = false;
+          }
+        }
+
+        galleryFrames.forEach(function (fig) {
+          fig.addEventListener("mouseenter", function () {
+            galTarget = 0;
+          });
+          fig.addEventListener("mouseleave", function () {
+            galTarget = GAL_SPEED;
+          });
+        });
+        // Drag to move: grab the conveyor and pull it either way. On release it keeps
+        // the throw's momentum, then eases back into the automatic drift.
+        var galDrag = null;
+        galleryTrack.addEventListener("pointerdown", function (e) {
+          if (swipeGallery.matches || e.button !== 0) return;
+          galDrag = { id: e.pointerId, x: e.clientX, t: e.timeStamp, v: 0 };
+          galleryTrack.setPointerCapture(e.pointerId);
+          galleryTrack.classList.add("is-dragging");
+          galSpeed = 0;
+        });
+        galleryTrack.addEventListener("pointermove", function (e) {
+          if (!galDrag || e.pointerId !== galDrag.id) return;
+          var dx = e.clientX - galDrag.x;
+          var dt = Math.max(1, e.timeStamp - galDrag.t) / 1000;
+          // smoothed velocity in conveyor terms (moving left = positive)
+          galDrag.v = galDrag.v * 0.6 + (-dx / dt) * 0.4;
+          galDrag.x = e.clientX;
+          galDrag.t = e.timeStamp;
+          galPos -= dx; // frames follow the cursor
+          placeGallery();
+        });
+        function endGalleryDrag(e) {
+          if (!galDrag || e.pointerId !== galDrag.id) return;
+          // keep the throw only if the pointer was still moving at release
+          galSpeed =
+            e.timeStamp - galDrag.t < 80
+              ? Math.max(-1500, Math.min(1500, galDrag.v))
+              : 0;
+          galDrag = null;
+          galleryTrack.classList.remove("is-dragging");
+        }
+        galleryTrack.addEventListener("pointerup", endGalleryDrag);
+        galleryTrack.addEventListener("pointercancel", endGalleryDrag);
+        galleryTrack.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+        });
+
+        // only animate while the gallery is on screen
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            galInView = entries[0].isIntersecting;
+            setupGallery();
+          }).observe(galleryTrack);
+        }
+        window.addEventListener("resize", setupGallery);
+        setupGallery();
+
         var ticking = false;
         function onScroll() {
           if (ticking) return;
@@ -2351,7 +2789,7 @@
           requestAnimationFrame(function () {
             updateHeader();
             updateActive();
-            updateGallery();
+            updateSteps();
             updateHero();
             ticking = false;
           });
@@ -2390,7 +2828,10 @@
         tick();
         setInterval(tick, 15000);
 
-        /* Guest stories */
+        /* ==========================================
+   GUEST STORIES - AUTO FADE SLIDESHOW
+========================================== */
+
         var stories = [
           {
             text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”",
@@ -2413,31 +2854,146 @@
             handle: "@guesthandle",
           },
         ];
+
         var bgs = document.querySelectorAll(".table-card .bg");
+
         var quote = document.getElementById("quote");
-        var avatarBtns = document.querySelectorAll(".avatars button");
-        avatarBtns.forEach(function (btn) {
+
+        var avatarBtns = Array.prototype.slice.call(
+          document.querySelectorAll(".avatars button"),
+        );
+
+        var tableCard = document.getElementById("the-table");
+
+        /* which avatar is currently selected */
+        var currentStory = avatarBtns.findIndex(function (btn) {
+          return btn.getAttribute("aria-pressed") === "true";
+        });
+
+        if (currentStory === -1) {
+          currentStory = 0;
+        }
+
+        /* ===============================
+             SHOW ONE STORY
+================================ */
+
+        function showStory(buttonIndex) {
+          var btn = avatarBtns[buttonIndex];
+
+          if (!btn) return;
+
+          /*
+    data-bg tells us which background
+    + which story belongs to this button
+  */
+
+          var storyIndex = Number(btn.getAttribute("data-bg"));
+
+          /* Avatar active state */
+
+          avatarBtns.forEach(function (button) {
+            button.setAttribute(
+              "aria-pressed",
+              button === btn ? "true" : "false",
+            );
+          });
+
+          /* Background fade */
+
+          bgs.forEach(function (bg, index) {
+            bg.classList.toggle("is-active", index === storyIndex);
+          });
+
+          /* Text fade OUT */
+
+          quote.classList.add("is-swapping");
+
+          /* Change text while invisible */
+
+          setTimeout(function () {
+            document.getElementById("quoteText").textContent =
+              stories[storyIndex].text;
+
+            document.getElementById("quoteName").textContent =
+              stories[storyIndex].name;
+
+            document.getElementById("quoteHandle").textContent =
+              stories[storyIndex].handle;
+
+            /* Text fade IN */
+
+            quote.classList.remove("is-swapping");
+          }, 400);
+
+          currentStory = buttonIndex;
+        }
+
+        /* ===============================
+   MANUAL AVATAR CLICK
+================================ */
+
+        avatarBtns.forEach(function (btn, index) {
           btn.addEventListener("click", function () {
-            if (btn.getAttribute("aria-pressed") === "true") return;
-            var i = +btn.getAttribute("data-bg");
-            avatarBtns.forEach(function (b) {
-              b.setAttribute("aria-pressed", b === btn);
-            });
-            bgs.forEach(function (bg, j) {
-              bg.classList.toggle("is-active", j === i);
-            });
-            quote.classList.add("is-swapping");
-            setTimeout(function () {
-              document.getElementById("quoteText").textContent =
-                stories[i].text;
-              document.getElementById("quoteName").textContent =
-                stories[i].name;
-              document.getElementById("quoteHandle").textContent =
-                stories[i].handle;
-              quote.classList.remove("is-swapping");
-            }, 300);
+            showStory(index);
+
+            /*
+      Reset timer after manual click
+      so it doesn't immediately jump
+      to another slide.
+    */
+
+            restartSlideshow();
           });
         });
+
+        /* ===============================
+   AUTO SLIDESHOW
+================================ */
+
+        var slideshowTimer;
+
+        /*
+  CHANGE THIS VALUE:
+  5000 = 5 seconds
+  4000 = 4 seconds
+  6000 = 6 seconds
+*/
+
+        var slideshowDelay = 2000;
+
+        function startSlideshow() {
+          slideshowTimer = setInterval(function () {
+            var next = (currentStory + 1) % avatarBtns.length;
+
+            showStory(next);
+          }, slideshowDelay);
+        }
+
+        function stopSlideshow() {
+          clearInterval(slideshowTimer);
+        }
+
+        function restartSlideshow() {
+          stopSlideshow();
+
+          startSlideshow();
+        }
+
+        /* Start automatically */
+
+        startSlideshow();
+
+        /* ==========================================
+   OPTIONAL:
+   Pause slideshow when user hovers over it
+========================================== */
+
+        if (tableCard) {
+          tableCard.addEventListener("mouseenter", stopSlideshow);
+
+          tableCard.addEventListener("mouseleave", startSlideshow);
+        }
 
         /* FAQ accordion */
         document.querySelectorAll(".faq-item button").forEach(function (btn) {
@@ -2468,12 +3024,22 @@
           document.getElementById("requestNote"),
           "Thank you. Your request is in, and we'll be in touch if there's a seat for you.",
         );
-        var footerForm = document.getElementById("footerForm");
-        handleForm(
-          footerForm,
-          footerForm.querySelector(".form-note"),
-          "Thank you. We'll be in touch.",
-        );
+
+        /* Pull up a chair: chair slides in from the right, content follows (plays once) */
+        var chairSection = document.querySelector(".chair-section");
+        if (chairSection && !reduced && "IntersectionObserver" in window) {
+          chairSection.classList.add("will-animate");
+          var chairIO = new IntersectionObserver(
+            function (entries) {
+              if (entries[0].isIntersecting) {
+                chairSection.classList.add("is-in");
+                chairIO.disconnect();
+              }
+            },
+            { threshold: 0.2 },
+          );
+          chairIO.observe(chairSection);
+        }
 
         /* Reveal on scroll */
         var revealEls = document.querySelectorAll(".reveal");
@@ -2508,6 +3074,105 @@
             el.classList.add("in");
           });
         }
+      })();
+    </script>
+
+    <div class="menu-hover-preview" id="menuHoverPreview">
+      <img id="menuHoverPreviewImg" src="" alt="" />
+    </div>
+
+    <script>
+      (function () {
+        const menuCard = document.querySelector(".menu-item.is-revealed");
+
+        const preview = document.getElementById("menuHoverPreview");
+
+        const previewImg = document.getElementById("menuHoverPreviewImg");
+
+        if (!menuCard || !preview || !previewImg) return;
+
+        const originalImg = menuCard.querySelector("img");
+
+        if (!originalImg) return;
+
+        /* same Smash Burgers image */
+        previewImg.src = originalImg.src;
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let currentX = 0;
+        let currentY = 0;
+
+        let active = false;
+
+        /* Cursor enters burger image */
+        menuCard.addEventListener("mouseenter", function (e) {
+          if (window.innerWidth <= 1024) return;
+
+          active = true;
+
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+
+          currentX = mouseX;
+          currentY = mouseY;
+
+          preview.classList.add("is-visible");
+        });
+
+        /* Follow cursor */
+        menuCard.addEventListener("mousemove", function (e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        /* Cursor leaves */
+        menuCard.addEventListener("mouseleave", function () {
+          active = false;
+
+          preview.classList.remove("is-visible");
+        });
+
+        /* Smooth follower */
+        function animatePreview() {
+          if (active) {
+            currentX += (mouseX - currentX) * 0.16;
+            currentY += (mouseY - currentY) * 0.16;
+
+            /*
+        Offset so box doesn't sit exactly
+        underneath cursor
+      */
+
+            let x = currentX + 165;
+            let y = currentY - 120;
+
+            /*
+        Prevent preview going outside screen
+      */
+
+            const halfWidth = 140;
+            const halfHeight = 95;
+
+            x = Math.max(
+              halfWidth + 12,
+              Math.min(window.innerWidth - halfWidth - 12, x),
+            );
+
+            y = Math.max(
+              halfHeight + 12,
+              Math.min(window.innerHeight - halfHeight - 12, y),
+            );
+
+            preview.style.left = x + "px";
+            preview.style.top = y + "px";
+          }
+
+          requestAnimationFrame(animatePreview);
+        }
+
+        animatePreview();
       })();
     </script>
   </body>
