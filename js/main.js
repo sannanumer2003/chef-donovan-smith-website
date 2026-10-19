@@ -4,6 +4,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Fit the footer name to its actual available width, including after fonts load.
+  document.querySelectorAll('.new-footer-wordmark').forEach(wordmark => {
+    const text = document.createRange();
+    text.selectNodeContents(wordmark);
+    function fitWordmark() {
+      const textWidth = text.getBoundingClientRect().width;
+      const availableWidth = wordmark.clientWidth;
+      if (!textWidth || !availableWidth) return;
+      const fontSize = parseFloat(getComputedStyle(wordmark).fontSize);
+      wordmark.style.fontSize = `${fontSize * availableWidth / textWidth}px`;
+    }
+    const observer = new ResizeObserver(fitWordmark);
+    observer.observe(wordmark.parentElement);
+    fitWordmark();
+    document.fonts.ready.then(fitWordmark);
+  });
+
   // ── Scroll-triggered fade-up ──────────────────────────────────
   const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
