@@ -692,29 +692,57 @@
         overflow: hidden;
       }
 
-      /* VIDEO */
-      .dinner-series-video {
-        width: 100%;
-        height: clamp(360px, 40vw, 610px);
-        border-radius: 14px;
-        overflow: hidden;
-        background: #111;
-      }
-
-      .dinner-series-video video {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
-      }
-
-      /* CONTENT UNDER VIDEO */
       .dinner-series-content {
         display: grid;
-        grid-template-columns: 1fr 1fr 1.2fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
         align-items: start;
-        gap: clamp(30px, 5vw, 90px);
-        padding: 34px 32px 26px;
+        column-gap: clamp(40px, 8vw, 150px);
+        row-gap: 28px;
+        padding: 28px 32px 48px;
+      }
+
+      .dinner-series-heading {
+        grid-row: 1 / 3;
+      }
+
+      .dinner-series-marquee {
+        overflow: hidden;
+        margin: 0 -16px 48px;
+      }
+
+      .dinner-series-track {
+        display: flex;
+        width: max-content;
+        animation: dinner-series-scroll 36s linear infinite;
+        will-change: transform;
+      }
+
+      .dinner-series-group {
+        display: flex;
+        align-items: center;
+        gap: 4vw;
+        padding-right: 4vw;
+        flex-shrink: 0;
+      }
+
+      .dinner-series-shape {
+        display: block;
+        width: max(160px, 23.2vw);
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: contain;
+        flex-shrink: 0;
+        -webkit-mask: var(--shape-mask) center / contain no-repeat;
+        mask: var(--shape-mask) center / contain no-repeat;
+      }
+
+      @keyframes dinner-series-scroll {
+        to { transform: translateX(-50%); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .dinner-series-track { animation: none; }
       }
 
       /* HEADING */
@@ -730,7 +758,9 @@
 
       /* DESCRIPTION */
       .dinner-series-description {
-        max-width: 340px;
+        width: 100%;
+        max-width: 520px;
+        justify-self: end;
       }
 
       .dinner-series-description p {
@@ -749,8 +779,11 @@
       /* CTA AREA */
       .dinner-series-action {
         width: 100%;
+        max-width: 520px;
+        justify-self: end;
         display: flex;
-        justify-content: flex-end;
+        grid-column: 2;
+        justify-content: flex-start;
       }
 
       .dinner-series-btn {
@@ -804,7 +837,7 @@
         }
 
         .dinner-series-action {
-          grid-column: 1 / -1;
+          grid-column: 2;
           justify-content: flex-start;
         }
 
@@ -819,8 +852,12 @@
           padding: 10px;
         }
 
-        .dinner-series-video {
-          height: 300px;
+        .dinner-series-marquee {
+          margin: 10px -10px 24px;
+        }
+
+        .dinner-series-heading {
+          grid-row: auto;
         }
 
         .dinner-series-content {
@@ -3000,7 +3037,7 @@
       </script>
 
       <!-- â"€â"€ REVIEW CAROUSEL â"€â"€ -->
-      <section class="py-16 px-5 sm:py-20 sm:px-8 lg:py-[120px] lg:px-20">
+      <section class="pt-16 pb-8 px-5 sm:pt-20 sm:pb-10 sm:px-8 lg:pt-[120px] lg:pb-12 lg:px-20">
         <div
           id="testimonial-carousel"
           style="max-width: 800px; margin: 0 auto; text-align: center"
@@ -3102,14 +3139,6 @@
 
       <!-- ===== DINNER SERIES ===== -->
       <section class="dinner-series-section fade-up">
-        <!-- VIDEO -->
-        <div class="dinner-series-video">
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="videos/dinner-series.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
         <!-- CONTENT -->
         <div class="dinner-series-content">
           <div class="dinner-series-heading">
@@ -3138,6 +3167,22 @@
               <span>ENTER THE DINNER SERIES</span>
               <span class="dinner-series-arrow">→</span>
             </a>
+          </div>
+        </div>
+        <div class="dinner-series-marquee" role="img" aria-label="A glimpse of the Dinner Series: fine dining, beautiful tables, tropical breakfast and fresh ingredients.">
+          <div class="dinner-series-track">
+            <div class="dinner-series-group">
+              <img class="dinner-series-shape" src="Assets/Frame-2.png" style="--shape-mask: url('Assets/Frame-2.svg')" alt="Plated dinner being served" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame-3.png" style="--shape-mask: url('Assets/Frame-3.svg')" alt="An elegantly set dinner table" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame.png" style="--shape-mask: url('Assets/Frame.svg')" alt="Tropical fruit and breakfast by the sea" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame-1.png" style="--shape-mask: url('Assets/Frame-1.svg')" alt="Fresh salad and a pot of beans" width="316" height="316" loading="lazy" decoding="async" />
+            </div>
+            <div class="dinner-series-group" aria-hidden="true">
+              <img class="dinner-series-shape" src="Assets/Frame-2.png" style="--shape-mask: url('Assets/Frame-2.svg')" alt="" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame-3.png" style="--shape-mask: url('Assets/Frame-3.svg')" alt="" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame.png" style="--shape-mask: url('Assets/Frame.svg')" alt="" width="316" height="316" loading="lazy" decoding="async" />
+              <img class="dinner-series-shape" src="Assets/Frame-1.png" style="--shape-mask: url('Assets/Frame-1.svg')" alt="" width="316" height="316" loading="lazy" decoding="async" />
+            </div>
           </div>
         </div>
       </section>
